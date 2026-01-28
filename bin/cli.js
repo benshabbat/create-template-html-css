@@ -29,7 +29,8 @@ program
             { name: 'Modal', value: 'modal' },
             { name: 'Footer', value: 'footer' },
             { name: 'Hero Section', value: 'hero' },
-            { name: 'Slider', value: 'slider' }
+            { name: 'Slider', value: 'slider' },
+            { name: 'Table', value: 'table' }
           ]
         },
         {
@@ -99,7 +100,8 @@ program
             { name: 'Modal', value: 'modal' },
             { name: 'Footer', value: 'footer' },
             { name: 'Hero Section', value: 'hero' },
-            { name: 'Slider', value: 'slider' }
+            { name: 'Slider', value: 'slider' },
+            { name: 'Table', value: 'table' }
           ]
         },
         {
@@ -143,7 +145,7 @@ program
   .description('List all available templates')
   .action(() => {
     console.log(chalk.blue('\nAvailable templates:\n'));
-    console.log('  • Button - Styled button component');
+n    console.log('  • Button - Styled button component');
     console.log('  • Card - Card component with image and content');
     console.log('  • Form - Form with input fields');
     console.log('  • Navigation - Navigation bar');
@@ -151,6 +153,7 @@ program
     console.log('  • Footer - Footer section');
     console.log('  • Hero - Hero section with CTA');
     console.log('  • Slider - Image carousel with navigation');
+    console.log('  • Table - Data table with search and filtering');
     console.log('');
   });
 

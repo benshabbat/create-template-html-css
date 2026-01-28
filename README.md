@@ -26,7 +26,7 @@ A powerful CLI library to create HTML+CSS element templates. Generate styled UI 
 - 🌈 **Stunning Gradients** - Colorful and attractive designs
 - ⚡ **Animations** - Smooth and professional effects
 - 🔧 **Customizable** - Easy to edit and modify the code
-- 📦 **8 Templates** - Button, Card, Form, Navigation, Modal, Footer, Hero, Slider
+- 📦 **9 Templates** - Button, Card, Form, Navigation, Modal, Footer, Hero, Slider, Table
 - 🎯 **Two Modes** - Create new projects or insert into existing HTML pages
 - 🔒 **Secure** - Input validation and path protection
 - 📚 **Well Documented** - Comprehensive guides and examples
@@ -276,6 +276,27 @@ Responsive image carousel component:
 - Navigation arrows
 - Indicator dots
 - Auto-advance timer
+
+### 9. Table
+
+Professional data table with advanced features:
+
+**Features:**
+- Search functionality
+- Status filtering
+- Sortable columns
+- Pagination support
+- Action buttons (Edit/Delete)
+- Status badges
+- Responsive design
+- Row selection
+
+**Includes:**
+- 6 sample employees
+- Multiple columns (ID, Name, Email, Department, Status, Date)
+- Search and filter controls
+- Page navigation
+- Color-coded status indicators
 
 ## 💡 Examples
 

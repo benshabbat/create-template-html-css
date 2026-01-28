@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{name}} - Table Component</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Data Table</h1>
+        <p class="subtitle">Modern and responsive data table</p>
+        
+        <div class="table-controls">
+            <input type="text" id="searchInput" class="search-input" placeholder="Search table...">
+            <select id="filterSelect" class="filter-select">
+                <option value="">All Status</option>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+                <option value="pending">Pending</option>
+            </select>
+        </div>
+        
+        <div class="table-wrapper">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Department</th>
+                        <th>Status</th>
+                        <th>Join Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <tr>
+                        <td>#001</td>
+                        <td>John Anderson</td>
+                        <td>john@example.com</td>
+                        <td>Engineering</td>
+                        <td><span class="status-badge active">Active</span></td>
+                        <td>2024-01-15</td>
+                        <td>
+                            <button class="action-btn edit-btn">Edit</button>
+                            <button class="action-btn delete-btn">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#002</td>
+                        <td>Sarah Johnson</td>
+                        <td>sarah@example.com</td>
+                        <td>Marketing</td>
+                        <td><span class="status-badge active">Active</span></td>
+                        <td>2024-02-20</td>
+                        <td>
+                            <button class="action-btn edit-btn">Edit</button>
+                            <button class="action-btn delete-btn">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#003</td>
+                        <td>Michael Brown</td>
+                        <td>michael@example.com</td>
+                        <td>Sales</td>
+                        <td><span class="status-badge pending">Pending</span></td>
+                        <td>2024-03-10</td>
+                        <td>
+                            <button class="action-btn edit-btn">Edit</button>
+                            <button class="action-btn delete-btn">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#004</td>
+                        <td>Emily Davis</td>
+                        <td>emily@example.com</td>
+                        <td>HR</td>
+                        <td><span class="status-badge inactive">Inactive</span></td>
+                        <td>2023-12-05</td>
+                        <td>
+                            <button class="action-btn edit-btn">Edit</button>
+                            <button class="action-btn delete-btn">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#005</td>
+                        <td>David Wilson</td>
+                        <td>david@example.com</td>
+                        <td>Engineering</td>
+                        <td><span class="status-badge active">Active</span></td>
+                        <td>2024-01-30</td>
+                        <td>
+                            <button class="action-btn edit-btn">Edit</button>
+                            <button class="action-btn delete-btn">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#006</td>
+                        <td>Lisa Martinez</td>
+                        <td>lisa@example.com</td>
+                        <td>Marketing</td>
+                        <td><span class="status-badge active">Active</span></td>
+                        <td>2024-02-14</td>
+                        <td>
+                            <button class="action-btn edit-btn">Edit</button>
+                            <button class="action-btn delete-btn">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="table-footer">
+            <p id="rowCount">Showing 6 rows</p>
+            <div class="pagination">
+                <button class="page-btn" onclick="previousPage()">← Previous</button>
+                <span id="pageInfo" class="page-info">Page 1 of 1</span>
+                <button class="page-btn" onclick="nextPage()">Next →</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
