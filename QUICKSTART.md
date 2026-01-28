@@ -1,6 +1,6 @@
-# Quick Start Guide - מדריך מהיר 🚀
+# Quick Start Guide 🚀
 
-## התקנה מהירה
+## Quick Installation
 
 ```bash
 # Clone the repository
@@ -14,18 +14,24 @@ npm install
 npm link
 ```
 
-## דוגמאות שימוש
+## Usage Examples
 
-### 1. צור כפתור מעוצב
+### Mode 1: Create New Project
+
+Create a standalone project with HTML, CSS, and JavaScript files.
+
+#### 1. Create Styled Button
 
 ```bash
 create-template create
-# בחר: Button
-# שם: my-awesome-button
+# or
+npm run create
+# Choose: Button
+# Name: my-awesome-button
 # JavaScript: Yes
 ```
 
-**תוצאה:**
+**Result:**
 ```
 my-awesome-button/
 ├── index.html
@@ -33,43 +39,96 @@ my-awesome-button/
 └── script.js
 ```
 
-### 2. צור כרטיס מוצר
+#### 2. Create Product Card
 
 ```bash
-create-template create
-# בחר: Card
-# שם: product-card
+npm run create
+# Choose: Card
+# Name: product-card
 # JavaScript: No
 ```
 
-### 3. צור טופס יצירת קשר
+#### 3. Create Contact Form
 
 ```bash
-create-template create
-# בחר: Form
-# שם: contact-form
+npm run create
+# Choose: Form
+# Name: contact-form
 # JavaScript: Yes
 ```
 
-### 4. צור תפריט ניווט
+### Mode 2: Insert into Existing Page
+
+Add components to your existing HTML files without creating new projects.
+
+#### 1. Add Button to Existing Page
+
+```bash
+create-template insert
+# or
+npm run insert
+# Enter path: index.html
+# Choose: Button
+# CSS: Inline (inside <style> tag)
+# JS: Inline (inside <script> tag)
+```
+
+**What happens:**
+- Button HTML is inserted before `</body>`
+- CSS is added in a `<style>` tag in the `<head>`
+- JavaScript is added in a `<script>` tag before `</body>`
+
+#### 2. Add Card with Separate Files
+
+```bash
+npm run insert
+# Enter path: products.html
+# Choose: Card
+# CSS: Separate file
+# JS: Separate file
+```
+
+**Result:**
+- Card HTML inserted into products.html
+- card-component.css created and linked
+- card-component.js created and linked
+
+#### 3. Add Navigation (Skip JS)
+
+```bash
+npm run insert
+# Enter path: about.html
+# Choose: Navigation
+# CSS: Inline
+# JS: Skip (I'll add it manually)
+```
+
+**Result:**
+- Navigation HTML inserted
+- CSS added inline
+- No JavaScript added (you can add later)
+
+### More Examples
+
+#### 4. Create Navigation Bar
 
 ```bash
 create-template create
-# בחר: Navigation
-# שם: main-nav
+# Choose: Navigation
+# Name: main-nav
 # JavaScript: Yes
 ```
 
-### 5. צור חלון מודלי
+#### 5. Create Modal Dialog
 
 ```bash
 create-template create
-# בחר: Modal
-# שם: popup-modal
+# Choose: Modal
+# Name: popup-modal
 # JavaScript: Yes
 ```
 
-### 6. צור Footer
+#### 6. Create Footer
 
 ```bash
 create-template create

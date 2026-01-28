@@ -10,7 +10,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node bin/cli.js",
     "create": "node bin/cli.js create",
-    "list": "node bin/cli.js list"
+    "list": "node bin/cli.js list",
+    "insert": "node bin/cli.js insert"
   },
   "keywords": [
     "cli",
