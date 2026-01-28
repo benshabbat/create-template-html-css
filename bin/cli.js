@@ -145,7 +145,7 @@ program
   .description('List all available templates')
   .action(() => {
     console.log(chalk.blue('\nAvailable templates:\n'));
-n    console.log('  • Button - Styled button component');
+    console.log('  • Button - Styled button component');
     console.log('  • Card - Card component with image and content');
     console.log('  • Form - Form with input fields');
     console.log('  • Navigation - Navigation bar');
