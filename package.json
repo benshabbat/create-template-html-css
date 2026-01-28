@@ -19,10 +19,29 @@
     "html",
     "css",
     "generator",
-    "ui-components"
+    "ui-components",
+    "html-template",
+    "css-template",
+    "component-generator",
+    "ui-generator",
+    "button",
+    "card",
+    "form",
+    "navigation",
+    "modal",
+    "footer",
+    "hero"
   ],
-  "author": "",
+  "author": "Ben Shabbat <benshabbat@example.com> (https://github.com/benshabbat)",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/benshabbat/create-template-html-css.git"
+  },
+  "bugs": {
+    "url": "https://github.com/benshabbat/create-template-html-css/issues"
+  },
+  "homepage": "https://github.com/benshabbat/create-template-html-css#readme",
   "dependencies": {
     "commander": "^11.1.0",
     "inquirer": "^9.2.12",
