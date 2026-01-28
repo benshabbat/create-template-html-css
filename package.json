@@ -1,6 +1,6 @@
 {
   "name": "create-template-html-css",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "CLI tool to generate HTML and CSS templates for common UI elements",
   "main": "src/index.js",
   "bin": {
