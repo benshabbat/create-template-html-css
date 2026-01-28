@@ -116,17 +116,6 @@ program
         },
         {
           type: 'list',
-          name: 'styleMode',
-          message: 'How should the CSS be added?',
-          choices: [
-            { name: 'Separate file', value: 'separate' },
-            { name: 'Inline (inside <style> tag)', value: 'inline' },
-            { name: 'Skip (I\'ll add it manually)', value: 'skip' }
-          ],
-          default: 'separate'
-        },
-        {
-          type: 'list',
           name: 'scriptMode',
           message: 'How should the JavaScript be added?',
           choices: [
@@ -138,11 +127,14 @@ program
         }
       ]);
 
+      // CSS is always separate (external)
+      answers.styleMode = 'separate';
+
       const result = await insertComponent(answers);
       console.log(chalk.green('\n✓ Component inserted successfully!'));
       console.log(chalk.cyan(`  File: ${result.targetFile}`));
       console.log(chalk.cyan(`  Component: ${chalk.bold(result.component)}`));
-      console.log(chalk.cyan(`  CSS: ${chalk.yellow(result.styleMode)}`));
+      console.log(chalk.cyan(`  CSS: ${chalk.yellow('separate (external file)')}`));;
       console.log(chalk.cyan(`  JS: ${chalk.yellow(result.scriptMode)}`));
       console.log(chalk.gray(`\n  Component ID: ${result.component}-styles, ${result.component}-script`));
     } catch (error) {
