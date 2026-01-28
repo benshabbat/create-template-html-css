@@ -609,9 +609,9 @@ The only requirement is to include a copy of the license and copyright notice.
 
 ## 👨‍💻 Author
 
-**Ben Shabbat**
+**DavidChen Benshabbat**
 - GitHub: [@benshabbat](https://github.com/benshabbat)
-- Email: benshabbat@example.com
+- Email: benshabbat27@gmail.com
 
 ## 🔗 Links
 
@@ -635,6 +635,6 @@ If you find this project helpful, please consider:
 
 ---
 
-Made with ❤️ by Ben Shabbat
+Made with ❤️ by  DavidChen Benshabbat
 
 **Happy coding! 🚀**
