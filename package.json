@@ -1,10 +1,10 @@
 {
   "name": "create-template-html-css",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CLI tool to generate HTML and CSS templates for common UI elements",
   "main": "src/index.js",
   "bin": {
-    "create-template": "./bin/cli.js"
+    "create-template": "bin/cli.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -36,7 +36,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/benshabbat/create-template-html-css.git"
+    "url": "git+https://github.com/benshabbat/create-template-html-css.git"
   },
   "bugs": {
     "url": "https://github.com/benshabbat/create-template-html-css/issues"
