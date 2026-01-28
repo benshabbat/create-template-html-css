@@ -9,44 +9,134 @@
 <body>
     <div class="container">
         <h1>Card Components</h1>
+        <p class="subtitle">Explore different card variations and designs</p>
         
         <div class="cards-grid">
-            <!-- Card 1 -->
+            <!-- Card 1 - Basic -->
             <div class="card">
-                <img src="https://via.placeholder.com/300x200" alt="Card Image" class="card-img">
-                <div class="card-body">
-                    <h2 class="card-title">Card Title</h2>
-                    <p class="card-text">
-                        This is a card description. Here you can add more information about the content.
-                    </p>
-                    <button class="card-btn">Read More</button>
+                <div class="card-header">
+                    <img src="https://via.placeholder.com/300x200/667eea" alt="Card Image" class="card-img">
+                    <span class="card-badge">Featured</span>
                 </div>
-            </div>
-            
-            <!-- Card 2 -->
-            <div class="card">
-                <img src="https://via.placeholder.com/300x200/667eea" alt="Card Image" class="card-img">
                 <div class="card-body">
-                    <h2 class="card-title">Styled Card</h2>
+                    <div class="card-category">Technology</div>
+                    <h2 class="card-title">Modern Card Design</h2>
                     <p class="card-text">
-                        Clean and modern design with shadows and animations.
+                        This is a beautifully designed card with rich information and interactive elements.
                     </p>
+                    <div class="card-meta">
+                        <span class="meta-item">⭐ 4.5</span>
+                        <span class="meta-item">📅 Jan 29, 2026</span>
+                    </div>
                     <button class="card-btn">Learn More</button>
                 </div>
             </div>
             
-            <!-- Card 3 -->
-            <div class="card">
-                <img src="https://via.placeholder.com/300x200/764ba2" alt="Card Image" class="card-img">
+            <!-- Card 2 - With Price -->
+            <div class="card card-premium">
+                <div class="card-header">
+                    <img src="https://via.placeholder.com/300x200/764ba2" alt="Premium Card" class="card-img">
+                    <span class="card-badge premium">Popular</span>
+                </div>
                 <div class="card-body">
-                    <h2 class="card-title">Third Card</h2>
+                    <div class="card-category">Services</div>
+                    <h2 class="card-title">Premium Package</h2>
+                    <div class="card-price">$29.99/mo</div>
                     <p class="card-text">
-                        More interesting content displayed in an attractive and pleasant way.
+                        Get exclusive access to premium features and priority support.
                     </p>
-                    <button class="card-btn">Get Started</button>
+                    <div class="card-features">
+                        <span class="feature">✓ Advanced Tools</span>
+                        <span class="feature">✓ Priority Support</span>
+                        <span class="feature">✓ Analytics</span>
+                    </div>
+                    <button class="card-btn btn-premium">Subscribe Now</button>
+                </div>
+            </div>
+            
+            <!-- Card 3 - With Tags -->
+            <div class="card">
+                <div class="card-header">
+                    <img src="https://via.placeholder.com/300x200/43e97b" alt="Blog Card" class="card-img">
+                    <span class="card-badge secondary">New</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-category">Blog</div>
+                    <h2 class="card-title">Latest Updates</h2>
+                    <p class="card-text">
+                        Discover the newest features and improvements in our latest release.
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag">CSS</span>
+                        <span class="tag">Design</span>
+                        <span class="tag">UI</span>
+                    </div>
+                    <div class="card-meta">
+                        <span class="meta-item">👤 By Admin</span>
+                        <span class="meta-item">💬 12 Comments</span>
+                    </div>
+                    <button class="card-btn">Read Article</button>
+                </div>
+            </div>
+
+            <!-- Card 4 - Minimal -->
+            <div class="card card-minimal">
+                <div class="card-header">
+                    <img src="https://via.placeholder.com/300x200/fa709a" alt="Minimal Card" class="card-img">
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title">Clean & Simple</h2>
+                    <p class="card-text">
+                        A minimalist approach to card design focusing on essential information.
+                    </p>
+                    <button class="card-btn">Explore</button>
+                </div>
+            </div>
+
+            <!-- Card 5 - With Avatar -->
+            <div class="card card-user">
+                <div class="card-header">
+                    <img src="https://via.placeholder.com/300x200/feca57" alt="User Card" class="card-img">
+                </div>
+                <div class="card-body">
+                    <div class="card-avatar">👨‍💼</div>
+                    <h2 class="card-title">John Developer</h2>
+                    <p class="card-subtitle">Full Stack Developer</p>
+                    <p class="card-text">
+                        Passionate about creating beautiful and functional web experiences.
+                    </p>
+                    <div class="card-social">
+                        <a href="#" class="social-btn">GitHub</a>
+                        <a href="#" class="social-btn">Twitter</a>
+                        <a href="#" class="social-btn">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6 - Interactive -->
+            <div class="card card-interactive">
+                <div class="card-header">
+                    <img src="https://via.placeholder.com/300x200/48dbfb" alt="Interactive Card" class="card-img">
+                    <span class="card-badge interactive">Hot</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-category">Trending</div>
+                    <h2 class="card-title">Interactive Components</h2>
+                    <p class="card-text">
+                        Engage your users with interactive and dynamic card elements.
+                    </p>
+                    <div class="card-actions">
+                        <button class="action-btn" data-action="like">❤️ Like</button>
+                        <button class="action-btn" data-action="share">🔗 Share</button>
+                        <button class="action-btn" data-action="save">⭐ Save</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
 </body>
 </html>
