@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,45 +9,45 @@
 <body>
     <div class="container">
         <form class="form" id="contactForm">
-            <h1 class="form-title">צור קשר</h1>
-            <p class="form-subtitle">מלא את הפרטים ונחזור אליך בהקדם</p>
+            <h1 class="form-title">Contact Us</h1>
+            <p class="form-subtitle">Fill in the details and we'll get back to you soon</p>
             
             <div class="form-group">
-                <label for="name">שם מלא</label>
+                <label for="name">Full Name</label>
                 <input type="text" id="name" name="name" required>
             </div>
             
             <div class="form-group">
-                <label for="email">אימייל</label>
+                <label for="email">Email</label>
                 <input type="email" id="email" name="email" required>
             </div>
             
             <div class="form-group">
-                <label for="phone">טלפון</label>
+                <label for="phone">Phone</label>
                 <input type="tel" id="phone" name="phone">
             </div>
             
             <div class="form-group">
-                <label for="subject">נושא</label>
+                <label for="subject">Subject</label>
                 <select id="subject" name="subject" required>
-                    <option value="">בחר נושא</option>
-                    <option value="support">תמיכה טכנית</option>
-                    <option value="sales">מכירות</option>
-                    <option value="general">כללי</option>
+                    <option value="">Select a subject</option>
+                    <option value="support">Technical Support</option>
+                    <option value="sales">Sales</option>
+                    <option value="general">General</option>
                 </select>
             </div>
             
             <div class="form-group">
-                <label for="message">הודעה</label>
+                <label for="message">Message</label>
                 <textarea id="message" name="message" rows="5" required></textarea>
             </div>
             
             <div class="form-group checkbox-group">
                 <input type="checkbox" id="terms" name="terms" required>
-                <label for="terms">אני מסכים לתנאי השימוש</label>
+                <label for="terms">I agree to the terms of service</label>
             </div>
             
-            <button type="submit" class="form-btn">שלח</button>
+            <button type="submit" class="form-btn">Submit</button>
         </form>
     </div>
 </body>

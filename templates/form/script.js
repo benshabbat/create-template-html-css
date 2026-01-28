@@ -14,7 +14,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     console.log('Form submitted:', formData);
     
     // Show success message
-    alert('הטופס נשלח בהצלחה! נחזור אליך בקרוב.');
+    alert('Form submitted successfully! We will get back to you soon.');
     
     // Reset form
     this.reset();

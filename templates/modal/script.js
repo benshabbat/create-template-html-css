@@ -37,7 +37,7 @@ document.querySelectorAll('.modal-form').forEach(form => {
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         console.log('Form submitted');
-        alert('הטופס נשלח בהצלחה!');
+        alert('Form submitted successfully!');
         this.closest('.modal').classList.remove('active');
         this.reset();
     });
@@ -54,7 +54,7 @@ document.querySelectorAll('.btn-cancel').forEach(button => {
 document.querySelectorAll('.btn-confirm').forEach(button => {
     button.addEventListener('click', function() {
         console.log('Action confirmed');
-        alert('הפריט נמחק בהצלחה');
+        alert('Item deleted successfully');
         this.closest('.modal').classList.remove('active');
     });
 });

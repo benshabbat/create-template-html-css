@@ -34,7 +34,19 @@ program
           type: 'input',
           name: 'name',
           message: 'Enter a name for your component:',
-          default: (answers) => answers.component
+          default: (answers) => answers.component,
+          validate: (input) => {
+            if (!input || input.trim().length === 0) {
+              return 'Please enter a valid name';
+            }
+            if (input.includes('..') || input.includes('/') || input.includes('\\')) {
+              return 'Name cannot contain path separators or parent directory references';
+            }
+            if (input.length > 100) {
+              return 'Name is too long (max 100 characters)';
+            }
+            return true;
+          }
         },
         {
           type: 'confirm',

@@ -38,6 +38,6 @@ document.querySelectorAll('.social-link').forEach(link => {
     link.addEventListener('click', function(e) {
         e.preventDefault();
         console.log('Social link clicked');
-        alert('פתיחת רשת חברתית...');
+        alert('Opening social network...');
     });
 });

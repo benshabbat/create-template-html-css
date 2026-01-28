@@ -4,6 +4,6 @@ document.querySelectorAll('.card-btn').forEach(button => {
         const card = this.closest('.card');
         const title = card.querySelector('.card-title').textContent;
         console.log(`Card clicked: ${title}`);
-        alert(`נלחץ על: ${title}`);
+        alert(`Clicked on: ${title}`);
     });
 });

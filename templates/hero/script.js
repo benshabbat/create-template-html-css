@@ -13,7 +13,7 @@ document.querySelectorAll('.hero-btn').forEach(button => {
     button.addEventListener('click', function() {
         if (this.type !== 'submit') {
             console.log('Hero button clicked:', this.textContent);
-            alert(`נלחץ על: ${this.textContent}`);
+            alert(`Clicked on: ${this.textContent}`);
         }
     });
 });
@@ -24,7 +24,7 @@ document.querySelectorAll('.hero-form').forEach(form => {
         e.preventDefault();
         const email = this.querySelector('input[type="email"]').value;
         console.log('Form submitted with email:', email);
-        alert(`תודה! נשלח לך מידע לכתובת: ${email}`);
+        alert(`Thank you! We'll send you information to: ${email}`);
         this.reset();
     });
 });
