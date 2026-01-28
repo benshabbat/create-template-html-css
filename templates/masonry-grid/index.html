@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{name}} - Masonry Grid Component</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Masonry Grid Gallery</h1>
+            <p>Pinterest-style dynamic layout</p>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="design">Design</button>
+                <button class="filter-btn" data-filter="photo">Photo</button>
+                <button class="filter-btn" data-filter="art">Art</button>
+            </div>
+        </header>
+
+        <div class="masonry-grid" id="masonryGrid">
+            <!-- Design Items -->
+            <div class="masonry-item design" data-category="design">
+                <div class="item-content gradient-1">
+                    <span class="category-tag">Design</span>
+                    <div class="item-info">
+                        <h3>Modern UI Design</h3>
+                        <p>Beautiful interface concepts</p>
+                        <div class="item-meta">
+                            <span>🎨 Design</span>
+                            <span>❤️ 234</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="masonry-item photo" data-category="photo">
+                <div class="item-content gradient-2">
+                    <span class="category-tag">Photo</span>
+                    <div class="item-info">
+                        <h3>Nature Photography</h3>
+                        <p>Stunning landscapes</p>
+                        <div class="item-meta">
+                            <span>📷 Photo</span>
+                            <span>❤️ 567</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="masonry-item art tall" data-category="art">
+                <div class="item-content gradient-3">
+                    <span class="category-tag">Art</span>
+                    <div class="item-info">
+                        <h3>Digital Art Collection</h3>
+                        <p>Creative illustrations and paintings</p>
+                        <div class="item-meta">
+                            <span>🖼️ Art</span>
+                            <span>❤️ 892</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="masonry-item design" data-category="design">
+                <div class="item-content gradient-4">
+                    <span class="category-tag">Design</span>
+                    <div class="item-info">
+                        <h3>Logo Design</h3>
+                        <p>Brand identity concepts</p>
+                        <div class="item-meta">
+                            <span>🎨 Design</span>
+                            <span>❤️ 445</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="masonry-item photo tall" data-category="photo">
+                <div class="item-content gradient-5">
+                    <span class="category-tag">Photo</span>
+                    <div class="item-info">
+                        <h3>Urban Photography</h3>
+                        <p>City life captured in stunning detail</p>
+                        <div class="item-meta">
+                            <span>📷 Photo</span>
+                            <span>❤️ 678</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="masonry-item design" data-category="design">
+                <div class="item-content gradient-6">
+                    <span class="category-tag">Design</span>
+                    <div class="item-info">
+                        <h3>Web Design</h3>
+                        <p>Responsive layouts</p>
+                        <div class="item-meta">
+                            <span>🎨 Design</span>
+                            <span>❤️ 321</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="masonry-item art" data-category="art">
+                <div class="item-content gradient-7">
+                    <span class="category-tag">Art</span>
+                    <div class="item-info">
+                        <h3>Abstract Art</h3>
+                        <p>Modern expressions</p>
+                        <div class="item-meta">
+                            <span>🖼️ Art</span>
+                            <span>❤️ 756</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="masonry-item photo" data-category="photo">
+                <div class="item-content gradient-8">
+                    <span class="category-tag">Photo</span>
+                    <div class="item-info">
+                        <h3>Portrait Photography</h3>
+                        <p>Capturing emotions</p>
+                        <div class="item-meta">
+                            <span>📷 Photo</span>
+                            <span>❤️ 923</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="masonry-item design tall" data-category="design">
+                <div class="item-content gradient-9">
+                    <span class="category-tag">Design</span>
+                    <div class="item-info">
+                        <h3>App Design</h3>
+                        <p>Mobile application interfaces with modern aesthetics</p>
+                        <div class="item-meta">
+                            <span>🎨 Design</span>
+                            <span>❤️ 534</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="masonry-item art" data-category="art">
+                <div class="item-content gradient-10">
+                    <span class="category-tag">Art</span>
+                    <div class="item-info">
+                        <h3>3D Art</h3>
+                        <p>Stunning renders</p>
+                        <div class="item-meta">
+                            <span>🖼️ Art</span>
+                            <span>❤️ 612</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="masonry-item photo" data-category="photo">
+                <div class="item-content gradient-11">
+                    <span class="category-tag">Photo</span>
+                    <div class="item-info">
+                        <h3>Travel Photography</h3>
+                        <p>World adventures</p>
+                        <div class="item-meta">
+                            <span>📷 Photo</span>
+                            <span>❤️ 834</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="masonry-item design" data-category="design">
+                <div class="item-content gradient-12">
+                    <span class="category-tag">Design</span>
+                    <div class="item-info">
+                        <h3>Typography</h3>
+                        <p>Font design showcase</p>
+                        <div class="item-meta">
+                            <span>🎨 Design</span>
+                            <span>❤️ 445</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

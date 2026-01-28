@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{name}} - Dashboard Grid Component</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>📊 Dashboard</h2>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active">
+                    <span class="icon">🏠</span>
+                    <span>Home</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="icon">📈</span>
+                    <span>Analytics</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="icon">💰</span>
+                    <span>Revenue</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="icon">👥</span>
+                    <span>Users</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="icon">⚙️</span>
+                    <span>Settings</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="dashboard-header">
+                <div class="header-left">
+                    <h1>Welcome Back!</h1>
+                    <p>Here's what's happening with your business today</p>
+                </div>
+                <div class="header-right">
+                    <button class="btn-icon">🔔</button>
+                    <button class="btn-icon">⚙️</button>
+                    <div class="user-avatar">👤</div>
+                </div>
+            </header>
+
+            <!-- Stats Grid -->
+            <section class="stats-grid">
+                <div class="stat-card card-1">
+                    <div class="stat-icon">💵</div>
+                    <div class="stat-info">
+                        <h3>$45,231</h3>
+                        <p>Total Revenue</p>
+                        <div class="stat-change positive">
+                            <span>↑ 12.5%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card card-2">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-info">
+                        <h3>2,450</h3>
+                        <p>Active Users</p>
+                        <div class="stat-change positive">
+                            <span>↑ 8.2%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card card-3">
+                    <div class="stat-icon">🛒</div>
+                    <div class="stat-info">
+                        <h3>1,876</h3>
+                        <p>Total Orders</p>
+                        <div class="stat-change negative">
+                            <span>↓ 3.1%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card card-4">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-info">
+                        <h3>92.4%</h3>
+                        <p>Conversion Rate</p>
+                        <div class="stat-change positive">
+                            <span>↑ 5.7%</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Charts and Activity -->
+            <section class="dashboard-grid">
+                <!-- Chart Card -->
+                <div class="dashboard-card chart-card">
+                    <div class="card-header">
+                        <h3>Revenue Overview</h3>
+                        <select class="filter-select">
+                            <option>Last 7 days</option>
+                            <option>Last 30 days</option>
+                            <option>Last 90 days</option>
+                        </select>
+                    </div>
+                    <div class="chart-container">
+                        <div class="chart-placeholder">
+                            <div class="chart-bar" style="height: 60%"></div>
+                            <div class="chart-bar" style="height: 75%"></div>
+                            <div class="chart-bar" style="height: 55%"></div>
+                            <div class="chart-bar" style="height: 85%"></div>
+                            <div class="chart-bar" style="height: 70%"></div>
+                            <div class="chart-bar" style="height: 90%"></div>
+                            <div class="chart-bar" style="height: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activity Feed -->
+                <div class="dashboard-card activity-card">
+                    <div class="card-header">
+                        <h3>Recent Activity</h3>
+                        <button class="view-all">View All</button>
+                    </div>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon icon-success">✓</div>
+                            <div class="activity-content">
+                                <h4>New order received</h4>
+                                <p>Order #12345 - $234.00</p>
+                                <span class="time">2 minutes ago</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon icon-info">👤</div>
+                            <div class="activity-content">
+                                <h4>New user registered</h4>
+                                <p>John Doe joined the platform</p>
+                                <span class="time">15 minutes ago</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon icon-warning">⚠️</div>
+                            <div class="activity-content">
+                                <h4>Low stock alert</h4>
+                                <p>Product ABC running low</p>
+                                <span class="time">1 hour ago</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon icon-success">💰</div>
+                            <div class="activity-content">
+                                <h4>Payment received</h4>
+                                <p>Invoice #789 paid</p>
+                                <span class="time">3 hours ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Top Products -->
+                <div class="dashboard-card products-card">
+                    <div class="card-header">
+                        <h3>Top Products</h3>
+                    </div>
+                    <div class="products-list">
+                        <div class="product-item">
+                            <div class="product-info">
+                                <div class="product-icon">📱</div>
+                                <div>
+                                    <h4>Premium Phone</h4>
+                                    <p>Electronics</p>
+                                </div>
+                            </div>
+                            <div class="product-stats">
+                                <strong>$12,450</strong>
+                                <span class="badge">235 sold</span>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <div class="product-info">
+                                <div class="product-icon">💻</div>
+                                <div>
+                                    <h4>Laptop Pro</h4>
+                                    <p>Computers</p>
+                                </div>
+                            </div>
+                            <div class="product-stats">
+                                <strong>$8,920</strong>
+                                <span class="badge">156 sold</span>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <div class="product-info">
+                                <div class="product-icon">🎧</div>
+                                <div>
+                                    <h4>Wireless Headphones</h4>
+                                    <p>Audio</p>
+                                </div>
+                            </div>
+                            <div class="product-stats">
+                                <strong>$6,340</strong>
+                                <span class="badge">423 sold</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="dashboard-card actions-card">
+                    <div class="card-header">
+                        <h3>Quick Actions</h3>
+                    </div>
+                    <div class="actions-grid">
+                        <button class="action-btn">
+                            <span class="action-icon">➕</span>
+                            <span>Add Product</span>
+                        </button>
+                        <button class="action-btn">
+                            <span class="action-icon">📦</span>
+                            <span>New Order</span>
+                        </button>
+                        <button class="action-btn">
+                            <span class="action-icon">👥</span>
+                            <span>Add User</span>
+                        </button>
+                        <button class="action-btn">
+                            <span class="action-icon">📊</span>
+                            <span>View Reports</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

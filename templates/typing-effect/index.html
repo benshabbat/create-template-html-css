@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{name}} - Typing Effect Component</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section with Typing Effect -->
+        <section class="hero-section">
+            <h1 class="main-title">Welcome to <span class="gradient-text">Amazing</span></h1>
+            <p class="typing-text" id="typingText"></p>
+            <div class="cursor"></div>
+        </section>
+        
+        <!-- Multiple Typing Examples -->
+        <section class="examples-section">
+            <h2>Typing Animation Examples</h2>
+            
+            <div class="example-card">
+                <h3>Simple Typing</h3>
+                <p class="typed" data-text="This text appears letter by letter..."></p>
+            </div>
+            
+            <div class="example-card">
+                <h3>Multiple Lines</h3>
+                <div class="multi-line-typed">
+                    <p class="typed-line" data-text="First line appears first..." data-delay="0"></p>
+                    <p class="typed-line" data-text="Then the second line..." data-delay="2000"></p>
+                    <p class="typed-line" data-text="And finally the third!" data-delay="4000"></p>
+                </div>
+            </div>
+            
+            <div class="example-card">
+                <h3>Rotating Text</h3>
+                <p class="rotating-container">
+                    I am <span class="rotating-text" id="rotatingText"></span>
+                </p>
+            </div>
+            
+            <div class="example-card highlight">
+                <h3>Code Typing Effect</h3>
+                <pre class="code-block"><code id="codeTyping"></code></pre>
+            </div>
+        </section>
+        
+        <!-- Action Buttons -->
+        <section class="action-section">
+            <button class="btn btn-primary" id="restartBtn">Restart Animations</button>
+            <button class="btn btn-secondary" id="pauseBtn">Pause</button>
+        </section>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

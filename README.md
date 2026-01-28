@@ -26,7 +26,7 @@ A powerful CLI library to create HTML+CSS element templates. Generate styled UI 
 - 🌈 **Stunning Gradients** - Colorful and attractive designs
 - ⚡ **Animations** - Smooth and professional effects
 - 🔧 **Customizable** - Easy to edit and modify the code
-- 📦 **9 Templates** - Button, Card, Form, Navigation, Modal, Footer, Hero, Slider, Table
+- 📦 **16 Templates** - Button, Card, Form, Navigation, Modal, Footer, Hero, Slider, Table, Spinner, Animated Cards, Typing Effect, Fade Gallery, Grid Layouts, Masonry Grid, Dashboard
 - 🎯 **Two Modes** - Create new projects or insert into existing HTML pages
 - 🔒 **Secure** - Input validation and path protection
 - 📚 **Well Documented** - Comprehensive guides and examples
@@ -297,6 +297,116 @@ Professional data table with advanced features:
 - Search and filter controls
 - Page navigation
 - Color-coded status indicators
+
+### 10. Spinner 🔄
+
+Animated loading spinners for various use cases:
+
+**Variations:**
+- Circle Spinner - Classic rotating circle
+- Bouncing Dots - Three animated dots
+- Pulse Loader - Pulsing effect
+- Bar Loader - Dancing vertical bars
+- Gradient Ring - Colorful rotating ring
+
+**Features:**
+- Pure CSS animations
+- Smooth performance
+- Multiple styles
+- Easy customization
+
+### 11. Animated Card ✨
+
+Interactive card components with stunning animations:
+
+**Variations:**
+- Flip Card - 3D flip effect
+- Glow Card - Animated glowing border
+- Slide Card - Content slide animation
+- Scale Card - Zoom with shadow
+- Tilt Card - 3D tilt on hover
+- Gradient Card - Animated background
+
+**Features:**
+- Advanced hover effects
+- 3D transformations
+- Interactive JavaScript
+- Modern design patterns
+
+### 12. Typing Effect ⌨️
+
+Text animation components with typing effects:
+
+**Variations:**
+- Simple typing animation
+- Multi-line typing
+- Rotating text display
+- Code typing effect
+
+**Features:**
+- Customizable speed
+- Blinking cursor
+- Multiple phrases
+- Pause/restart controls
+
+### 13. Fade Gallery 🖼️
+
+Animated image gallery with scroll effects:
+
+**Features:**
+- Fade-in animations
+- Hover overlays
+- Horizontal scroll
+- Parallax effect
+- Intersection observer
+- Responsive masonry layout
+
+### 14. Grid Layout 📐
+
+Comprehensive CSS Grid layouts:
+
+**Includes:**
+- Basic responsive grid
+- Feature grid with hero item
+- Auto-fit flexible grid
+- Complex dashboard layout
+
+**Features:**
+- Modern CSS Grid
+- Multiple grid patterns
+- Animated items
+- Fully responsive
+
+### 15. Masonry Grid 🧱
+
+Pinterest-style masonry layout:
+
+**Features:**
+- Column-based layout
+- Category filtering
+- Variable item heights
+- Staggered animations
+- Interactive likes
+- 12 sample items
+
+### 16. Dashboard Grid 📊
+
+Complete admin dashboard template:
+
+**Components:**
+- Sidebar navigation
+- Statistics cards
+- Revenue chart
+- Activity feed
+- Product list
+- Quick actions
+
+**Features:**
+- Full grid layout
+- Real-time animations
+- Mobile responsive
+- Professional design
+
 
 ## 💡 Examples
 

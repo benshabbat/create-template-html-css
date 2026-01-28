@@ -2,7 +2,7 @@ const fs = require('fs').promises;
 const path = require('path');
 
 // Security: Validate component name against whitelist
-const VALID_COMPONENTS = ['button', 'card', 'form', 'navigation', 'modal', 'footer', 'hero', 'slider', 'table'];
+const VALID_COMPONENTS = ['button', 'card', 'form', 'navigation', 'modal', 'footer', 'hero', 'slider', 'table', 'spinner', 'animated-card', 'typing-effect', 'fade-gallery', 'grid-layout', 'masonry-grid', 'dashboard-grid'];
 
 // Security: Sanitize filename to prevent path traversal
 function sanitizeFilename(filename) {

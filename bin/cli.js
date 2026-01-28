@@ -30,7 +30,14 @@ program
             { name: 'Footer', value: 'footer' },
             { name: 'Hero Section', value: 'hero' },
             { name: 'Slider', value: 'slider' },
-            { name: 'Table', value: 'table' }
+            { name: 'Table', value: 'table' },
+            { name: 'Spinner (Loading Animations)', value: 'spinner' },
+            { name: 'Animated Card (Interactive Cards)', value: 'animated-card' },
+            { name: 'Typing Effect (Text Animations)', value: 'typing-effect' },
+            { name: 'Fade Gallery (Image Gallery)', value: 'fade-gallery' },
+            { name: 'Grid Layout (CSS Grid)', value: 'grid-layout' },
+            { name: 'Masonry Grid (Pinterest-style)', value: 'masonry-grid' },
+            { name: 'Dashboard Grid (Admin Panel)', value: 'dashboard-grid' }
           ]
         },
         {
@@ -144,7 +151,8 @@ program
   .command('list')
   .description('List all available templates')
   .action(() => {
-    console.log(chalk.blue('\nAvailable templates:\n'));
+    console.log(chalk.blue('\n📦 Available templates (16):\n'));
+    console.log(chalk.yellow('Basic Components:'));
     console.log('  • Button - Styled button component');
     console.log('  • Card - Card component with image and content');
     console.log('  • Form - Form with input fields');
@@ -154,6 +162,15 @@ program
     console.log('  • Hero - Hero section with CTA');
     console.log('  • Slider - Image carousel with navigation');
     console.log('  • Table - Data table with search and filtering');
+    console.log(chalk.yellow('\nAnimation Templates:'));
+    console.log('  • Spinner - 5 loading spinner variations');
+    console.log('  • Animated Card - 6 interactive card animations');
+    console.log('  • Typing Effect - Text typing animations');
+    console.log('  • Fade Gallery - Image gallery with fade effects');
+    console.log(chalk.yellow('\nGrid Layouts:'));
+    console.log('  • Grid Layout - CSS Grid examples');
+    console.log('  • Masonry Grid - Pinterest-style layout');
+    console.log('  • Dashboard Grid - Complete admin dashboard');
     console.log('');
   });
 

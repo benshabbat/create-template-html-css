@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{name}} - Animated Gallery Component</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header fade-in">
+            <h1>Animated Image Gallery</h1>
+            <p class="subtitle">Beautiful fade-in and scroll animations</p>
+        </header>
+        
+        <!-- Masonry Gallery -->
+        <section class="gallery-section">
+            <h2 class="section-title fade-in">Featured Gallery</h2>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item fade-in-up" data-delay="0">
+                    <div class="image-wrapper">
+                        <div class="placeholder-image gradient-1">
+                            <span class="image-icon">🎨</span>
+                        </div>
+                        <div class="overlay">
+                            <h3>Creative Design</h3>
+                            <p>Beautiful artwork #1</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item fade-in-up" data-delay="100">
+                    <div class="image-wrapper">
+                        <div class="placeholder-image gradient-2">
+                            <span class="image-icon">🌟</span>
+                        </div>
+                        <div class="overlay">
+                            <h3>Amazing Work</h3>
+                            <p>Stunning visual #2</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item fade-in-up" data-delay="200">
+                    <div class="image-wrapper">
+                        <div class="placeholder-image gradient-3">
+                            <span class="image-icon">✨</span>
+                        </div>
+                        <div class="overlay">
+                            <h3>Perfect Shot</h3>
+                            <p>Incredible moment #3</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item fade-in-up" data-delay="300">
+                    <div class="image-wrapper">
+                        <div class="placeholder-image gradient-4">
+                            <span class="image-icon">🎭</span>
+                        </div>
+                        <div class="overlay">
+                            <h3>Artistic Vision</h3>
+                            <p>Creative expression #4</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item fade-in-up" data-delay="400">
+                    <div class="image-wrapper">
+                        <div class="placeholder-image gradient-5">
+                            <span class="image-icon">🚀</span>
+                        </div>
+                        <div class="overlay">
+                            <h3>Innovation</h3>
+                            <p>Modern design #5</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item fade-in-up" data-delay="500">
+                    <div class="image-wrapper">
+                        <div class="placeholder-image gradient-6">
+                            <span class="image-icon">💎</span>
+                        </div>
+                        <div class="overlay">
+                            <h3>Premium Quality</h3>
+                            <p>Excellence #6</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Horizontal Scroll Gallery -->
+        <section class="horizontal-section">
+            <h2 class="section-title fade-in">Scroll Gallery</h2>
+            <div class="horizontal-scroll">
+                <div class="scroll-item slide-in-left">
+                    <div class="placeholder-image gradient-7">
+                        <span class="image-icon">🎯</span>
+                    </div>
+                    <p>Item 1</p>
+                </div>
+                <div class="scroll-item slide-in-left" data-delay="100">
+                    <div class="placeholder-image gradient-8">
+                        <span class="image-icon">🌈</span>
+                    </div>
+                    <p>Item 2</p>
+                </div>
+                <div class="scroll-item slide-in-left" data-delay="200">
+                    <div class="placeholder-image gradient-9">
+                        <span class="image-icon">⚡</span>
+                    </div>
+                    <p>Item 3</p>
+                </div>
+                <div class="scroll-item slide-in-left" data-delay="300">
+                    <div class="placeholder-image gradient-10">
+                        <span class="image-icon">🎪</span>
+                    </div>
+                    <p>Item 4</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Controls -->
+        <div class="controls fade-in">
+            <button class="btn" id="animateBtn">Replay Animations</button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
