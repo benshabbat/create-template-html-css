@@ -37,7 +37,10 @@ program
             { name: 'Fade Gallery (Image Gallery)', value: 'fade-gallery' },
             { name: 'Grid Layout (CSS Grid)', value: 'grid-layout' },
             { name: 'Masonry Grid (Pinterest-style)', value: 'masonry-grid' },
-            { name: 'Dashboard Grid (Admin Panel)', value: 'dashboard-grid' }
+            { name: 'Dashboard Grid (Admin Panel)', value: 'dashboard-grid' },
+            { name: 'Flex Layout (Flexbox Patterns)', value: 'flex-layout' },
+            { name: 'Flex Cards (Flexbox Cards)', value: 'flex-cards' },
+            { name: 'Flex Dashboard (Flexbox Admin)', value: 'flex-dashboard' }
           ]
         },
         {
@@ -151,7 +154,7 @@ program
   .command('list')
   .description('List all available templates')
   .action(() => {
-    console.log(chalk.blue('\n📦 Available templates (16):\n'));
+    console.log(chalk.blue('\n📦 Available templates (19):\n'));
     console.log(chalk.yellow('Basic Components:'));
     console.log('  • Button - Styled button component');
     console.log('  • Card - Card component with image and content');
@@ -167,10 +170,14 @@ program
     console.log('  • Animated Card - 6 interactive card animations');
     console.log('  • Typing Effect - Text typing animations');
     console.log('  • Fade Gallery - Image gallery with fade effects');
-    console.log(chalk.yellow('\nGrid Layouts:'));
+    console.log(chalk.yellow('\nGrid Layouts (CSS Grid):'));
     console.log('  • Grid Layout - CSS Grid examples');
     console.log('  • Masonry Grid - Pinterest-style layout');
     console.log('  • Dashboard Grid - Complete admin dashboard');
+    console.log(chalk.yellow('\nFlexbox Layouts:'));
+    console.log('  • Flex Layout - Flexbox patterns and examples');
+    console.log('  • Flex Cards - Equal-height card layouts');
+    console.log('  • Flex Dashboard - Admin dashboard with Flexbox');
     console.log('');
   });
 

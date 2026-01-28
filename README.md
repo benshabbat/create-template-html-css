@@ -26,7 +26,7 @@ A powerful CLI library to create HTML+CSS element templates. Generate styled UI 
 - 🌈 **Stunning Gradients** - Colorful and attractive designs
 - ⚡ **Animations** - Smooth and professional effects
 - 🔧 **Customizable** - Easy to edit and modify the code
-- 📦 **16 Templates** - Button, Card, Form, Navigation, Modal, Footer, Hero, Slider, Table, Spinner, Animated Cards, Typing Effect, Fade Gallery, Grid Layouts, Masonry Grid, Dashboard
+- 📦 **19 Templates** - Button, Card, Form, Navigation, Modal, Footer, Hero, Slider, Table, Spinner, Animated Cards, Typing Effect, Fade Gallery, Grid Layouts, Masonry Grid, Dashboard, Flexbox Layouts
 - 🎯 **Two Modes** - Create new projects or insert into existing HTML pages
 - 🔒 **Secure** - Input validation and path protection
 - 📚 **Well Documented** - Comprehensive guides and examples
@@ -405,6 +405,60 @@ Complete admin dashboard template:
 - Full grid layout
 - Real-time animations
 - Mobile responsive
+- Professional design
+
+### 17. Flex Layout 📏
+
+Comprehensive Flexbox patterns and examples:
+
+**Includes:**
+- Row and column layouts
+- Space distribution patterns
+- Alignment variations
+- Flex-grow examples
+- Nested flex containers
+- Holy Grail layout
+
+**Features:**
+- Interactive examples
+- Visual demonstrations
+- Responsive design
+- Modern Flexbox techniques
+
+### 18. Flex Cards 🃏
+
+Equal-height card layouts with Flexbox:
+
+**Variations:**
+- Basic equal-height cards
+- Pricing cards
+- Product cards
+- Team member cards
+- Testimonial cards
+
+**Features:**
+- Automatic equal heights
+- Hover animations
+- Gradient backgrounds
+- Fully responsive
+
+### 19. Flex Dashboard 🎛️
+
+Admin dashboard built entirely with Flexbox:
+
+**Components:**
+- Collapsible sidebar
+- Top search bar
+- Stats cards
+- Bar chart visualization
+- Activity feed
+- Top products list
+- Quick actions
+
+**Features:**
+- Pure Flexbox layout
+- Mobile responsive
+- Interactive animations
 - Professional design
 
 

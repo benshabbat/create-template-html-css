@@ -5,6 +5,30 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.0] - 2025-01-18
+
+### Added
+- **Flexbox Layout Templates**:
+  - `flex-layout` - Comprehensive Flexbox patterns and examples (row, column, space-between, space-around, space-evenly, center, wrap, flex-grow, alignment variations, Holy Grail layout)
+  - `flex-cards` - Equal-height card layouts with Flexbox (pricing cards, product cards, team cards, testimonial cards with automatic equal heights and gradient backgrounds)
+  - `flex-dashboard` - Complete admin dashboard using Flexbox (collapsible sidebar, top bar with search, stats cards, bar chart, activity feed, top products, quick actions)
+
+### Changed
+- Updated template count from 16 to 19 templates
+- Enhanced `generator.js` and `inserter.js` with 3 new Flexbox components
+- Updated CLI choices in `bin/cli.js` with Flexbox templates
+- Enhanced `list` command to show new Flexbox category
+- Updated README.md with detailed Flexbox template documentation
+- Added `flexbox`, `flex-layout`, and `flex-dashboard` keywords to package.json
+
+### Technical Details
+- All Flexbox templates include full HTML, CSS, and JavaScript implementations
+- Interactive sidebar collapse functionality
+- Responsive design using pure Flexbox (no CSS Grid)
+- Modern animations and hover effects
+- Equal-height card systems without hacks
+- Professional dashboard layouts with Flexbox
+
 ## [1.3.0] - 2025-01-18
 
 ### Added

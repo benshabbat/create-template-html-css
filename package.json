@@ -1,6 +1,6 @@
 {
   "name": "create-template-html-css",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "CLI tool to generate HTML and CSS templates for common UI elements",
   "main": "src/index.js",
   "bin": {
@@ -35,7 +35,10 @@
     "typing-effect",
     "gallery",
     "responsive",
-    "modern-ui"
+    "modern-ui",
+    "flexbox",
+    "flex-layout",
+    "flex-dashboard"
   ],
   "author": "Ben Shabbat <benshabbat@example.com> (https://github.com/benshabbat)",
   "license": "MIT",

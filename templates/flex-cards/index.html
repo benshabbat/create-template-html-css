@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{name}} - Flex Cards Component</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="hero">
+            <h1>Flex Cards Gallery</h1>
+            <p>Equal height cards with Flexbox magic</p>
+        </header>
+
+        <!-- Equal Height Cards -->
+        <section class="section">
+            <h2 class="section-title">Equal Height Cards</h2>
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-icon">🚀</div>
+                    <h3>Launch Fast</h3>
+                    <p>Get your project up and running in minutes with our streamlined setup process.</p>
+                    <button class="card-btn">Get Started</button>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">⚡</div>
+                    <h3>Lightning Speed</h3>
+                    <p>Optimized for performance with modern techniques.</p>
+                    <button class="card-btn">Learn More</button>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🎨</div>
+                    <h3>Beautiful Design</h3>
+                    <p>Stunning interfaces that work perfectly on all devices. Responsive and accessible design patterns that your users will love. Premium quality guaranteed.</p>
+                    <button class="card-btn">View Demo</button>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🔒</div>
+                    <h3>Secure</h3>
+                    <p>Enterprise-level security built-in from day one.</p>
+                    <button class="card-btn">Security Info</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Cards -->
+        <section class="section">
+            <h2 class="section-title">Pricing Plans</h2>
+            <div class="pricing-container">
+                <div class="pricing-card">
+                    <div class="pricing-badge">Basic</div>
+                    <div class="pricing-icon">📦</div>
+                    <div class="pricing-amount">
+                        <span class="currency">$</span>
+                        <span class="price">9</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>✓ 10 Projects</li>
+                        <li>✓ 5GB Storage</li>
+                        <li>✓ Email Support</li>
+                        <li>✓ Basic Analytics</li>
+                    </ul>
+                    <button class="pricing-btn">Choose Plan</button>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="pricing-badge popular">Popular</div>
+                    <div class="pricing-icon">⭐</div>
+                    <div class="pricing-amount">
+                        <span class="currency">$</span>
+                        <span class="price">29</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>✓ Unlimited Projects</li>
+                        <li>✓ 50GB Storage</li>
+                        <li>✓ Priority Support</li>
+                        <li>✓ Advanced Analytics</li>
+                        <li>✓ Custom Domain</li>
+                        <li>✓ Team Collaboration</li>
+                    </ul>
+                    <button class="pricing-btn featured-btn">Choose Plan</button>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-badge">Enterprise</div>
+                    <div class="pricing-icon">🏢</div>
+                    <div class="pricing-amount">
+                        <span class="currency">$</span>
+                        <span class="price">99</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>✓ Unlimited Everything</li>
+                        <li>✓ 500GB Storage</li>
+                        <li>✓ 24/7 Phone Support</li>
+                        <li>✓ White Label</li>
+                        <li>✓ API Access</li>
+                    </ul>
+                    <button class="pricing-btn">Contact Sales</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Cards -->
+        <section class="section dark-section">
+            <h2 class="section-title">Featured Products</h2>
+            <div class="product-container">
+                <div class="product-card">
+                    <div class="product-image gradient-1">
+                        <span class="product-badge">New</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Premium Headphones</h3>
+                        <div class="product-rating">
+                            ⭐⭐⭐⭐⭐ <span>(128)</span>
+                        </div>
+                        <p>High-quality wireless headphones with noise cancellation</p>
+                        <div class="product-footer">
+                            <span class="product-price">$299</span>
+                            <button class="product-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image gradient-2">
+                        <span class="product-badge sale">Sale</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Smart Watch Pro</h3>
+                        <div class="product-rating">
+                            ⭐⭐⭐⭐☆ <span>(94)</span>
+                        </div>
+                        <p>Advanced fitness tracking and health monitoring</p>
+                        <div class="product-footer">
+                            <span class="product-price">
+                                <del>$399</del> $299
+                            </span>
+                            <button class="product-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image gradient-3">
+                        <span class="product-badge">Hot</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Wireless Earbuds</h3>
+                        <div class="product-rating">
+                            ⭐⭐⭐⭐⭐ <span>(256)</span>
+                        </div>
+                        <p>Crystal clear sound in a compact design</p>
+                        <div class="product-footer">
+                            <span class="product-price">$149</span>
+                            <button class="product-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Cards -->
+        <section class="section">
+            <h2 class="section-title">Meet Our Team</h2>
+            <div class="team-container">
+                <div class="team-card">
+                    <div class="team-avatar gradient-4">
+                        <span class="avatar-text">JD</span>
+                    </div>
+                    <h3>John Doe</h3>
+                    <p class="team-role">CEO & Founder</p>
+                    <p class="team-bio">Visionary leader with 15 years of experience in tech innovation</p>
+                    <div class="team-social">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">🐦</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-avatar gradient-5">
+                        <span class="avatar-text">JS</span>
+                    </div>
+                    <h3>Jane Smith</h3>
+                    <p class="team-role">CTO</p>
+                    <p class="team-bio">Tech expert specializing in scalable architectures</p>
+                    <div class="team-social">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">🐦</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-avatar gradient-6">
+                        <span class="avatar-text">MB</span>
+                    </div>
+                    <h3>Mike Brown</h3>
+                    <p class="team-role">Lead Designer</p>
+                    <p class="team-bio">Award-winning designer with a passion for user experience</p>
+                    <div class="team-social">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">🐦</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-avatar gradient-7">
+                        <span class="avatar-text">SE</span>
+                    </div>
+                    <h3>Sarah Evans</h3>
+                    <p class="team-role">Marketing Director</p>
+                    <p class="team-bio">Strategic thinker driving growth and brand awareness</p>
+                    <div class="team-social">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">🐦</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonial Cards -->
+        <section class="section">
+            <h2 class="section-title">What Our Clients Say</h2>
+            <div class="testimonial-container">
+                <div class="testimonial-card">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">This product completely transformed how we work. The team is incredibly responsive and the features are exactly what we needed.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar gradient-8">AC</div>
+                        <div class="author-info">
+                            <h4>Alice Cooper</h4>
+                            <p>CEO, TechCorp</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">Outstanding quality and support. We've seen a 300% increase in productivity since implementation.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar gradient-9">BD</div>
+                        <div class="author-info">
+                            <h4>Bob Davis</h4>
+                            <p>CTO, StartupXYZ</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">Simply the best solution on the market. Easy to use, powerful features, and excellent value for money.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar gradient-10">CE</div>
+                        <div class="author-info">
+                            <h4>Carol Edwards</h4>
+                            <p>Director, MegaCorp</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
