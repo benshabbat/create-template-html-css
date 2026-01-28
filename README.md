@@ -161,21 +161,27 @@ A collection of styled button components with multiple variations:
 - Beautiful gradients
 - Click animations
 
-### 2. Card
+### 2. Card ✨
 
-Responsive card component for displaying content:
+Responsive card component with 6 professional variations:
 
-**Includes:**
-- Image container
-- Title and description
-- Action button
-- Metadata section
+**Variations:**
+- **Modern Card** - Featured item with badge, category, rating, and date metadata
+- **Premium Card** - Pricing card with feature list and gradient styling
+- **Blog Card** - Content card with tags, author info, and comment counts
+- **Minimal Card** - Clean, simplified design for minimal content
+- **User Profile Card** - Avatar-based card with social media links
+- **Interactive Card** - Action buttons for like, share, and save functionality
 
 **Features:**
+- Rich metadata displays (ratings, dates, comments, authors)
+- Animated action buttons with state management
+- Tag-based filtering system
+- Toast notifications
+- Professional gradients and animations
 - Hover image zoom effect
 - Advanced shadow effects
-- Responsive grid layout
-- Flexible content
+- Fully responsive grid layout
 
 ### 3. Form
 
