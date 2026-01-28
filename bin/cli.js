@@ -2,26 +2,40 @@
 
 const { program } = require('commander');
 const inquirer = require('inquirer').default || require('inquirer');
+const path = require('path');
+const fs = require('fs').promises;
 const { generateTemplate } = require('../src/generator');
 const { insertComponent } = require('../src/inserter');
 const chalk = require('chalk');
 
 program
   .name('create-template')
-  .description('CLI tool to generate HTML and CSS templates')
-  .version('1.0.0');
+  .description(chalk.cyan('🎨 Create HTML/CSS UI component templates in seconds'))
+  .version('1.4.0');
+
+// Add intro message
+program.on('--help', () => {
+  console.log('\n' + chalk.cyan('Examples:'));
+  console.log('  $ create-template create        # Create a new template');
+  console.log('  $ create-template insert        # Insert into existing HTML');
+  console.log('  $ create-template list          # List all templates');
+  console.log('');
+});
 
 program
   .command('create')
-  .description('Create a new HTML/CSS template')
+  .description(chalk.green('Create a new HTML/CSS template component'))
   .action(async () => {
     try {
+      console.log(chalk.cyan('\n✨ Creating a new template component...\n'));
+      
       const answers = await inquirer.prompt([
         {
           type: 'list',
           name: 'component',
           message: 'What component would you like to create?',
           choices: [
+            new inquirer.Separator(chalk.gray('─ Basic Components')),
             { name: 'Button', value: 'button' },
             { name: 'Card', value: 'card' },
             { name: 'Form', value: 'form' },
@@ -31,15 +45,18 @@ program
             { name: 'Hero Section', value: 'hero' },
             { name: 'Slider', value: 'slider' },
             { name: 'Table', value: 'table' },
+            new inquirer.Separator(chalk.gray('─ Animation Templates')),
             { name: 'Spinner (Loading Animations)', value: 'spinner' },
             { name: 'Animated Card (Interactive Cards)', value: 'animated-card' },
             { name: 'Typing Effect (Text Animations)', value: 'typing-effect' },
             { name: 'Fade Gallery (Image Gallery)', value: 'fade-gallery' },
-            { name: 'Grid Layout (CSS Grid)', value: 'grid-layout' },
+            new inquirer.Separator(chalk.gray('─ Grid Layouts (CSS Grid)')),
+            { name: 'Grid Layout', value: 'grid-layout' },
             { name: 'Masonry Grid (Pinterest-style)', value: 'masonry-grid' },
             { name: 'Dashboard Grid (Admin Panel)', value: 'dashboard-grid' },
+            new inquirer.Separator(chalk.gray('─ Flexbox Layouts')),
             { name: 'Flex Layout (Flexbox Patterns)', value: 'flex-layout' },
-            { name: 'Flex Cards (Flexbox Cards)', value: 'flex-cards' },
+            { name: 'Flex Cards (Equal-height cards)', value: 'flex-cards' },
             { name: 'Flex Dashboard (Flexbox Admin)', value: 'flex-dashboard' }
           ]
         },
@@ -65,37 +82,50 @@ program
           type: 'confirm',
           name: 'includeJs',
           message: 'Include JavaScript file?',
-          default: false
+          default: true
         }
       ]);
 
       await generateTemplate(answers);
-      console.log(chalk.green('✓ Template created successfully!'));
+      
+      console.log('\n' + chalk.green('✓ Template created successfully!'));
+      console.log(chalk.gray(`  Location: ./${answers.name}/`));
+      console.log(chalk.gray(`  Files: index.html, style.css${answers.includeJs ? ', script.js' : ''}`));
+      console.log('');
     } catch (error) {
-      console.error(chalk.red('Error creating template:'), error.message);
+      console.error(chalk.red('✗ Error:'), error.message);
       process.exit(1);
     }
   });
 
 program
   .command('insert')
-  .description('Insert a component into an existing HTML page')
+  .description(chalk.green('Insert a component into an existing HTML page'))
   .action(async () => {
     try {
+      console.log(chalk.cyan('\n🚀 Inserting component into HTML file...\n'));
+      
       const answers = await inquirer.prompt([
         {
           type: 'input',
           name: 'targetFile',
           message: 'Enter the path to your HTML file:',
           default: 'index.html',
-          validate: (input) => {
+          validate: async (input) => {
             if (!input || input.trim().length === 0) {
               return 'Please enter a file path';
             }
             if (!input.toLowerCase().endsWith('.html')) {
               return 'File must be an HTML file (.html)';
             }
-            return true;
+            
+            // Check if file exists
+            try {
+              await fs.access(path.resolve(process.cwd(), input));
+              return true;
+            } catch {
+              return `File not found: ${input}`;
+            }
           }
         },
         {
@@ -103,6 +133,7 @@ program
           name: 'component',
           message: 'Which component would you like to insert?',
           choices: [
+            new inquirer.Separator(chalk.gray('─ Basic Components')),
             { name: 'Button', value: 'button' },
             { name: 'Card', value: 'card' },
             { name: 'Form', value: 'form' },
@@ -111,7 +142,20 @@ program
             { name: 'Footer', value: 'footer' },
             { name: 'Hero Section', value: 'hero' },
             { name: 'Slider', value: 'slider' },
-            { name: 'Table', value: 'table' }
+            { name: 'Table', value: 'table' },
+            new inquirer.Separator(chalk.gray('─ Animation Templates')),
+            { name: 'Spinner', value: 'spinner' },
+            { name: 'Animated Card', value: 'animated-card' },
+            { name: 'Typing Effect', value: 'typing-effect' },
+            { name: 'Fade Gallery', value: 'fade-gallery' },
+            new inquirer.Separator(chalk.gray('─ Grid Layouts')),
+            { name: 'Grid Layout', value: 'grid-layout' },
+            { name: 'Masonry Grid', value: 'masonry-grid' },
+            { name: 'Dashboard Grid', value: 'dashboard-grid' },
+            new inquirer.Separator(chalk.gray('─ Flexbox Layouts')),
+            { name: 'Flex Layout', value: 'flex-layout' },
+            { name: 'Flex Cards', value: 'flex-cards' },
+            { name: 'Flex Dashboard', value: 'flex-dashboard' }
           ]
         },
         {
@@ -119,11 +163,11 @@ program
           name: 'scriptMode',
           message: 'How should the JavaScript be added?',
           choices: [
+            { name: 'Separate file (recommended)', value: 'separate' },
             { name: 'Inline (inside <script> tag)', value: 'inline' },
-            { name: 'Separate file', value: 'separate' },
             { name: 'Skip (I\'ll add it manually)', value: 'skip' }
           ],
-          default: 'inline'
+          default: 'separate'
         }
       ]);
 
@@ -131,51 +175,73 @@ program
       answers.styleMode = 'separate';
 
       const result = await insertComponent(answers);
-      console.log(chalk.green('\n✓ Component inserted successfully!'));
-      console.log(chalk.cyan(`  File: ${result.targetFile}`));
-      console.log(chalk.cyan(`  Component: ${chalk.bold(result.component)}`));
-      console.log(chalk.cyan(`  CSS: ${chalk.yellow('separate (external file)')}`));;
-      console.log(chalk.cyan(`  JS: ${chalk.yellow(result.scriptMode)}`));
-      console.log(chalk.gray(`\n  Component ID: ${result.component}-styles, ${result.component}-script`));
+      
+      console.log('\n' + chalk.green('✓ Component inserted successfully!'));
+      console.log(chalk.cyan('  Summary:'));
+      console.log(chalk.gray(`    File: ${path.relative(process.cwd(), result.targetFile)}`));
+      console.log(chalk.gray(`    Component: ${chalk.bold(result.component)}`));
+      console.log(chalk.gray(`    CSS: ${chalk.yellow('external file')}`));
+      console.log(chalk.gray(`    JS: ${chalk.yellow(result.scriptMode)}`));
+      console.log(chalk.gray(`\n    Component IDs: ${result.component}-styles, ${result.component}-script`));
+      console.log('');
     } catch (error) {
-      console.error(chalk.red('✗ Error:'), error.message);
+      console.error('\n' + chalk.red('✗ Error:'), error.message);
       process.exit(1);
     }
   });
 
 program
   .command('list')
-  .description('List all available templates')
+  .description(chalk.green('List all available templates'))
   .action(() => {
-    console.log(chalk.blue('\n📦 Available templates (19):\n'));
-    console.log(chalk.yellow('Basic Components:'));
-    console.log('  • Button - Styled button component');
-    console.log('  • Card - Card component with image and content');
-    console.log('  • Form - Form with input fields');
-    console.log('  • Navigation - Navigation bar');
-    console.log('  • Modal - Modal dialog');
-    console.log('  • Footer - Footer section');
-    console.log('  • Hero - Hero section with CTA');
-    console.log('  • Slider - Image carousel with navigation');
-    console.log('  • Table - Data table with search and filtering');
-    console.log(chalk.yellow('\nAnimation Templates:'));
-    console.log('  • Spinner - 5 loading spinner variations');
-    console.log('  • Animated Card - 6 interactive card animations');
-    console.log('  • Typing Effect - Text typing animations');
-    console.log('  • Fade Gallery - Image gallery with fade effects');
-    console.log(chalk.yellow('\nGrid Layouts (CSS Grid):'));
-    console.log('  • Grid Layout - CSS Grid examples');
-    console.log('  • Masonry Grid - Pinterest-style layout');
-    console.log('  • Dashboard Grid - Complete admin dashboard');
-    console.log(chalk.yellow('\nFlexbox Layouts:'));
-    console.log('  • Flex Layout - Flexbox patterns and examples');
-    console.log('  • Flex Cards - Equal-height card layouts');
-    console.log('  • Flex Dashboard - Admin dashboard with Flexbox');
+    console.log('\n' + chalk.blue('📦 Available Components (19 total)\n'));
+    
+    console.log(chalk.yellow('━ Basic Components (9)'));
+    console.log('  button          Styled button component');
+    console.log('  card            Card component with image and content');
+    console.log('  form            Form with input fields and validation');
+    console.log('  navigation      Responsive navigation bar');
+    console.log('  modal           Modal dialog component');
+    console.log('  footer          Footer section');
+    console.log('  hero            Hero section with CTA button');
+    console.log('  slider          Image carousel with navigation');
+    console.log('  table           Data table with search and filtering');
+    
+    console.log('\n' + chalk.magenta('━ Animation Templates (4)'));
+    console.log('  spinner         5 loading spinner variations');
+    console.log('  animated-card   6 interactive card animations');
+    console.log('  typing-effect   Text typing animations');
+    console.log('  fade-gallery    Image gallery with fade effects');
+    
+    console.log('\n' + chalk.cyan('━ Grid Layouts (3)'));
+    console.log('  grid-layout     CSS Grid patterns and examples');
+    console.log('  masonry-grid    Pinterest-style masonry layout');
+    console.log('  dashboard-grid  Complete admin dashboard (Grid)');
+    
+    console.log('\n' + chalk.green('━ Flexbox Layouts (3)'));
+    console.log('  flex-layout     Flexbox patterns and examples');
+    console.log('  flex-cards      Equal-height card layouts');
+    console.log('  flex-dashboard  Complete admin dashboard (Flexbox)');
+    
+    console.log('\n' + chalk.gray('Usage:'));
+    console.log('  create-template create              Create a new component');
+    console.log('  create-template insert              Insert into HTML file');
     console.log('');
   });
 
 program.parse(process.argv);
 
 if (!process.argv.slice(2).length) {
-  program.outputHelp();
+  console.log('\n' + chalk.cyan('🎨 Create HTML/CSS UI Templates\n'));
+  console.log(chalk.white('Usage: create-template [command]') + '\n');
+  console.log(chalk.yellow('Commands:'));
+  console.log('  create    Create a new template component');
+  console.log('  insert    Insert component into existing HTML file');
+  console.log('  list      Show all available templates');
+  console.log('  help      Display help information\n');
+  console.log(chalk.gray('Examples:'));
+  console.log('  $ create-template create        # Interactive template creation');
+  console.log('  $ create-template insert        # Interactive component insertion');
+  console.log('  $ create-template list          # View all 19 templates');
+  console.log('  $ create-template --help        # Show full help\n');
 }
