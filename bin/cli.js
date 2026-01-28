@@ -119,11 +119,11 @@ program
           name: 'styleMode',
           message: 'How should the CSS be added?',
           choices: [
-            { name: 'Inline (inside <style> tag)', value: 'inline' },
             { name: 'Separate file', value: 'separate' },
+            { name: 'Inline (inside <style> tag)', value: 'inline' },
             { name: 'Skip (I\'ll add it manually)', value: 'skip' }
           ],
-          default: 'inline'
+          default: 'separate'
         },
         {
           type: 'list',
