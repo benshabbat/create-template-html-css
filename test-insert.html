@@ -2,22 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Page for Insert Feature</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background: #f5f5f5;
-        }
-        h1 {
-            color: #333;
-        }
-    </style>
+    <title>Test Page</title>
+    <link rel="stylesheet" href="button-component.css">
 </head>
 <body>
-    <h1>Welcome to Test Page</h1>
-    <p>This is a test page for the insert feature.</p>
-    <p>Components will be inserted below this content.</p>
+    <h1>Welcome</h1>
+    <p>Test content</p>
+    <!-- BUTTON Component -->
+    <div class="container">
+    <h1>Button Component</h1>
+
+    <!-- Primary Button -->
+    <button class="btn btn-primary">Click Here</button>
+
+    <!-- Secondary Button -->
+    <button class="btn btn-secondary">Secondary</button>
+
+    <!-- Success Button -->
+    <button class="btn btn-success">Success</button>
+
+    <!-- Danger Button -->
+    <button class="btn btn-danger">Delete</button>
+
+    <!-- Outlined Button -->
+    <button class="btn btn-outlined">Outlined</button>
+
+    <!-- Disabled Button -->
+    <button class="btn btn-primary" disabled>Disabled</button>
+    </div>
+
+    <script id="button-script">
+        // BUTTON Component Script
+        // Button click animations
+        document.querySelectorAll('.btn').forEach(button => {
+        button.addEventListener('click', function(e) {
+        if (!this.disabled) {
+        console.log('Button clicked:', this.textContent);
+
+        // Ripple effect
+        const ripple = document.createElement('span');
+        ripple.classList.add('ripple');
+        this.appendChild(ripple);
+
+        setTimeout(() => ripple.remove(), 600);
+        }
+        });
+        });
+
+    </script>
 </body>
 </html>

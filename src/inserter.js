@@ -21,14 +21,12 @@ function isComponentAlreadyInserted(htmlContent, component) {
 }
 
 /**
- * Removes all whitespace while preserving indentation of content
+ * Gets the indentation level used in an HTML file
  */
-function normalizeIndentation(text, baseIndent = '') {
-  const lines = text.split('\n');
-  return lines.map(line => {
-    if (line.trim() === '') return '';
-    return baseIndent + line.trim();
-  }).join('\n');
+function getHtmlIndentation(htmlContent) {
+  // Look for any indented line to determine the standard indentation
+  const match = htmlContent.match(/\n(\s+)\S/);
+  return match ? match[1] : '    '; // default to 4 spaces
 }
 
 async function insertComponent(options) {
@@ -77,43 +75,36 @@ async function insertComponent(options) {
   
   let componentBody = bodyMatch[1].trim();
   
-  // Get indentation from existing body content
-  const bodyIndentMatch = htmlContent.match(/\n(\s*)<\/body>/);
-  const bodyIndent = bodyIndentMatch ? bodyIndentMatch[1] : '    ';
+  // Get indentation used in the HTML file
+  const baseIndent = getHtmlIndentation(htmlContent);
   
   // Normalize component body indentation
-  componentBody = normalizeIndentation(componentBody, bodyIndent);
+  const lines = componentBody.split('\n').map(line => {
+    if (line.trim() === '') return '';
+    return baseIndent + line.trim();
+  }).join('\n');
+  componentBody = lines;
   
   // Insert component HTML before closing </body> tag
-  const componentComment = `\n${bodyIndent}<!-- ${component.toUpperCase()} Component -->`;
-  const insertHtml = `${componentComment}\n${componentBody}\n${bodyIndent}`;
-  
-  htmlContent = htmlContent.replace('</body>', `${insertHtml}</body>`);
+  htmlContent = htmlContent.replace('</body>', `${baseIndent}<!-- ${component.toUpperCase()} Component -->\n${componentBody}\n\n</body>`);
   
   // Handle CSS
   if (styleMode === 'inline') {
-    // Get indentation from head
-    const headIndentMatch = htmlContent.match(/\n(\s*)<\/head>/);
-    const headIndent = headIndentMatch ? headIndentMatch[1] : '    ';
-    
     // Normalize CSS indentation
-    const normalizedCss = normalizeIndentation(componentCss, headIndent + '    ');
+    const normalizedCss = componentCss.split('\n').map(line => {
+      if (line.trim() === '') return '';
+      return baseIndent + '    ' + line.trim();
+    }).join('\n');
     
-    const styleTag = `\n${headIndent}<style id="${component}-styles">\n${headIndent}    /* ${component.toUpperCase()} Component Styles */\n${normalizedCss}\n${headIndent}</style>`;
-    htmlContent = htmlContent.replace('</head>', `${styleTag}\n${headIndent}</head>`);
+    htmlContent = htmlContent.replace('</head>', `${baseIndent}<style id="${component}-styles">\n${baseIndent}    /* ${component.toUpperCase()} Component Styles */\n${normalizedCss}\n${baseIndent}</style>\n</head>`);
   } else if (styleMode === 'separate') {
     // Create separate CSS file
     const cssFileName = `${component}-component.css`;
     const cssPath = path.join(path.dirname(targetPath), cssFileName);
     await fs.writeFile(cssPath, `/* ${component.toUpperCase()} Component Styles */\n\n${componentCss}`);
     
-    // Get indentation from head
-    const headIndentMatch = htmlContent.match(/\n(\s*)<\/head>/);
-    const headIndent = headIndentMatch ? headIndentMatch[1] : '    ';
-    
     // Add link to CSS file
-    const linkTag = `\n${headIndent}<link rel="stylesheet" href="${cssFileName}">`;
-    htmlContent = htmlContent.replace('</head>', `${linkTag}\n${headIndent}</head>`);
+    htmlContent = htmlContent.replace('</head>', `${baseIndent}<link rel="stylesheet" href="${cssFileName}">\n</head>`);
   }
   
   // Handle JavaScript
@@ -121,28 +112,21 @@ async function insertComponent(options) {
     const componentJs = await fs.readFile(path.join(templateDir, 'script.js'), 'utf-8');
     
     if (scriptMode === 'inline') {
-      // Get indentation from body
-      const bodyIndentMatch = htmlContent.match(/\n(\s*)<\/body>/);
-      const bodyIndent = bodyIndentMatch ? bodyIndentMatch[1] : '    ';
-      
       // Normalize JS indentation
-      const normalizedJs = normalizeIndentation(componentJs, bodyIndent + '    ');
+      const normalizedJs = componentJs.split('\n').map(line => {
+        if (line.trim() === '') return '';
+        return baseIndent + '    ' + line.trim();
+      }).join('\n');
       
-      const scriptTag = `\n${bodyIndent}<script id="${component}-script">\n${bodyIndent}    // ${component.toUpperCase()} Component Script\n${normalizedJs}\n${bodyIndent}</script>\n${bodyIndent}`;
-      htmlContent = htmlContent.replace('</body>', `${scriptTag}</body>`);
+      htmlContent = htmlContent.replace('</body>', `${baseIndent}<script id="${component}-script">\n${baseIndent}    // ${component.toUpperCase()} Component Script\n${normalizedJs}\n${baseIndent}</script>\n</body>`);
     } else if (scriptMode === 'separate') {
       // Create separate JS file
       const jsFileName = `${component}-component.js`;
       const jsPath = path.join(path.dirname(targetPath), jsFileName);
       await fs.writeFile(jsPath, `// ${component.toUpperCase()} Component Script\n\n${componentJs}`);
       
-      // Get indentation from body
-      const bodyIndentMatch = htmlContent.match(/\n(\s*)<\/body>/);
-      const bodyIndent = bodyIndentMatch ? bodyIndentMatch[1] : '    ';
-      
       // Add script tag
-      const scriptTag = `\n${bodyIndent}<script src="${jsFileName}" id="${component}-script"></script>\n${bodyIndent}`;
-      htmlContent = htmlContent.replace('</body>', `${scriptTag}</body>`);
+      htmlContent = htmlContent.replace('</body>', `${baseIndent}<script src="${jsFileName}" id="${component}-script"></script>\n</body>`);
     }
   } catch (error) {
     // No JavaScript file for this component, skip
