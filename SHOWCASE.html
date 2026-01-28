@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Template HTML/CSS - Showcase</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 60px;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 20px;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+        }
+
+        .templates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .template-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .template-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            margin: 0;
+        }
+
+        .card-body {
+            padding: 25px;
+        }
+
+        .card-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .features {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .features li {
+            color: #555;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .features li:last-child {
+            border-bottom: none;
+        }
+
+        .features li::before {
+            content: '✓';
+            color: #28a745;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .installation {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .installation h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #63b3ed;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        .footer-section {
+            text-align: center;
+            color: white;
+            padding: 40px 0;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .templates-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="badge">🎨 Open Source</div>
+            <h1>Create Template HTML/CSS</h1>
+            <p>צור רכיבי UI מעוצבים תוך שניות עם CLI חזק</p>
+        </div>
+
+        <div class="installation">
+            <h2>🚀 התקנה והתחלה מהירה</h2>
+            <div class="code-block">
+# Clone the repository<br>
+git clone https://github.com/benshabbat/create-template-html-css.git<br>
+cd create-template-html-css<br>
+<br>
+# Install dependencies<br>
+npm install<br>
+<br>
+# Create a template<br>
+npm run create
+            </div>
+        </div>
+
+        <h2 style="color: white; text-align: center; margin-bottom: 40px; font-size: 2.5rem;">
+            7 טמפלייטים מעוצבים ומוכנים לשימוש
+        </h2>
+
+        <div class="templates-grid">
+            <div class="template-card">
+                <div class="card-header">
+                    <div class="card-icon">🔘</div>
+                    <h3 class="card-title">Button</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">
+                        כפתורים מעוצבים עם מגוון סגנונות ואפקטים
+                    </p>
+                    <ul class="features">
+                        <li>6 סוגי כפתורים שונים</li>
+                        <li>אפקטי Hover מתקדמים</li>
+                        <li>גרדיאנטים צבעוניים</li>
+                        <li>אנימציות חלקות</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="template-card">
+                <div class="card-header">
+                    <div class="card-icon">🃏</div>
+                    <h3 class="card-title">Card</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">
+                        כרטיסים אלגנטיים עם תמונה, תוכן וכפתור פעולה
+                    </p>
+                    <ul class="features">
+                        <li>Grid Responsive</li>
+                        <li>אפקט הגדלת תמונה</li>
+                        <li>צללים מתקדמים</li>
+                        <li>עיצוב מודרני</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="template-card">
+                <div class="card-header">
+                    <div class="card-icon">📝</div>
+                    <h3 class="card-title">Form</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">
+                        טופס יצירת קשר מלא עם ולידציה בזמן אמת
+                    </p>
+                    <ul class="features">
+                        <li>מגוון שדות קלט</li>
+                        <li>ולידציה אוטומטית</li>
+                        <li>אפקטי Focus מתקדמים</li>
+                        <li>עיצוב נקי ומודרני</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="template-card">
+                <div class="card-header">
+                    <div class="card-icon">🧭</div>
+                    <h3 class="card-title">Navigation</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">
+                        תפריט ניווט responsive עם תמיכה מלאה במובייל
+                    </p>
+                    <ul class="features">
+                        <li>Fixed למעלה</li>
+                        <li>תפריט המבורגר</li>
+                        <li>Smooth Scroll</li>
+                        <li>הדגשת דף פעיל</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="template-card">
+                <div class="card-header">
+                    <div class="card-icon">💬</div>
+                    <h3 class="card-title">Modal</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">
+                        חלונות מודליים מעוצבים לכל מטרה
+                    </p>
+                    <ul class="features">
+                        <li>3 סוגי מודלים</li>
+                        <li>Backdrop Blur</li>
+                        <li>אנימציות פתיחה</li>
+                        <li>סגירה ב-ESC</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="template-card">
+                <div class="card-header">
+                    <div class="card-icon">📄</div>
+                    <h3 class="card-title">Footer</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">
+                        Footer מקצועי עם עמודות ורשתות חברתיות
+                    </p>
+                    <ul class="features">
+                        <li>Grid Responsive</li>
+                        <li>קישורים מאורגנים</li>
+                        <li>פרטי קשר</li>
+                        <li>אנימציות Scroll</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="template-card">
+                <div class="card-header">
+                    <div class="card-icon">🎯</div>
+                    <h3 class="card-title">Hero</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">
+                        3 סוגי Hero sections מרשימים לדף הבית
+                    </p>
+                    <ul class="features">
+                        <li>גרדיאנט/תמונה רקע</li>
+                        <li>אנימציות טקסט</li>
+                        <li>אפקט Parallax</li>
+                        <li>CTA Buttons</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-section">
+            <h3 style="margin-bottom: 20px;">צור קשר ותרום</h3>
+            <div>
+                <a href="https://github.com/benshabbat/create-template-html-css">📦 GitHub</a>
+                <a href="https://github.com/benshabbat/create-template-html-css/issues">🐛 Issues</a>
+                <a href="CONTRIBUTING.md">🤝 Contributing</a>
+                <a href="LICENSE">📜 License</a>
+            </div>
+            <p style="margin-top: 30px; opacity: 0.8;">
+                Made with ❤️ by Ben Shabbat
+            </p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{name}} - Modal Component</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Modal Components</h1>
+        <p class="subtitle">לחץ על הכפתורים לפתיחת חלונות מודליים שונים</p>
+        
+        <div class="buttons-container">
+            <button class="btn btn-primary" data-modal="modal1">פתח מודל רגיל</button>
+            <button class="btn btn-success" data-modal="modal2">פתח מודל עם טופס</button>
+            <button class="btn btn-danger" data-modal="modal3">פתח מודל אזהרה</button>
+        </div>
+    </div>
+    
+    <!-- Modal 1 - Basic -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2 class="modal-title">מודל בסיסי</h2>
+            <p class="modal-text">
+                זהו דוגמה למודל בסיסי עם תוכן פשוט. ניתן לסגור אותו על ידי לחיצה על X או מחוץ לחלון.
+            </p>
+            <button class="modal-btn">סגור</button>
+        </div>
+    </div>
+    
+    <!-- Modal 2 - With Form -->
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2 class="modal-title">הרשמה למערכת</h2>
+            <form class="modal-form">
+                <input type="text" placeholder="שם מלא" required>
+                <input type="email" placeholder="אימייל" required>
+                <input type="password" placeholder="סיסמה" required>
+                <button type="submit" class="modal-btn">הרשם</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Modal 3 - Warning -->
+    <div id="modal3" class="modal">
+        <div class="modal-content modal-warning">
+            <span class="modal-close">&times;</span>
+            <div class="warning-icon">⚠️</div>
+            <h2 class="modal-title">אזהרה!</h2>
+            <p class="modal-text">
+                האם אתה בטוח שברצונך למחוק את הפריט? פעולה זו אינה ניתנת לביטול.
+            </p>
+            <div class="modal-actions">
+                <button class="modal-btn btn-cancel">ביטול</button>
+                <button class="modal-btn btn-confirm">מחק</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

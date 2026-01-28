@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{name}} - Form Component</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <form class="form" id="contactForm">
+            <h1 class="form-title">צור קשר</h1>
+            <p class="form-subtitle">מלא את הפרטים ונחזור אליך בהקדם</p>
+            
+            <div class="form-group">
+                <label for="name">שם מלא</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">אימייל</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">טלפון</label>
+                <input type="tel" id="phone" name="phone">
+            </div>
+            
+            <div class="form-group">
+                <label for="subject">נושא</label>
+                <select id="subject" name="subject" required>
+                    <option value="">בחר נושא</option>
+                    <option value="support">תמיכה טכנית</option>
+                    <option value="sales">מכירות</option>
+                    <option value="general">כללי</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="message">הודעה</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">אני מסכים לתנאי השימוש</label>
+            </div>
+            
+            <button type="submit" class="form-btn">שלח</button>
+        </form>
+    </div>
+</body>
+</html>
