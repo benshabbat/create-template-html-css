@@ -2,7 +2,7 @@ const fs = require('fs').promises;
 const path = require('path');
 
 // Security: Validate component name against whitelist
-const VALID_COMPONENTS = ['button', 'card', 'form', 'navigation', 'modal', 'footer', 'hero'];
+const VALID_COMPONENTS = ['button', 'card', 'form', 'navigation', 'modal', 'footer', 'hero', 'slider', 'table'];
 
 async function insertComponent(options) {
   const { component, targetFile, styleMode, scriptMode } = options;
