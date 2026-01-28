@@ -141,11 +141,12 @@ program
       const result = await insertComponent(answers);
       console.log(chalk.green('\n✓ Component inserted successfully!'));
       console.log(chalk.cyan(`  File: ${result.targetFile}`));
-      console.log(chalk.cyan(`  Component: ${result.component}`));
-      console.log(chalk.cyan(`  CSS: ${result.styleMode}`));
-      console.log(chalk.cyan(`  JS: ${result.scriptMode}`));
+      console.log(chalk.cyan(`  Component: ${chalk.bold(result.component)}`));
+      console.log(chalk.cyan(`  CSS: ${chalk.yellow(result.styleMode)}`));
+      console.log(chalk.cyan(`  JS: ${chalk.yellow(result.scriptMode)}`));
+      console.log(chalk.gray(`\n  Component ID: ${result.component}-styles, ${result.component}-script`));
     } catch (error) {
-      console.error(chalk.red('Error inserting component:'), error.message);
+      console.error(chalk.red('✗ Error:'), error.message);
       process.exit(1);
     }
   });

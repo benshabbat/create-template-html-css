@@ -2,7 +2,16 @@
 
 ## How to Use the Insert Command
 
-The `insert` command allows you to add pre-styled components to your existing HTML pages without creating new projects.
+The `insert` command allows you to add pre-styled components to your existing HTML pages without creating new projects. Components are smartly integrated with proper indentation and ID attributes for easy customization.
+
+## How It Works
+
+When inserting a component:
+1. ✅ Detects existing indentation in your HTML file
+2. ✅ Respects your code formatting style
+3. ✅ Adds unique IDs to styles and scripts (e.g., `button-styles`, `button-script`)
+4. ✅ Prevents duplicate insertions (warns if component already exists)
+5. ✅ Validates HTML structure (checks for `<head>` and `<body>` tags)
 
 ## Example Usage
 
@@ -132,7 +141,9 @@ npm run insert
 
 ## Available Components
 
-All 7 templates are available for insertion:
+All 19 templates are available for insertion:
+
+### Basic Components
 - Button - Styled button variations
 - Card - Product/content cards
 - Form - Contact/input forms
@@ -140,3 +151,21 @@ All 7 templates are available for insertion:
 - Modal - Dialog popups
 - Footer - Page footer
 - Hero - Hero sections with CTA
+- Slider - Image carousel
+- Table - Data tables with features
+
+### Animation Templates
+- Spinner - Loading animations
+- Animated Card - Interactive card effects
+- Typing Effect - Text animations
+- Fade Gallery - Image gallery with effects
+
+### Grid Layouts (CSS Grid)
+- Grid Layout - CSS Grid examples
+- Masonry Grid - Pinterest-style layout
+- Dashboard Grid - Admin dashboard
+
+### Flexbox Layouts
+- Flex Layout - Flexbox patterns
+- Flex Cards - Equal-height cards
+- Flex Dashboard - Admin dashboard with Flexbox
