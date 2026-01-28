@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{name}} - Slider Component</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Image Slider</h1>
+        <p class="subtitle">Beautiful and responsive image carousel</p>
+        
+        <div class="slider-wrapper">
+            <div class="slider">
+                <div class="slide fade">
+                    <img src="https://via.placeholder.com/800x400?text=Slide+1" alt="Slide 1">
+                    <div class="slide-caption">Slide 1 - Amazing View</div>
+                </div>
+                
+                <div class="slide fade">
+                    <img src="https://via.placeholder.com/800x400?text=Slide+2" alt="Slide 2">
+                    <div class="slide-caption">Slide 2 - Beautiful Moment</div>
+                </div>
+                
+                <div class="slide fade">
+                    <img src="https://via.placeholder.com/800x400?text=Slide+3" alt="Slide 3">
+                    <div class="slide-caption">Slide 3 - Perfect Day</div>
+                </div>
+                
+                <div class="slide fade">
+                    <img src="https://via.placeholder.com/800x400?text=Slide+4" alt="Slide 4">
+                    <div class="slide-caption">Slide 4 - Stunning Scene</div>
+                </div>
+                
+                <div class="slide fade">
+                    <img src="https://via.placeholder.com/800x400?text=Slide+5" alt="Slide 5">
+                    <div class="slide-caption">Slide 5 - Breathtaking View</div>
+                </div>
+            </div>
+            
+            <!-- Navigation buttons -->
+            <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(1)">&#10095;</button>
+        </div>
+        
+        <!-- Dots for slide indicators -->
+        <div class="dots-container">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+            <span class="dot" onclick="currentSlide(5)"></span>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

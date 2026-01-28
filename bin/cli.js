@@ -28,7 +28,8 @@ program
             { name: 'Navigation', value: 'navigation' },
             { name: 'Modal', value: 'modal' },
             { name: 'Footer', value: 'footer' },
-            { name: 'Hero Section', value: 'hero' }
+            { name: 'Hero Section', value: 'hero' },
+            { name: 'Slider', value: 'slider' }
           ]
         },
         {
@@ -97,7 +98,8 @@ program
             { name: 'Navigation', value: 'navigation' },
             { name: 'Modal', value: 'modal' },
             { name: 'Footer', value: 'footer' },
-            { name: 'Hero Section', value: 'hero' }
+            { name: 'Hero Section', value: 'hero' },
+            { name: 'Slider', value: 'slider' }
           ]
         },
         {
@@ -148,6 +150,7 @@ program
     console.log('  • Modal - Modal dialog');
     console.log('  • Footer - Footer section');
     console.log('  • Hero - Hero section with CTA');
+    console.log('  • Slider - Image carousel with navigation');
     console.log('');
   });
 

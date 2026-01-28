@@ -26,7 +26,7 @@ A powerful CLI library to create HTML+CSS element templates. Generate styled UI 
 - 🌈 **Stunning Gradients** - Colorful and attractive designs
 - ⚡ **Animations** - Smooth and professional effects
 - 🔧 **Customizable** - Easy to edit and modify the code
-- 📦 **7 Templates** - Button, Card, Form, Navigation, Modal, Footer, Hero
+- 📦 **8 Templates** - Button, Card, Form, Navigation, Modal, Footer, Hero, Slider
 - 🎯 **Two Modes** - Create new projects or insert into existing HTML pages
 - 🔒 **Secure** - Input validation and path protection
 - 📚 **Well Documented** - Comprehensive guides and examples
@@ -256,6 +256,26 @@ Hero section for landing pages:
 - Parallax effect
 - Animated statistics
 - Call-to-action buttons
+
+### 8. Slider
+
+Responsive image carousel component:
+
+**Features:**
+- Auto-play functionality
+- Previous/next buttons
+- Dot indicators
+- Smooth fade animations
+- Touch-friendly controls
+- Responsive design
+- Image captions
+- Keyboard navigation (ESC to close)
+
+**Includes:**
+- 5 sample slides
+- Navigation arrows
+- Indicator dots
+- Auto-advance timer
 
 ## 💡 Examples
 
