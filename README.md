@@ -31,6 +31,20 @@ A powerful CLI library to create HTML+CSS element templates. Generate styled UI 
 - 🔒 **Secure** - Input validation and path protection
 - 📚 **Well Documented** - Comprehensive guides and examples
 - 🎪 **DOM Manipulation Examples** - Interactive components demonstrating JavaScript DOM manipulation techniques
+- ✨ **Prettier Formatting** - All generated code is automatically formatted with Prettier (v1.6.2+)
+- 📂 **Organized Structure** - CSS and JS files automatically organized in folders (v1.6.2+)
+- 💾 **Simple Backups** - Clean backup naming without timestamps (v1.6.2+)
+
+## 🆕 What's New in v1.6.2
+
+### ✨ Prettier Code Formatting
+All generated and inserted files are automatically formatted with [Prettier](https://prettier.io/) for beautiful, professional-looking code.
+
+### 📂 Organized Folder Structure
+Components are automatically organized with CSS in `css/` folders and JavaScript in `js/` folders for better project organization.
+
+### 💾 Simplified Backup Naming
+Backup files now use clean naming without timestamps: `file.html.backup`
 
 ## 📦 Installation
 

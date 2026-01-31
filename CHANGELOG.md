@@ -5,6 +5,82 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.2] - 2026-02-01
+
+### Added
+- **Prettier Code Formatting**: All generated and inserted code is automatically formatted
+  - HTML files formatted with proper indentation and line breaks
+  - CSS files formatted with consistent style
+  - JavaScript files formatted with proper syntax
+
+### Improved
+- **Simplified Backup Naming**: Backup files no longer include timestamps
+  - Old format: `file.html.backup.1769896716907`
+  - New format: `file.html.backup` (simple and clean)
+  - Easier to identify and manage backup files
+
+### Fixed
+- Code formatting issues in generated templates
+- Better indentation consistency across all file types
+- Cleaner output for inserted components
+
+## [1.6.1] - 2026-01-31
+
+### Added
+- **Folder-Based Organization**: Components automatically organized in css/ and js/ subdirectories
+  - Generator creates structured layout: `component-name/css/style.css` and `component-name/js/script.js`
+  - Insert command places CSS in project's `css/` folder and JS in `js/` folder
+  - Supports both separate files and inline modes with folder structure
+
+### Improved
+- **HTML Formatting**: Fixed regex patterns to ensure clean, properly-formatted HTML output
+  - Non-greedy body extraction prevents duplicate closing tags
+  - Automatic removal of script tags from component bodies
+  - Clean indentation and tag hierarchy
+  - Tested with multiple component insertions (button + card + modal)
+- **Backward Compatibility**: Inline mode (`-s inline --style inline`) works without creating folders
+- **Multiple Component Support**: Verified working with multiple components in same file
+
+### Fixed
+- HTML output no longer contains duplicate `</body>` or `</html>` tags
+- Component body extraction now uses non-greedy regex matching
+- Script tags embedded in templates are properly filtered out
+- Proper folder structure creation before writing files
+
+## [1.6.0] - 2026-01-31
+
+### Added
+- **CLI Flags for Power Users**: Non-interactive command-line interface
+  - Create templates with flags: `create -c button -n my-btn`
+  - Insert components with flags: `insert -f index.html -c card -s separate`
+  - Verbose mode for debugging: `--verbose` or `-v`
+  - JavaScript inclusion control: `--include-js` or `--no-include-js`
+  - Script mode options: `inline`, `separate`, or `skip`
+  - Full backwards compatibility with interactive prompts
+
+- **Insert Feature Enhancements**:
+  - HTML structure validation: Checks for DOCTYPE, html, head, body tags
+  - Backup functionality: Creates timestamped backups before modification
+  - Backup flag: `--backup` or `-b` to enable backup creation
+  - Duplicate component detection: Prevents reinserting same component
+  - Detailed error messages for common issues
+
+### Improved
+- Help messages now show both interactive and non-interactive examples
+- Added comprehensive CLI documentation with flag descriptions
+- Better error handling and validation for flag inputs
+- Enhanced help output with usage patterns
+- Insert command now displays backup file path in output when created
+- Security improvements: Input validation and path traversal protection
+- Better indentation handling in inserted components
+
+### Features Enabled
+- 🤖 Automation: Use in shell scripts and CI/CD pipelines
+- 📋 Batch operations: Create multiple templates in succession
+- 🔄 Backwards compatible: Interactive mode still works for regular users
+- 📊 Better for scripts: Non-interactive mode perfect for automation
+- 🛡️ Safety: Backup files protect against accidental data loss
+
 ## [1.5.0] - 2026-01-31
 
 ### Added

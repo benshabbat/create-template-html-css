@@ -60,18 +60,122 @@ async function generateTemplate(options) {
 
 ---
 
-## 4. **CLI with Flags for Power Users** 💻
-### What's needed:
-- Command line flags for automation
-- Batch operations
-- Configuration management
+## 4. **CLI with Flags for Power Users** 💻 ✅ **COMPLETED**
+### What was implemented:
+- ✅ Command line flags for automation
+- ✅ Interactive mode fallback for regular users
+- ✅ Verbose mode for debugging
+- ✅ Non-interactive batch operations support
 
-### Example usage:
+### Usage:
 ```bash
-create-template create --component button --name my-btn --include-js
+# Create command with flags
+create-template create --component button --name my-btn
+create-template create -c button -n my-btn --no-include-js
+create-template create -c card -n my-card -v
+
+# Insert command with flags
 create-template insert --file index.html --component card --script separate
-create-template config set defaultComponent button
+create-template insert -f index.html -c button -s inline
+create-template insert -f page.html -c form -v
+
+# List available components
+create-template list
+
+# Show help with examples
+create-template --help
 ```
+
+### Available Flags:
+
+**Create Command:**
+- `-c, --component <type>` - Component type (button, card, form, etc.)
+- `-n, --name <name>` - Project/component name
+- `--include-js` - Include JavaScript file (default)
+- `--no-include-js` - Exclude JavaScript file
+- `-v, --verbose` - Show detailed output
+
+**Insert Command:**
+- `-f, --file <path>` - Path to HTML file to insert into
+- `-c, --component <type>` - Component type to insert
+- `-s, --script <mode>` - Script mode (inline, separate, skip)
+- `--style <mode>` - Style mode (inline, separate, skip)
+- `-b, --backup` - Create backup of original file before insertion
+- `-v, --verbose` - Show detailed output
+
+### Benefits:
+- 🤖 **Automation**: Use in scripts and CI/CD pipelines
+- 🎯 **Batch Operations**: Create multiple templates at once
+- 📝 **Configuration Management**: Combine with config files
+- 👨‍💻 **Power Users**: Full control without interactive prompts
+- 🔄 **Backwards Compatible**: Interactive mode still works perfectly
+
+
+---
+
+## 4.5 **Insert Feature Enhancements** 🛡️ ✅ **COMPLETED**
+### What was implemented:
+- ✅ Comprehensive HTML structure validation
+- ✅ Backup file creation before insertion
+- ✅ CLI backup flag (`-b, --backup`)
+- ✅ Detailed error messages for common issues
+- ✅ Detection of already-inserted components
+
+### Features:
+**HTML Validation:**
+- Checks for DOCTYPE declaration
+- Verifies presence of `<html>`, `<head>`, and `<body>` tags
+- Ensures proper closing tags
+- Provides detailed error messages for each validation issue
+
+**Backup Functionality:**
+- Creates timestamped backup files (format: `filename.html.backup.TIMESTAMP`)
+- Backup created before any modifications
+- Optional via `--backup` or `-b` flag
+- Prevents accidental data loss
+
+**Component Safety:**
+- Detects and prevents duplicate component insertion
+- Validates component names against whitelist
+- Validates target file existence and readability
+- Returns success status with backup path information
+
+### Usage Examples:
+```bash
+# Insert with automatic backup
+create-template insert -f index.html -c button -b
+
+# Insert with backup in verbose mode
+create-template insert -f page.html -c card -b --verbose
+
+# Insert without backup (default)
+create-template insert -f index.html -c form
+
+# Interactive mode for safety
+create-template insert
+```
+
+### Output Example:
+```
+✓ Component inserted successfully!
+  Summary:
+    File: index.html
+    Component: button
+    CSS: external file
+    JS: separate
+    Component IDs: button-styles, button-script
+    Backup: index.html.backup.1769895999767
+```
+
+### Security & Error Handling:
+- File path traversal protection
+- Comprehensive validation before modification
+- Clear error messages for:
+  - Missing required HTML tags
+  - Already-inserted components
+  - Invalid component types
+  - Missing target files
+  - Permission issues
 
 ---
 
@@ -218,24 +322,26 @@ create-template watch --component button --name my-btn
 |---|---------|--------|--------|
 | 1 | Unit Tests | Medium | High |
 | 2 | JSDoc + API Docs | Medium | High |
-| 3 | CLI Flags | Medium | High |
-| 4 | Config File Support | Small | Medium |
-| 5 | New Templates | Small | Medium |
-| 6 | Code Refactoring | Large | Medium |
-| 7 | Preview Mode | Medium | Medium |
-| 8 | Better Error Handling | Medium | High |
-| 9 | Export Options | Large | Low |
-| 10 | Web UI | Very Large | Low |
+| 3 | CLI Flags | Medium | High | ✅ COMPLETED |
+| 4 | Insert Enhancements | Medium | High | ✅ COMPLETED |
+| 5 | Config File Support | Small | Medium |
+| 6 | New Templates | Small | Medium |
+| 7 | Code Refactoring | Large | Medium |
+| 8 | Preview Mode | Medium | Medium |
+| 9 | Better Error Handling | Medium | High |
+| 10 | Export Options | Large | Low |
+| 11 | Web UI | Very Large | Low |
 
 ---
 
 ## Suggested Implementation Order:
 
-1. **v1.6.0**: Unit Tests + JSDoc Documentation
-2. **v1.7.0**: CLI Flags + Config File Support
-3. **v1.8.0**: New Templates (5 more)
-4. **v1.9.0**: Better Error Handling + Logging
-5. **v2.0.0**: Major Refactor + Breaking Changes
+1. **v1.5.0**: DOM Manipulation Templates ✅
+2. **v1.6.0**: CLI Flags + Insert Enhancements ✅
+3. **v1.7.0**: Unit Tests + JSDoc Documentation
+4. **v1.8.0**: Config File Support + New Templates (5 more)
+5. **v1.9.0**: Code Refactoring + Logging Improvements
+6. **v2.0.0**: Web UI + Advanced Features
 
 ---
 
