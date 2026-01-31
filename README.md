@@ -2,6 +2,13 @@
 
 A powerful CLI library to create HTML+CSS element templates. Generate styled UI components in seconds!
 
+[![npm version](https://img.shields.io/npm/v/create-template-html-css.svg)](https://www.npmjs.com/package/create-template-html-css)
+[![npm downloads](https://img.shields.io/npm/dm/create-template-html-css.svg)](https://www.npmjs.com/package/create-template-html-css)
+
+```bash
+npm install -g create-template-html-css
+```
+
 ## 📋 Table of Contents
 
 - [Features](#features)
@@ -672,6 +679,6 @@ If you find this project helpful, please consider:
 
 ---
 
-Made with ❤️ by Ben Shabbat
+Made with ❤️ by David Chen Benshabbat
 
 **Happy coding! 🚀**
