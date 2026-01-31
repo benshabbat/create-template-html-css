@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{name}} - Tabs Component</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="tabs-wrapper">
+            <h1>Tabbed Content</h1>
+            
+            <div class="tabs">
+                <div class="tab-buttons">
+                    <button class="tab-button active" data-tab="tab1">
+                        <span class="icon">📋</span> Overview
+                    </button>
+                    <button class="tab-button" data-tab="tab2">
+                        <span class="icon">⚙️</span> Features
+                    </button>
+                    <button class="tab-button" data-tab="tab3">
+                        <span class="icon">💬</span> Reviews
+                    </button>
+                    <button class="tab-button" data-tab="tab4">
+                        <span class="icon">ℹ️</span> About
+                    </button>
+                </div>
+                
+                <div class="tab-contents">
+                    <div class="tab-content active" id="tab1">
+                        <h2>Overview</h2>
+                        <p>This is a fully functional tabs component that uses DOM manipulation to switch between different content sections. Click on the tab buttons above to switch content.</p>
+                        <ul>
+                            <li>Easy to implement</li>
+                            <li>Responsive design</li>
+                            <li>Smooth transitions</li>
+                            <li>Clean and modern styling</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tab-content" id="tab2">
+                        <h2>Features</h2>
+                        <p>Our tabs component comes with many great features:</p>
+                        <ul>
+                            <li>🎨 Customizable colors and styles</li>
+                            <li>📱 Mobile responsive layout</li>
+                            <li>⌨️ Keyboard navigation support</li>
+                            <li>♿ Accessible to screen readers</li>
+                            <li>⚡ Fast and smooth animations</li>
+                            <li>🔧 Easy to customize and extend</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tab-content" id="tab3">
+                        <h2>Reviews</h2>
+                        <div class="review">
+                            <p><strong>⭐⭐⭐⭐⭐</strong> Perfect component!</p>
+                            <p>"This tabs component is exactly what I needed for my project. Easy to use and looks great!"</p>
+                        </div>
+                        <div class="review">
+                            <p><strong>⭐⭐⭐⭐⭐</strong> Highly recommended</p>
+                            <p>"Great functionality and clean code. Highly recommend to anyone building web applications."</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="tab4">
+                        <h2>About</h2>
+                        <p>This tabs component was created to demonstrate DOM manipulation techniques in JavaScript. It shows how to:</p>
+                        <ul>
+                            <li>Select DOM elements</li>
+                            <li>Add/remove CSS classes</li>
+                            <li>Handle events dynamically</li>
+                            <li>Create interactive user interfaces</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

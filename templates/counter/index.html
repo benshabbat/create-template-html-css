@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{name}} - Counter App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="counter-card">
+            <h1>Counter</h1>
+            
+            <div class="counter-display">
+                <span id="counterValue">0</span>
+            </div>
+            
+            <div class="button-group">
+                <button id="decrementBtn" class="btn btn-danger">−</button>
+                <button id="resetBtn" class="btn btn-secondary">Reset</button>
+                <button id="incrementBtn" class="btn btn-success">+</button>
+            </div>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <label>Step Size:</label>
+                    <select id="stepSize" class="step-select">
+                        <option value="1">1</option>
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="100">100</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="history">
+                <h3>History</h3>
+                <div id="historyList" class="history-list">
+                    <p class="empty">No changes yet</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

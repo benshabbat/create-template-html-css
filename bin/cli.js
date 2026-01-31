@@ -11,7 +11,7 @@ const chalk = require('chalk');
 program
   .name('create-template')
   .description(chalk.cyan('🎨 Create HTML/CSS UI component templates in seconds'))
-  .version('1.4.0');
+  .version('1.5.0');
 
 // Add intro message
 program.on('--help', () => {
@@ -57,7 +57,12 @@ program
             new inquirer.Separator(chalk.gray('─ Flexbox Layouts')),
             { name: 'Flex Layout (Flexbox Patterns)', value: 'flex-layout' },
             { name: 'Flex Cards (Equal-height cards)', value: 'flex-cards' },
-            { name: 'Flex Dashboard (Flexbox Admin)', value: 'flex-dashboard' }
+            { name: 'Flex Dashboard (Flexbox Admin)', value: 'flex-dashboard' },
+            new inquirer.Separator(chalk.gray('─ DOM Manipulation Examples')),
+            { name: 'Todo List (Add/Remove Items)', value: 'todo-list' },
+            { name: 'Counter (Click Handlers)', value: 'counter' },
+            { name: 'Accordion (Toggle Content)', value: 'accordion' },
+            { name: 'Tabs (Switch Sections)', value: 'tabs' }
           ]
         },
         {
@@ -78,13 +83,10 @@ program
             return true;
           }
         },
-        {
-          type: 'confirm',
-          name: 'includeJs',
-          message: 'Include JavaScript file?',
-          default: true
-        }
       ]);
+
+      // Always include JavaScript file
+      answers.includeJs = true;
 
       await generateTemplate(answers);
       
@@ -155,7 +157,12 @@ program
             new inquirer.Separator(chalk.gray('─ Flexbox Layouts')),
             { name: 'Flex Layout', value: 'flex-layout' },
             { name: 'Flex Cards', value: 'flex-cards' },
-            { name: 'Flex Dashboard', value: 'flex-dashboard' }
+            { name: 'Flex Dashboard', value: 'flex-dashboard' },
+            new inquirer.Separator(chalk.gray('─ DOM Manipulation')),
+            { name: 'Todo List', value: 'todo-list' },
+            { name: 'Counter', value: 'counter' },
+            { name: 'Accordion', value: 'accordion' },
+            { name: 'Tabs', value: 'tabs' }
           ]
         },
         {
@@ -194,7 +201,7 @@ program
   .command('list')
   .description(chalk.green('List all available templates'))
   .action(() => {
-    console.log('\n' + chalk.blue('📦 Available Components (19 total)\n'));
+    console.log('\n' + chalk.blue('📦 Available Components (23 total)\n'));
     
     console.log(chalk.yellow('━ Basic Components (9)'));
     console.log('  button          Styled button component');
@@ -222,6 +229,12 @@ program
     console.log('  flex-layout     Flexbox patterns and examples');
     console.log('  flex-cards      Equal-height card layouts');
     console.log('  flex-dashboard  Complete admin dashboard (Flexbox)');
+    
+    console.log('\n' + chalk.red('━ DOM Manipulation Examples (4)'));
+    console.log('  todo-list       Interactive todo list with add/remove');
+    console.log('  counter         Click counter with history tracking');
+    console.log('  accordion       Collapsible accordion component');
+    console.log('  tabs            Tabbed content switcher');
     
     console.log('\n' + chalk.gray('Usage:'));
     console.log('  create-template create              Create a new component');

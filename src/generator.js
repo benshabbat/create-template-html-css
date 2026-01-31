@@ -2,7 +2,7 @@ const fs = require('fs').promises;
 const path = require('path');
 
 // Security: Validate component name against whitelist
-const VALID_COMPONENTS = ['button', 'card', 'form', 'navigation', 'modal', 'footer', 'hero', 'slider', 'table', 'spinner', 'animated-card', 'typing-effect', 'fade-gallery', 'grid-layout', 'masonry-grid', 'dashboard-grid', 'flex-layout', 'flex-cards', 'flex-dashboard'];
+const VALID_COMPONENTS = ['button', 'card', 'form', 'navigation', 'modal', 'footer', 'hero', 'slider', 'table', 'spinner', 'animated-card', 'typing-effect', 'fade-gallery', 'grid-layout', 'masonry-grid', 'dashboard-grid', 'flex-layout', 'flex-cards', 'flex-dashboard', 'todo-list', 'counter', 'accordion', 'tabs'];
 
 // Security: Sanitize filename to prevent path traversal
 function sanitizeFilename(filename) {
@@ -40,8 +40,18 @@ async function generateTemplate(options) {
   const templateDir = path.join(__dirname, '..', 'templates', component);
   
   // Copy HTML file
-  const htmlContent = await fs.readFile(path.join(templateDir, 'index.html'), 'utf-8');
-  await fs.writeFile(path.join(outputDir, 'index.html'), htmlContent.replace(/{{name}}/g, safeName));
+  let htmlContent = await fs.readFile(path.join(templateDir, 'index.html'), 'utf-8');
+  
+  // Replace placeholder name
+  htmlContent = htmlContent.replace(/{{name}}/g, safeName);
+  
+  // Add script tag if JavaScript is included
+  if (includeJs) {
+    // Insert script tag before closing </body> tag
+    htmlContent = htmlContent.replace('</body>', '    <script src="script.js"></script>\n</body>');
+  }
+  
+  await fs.writeFile(path.join(outputDir, 'index.html'), htmlContent);
 
   // Copy CSS file
   const cssContent = await fs.readFile(path.join(templateDir, 'style.css'), 'utf-8');

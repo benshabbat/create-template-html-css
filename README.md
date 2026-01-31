@@ -26,10 +26,11 @@ A powerful CLI library to create HTML+CSS element templates. Generate styled UI 
 - 🌈 **Stunning Gradients** - Colorful and attractive designs
 - ⚡ **Animations** - Smooth and professional effects
 - 🔧 **Customizable** - Easy to edit and modify the code
-- 📦 **19 Templates** - Button, Card, Form, Navigation, Modal, Footer, Hero, Slider, Table, Spinner, Animated Cards, Typing Effect, Fade Gallery, Grid Layouts, Masonry Grid, Dashboard, Flexbox Layouts
+- 📦 **23 Templates** - Button, Card, Form, Navigation, Modal, Footer, Hero, Slider, Table, Spinner, Animated Cards, Typing Effect, Fade Gallery, Grid Layouts, Masonry Grid, Dashboard, Flexbox Layouts, Todo List, Counter, Accordion, Tabs
 - 🎯 **Two Modes** - Create new projects or insert into existing HTML pages
 - 🔒 **Secure** - Input validation and path protection
 - 📚 **Well Documented** - Comprehensive guides and examples
+- 🎪 **DOM Manipulation Examples** - Interactive components demonstrating JavaScript DOM manipulation techniques
 
 ## 📦 Installation
 

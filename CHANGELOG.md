@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.0] - 2026-01-31
+
+### Added
+- **4 New DOM Manipulation Templates**:
+  - **Todo List**: Interactive task management with add/remove items, checkboxes for completion status, and real-time statistics
+  - **Counter**: Increment/decrement counter with adjustable step sizes, color-changing display, and change history
+  - **Accordion**: Collapsible FAQ-style sections with smooth animations and toggle functionality
+  - **Tabs**: Multi-section content switcher with keyboard navigation (arrow keys) and fade-in animations
+- All new templates include automatic `<script src="script.js"></script>` tag in generated HTML
+- Enhanced component selection in CLI with new DOM Manipulation Examples category
+
+### Improved
+- JavaScript file is now always automatically included when creating templates (no confirmation prompt)
+- Better template organization in CLI with category separators
+- Updated component list command to show all 23 available templates
+
 ## [1.4.3] - 2025-01-29
 
 ### Documentation
