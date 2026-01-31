@@ -132,23 +132,23 @@ create-template create
 
 ```bash
 create-template create
-# בחר: Footer
-# שם: site-footer
+# Choose: Footer
+# Name: site-footer
 # JavaScript: Yes
 ```
 
-### 7. צור Hero Section
+#### 7. Create Hero Section
 
 ```bash
 create-template create
-# בחר: Hero
-# שם: landing-hero
+# Choose: Hero
+# Name: landing-hero
 # JavaScript: Yes
 ```
 
-## טיפים
+## Tips
 
-### פתח בדפדפן
+### Open in Browser
 ```bash
 cd my-awesome-button
 start index.html  # Windows
@@ -156,39 +156,39 @@ open index.html   # Mac
 xdg-open index.html  # Linux
 ```
 
-### התאמה אישית
-פשוט ערוך את הקבצים שנוצרו:
-- `index.html` - שנה את התוכן
-- `style.css` - שנה את העיצוב
-- `script.js` - שנה את הפונקציונליות
+### Customization
+Simply edit the generated files:
+- `index.html` - Change the content
+- `style.css` - Change the styling
+- `script.js` - Change the functionality
 
-### שלב בפרויקט קיים
-העתק את הקבצים שנוצרו לפרויקט שלך:
+### Integrate into Existing Project
+Copy the generated files to your project:
 ```bash
 cp -r my-awesome-button/* ../my-project/
 ```
 
-## פקודות CLI
+## CLI Commands
 
 ```bash
-# צור טמפלייט חדש
+# Create a new template
 create-template create
 
-# הצג רשימת טמפלייטים
+# Show list of templates
 create-template list
 
-# עזרה
+# Help
 create-template --help
 
-# גרסה
+# Version
 create-template --version
 ```
 
-## צריך עזרה?
+## Need Help?
 
-- 📖 קרא את [README.md](README.md)
-- 🐛 פתח [Issue](https://github.com/benshabbat/create-template-html-css/issues)
-- 💬 שאל שאלות ב-GitHub Discussions
+- 📖 Read [README.md](README.md)
+- 🐛 Open an [Issue](https://github.com/benshabbat/create-template-html-css/issues)
+- 💬 Ask questions in GitHub Discussions
 
 ---
 

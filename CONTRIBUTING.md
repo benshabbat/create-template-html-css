@@ -1,30 +1,30 @@
 # Contributing to Create Template HTML/CSS
 
-תודה שאתה מעוניין לתרום לפרויקט! 🎉
+Thank you for your interest in contributing to this project! 🎉
 
-## כיצד לתרום
+## How to Contribute
 
-### 1. Fork הפרויקט
-Fork את הריפו ללקוח GitHub שלך
+### 1. Fork the Project
+Fork the repository to your GitHub account
 
-### 2. Clone את הפרויקט
+### 2. Clone the Project
 ```bash
 git clone https://github.com/YOUR_USERNAME/create-template-html-css.git
 cd create-template-html-css
 ```
 
-### 3. התקן תלויות
+### 3. Install Dependencies
 ```bash
 npm install
 ```
 
-### 4. צור branch חדש
+### 4. Create a New Branch
 ```bash
 git checkout -b feature/amazing-feature
 ```
 
-### 5. בצע שינויים
-עשה את השינויים שלך בקוד
+### 5. Make Changes
+Make your code changes
 
 ### 6. Commit
 ```bash
@@ -37,26 +37,26 @@ git commit -m "Add some amazing feature"
 git push origin feature/amazing-feature
 ```
 
-### 8. צור Pull Request
-פתח Pull Request ב-GitHub
+### 8. Create a Pull Request
+Open a Pull Request on GitHub
 
-## הוספת טמפלייט חדש
+## Adding a New Template
 
-1. צור תיקייה חדשה תחת `templates/`
-2. הוסף את הקבצים:
+1. Create a new directory under `templates/`
+2. Add the following files:
    - `index.html`
    - `style.css`
-   - `script.js` (אופציונלי)
-3. עדכן את `bin/cli.js` להוסיף את הטמפלייט לרשימה
-4. בדוק שהטמפלייט עובד
-5. עדכן את README.md
+   - `script.js` (optional)
+3. Update `bin/cli.js` to add the template to the list
+4. Test that the template works
+5. Update `README.md`
 
-## קווי דרך
+## Guidelines
 
-- השתמש בעברית או אנגלית
-- וודא שהקוד נקי ומתועד
-- בדוק שהכל עובד לפני שליחה
-- השתמש בעיצוב responsive
-- הוסף הערות בקוד
+- Use English for all code and documentation
+- Ensure code is clean and well-documented
+- Test everything before submitting
+- Use responsive design
+- Add comments to code
 
-תודה! ❤️
+Thank you! ❤️

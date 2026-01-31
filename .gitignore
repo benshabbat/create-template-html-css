@@ -1,5 +1,63 @@
+# Dependencies
 node_modules/
+package-lock.json
+yarn.lock
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
 *.log
+
+# OS files
 .DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.env
+.env.local
+.env.*.local
+
+# IDE and editor files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+.c9/
+*.tern-port
+.nyc_output
+
+# Build and dist
 dist/
 build/
+out/
+.cache/
+.next/
+
+# Testing
+coverage/
+.nyc_output/
+*.coverage
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+.tmp
+
+# macOS
+.AppleDouble
+.AppleDB
+.LSOverride
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+
+# Windows
+desktop.ini
+Ehthumbs.db
+
+# Test files
+test-*.html

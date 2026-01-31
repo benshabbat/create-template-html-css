@@ -632,6 +632,22 @@ The only requirement is to include a copy of the license and copyright notice.
 - Design inspiration from [Tailwind CSS](https://tailwindcss.com/) and [Bootstrap](https://getbootstrap.com/)
 - Icons from [Unicode Emojis](https://unicode.org/emoji/)
 
+## 🛣️ Roadmap & Future Features
+
+We have exciting plans for future versions! Check out [IMPROVEMENT_SUGGESTIONS.md](IMPROVEMENT_SUGGESTIONS.md) for:
+
+- Unit Testing Framework (Jest)
+- CLI Flags for Automation
+- Configuration File Support
+- Web-based Preview Mode
+- Additional Templates (Breadcrumb, Toast, Rating, etc.)
+- Template Customization Options
+- Export to Different Formats (JSX, Vue, etc.)
+- Interactive Template Builder
+- Analytics and Usage Statistics
+
+Want to contribute to the roadmap? [See Contributing Guidelines](CONTRIBUTING.md)
+
 ## ⭐ Support
 
 If you find this project helpful, please consider:
@@ -642,6 +658,6 @@ If you find this project helpful, please consider:
 
 ---
 
-Made with ❤️ by  DavidChen Benshabbat
+Made with ❤️ by Ben Shabbat
 
 **Happy coding! 🚀**
