@@ -2,6 +2,12 @@
 node_modules/
 package-lock.json
 yarn.lock
+.pnp
+
+# Environment Variables
+.env
+.env.local
+.env.*.local
 
 # Logs
 npm-debug.log*
@@ -10,26 +16,31 @@ yarn-error.log*
 lerna-debug.log*
 *.log
 
-# OS files
+# OS Files
 .DS_Store
+.AppleDouble
+.AppleDB
+.LSOverride
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+desktop.ini
 Thumbs.db
-*.swp
-*.swo
-*~
-.env
-.env.local
-.env.*.local
+Ehthumbs.db
 
-# IDE and editor files
+# IDE and Editor Files
 .vscode/
 .idea/
 *.sublime-workspace
 *.sublime-project
 .c9/
 *.tern-port
-.nyc_output
+*.swp
+*.swo
+*~
+.editorconfig
 
-# Build and dist
+# Build and Distribution
 dist/
 build/
 out/
@@ -40,24 +51,11 @@ out/
 coverage/
 .nyc_output/
 *.coverage
+test-*.html
 
-# Temporary files
+# Development
 tmp/
 temp/
 *.tmp
 .tmp
-
-# macOS
-.AppleDouble
-.AppleDB
-.LSOverride
-.TemporaryItems
-.Trashes
-.VolumeIcon.icns
-
-# Windows
-desktop.ini
-Ehthumbs.db
-
-# Test files
-test-*.html
+.env.development

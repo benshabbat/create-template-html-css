@@ -1,7 +1,9 @@
-# Development files
+# Version Control
 .git/
 .gitignore
 .github/
+
+# Development Configuration
 .env
 .env.*
 .editorconfig
@@ -9,33 +11,43 @@
 .eslintrc*
 .npmrc
 
-# CI/CD
-.github/
+# CI/CD Configuration
 .gitlab-ci.yml
 .travis.yml
 appveyor.yml
 .circleci/
 .jenkins/
 
-# Documentation (excluded from package)
+# Development Documentation (excluded from package)
 CONTRIBUTING.md
+DEVELOPMENT-RULES.md
 SECURITY.md
 IMPROVEMENT_SUGGESTIONS.md
 QUICKSTART.md
 INSERT-DEMO.md
+INSERT-QUICK-REFERENCE.md
 SHOWCASE.html
+PUBLISHED.md
+RELEASE-NOTES-v1.6.1.md
+RELEASE-STATUS.md
+RELEASE-v1.6.2.md
+SECURITY-AUDIT.md
+TEST-REPORT.md
+v1.6.2-IMPROVEMENTS.md
+VERIFICATION-REPORT.md
 
-# Test files
+# Test Files
 test/
 spec/
 *.test.js
 *.spec.js
 test-*.html
 
-# Build
+# Build Artifacts
 dist/
 build/
 out/
+.cache/
 
 # Logs
 npm-debug.log*
@@ -43,31 +55,27 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
-# OS
+# OS Files
 .DS_Store
 Thumbs.db
+.AppleDouble
+.AppleDB
 
-# IDE
+# IDE Files
 .vscode/
 .idea/
 *.sublime-workspace
 *.sublime-project
+.c9/
 
-# Node
+# Node Files
 .npm
 .npmrc
+.pnp
 
-# Coverage
+# Development Artifacts
 coverage/
 .nyc_output/
-
-# Temporary
 tmp/
 temp/
 .tmp
-.cache
-
-# Version control
-.git
-.gitignore
-.github/
