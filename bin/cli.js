@@ -13,7 +13,7 @@ program
   .description(
     chalk.cyan("🎨 Create HTML/CSS UI component templates in seconds"),
   )
-  .version("1.6.4");
+  .version("1.7.0");
 
 // Add intro message
 program.on("--help", () => {
@@ -162,6 +162,60 @@ program
             }
             if (input.length > 100) {
               return "Name is too long (max 100 characters)";
+            }
+            return true;
+          },
+        },
+        {
+          type: "input",
+          name: "navItems",
+          message: "Enter navigation items (comma-separated):",
+          default: "Home, About, Services, Portfolio, Contact",
+          when: (answers) => answers.component === "navigation",
+          validate: (input) => {
+            if (!input || input.trim().length === 0) {
+              return "Please enter at least one navigation item";
+            }
+            return true;
+          },
+        },
+        {
+          type: "checkbox",
+          name: "formFields",
+          message: "Select form fields to include:",
+          choices: [
+            { name: "Name", value: "name", checked: true },
+            { name: "Email", value: "email", checked: true },
+            { name: "Phone", value: "phone", checked: false },
+            { name: "Subject", value: "subject", checked: false },
+            { name: "Message", value: "message", checked: true },
+            { name: "Terms Checkbox", value: "terms", checked: false },
+          ],
+          when: (answers) => answers.component === "form",
+          validate: (input) => {
+            if (input.length === 0) {
+              return "Please select at least one form field";
+            }
+            return true;
+          },
+        },
+        {
+          type: "input",
+          name: "customFormFields",
+          message: "Add custom fields (format: type:label, e.g., 'text:Age, url:Website'):",
+          when: (answers) => answers.component === "form",
+          default: "",
+          validate: (input) => {
+            if (!input || input.trim().length === 0) {
+              return true; // Optional field
+            }
+            // Basic validation for format
+            const fields = input.split(',');
+            for (const field of fields) {
+              const trimmed = field.trim();
+              if (trimmed && !trimmed.includes(':')) {
+                return "Invalid format. Use 'type:label' (e.g., 'text:Age, url:Website')";
+              }
             }
             return true;
           },
