@@ -48,37 +48,40 @@ function isComponentAlreadyInserted(htmlContent, component) {
 }
 
 /**
- * Formats HTML content with prettier
+ * Formats HTML content with prettier (optional - falls back to original if not available)
  */
 async function formatHtml(htmlContent) {
-  const prettier = require("prettier");
   try {
+    const prettier = require("prettier");
     return await prettier.format(htmlContent, { parser: "html" });
   } catch (error) {
+    // Prettier not installed or error formatting - return original content
     return htmlContent;
   }
 }
 
 /**
- * Formats CSS content with prettier
+ * Formats CSS content with prettier (optional - falls back to original if not available)
  */
 async function formatCss(cssContent) {
-  const prettier = require("prettier");
   try {
+    const prettier = require("prettier");
     return await prettier.format(cssContent, { parser: "css" });
   } catch (error) {
+    // Prettier not installed or error formatting - return original content
     return cssContent;
   }
 }
 
 /**
- * Formats JavaScript content with prettier
+ * Formats JavaScript content with prettier (optional - falls back to original if not available)
  */
 async function formatJs(jsContent) {
-  const prettier = require("prettier");
   try {
+    const prettier = require("prettier");
     return await prettier.format(jsContent, { parser: "babel" });
   } catch (error) {
+    // Prettier not installed or error formatting - return original content
     return jsContent;
   }
 }
