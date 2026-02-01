@@ -11,6 +11,10 @@ This document outlines the mandatory rules and best practices for development on
 ### Branch Strategy
 
 - **Create a new branch for every new task, feature, or bug fix**
+- **Always review changes before starting work on a new task**
+  - Use `git status` to check current state
+  - Use `git diff` to see what changed
+  - Ensure no unexpected changes exist
 - Branch naming convention: `<type>/<description>`
   - `feature/new-template` - New feature
   - `fix/backup-issue` - Bug fix
@@ -40,16 +44,61 @@ Types:
 ### Pull Request Process
 
 1. Create a new branch from `main`
-2. Make changes
-3. Commit with descriptive messages
-4. Push to GitHub
-5. Create pull request with clear description
-6. Request review before merging
-7. Merge only after approval
+2. **Check for changes before starting:** Run `git status` and `git diff` to review any uncommitted changes
+3. Make changes
+4. Commit with descriptive messages
+5. Push to GitHub
+6. Create pull request with clear description (or merge directly if appropriate)
+7. Request review before merging (when needed)
+8. Merge only after approval
 
 ---
 
-## 2. Code Standards
+## 2. Before Starting Any Task
+
+### Pre-Task Checklist
+
+Before beginning work on any new task, **ALWAYS**:
+
+1. **Check Git Status:**
+   ```bash
+   git status
+   ```
+   - Verify you're on the correct branch
+   - Check for uncommitted changes
+   - Ensure working directory is clean
+
+2. **Review Recent Changes:**
+   ```bash
+   git diff
+   ```
+   - See what files have been modified
+   - Understand what changed since last commit
+   - Verify changes are intentional
+
+3. **Review File Contents:**
+   - Read the current state of files you'll be editing
+   - Check for recent modifications by formatters or tools
+   - Understand the context before making changes
+
+4. **Create New Branch:**
+   ```bash
+   git checkout -b <type>/<description>
+   ```
+   - Follow branch naming conventions
+   - Start fresh from main branch
+
+### Why This Matters
+
+- Prevents overwriting unexpected changes
+- Maintains awareness of project state
+- Avoids merge conflicts
+- Ensures clean commit history
+- Catches formatter or tool changes before they cause issues
+
+---
+
+## 3. Code Standards
 
 ### Language
 
@@ -78,7 +127,7 @@ Types:
 
 ---
 
-## 3. File Management
+## 4. File Management
 
 ### .npmignore Updates
 
@@ -120,7 +169,7 @@ The `.gitignore` file specifies what files Git should ignore.
 
 ---
 
-## 4. Version Management
+## 5. Version Management
 
 ### Versioning Scheme
 
@@ -146,7 +195,7 @@ When releasing a new version:
 
 ---
 
-## 5. Documentation
+## 6. Documentation
 
 ### Required Documentation
 
@@ -164,7 +213,7 @@ When releasing a new version:
 
 ---
 
-## 6. Security Requirements
+## 7. Security Requirements
 
 ### Input Validation
 
@@ -188,7 +237,7 @@ When releasing a new version:
 
 ---
 
-## 7. Testing & Validation
+## 8. Testing & Validation
 
 ### Before Committing
 
@@ -205,7 +254,7 @@ When releasing a new version:
 
 ---
 
-## 8. Dependencies
+## 9. Dependencies
 
 ### Adding New Dependencies
 
@@ -223,7 +272,7 @@ When releasing a new version:
 
 ---
 
-## 9. Merge Approval
+## 10. Merge Approval
 
 - All changes require review before merging to `main`
 - Security-related changes require additional scrutiny
@@ -232,7 +281,7 @@ When releasing a new version:
 
 ---
 
-## 10. Release Checklist
+## 11. Release Checklist
 
 Before publishing a new version:
 
@@ -255,11 +304,12 @@ Before publishing a new version:
 
 ## Summary
 
-**The Three Golden Rules:**
+**The Four Golden Rules:**
 
-1. 🌳 **Create a new branch for every task**
-2. 🌍 **Everything in English**
-3. ✨ **Keep code clean with Prettier**
+1. 🔍 **Check changes before starting any task** (`git status`, `git diff`)
+2. 🌳 **Create a new branch for every task**
+3. 🌍 **Everything in English**
+4. ✨ **Keep code clean with Prettier**
 
 ---
 
