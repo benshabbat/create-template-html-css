@@ -59,6 +59,13 @@ Create forms with exactly the fields you need:
   - Supports all HTML5 input types: text, email, url, date, number, tel, password, color, etc.
   - Also supports: textarea, checkbox, select
 
+### 🎨 Component Variation Selection
+Choose exactly which variations you want for multi-style components:
+- **Button**: Select from 6 button types (Primary, Secondary, Success, Danger, Outlined, Disabled)
+- **Card**: Choose from 6 card variations (Modern, Premium, Blog, Minimal, User Profile, Interactive)
+- **Spinner**: Pick from 5 spinner types (Circle, Dots, Pulse, Bars, Gradient)
+- Option to select "All Variations" or choose specific ones
+
 ### 🚀 Interactive CLI Experience
 Enhanced prompts guide you through component customization with clear instructions and validation.
 

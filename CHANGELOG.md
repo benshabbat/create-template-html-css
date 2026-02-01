@@ -28,16 +28,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - `checkbox:Subscribe` → checkbox field
     - `select:Country` → dropdown menu
 
+- **Component Variation Selection**: Choose specific variations for components with multiple styles
+  - **Button Component**: Select from 6 button types or choose specific ones
+    - Primary, Secondary, Success, Danger, Outlined, Disabled
+    - Option: "All Buttons (6 variations)" or "Select Specific Buttons"
+  - **Card Component**: Select from 6 card variations or choose specific ones
+    - Modern Card (Featured), Premium Card (Price), Blog Card (Tags)
+    - Minimal Card, User Profile Card, Interactive Card
+    - Option: "All Cards (6 variations)" or "Select Specific Cards"
+  - **Spinner Component**: Select from 5 spinner types or choose specific ones
+    - Circle Spinner, Bouncing Dots, Pulse Loader, Bar Loader, Gradient Ring
+    - Option: "All Spinners (5 types)" or "Select Specific Spinners"
+
 ### Improved
 - Enhanced CLI prompts with better validation and user guidance
 - More interactive component creation experience
 - Clear format instructions for custom fields
+- Cleaner generated HTML when selecting specific variations
 
 ### Developer Notes
 - Added `generateNavigationItems()` function to dynamically create nav menus
 - Added `generateFormFields()` function to handle both standard and custom form fields
+- Added `filterButtonVariations()` function to filter button HTML
+- Added `filterCardVariations()` function to filter card HTML
+- Added `filterSpinnerVariations()` function to filter spinner HTML
 - Updated CLI to include conditional prompts based on component type
-- Generator now accepts `navItems`, `formFields`, and `customFormFields` parameters
+- Generator now accepts `navItems`, `formFields`, `customFormFields`, and variation parameters
 
 ## [1.6.2] - 2026-02-01
 

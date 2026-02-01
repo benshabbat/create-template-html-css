@@ -4,7 +4,7 @@
 
 ## Overview
 
-Version 1.7.0 introduces **component customization** features that give developers complete control over Navigation and Form components during creation. This release focuses on enhancing the CLI experience with interactive prompts for tailored component generation.
+Version 1.7.0 introduces **component customization** features that give developers complete control over Navigation, Form, Button, Card, and Spinner components during creation. This release focuses on enhancing the CLI experience with interactive prompts for tailored component generation.
 
 ---
 
@@ -94,6 +94,71 @@ $ create-template create
 
 ---
 
+### 3. Component Variation Selection
+
+Choose exactly which variations you want for components with multiple styles:
+
+**Button Component:**
+- **All Buttons Option**: Get all 6 button types at once
+- **Select Specific**: Choose from Primary, Secondary, Success, Danger, Outlined, Disabled
+- Great for projects that only need specific button styles
+
+**Example Usage:**
+```bash
+$ create-template create
+? Choose a component type: Button
+? Which button variations do you want? Select Specific Buttons
+? Select button variations: Primary Button, Success Button, Danger Button
+```
+
+**Generated Output:**
+- Only the selected 3 button types in the HTML
+- Cleaner code without unused variations
+- All matching CSS styles included
+
+**Card Component:**
+- **All Cards Option**: Get all 6 card variations
+- **Select Specific**: Choose from:
+  - Modern Card (Featured with badge and rating)
+  - Premium Card (Price card with features)
+  - Blog Card (With tags and author info)
+  - Minimal Card (Clean, simple design)
+  - User Profile Card (Avatar-based)
+  - Interactive Card (Action buttons)
+
+**Example Usage:**
+```bash
+$ create-template create
+? Choose a component type: Card
+? Which card variations do you want? Select Specific Cards
+? Select card variations: Modern Card, Premium Card, Blog Card
+```
+
+**Spinner Component:**
+- **All Spinners Option**: Get all 5 spinner types
+- **Select Specific**: Choose from:
+  - Circle Spinner
+  - Bouncing Dots
+  - Pulse Loader
+  - Bar Loader
+  - Gradient Ring
+
+**Example Usage:**
+```bash
+$ create-template create
+? Choose a component type: Spinner
+? Which spinner variations do you want? Select Specific Spinners
+? Select spinner types: Circle Spinner, Gradient Ring
+```
+
+**Benefits:**
+- **Cleaner Code**: Only get what you need
+- **Faster Development**: Less code to review and modify
+- **Better Performance**: Smaller HTML files
+- **Easy to Customize**: Fewer variations to manage
+
+---
+
 ## 🔧 Technical Details
 
 ### New CLI Prompts
@@ -127,14 +192,50 @@ $ create-template create
 }
 ```
 
+**Button Component:**
+```javascript
+{
+  type: "list",
+  name: "buttonVariations",
+  message: "Which button variations do you want?",
+  choices: [
+    { name: "All Buttons (6 variations)", value: "all" },
+    { name: "Select Specific Buttons", value: "select" }
+  ]
+}
+```
+
+**Card Component:**
+```javascript
+{
+  type: "checkbox",
+  name: "selectedCards",
+  message: "Select card variations:",
+  choices: ["Modern Card", "Premium Card", "Blog Card", "Minimal Card", "User Profile Card", "Interactive Card"]
+}
+```
+
+**Spinner Component:**
+```javascript
+{
+  type: "checkbox",
+  name: "selectedSpinners",
+  message: "Select spinner types:",
+  choices: ["Circle Spinner", "Bouncing Dots", "Pulse Loader", "Bar Loader", "Gradient Ring"]
+}
+```
+
 ### Generator Functions
 
 **New Functions Added:**
 - `generateNavigationItems(htmlContent, navItems)` - Processes navigation items and generates HTML
 - `generateFormFields(htmlContent, formFields, customFormFields)` - Handles both standard and custom form fields
+- `filterButtonVariations(htmlContent, buttonVariations, selectedButtons)` - Filters button HTML based on selection
+- `filterCardVariations(htmlContent, cardVariations, selectedCards)` - Filters card HTML based on selection
+- `filterSpinnerVariations(htmlContent, spinnerVariations, selectedSpinners)` - Filters spinner HTML based on selection
 
 **Updated Function:**
-- `generateTemplate(options)` - Now accepts `navItems`, `formFields`, and `customFormFields` parameters
+- `generateTemplate(options)` - Now accepts `navItems`, `formFields`, `customFormFields`, and variation selection parameters
 
 ---
 

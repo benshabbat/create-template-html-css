@@ -200,6 +200,95 @@ program
           },
         },
         {
+          type: "list",
+          name: "buttonVariations",
+          message: "Which button variations do you want?",
+          choices: [
+            { name: "All Buttons (6 variations)", value: "all" },
+            { name: "Select Specific Buttons", value: "select" },
+          ],
+          when: (answers) => answers.component === "button",
+        },
+        {
+          type: "checkbox",
+          name: "selectedButtons",
+          message: "Select button variations:",
+          choices: [
+            { name: "Primary Button", value: "primary", checked: true },
+            { name: "Secondary Button", value: "secondary", checked: true },
+            { name: "Success Button", value: "success", checked: true },
+            { name: "Danger Button", value: "danger", checked: true },
+            { name: "Outlined Button", value: "outlined", checked: true },
+            { name: "Disabled Button", value: "disabled", checked: true },
+          ],
+          when: (answers) => answers.component === "button" && answers.buttonVariations === "select",
+          validate: (input) => {
+            if (input.length === 0) {
+              return "Please select at least one button variation";
+            }
+            return true;
+          },
+        },
+        {
+          type: "list",
+          name: "cardVariations",
+          message: "Which card variations do you want?",
+          choices: [
+            { name: "All Cards (6 variations)", value: "all" },
+            { name: "Select Specific Cards", value: "select" },
+          ],
+          when: (answers) => answers.component === "card",
+        },
+        {
+          type: "checkbox",
+          name: "selectedCards",
+          message: "Select card variations:",
+          choices: [
+            { name: "Modern Card (Featured)", value: "modern", checked: true },
+            { name: "Premium Card (Price)", value: "premium", checked: true },
+            { name: "Blog Card (Tags)", value: "blog", checked: true },
+            { name: "Minimal Card", value: "minimal", checked: true },
+            { name: "User Profile Card", value: "user", checked: true },
+            { name: "Interactive Card", value: "interactive", checked: true },
+          ],
+          when: (answers) => answers.component === "card" && answers.cardVariations === "select",
+          validate: (input) => {
+            if (input.length === 0) {
+              return "Please select at least one card variation";
+            }
+            return true;
+          },
+        },
+        {
+          type: "list",
+          name: "spinnerVariations",
+          message: "Which spinner variations do you want?",
+          choices: [
+            { name: "All Spinners (5 types)", value: "all" },
+            { name: "Select Specific Spinners", value: "select" },
+          ],
+          when: (answers) => answers.component === "spinner",
+        },
+        {
+          type: "checkbox",
+          name: "selectedSpinners",
+          message: "Select spinner types:",
+          choices: [
+            { name: "Circle Spinner", value: "circle", checked: true },
+            { name: "Bouncing Dots", value: "dots", checked: true },
+            { name: "Pulse Loader", value: "pulse", checked: true },
+            { name: "Bar Loader", value: "bars", checked: true },
+            { name: "Gradient Ring", value: "gradient", checked: true },
+          ],
+          when: (answers) => answers.component === "spinner" && answers.spinnerVariations === "select",
+          validate: (input) => {
+            if (input.length === 0) {
+              return "Please select at least one spinner type";
+            }
+            return true;
+          },
+        },
+        {
           type: "input",
           name: "customFormFields",
           message: "Add custom fields (format: type:label, e.g., 'text:Age, url:Website'):",
