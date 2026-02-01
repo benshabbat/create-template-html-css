@@ -41,8 +41,28 @@ npm install -g create-template-html-css
 - ✨ **Prettier Formatting** - All generated code is automatically formatted with Prettier (v1.6.2+)
 - 📂 **Organized Structure** - CSS and JS files automatically organized in folders (v1.6.2+)
 - 💾 **Simple Backups** - Clean backup naming without timestamps (v1.6.2+)
+- 🎯 **Customizable Components** - Choose navigation items and form fields during creation (v1.7.0+)
 
-## 🆕 What's New in v1.6.2
+## 🆕 What's New in v1.7.0
+
+### 🎯 Customizable Navigation
+When creating a navigation component, you can now specify exactly which menu items you want:
+- Enter comma-separated items: "Home, Blog, Shop, Contact"
+- Automatically generates matching navigation links and page sections
+- Default: "Home, About, Services, Portfolio, Contact"
+
+### 📝 Customizable Form Fields
+Create forms with exactly the fields you need:
+- **Standard Fields**: Select from Name, Email, Phone, Subject, Message, Terms
+- **Custom Fields**: Add any field with format `type:label`
+  - Examples: `text:Age`, `url:Website`, `date:Birth Date`, `number:Quantity`
+  - Supports all HTML5 input types: text, email, url, date, number, tel, password, color, etc.
+  - Also supports: textarea, checkbox, select
+
+### 🚀 Interactive CLI Experience
+Enhanced prompts guide you through component customization with clear instructions and validation.
+
+## 🎨 What Was Added in v1.6.2
 
 ### ✨ Prettier Code Formatting
 All generated and inserted files are automatically formatted with [Prettier](https://prettier.io/) for beautiful, professional-looking code.
@@ -96,9 +116,12 @@ create-template create
 Follow the interactive prompts:
 1. **Select Component Type** - Choose from Button, Card, Form, Navigation, Modal, Footer, or Hero
 2. **Enter Component Name** - Give your component a meaningful name
-3. **Include JavaScript** - Decide if you want to include the script file
+3. **Customize Component** (v1.7.0+):
+   - **Navigation**: Choose menu items (e.g., "Home, Blog, Shop, Contact")
+   - **Form**: Select standard fields and add custom fields (e.g., "text:Age, url:Website")
+4. **Include JavaScript** - Decide if you want to include the script file
 
-**Example:**
+**Example (Basic):**
 
 ```bash
 $ create-template create
@@ -107,6 +130,29 @@ $ create-template create
 ? Include JavaScript file? (Y/n) Yes
 ✓ Template created successfully!
   Location: ./my-awesome-button/
+```
+
+**Example (Navigation with Custom Items):**
+
+```bash
+$ create-template create
+? Choose a component type: Navigation
+? Enter a name for your component: my-nav
+? Enter navigation items (comma-separated): Home, Blog, Shop, About Us, Contact
+✓ Template created successfully!
+  Location: ./my-nav/
+```
+
+**Example (Form with Custom Fields):**
+
+```bash
+$ create-template create
+? Choose a component type: Form
+? Enter a name for your component: contact-form
+? Select form fields to include: Name, Email, Message
+? Add custom fields: text:Age, url:Website, date:Birth Date
+✓ Template created successfully!
+  Location: ./contact-form/
 ```
 
 **Result:**
@@ -207,31 +253,45 @@ Responsive card component with 6 professional variations:
 
 ### 3. Form
 
-Complete contact form with validation:
+Complete contact form with validation and customizable fields (v1.7.0+):
 
-**Fields:**
-- Text input
-- Email input
-- Phone input
-- Select dropdown
-- Textarea
-- Checkboxes
+**Customization Options:**
+- **Standard Fields**: Name, Email, Phone, Subject, Message, Terms Checkbox
+- **Custom Fields**: Add any field with `type:label` format
+  - Supported types: text, email, url, date, number, tel, password, color, textarea, checkbox, select
+  - Examples: `text:Age`, `url:Website`, `date:Birth Date`, `number:Quantity`
 
 **Features:**
 - Real-time validation
 - Focus effects
 - Error messages
 - Modern styling
+- Fully customizable field selection
 
 ### 4. Navigation
 
-Responsive navigation bar for all devices:
+Responsive navigation bar with customizable menu items (v1.7.0+):
+
+**Customization:**
+- Choose exactly which menu items to include
+- Enter comma-separated items: "Home, Blog, Shop, Contact"
+- Automatically generates matching page sections
+- Default items: "Home, About, Services, Portfolio, Contact"
 
 **Components:**
 - Logo section
-- Navigation menu
+- Customizable navigation menu
 - Mobile hamburger menu
 - Smooth scrolling
+- Section highlighting on scroll
+
+**Features:**
+- Fully customizable menu structure
+- Mobile-responsive design
+- Sticky navigation
+- Active link highlighting
+- Animated hamburger menu
+- Smooth scroll to sections
 
 **Features:**
 - Fixed header option

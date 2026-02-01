@@ -5,6 +5,40 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.0] - 2026-02-01
+
+### Added
+- **Customizable Navigation Items**: Choose exactly which menu items to include when creating navigation components
+  - Interactive prompt: "Enter navigation items (comma-separated)"
+  - Default: "Home, About, Services, Portfolio, Contact"
+  - Automatically generates navigation links and matching page sections
+  - Example: "Home, Blog, Shop, About Us, Contact" creates 5 custom navigation items
+
+- **Customizable Form Fields**: Select and customize form fields during creation
+  - **Standard Fields**: Choose from 6 predefined fields (Name, Email, Phone, Subject, Message, Terms)
+  - **Custom Fields**: Add unlimited custom fields with format `type:label`
+  - Supports all HTML5 input types: text, email, url, date, number, tel, password, color, etc.
+  - Special field types: textarea, checkbox, select
+  - Examples:
+    - `text:Age` → text input for age
+    - `url:Website` → URL input
+    - `date:Birth Date` → date picker
+    - `number:Quantity` → number input
+    - `textarea:Comments` → text area
+    - `checkbox:Subscribe` → checkbox field
+    - `select:Country` → dropdown menu
+
+### Improved
+- Enhanced CLI prompts with better validation and user guidance
+- More interactive component creation experience
+- Clear format instructions for custom fields
+
+### Developer Notes
+- Added `generateNavigationItems()` function to dynamically create nav menus
+- Added `generateFormFields()` function to handle both standard and custom form fields
+- Updated CLI to include conditional prompts based on component type
+- Generator now accepts `navItems`, `formFields`, and `customFormFields` parameters
+
 ## [1.6.2] - 2026-02-01
 
 ### Added
