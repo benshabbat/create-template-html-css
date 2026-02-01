@@ -29,6 +29,7 @@ INSERT-QUICK-REFERENCE.md
 SHOWCASE.html
 PUBLISHED.md
 RELEASE-NOTES-v1.6.1.md
+RELEASE-NOTES-v1.7.0.md
 RELEASE-STATUS.md
 RELEASE-v1.6.2.md
 SECURITY-AUDIT.md
@@ -42,6 +43,7 @@ spec/
 *.test.js
 *.spec.js
 test-*.html
+test-*.js
 
 # Build Artifacts
 dist/
