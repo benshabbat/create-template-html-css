@@ -115,7 +115,7 @@ New **COMPONENTS-GALLERY.html** showcase page:
 ```bash
 create-template gallery
 # or
-npx create-template gallery
+npx create-template-html-css gallery
 ```
 
 ### 📚 Enhanced Documentation
