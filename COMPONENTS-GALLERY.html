@@ -269,6 +269,71 @@
         margin-bottom: 10px;
       }
 
+      .color-schemes-section {
+        margin: 60px 0;
+        padding: 40px;
+        background: rgba(102, 126, 234, 0.05);
+        border-radius: 12px;
+      }
+
+      .color-schemes-title {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+
+      .schemes-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+      }
+
+      .scheme-card {
+        background: white;
+        border-radius: 8px;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .scheme-card {
+          background: #2d3748;
+        }
+      }
+
+      .scheme-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      }
+
+      .scheme-preview {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 15px;
+        justify-content: center;
+        height: 60px;
+      }
+
+      .color-swatch {
+        flex: 1;
+        border-radius: 6px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .scheme-name {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .scheme-description {
+        font-size: 0.85rem;
+        color: #718096;
+        line-height: 1.4;
+      }
+
       footer {
         border-top: 2px solid #e2e8f0;
         padding: 40px;
@@ -365,6 +430,12 @@
         <h2>No components found</h2>
         <p>Try adjusting your search or filter</p>
       </div>
+
+      <!-- Color Schemes Section -->
+      <div class="color-schemes-section">
+        <h2 class="color-schemes-title">🎨 Color Schemes Preview</h2>
+        <div class="schemes-grid" id="colorSchemesGrid"></div>
+      </div>
     </div>
 
     <footer>
@@ -380,6 +451,105 @@
     </footer>
 
     <script>
+      // Color Schemes Data
+      const COLOR_SCHEMES = {
+        vibrant: {
+          name: "Vibrant",
+          primary: "#FF6B6B",
+          secondary: "#4ECDC4",
+          description: "Bold reds and teals - energetic and modern"
+        },
+        pastel: {
+          name: "Pastel",
+          primary: "#FFB3BA",
+          secondary: "#FFDFBA",
+          description: "Soft pinks and peaches - calm and friendly"
+        },
+        ocean: {
+          name: "Ocean",
+          primary: "#0066CC",
+          secondary: "#00CCFF",
+          description: "Deep blues and cyans - professional and cool"
+        },
+        sunset: {
+          name: "Sunset",
+          primary: "#FF6B35",
+          secondary: "#FFA500",
+          description: "Warm oranges and reds - energetic glow"
+        },
+        forest: {
+          name: "Forest",
+          primary: "#2D6A4F",
+          secondary: "#40916C",
+          description: "Green tones - natural and organic"
+        },
+        purple: {
+          name: "Purple",
+          primary: "#7209B7",
+          secondary: "#B5179E",
+          description: "Deep purples - elegant and premium"
+        },
+        minimal: {
+          name: "Minimal",
+          primary: "#1A1A1A",
+          secondary: "#666666",
+          description: "Grays and blacks - clean and simple"
+        },
+        coral: {
+          name: "Coral",
+          primary: "#FF6B9D",
+          secondary: "#FFA07A",
+          description: "Coral pinks and salmon - warm and playful"
+        },
+        teal: {
+          name: "Teal",
+          primary: "#008B8B",
+          secondary: "#20B2AA",
+          description: "Teal hues - balanced and professional"
+        },
+        neon: {
+          name: "Neon",
+          primary: "#FF006E",
+          secondary: "#00D9FF",
+          description: "Bright neon colors - bold and futuristic"
+        }
+      };
+
+      // Render color schemes
+      function renderColorSchemes() {
+        const grid = document.getElementById("colorSchemesGrid");
+        grid.innerHTML = "";
+        
+        Object.entries(COLOR_SCHEMES).forEach(([key, scheme]) => {
+          const card = document.createElement("div");
+          card.className = "scheme-card";
+          card.innerHTML = `
+            <div class="scheme-preview">
+              <div class="color-swatch" style="background-color: ${scheme.primary};" title="${scheme.primary}"></div>
+              <div class="color-swatch" style="background-color: ${scheme.secondary};" title="${scheme.secondary}"></div>
+            </div>
+            <div class="scheme-name">${scheme.name}</div>
+            <div class="scheme-description">${scheme.description}</div>
+            <div style="font-size: 0.85rem; color: #666; margin-top: 8px;">
+              <div style="margin: 4px 0;">Primary: ${scheme.primary}</div>
+              <div style="margin: 4px 0;">Secondary: ${scheme.secondary}</div>
+            </div>
+            <button class="copy-btn" onclick="copySchemeCommand('${key}')" style="margin-top: 12px; width: 100%;">
+              Use --color-scheme ${key}
+            </button>
+          `;
+          grid.appendChild(card);
+        });
+      }
+
+      // Copy color scheme command
+      function copySchemeCommand(schemeKey) {
+        const text = `node bin/cli.js create -c button -n my-button --color-scheme ${schemeKey}`;
+        navigator.clipboard.writeText(text);
+        event.target.textContent = "✓ Command Copied!";
+        setTimeout(() => (event.target.textContent = `Use --color-scheme ${schemeKey}`), 2000);
+      }
+
       const components = [
         { id: "button", name: "Button", cat: "basic", desc: "Versatile button component with multiple styles", feat: ["6 styles", "Hover effects", "Ripple animation"] },
         { id: "card", name: "Card", cat: "basic", desc: "Flexible card with image and content", feat: ["6 variations", "Image support", "Responsive grid"] },
@@ -468,6 +638,7 @@
       searchInput.addEventListener("input", filter);
       categoryFilter.addEventListener("change", filter);
       render(components);
+      renderColorSchemes();
     </script>
   </body>
 </html>

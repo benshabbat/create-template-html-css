@@ -4,7 +4,7 @@ const { program } = require("commander");
 const inquirer = require("inquirer").default || require("inquirer");
 const path = require("path");
 const fs = require("fs").promises;
-const { generateTemplate } = require("../src/generator");
+const { generateTemplate, COLOR_SCHEMES } = require("../src/generator");
 const { insertComponent } = require("../src/inserter");
 const chalk = require("chalk");
 
@@ -23,7 +23,10 @@ program.on("--help", () => {
   );
   console.log("  $ create-template create -c button -n my-btn # With flags");
   console.log(
-    "  $ create-template create -c card --dark-mode --primary-color #FF5733 # With customization",
+    "  $ create-template create -c card --dark-mode --color-scheme vibrant # With preset colors",
+  );
+  console.log(
+    "  $ create-template create -c card --primary-color #FF5733 # With custom colors",
   );
   console.log(
     "  $ create-template insert                     # Interactive mode",
@@ -37,6 +40,11 @@ program.on("--help", () => {
   console.log(
     "  $ create-template list                       # List all templates",
   );
+  console.log("");
+  console.log(chalk.yellow("Available Color Schemes:"));
+  Object.entries(COLOR_SCHEMES).forEach(([key, scheme]) => {
+    console.log(`  ${key.padEnd(12)} - ${scheme.description}`);
+  });
   console.log("");
   console.log(chalk.yellow("Create Command Flags:"));
   console.log(
@@ -82,6 +90,7 @@ program
   .option("--dark-mode", "Add dark mode support (prefers-color-scheme)")
   .option("--primary-color <color>", "Primary color (hex format: #667eea)")
   .option("--secondary-color <color>", "Secondary color (hex format: #764ba2)")
+  .option("--color-scheme <scheme>", "Use a color scheme preset (vibrant, pastel, ocean, sunset, forest, purple, minimal, coral, teal, neon)")
   .option("-v, --verbose", "Verbose output")
   .action(async (options) => {
     try {
@@ -100,6 +109,7 @@ program
           name: options.name,
           includeJs: options.includeJs,
           darkMode: options.darkMode,
+          colorScheme: options.colorScheme,
           primaryColor: options.primaryColor,
           secondaryColor: options.secondaryColor,
         };
@@ -339,10 +349,31 @@ program
           default: false,
         },
         {
+          type: "list",
+          name: "colorOption",
+          message: "How would you like to choose colors?",
+          choices: [
+            { name: "Use a preset color scheme", value: "preset" },
+            { name: "Enter custom hex colors", value: "custom" },
+            { name: "Skip color customization", value: "skip" },
+          ],
+        },
+        {
+          type: "list",
+          name: "colorScheme",
+          message: "Choose a color scheme:",
+          choices: Object.entries(COLOR_SCHEMES).map(([key, scheme]) => ({
+            name: `${scheme.name} - ${scheme.description}`,
+            value: key,
+          })),
+          when: (answers) => answers.colorOption === "preset",
+        },
+        {
           type: "input",
           name: "primaryColor",
           message: "Primary color (hex format, e.g., #667eea) [skip for default]:",
           default: "",
+          when: (answers) => answers.colorOption === "custom",
           validate: (input) => {
             if (!input || input.trim().length === 0) {
               return true; // Optional field
@@ -360,6 +391,7 @@ program
           name: "secondaryColor",
           message: "Secondary color (hex format, e.g., #764ba2) [skip for default]:",
           default: "",
+          when: (answers) => answers.colorOption === "custom",
           validate: (input) => {
             if (!input || input.trim().length === 0) {
               return true; // Optional field
