@@ -33,7 +33,7 @@ npm install -g create-template-html-css
 - 🌈 **Stunning Gradients** - Colorful and attractive designs
 - ⚡ **Animations** - Smooth and professional effects
 - 🔧 **Customizable** - Easy to edit and modify the code
-- 📦 **23 Templates** - Button, Card, Form, Navigation, Modal, Footer, Hero, Slider, Table, Spinner, Animated Cards, Typing Effect, Fade Gallery, Grid Layouts, Masonry Grid, Dashboard, Flexbox Layouts, Todo List, Counter, Accordion, Tabs
+- 📦 **25 Templates** - Button, Card, Form, Navigation, Modal, Footer, Hero, Slider, Table, Login, Register, Spinner, Animated Cards, Typing Effect, Fade Gallery, Grid Layouts, Masonry Grid, Dashboard, Flexbox Layouts, Todo List, Counter, Accordion, Tabs
 - 🎯 **Two Modes** - Create new projects or insert into existing HTML pages
 - 🔒 **Secure** - Input validation and path protection
 - 📚 **Well Documented** - Comprehensive guides and examples
@@ -320,6 +320,57 @@ Dialog boxes for various purposes:
 - ESC key to close
 - Smooth animations
 - Backdrop blur effect
+
+### 6. Login (NEW in v1.8.0)
+
+Complete authentication login form with validation and social login:
+
+**Features:**
+- Email validation
+- Password validation (minimum 6 characters)
+- "Remember me" checkbox
+- "Forgot password" link
+- Social login buttons (Google, GitHub)
+- Real-time form validation
+- Focus states and animations
+- Responsive design
+- Modal integration with navigation
+
+**Includes:**
+- Login form with email/password fields
+- Remember me functionality
+- Forgot password handler
+- Social authentication placeholders
+- Professional gradient styling
+- Mobile-optimized layout
+
+### 7. Register (NEW in v1.8.0)
+
+Advanced user registration form with real-time password validation:
+
+**Features:**
+- Full name, email, username fields
+- Real-time password strength validation
+- Password requirements display:
+  - Minimum 8 characters
+  - Uppercase letter required
+  - Number required
+  - Special character required (@, #, $, %)
+- Password matching validation
+- Username validation (3-20 characters, alphanumeric + underscore)
+- Terms of Service checkbox
+- Newsletter subscription option
+- Dynamic submit button (enabled only when all requirements met)
+- Social registration buttons (Google, GitHub)
+- Real-time visual feedback
+
+**Includes:**
+- Registration form with custom fields
+- Live password strength checker
+- Visual requirement indicators (✓/✗)
+- Matching password validator
+- Professional styling
+- Mobile-responsive layout
 
 ### 6. Footer
 

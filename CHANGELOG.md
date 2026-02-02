@@ -5,6 +5,59 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.0] - 2026-02-02
+
+### Added
+- **Login Form Template**: Professional authentication form with complete validation
+  - Email and password validation
+  - "Remember me" checkbox functionality
+  - "Forgot password" link handler
+  - Social login buttons (Google, GitHub placeholders)
+  - Real-time form validation with error messages
+  - Focus states and smooth animations
+  - Mobile-responsive design
+  - Integration with navigation modal
+
+- **Register Form Template**: Advanced user registration form
+  - Real-time password strength validator
+  - Password requirements display (8+ chars, uppercase, number, special char)
+  - Username validation (3-20 characters, alphanumeric + underscore)
+  - Password matching validator with visual feedback
+  - Full name, email, and username fields
+  - Terms of Service and newsletter subscription checkboxes
+  - Dynamic submit button (enabled only when all requirements met)
+  - Social registration options (Google, GitHub)
+  - Professional gradient styling
+  - Mobile-optimized layout
+
+- **Login Modal Integration**: Navigation component now includes built-in login modal
+  - Login button in navigation bar
+  - Modal window with complete login form
+  - Multiple close options (X button, ESC key, overlay click)
+  - Smooth animations and transitions
+  - Prevents body scroll when modal is open
+  - Fully responsive on mobile devices
+
+- **CLI Support**: Added Login and Register templates to CLI
+  - New "Authentication Forms" category in component selection
+  - Full support for template creation with `create-template create -c login -n my-login`
+  - Support for template insertion with `create-template insert`
+
+- **Documentation**: Added CLI-USAGE.md with Hebrew instructions for new features
+
+### Improved
+- Enhanced README with Login and Register template documentation
+- Updated template count to 25 templates in features section
+- Improved navigation template with modal authentication example
+- Better organized authentication-related components
+
+### Technical Details
+- All new templates follow project standards and conventions
+- Prettier formatting applied to all new files
+- Organized folder structure (css/, js/ folders)
+- Comprehensive JavaScript validation and error handling
+- Cross-browser compatibility ensured
+
 ## [1.7.0] - 2026-02-01
 
 ### Added
