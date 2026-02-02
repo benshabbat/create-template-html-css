@@ -161,8 +161,14 @@ async function insertComponent(options) {
     );
   }
 
-  // Check if target file exists
+  // Security: Prevent path traversal attacks
   const targetPath = path.resolve(process.cwd(), targetFile);
+  const cwd = process.cwd();
+  if (!targetPath.startsWith(cwd)) {
+    throw new Error(`Security error: Cannot access files outside current directory`);
+  }
+
+  // Check if target file exists
   try {
     await fs.access(targetPath);
   } catch {
