@@ -837,6 +837,18 @@ See [SECURITY.md](SECURITY.md) for more details.
 - **[Security Policy](SECURITY.md)** - Security guidelines
 - **[Component Showcase](SHOWCASE.html)** - View all components in action
 
+## 🔒 Security
+
+This project includes security features to protect your files:
+
+- **Component Whitelist** - Only validated components can be inserted
+- **Path Traversal Protection** - Prevents access to files outside the working directory
+- **Input Validation** - Hex color validation and component name validation
+- **HTML Structure Validation** - Ensures proper HTML structure before insertion
+- **Zero Dependencies for Security** - Uses only Node.js built-in modules for security checks
+
+For security concerns, see [SECURITY.md](SECURITY.md)
+
 ## 🤝 Contributing
 
 Contributions are welcome! Here's how you can help:
