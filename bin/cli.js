@@ -23,6 +23,9 @@ program.on("--help", () => {
   );
   console.log("  $ create-template create -c button -n my-btn # With flags");
   console.log(
+    "  $ create-template create -c card --dark-mode --primary-color #FF5733 # With customization",
+  );
+  console.log(
     "  $ create-template insert                     # Interactive mode",
   );
   console.log(
@@ -42,6 +45,15 @@ program.on("--help", () => {
   console.log("  -n, --name <name>          Project/component name");
   console.log(
     "  --include-js               Include JavaScript file (default: true)",
+  );
+  console.log(
+    "  --dark-mode                Add dark mode support (prefers-color-scheme)",
+  );
+  console.log(
+    "  --primary-color <hex>      Primary color (e.g., #667eea)",
+  );
+  console.log(
+    "  --secondary-color <hex>    Secondary color (e.g., #764ba2)",
   );
   console.log("  --no-include-js            Exclude JavaScript file");
   console.log("  -v, --verbose              Show detailed output");
@@ -67,6 +79,9 @@ program
   .option("-n, --name <name>", "Component name/project name")
   .option("--include-js", "Include JavaScript file", true)
   .option("--no-include-js", "Exclude JavaScript file")
+  .option("--dark-mode", "Add dark mode support (prefers-color-scheme)")
+  .option("--primary-color <color>", "Primary color (hex format: #667eea)")
+  .option("--secondary-color <color>", "Secondary color (hex format: #764ba2)")
   .option("-v, --verbose", "Verbose output")
   .action(async (options) => {
     try {
@@ -84,6 +99,9 @@ program
           component: options.component,
           name: options.name,
           includeJs: options.includeJs,
+          darkMode: options.darkMode,
+          primaryColor: options.primaryColor,
+          secondaryColor: options.secondaryColor,
         };
 
         await generateTemplate(createOptions);
@@ -310,6 +328,46 @@ program
               if (trimmed && !trimmed.includes(':')) {
                 return "Invalid format. Use 'type:label' (e.g., 'text:Age, url:Website')";
               }
+            }
+            return true;
+          },
+        },
+        {
+          type: "confirm",
+          name: "darkMode",
+          message: "Add dark mode support (prefers-color-scheme)?",
+          default: false,
+        },
+        {
+          type: "input",
+          name: "primaryColor",
+          message: "Primary color (hex format, e.g., #667eea) [skip for default]:",
+          default: "",
+          validate: (input) => {
+            if (!input || input.trim().length === 0) {
+              return true; // Optional field
+            }
+            // Basic hex color validation
+            const hexRegex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
+            if (!hexRegex.test(input.trim())) {
+              return "Please enter a valid hex color (e.g., #667eea)";
+            }
+            return true;
+          },
+        },
+        {
+          type: "input",
+          name: "secondaryColor",
+          message: "Secondary color (hex format, e.g., #764ba2) [skip for default]:",
+          default: "",
+          validate: (input) => {
+            if (!input || input.trim().length === 0) {
+              return true; // Optional field
+            }
+            // Basic hex color validation
+            const hexRegex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
+            if (!hexRegex.test(input.trim())) {
+              return "Please enter a valid hex color (e.g., #764ba2)";
             }
             return true;
           },
