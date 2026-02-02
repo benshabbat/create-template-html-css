@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{name}} - Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="login-card">
+            <h1 class="login-title">Welcome Back</h1>
+            <p class="login-subtitle">Login to your account</p>
+            
+            <form class="login-form" id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                
+                <div class="form-group remember-forgot">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="remember" name="remember">
+                        <label for="remember">Remember me</label>
+                    </div>
+                    <a href="#" class="forgot-link">Forgot Password?</a>
+                </div>
+                
+                <button type="submit" class="login-btn">Login</button>
+            </form>
+            
+            <div class="form-divider">
+                <span>Or continue with</span>
+            </div>
+            
+            <div class="social-buttons">
+                <button class="social-btn google-btn">
+                    <span>Google</span>
+                </button>
+                <button class="social-btn github-btn">
+                    <span>GitHub</span>
+                </button>
+            </div>
+            
+            <p class="signup-link">
+                Don't have an account? <a href="#">Sign up here</a>
+            </p>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
