@@ -4,6 +4,7 @@ const { program } = require("commander");
 const inquirer = require("inquirer").default || require("inquirer");
 const path = require("path");
 const fs = require("fs").promises;
+const { exec } = require("child_process");
 const { generateTemplate, COLOR_SCHEMES } = require("../src/generator");
 const { insertComponent } = require("../src/inserter");
 const chalk = require("chalk");
@@ -39,6 +40,9 @@ program.on("--help", () => {
   );
   console.log(
     "  $ create-template list                       # List all templates",
+  );
+  console.log(
+    "  $ create-template gallery                    # Open interactive gallery",
   );
   console.log("");
   console.log(chalk.yellow("Available Color Schemes:"));
@@ -645,6 +649,41 @@ program
     console.log("");
   });
 
+program
+  .command("gallery")
+  .description(chalk.magenta("🎨 Open interactive component gallery in browser"))
+  .action(async () => {
+    try {
+      const galleryPath = path.join(__dirname, "..", "COMPONENTS-GALLERY.html");
+      const fileUrl = `file:///${galleryPath.replace(/\\/g, "/")}`;
+      
+      console.log(chalk.cyan("\n🎨 Opening Component Gallery...\n"));
+      
+      // Cross-platform: open file in default browser
+      let command;
+      if (process.platform === "win32") {
+        command = `start "" "${galleryPath}"`;
+      } else if (process.platform === "darwin") {
+        command = `open "${galleryPath}"`;
+      } else {
+        // Linux and others
+        command = `xdg-open "${galleryPath}"`;
+      }
+      
+      exec(command, (error) => {
+        if (error) {
+          console.error(chalk.red("✗ Could not open gallery:"), error.message);
+          console.log(chalk.gray(`Try opening manually: ${galleryPath}`));
+        } else {
+          console.log(chalk.green("✓ Gallery opened in your browser!"));
+          console.log(chalk.gray(`Location: ${galleryPath}\n`));
+        }
+      });
+    } catch (error) {
+      console.error(chalk.red("✗ Error:"), error.message);
+    }
+  });
+
 program.parse(process.argv);
 
 if (!process.argv.slice(2).length) {
@@ -654,10 +693,12 @@ if (!process.argv.slice(2).length) {
   console.log("  create    Create a new template component");
   console.log("  insert    Insert component into existing HTML file");
   console.log("  list      Show all available templates");
+  console.log("  gallery   Open interactive component gallery");
   console.log("  help      Display help information\n");
   console.log(chalk.gray("Interactive Examples:"));
   console.log("  $ create-template create        # Create with prompts");
   console.log("  $ create-template insert        # Insert with prompts");
+  console.log("  $ create-template gallery       # View all components in gallery");
   console.log("  $ create-template list          # View all 26 templates\n");
   console.log(chalk.gray("Flag Examples (Non-interactive):"));
   console.log("  $ create-template create -c button -n my-btn");
