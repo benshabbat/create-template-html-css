@@ -99,19 +99,24 @@ create-template create -c modal
 # Then choose "Use preset color schemes" option
 ```
 
-**View All Schemes:** Open `COMPONENTS-GALLERY.html` to see live previews of all color schemes with swatches.
+**View All Schemes:** Run `create-template gallery` to see live previews of all color schemes with swatches.
 
 ### 📊 Interactive Component Gallery
 New **COMPONENTS-GALLERY.html** showcase page:
 - Browse all 26 components with descriptions
 - Search and filter by category
 - View all 10 color scheme presets with color swatches
-- Copy CLI commands with one click
+- Copy CLI commands (both npx and local) with one click
 - Dark mode support
 - Print-friendly layout
 - Mobile responsive design
 
-**Open gallery:** Open `COMPONENTS-GALLERY.html` in your browser
+**Open gallery:**
+```bash
+create-template gallery
+# or
+npx create-template gallery
+```
 
 ### 📚 Enhanced Documentation
 - Updated README with all new features
