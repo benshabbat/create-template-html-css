@@ -65,6 +65,8 @@ const VALID_COMPONENTS = [
   "counter",
   "accordion",
   "tabs",
+  "login",
+  "register",
 ];
 
 // Security: Sanitize filename to prevent path traversal

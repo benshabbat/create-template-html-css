@@ -121,6 +121,9 @@ program
             { name: "Hero Section", value: "hero" },
             { name: "Slider", value: "slider" },
             { name: "Table", value: "table" },
+            new inquirer.Separator(chalk.gray("─ Authentication Forms")),
+            { name: "Login Form", value: "login" },
+            { name: "Register Form", value: "register" },
             new inquirer.Separator(chalk.gray("─ Animation Templates")),
             { name: "Spinner (Loading Animations)", value: "spinner" },
             {
