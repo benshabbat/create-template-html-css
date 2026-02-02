@@ -535,8 +535,8 @@
               <div style="margin: 4px 0;">Secondary: ${scheme.secondary}</div>
             </div>
             <div style="display: flex; gap: 8px; margin-top: 12px;">
-              <button class="copy-btn" onclick="copySchemeCommand('npx', '${key}')" style="flex: 1; font-size: 0.85rem;">
-                Copy npx
+              <button class="copy-btn" onclick="copySchemeCommand('global', '${key}')" style="flex: 1; font-size: 0.85rem;">
+                Copy command
               </button>
               <button class="copy-btn" onclick="copySchemeCommand('local', '${key}')" style="flex: 1; font-size: 0.85rem; opacity: 0.7;">
                 Copy local
@@ -550,14 +550,14 @@
       // Copy color scheme command
       function copySchemeCommand(mode, schemeKey) {
         let text;
-        if (mode === 'npx') {
-          text = `npx create-template create -c button -n my-button --color-scheme ${schemeKey}`;
+        if (mode === 'global') {
+          text = `create-template create -c button -n my-button --color-scheme ${schemeKey}`;
         } else {
           text = `npm run create -- -c button -n my-button --color-scheme ${schemeKey}`;
         }
         navigator.clipboard.writeText(text);
         event.target.textContent = "✓ Copied!";
-        setTimeout(() => (event.target.textContent = `Copy ${mode}`), 2000);
+        setTimeout(() => (event.target.textContent = mode === 'global' ? 'Copy command' : 'Copy local'), 2000);
       }
 
       const components = [
@@ -618,7 +618,7 @@
               <ul class="features-list">${c.feat.map((f) => `<li>${f}</li>`).join("")}</ul>
               <div style="display: flex; gap: 10px; margin-top: 12px;">
                 <div class="code-block" style="flex: 1;">
-                  npx create-template create -c ${c.id}
+                  create-template create -c ${c.id}
                   <button class="copy-btn" onclick="copy(this)">Copy</button>
                 </div>
                 <div class="code-block" style="flex: 1; opacity: 0.7;">

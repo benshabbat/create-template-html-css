@@ -113,9 +113,13 @@ New **COMPONENTS-GALLERY.html** showcase page:
 
 **Open gallery:**
 ```bash
+# After global install
 create-template gallery
-# or
-npx create-template gallery
+
+# Or run directly with npx (first install package)
+npx create-template-html-css
+# Then run:
+create-template gallery
 ```
 
 ### 📚 Enhanced Documentation
