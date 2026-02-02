@@ -436,6 +436,9 @@ program
             { name: "Hero Section", value: "hero" },
             { name: "Slider", value: "slider" },
             { name: "Table", value: "table" },
+            new inquirer.Separator(chalk.gray("─ Authentication Forms")),
+            { name: "Login Form", value: "login" },
+            { name: "Register Form", value: "register" },
             new inquirer.Separator(chalk.gray("─ Animation Templates")),
             { name: "Spinner", value: "spinner" },
             { name: "Animated Card", value: "animated-card" },
@@ -500,7 +503,7 @@ program
   .command("list")
   .description(chalk.green("List all available templates"))
   .action(() => {
-    console.log("\n" + chalk.blue("📦 Available Components (23 total)\n"));
+    console.log("\n" + chalk.blue("📦 Available Components (25 total)\n"));
 
     console.log(chalk.yellow("━ Basic Components (9)"));
     console.log("  button          Styled button component");
@@ -513,6 +516,10 @@ program
     console.log("  slider          Image carousel with navigation");
     console.log("  table           Data table with search and filtering");
 
+    console.log("\n" + chalk.green("━ Authentication Forms (2)"));
+    console.log("  login           Login form with validation");
+    console.log("  register        Register form with password requirements");
+
     console.log("\n" + chalk.magenta("━ Animation Templates (4)"));
     console.log("  spinner         5 loading spinner variations");
     console.log("  animated-card   6 interactive card animations");
@@ -524,7 +531,7 @@ program
     console.log("  masonry-grid    Pinterest-style masonry layout");
     console.log("  dashboard-grid  Complete admin dashboard (Grid)");
 
-    console.log("\n" + chalk.green("━ Flexbox Layouts (3)"));
+    console.log("\n" + chalk.blue("━ Flexbox Layouts (3)"));
     console.log("  flex-layout     Flexbox patterns and examples");
     console.log("  flex-cards      Equal-height card layouts");
     console.log("  flex-dashboard  Complete admin dashboard (Flexbox)");
