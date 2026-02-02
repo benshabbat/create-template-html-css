@@ -64,16 +64,48 @@ Create components with custom colors instantly:
 - Automatic CSS variables generation
 - RGB values automatically calculated
 
-**Examples:**
+**Custom Colors:**
 ```bash
 create-template create -c button --primary-color "#FF5733"
 create-template create -c card --primary-color "#667eea" --secondary-color "#764ba2"
 ```
 
+### 🎨 Preset Color Schemes
+10 beautiful color schemes ready to use instantly:
+
+| Scheme | Primary | Secondary | Use Case |
+|--------|---------|-----------|----------|
+| **Vibrant** | #FF6B6B | #4ECDC4 | Bold, energetic designs |
+| **Pastel** | #FFB3BA | #FFDFBA | Soft, friendly interfaces |
+| **Ocean** | #0066CC | #00CCFF | Professional, tech-focused |
+| **Sunset** | #FF6B35 | #FFA500 | Warm, engaging UIs |
+| **Forest** | #2D6A4F | #40916C | Natural, organic themes |
+| **Purple** | #7209B7 | #B5179E | Elegant, premium feel |
+| **Minimal** | #1A1A1A | #666666 | Clean, modern look |
+| **Coral** | #FF6B9D | #FFA07A | Playful, warm designs |
+| **Teal** | #008B8B | #20B2AA | Balanced, professional |
+| **Neon** | #FF006E | #00D9FF | Bold, futuristic style |
+
+**Usage:**
+```bash
+# Using the vibrant color scheme
+create-template create -c button -n vibrant-button --color-scheme vibrant
+
+# Using the ocean color scheme
+create-template create -c card -n ocean-card --color-scheme ocean
+
+# Interactive mode - select from presets
+create-template create -c modal
+# Then choose "Use preset color schemes" option
+```
+
+**View All Schemes:** Open `COMPONENTS-GALLERY.html` to see live previews of all color schemes with swatches.
+
 ### 📊 Interactive Component Gallery
 New **COMPONENTS-GALLERY.html** showcase page:
 - Browse all 26 components with descriptions
 - Search and filter by category
+- View all 10 color scheme presets with color swatches
 - Copy CLI commands with one click
 - Dark mode support
 - Print-friendly layout
