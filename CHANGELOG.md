@@ -8,6 +8,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.8.0] - 2026-02-02
 
 ### Added
+- **Dark Mode Support**: Automatic dark mode detection and styling
+  - `--dark-mode` CLI flag enables dark theme support
+  - Uses `prefers-color-scheme: dark` media query
+  - Automatic color inversion for readability
+  - Fallback CSS variables for light theme
+  - Works with all 26 templates
+
+- **Color Customizer**: Create components with custom colors
+  - `--primary-color <hex>` flag for primary gradient color
+  - `--secondary-color <hex>` flag for secondary color  
+  - Automatic CSS variables generation
+  - RGB value calculation for rgba() support
+  - Color validation with helpful error messages
+
+- **Interactive Component Gallery** (COMPONENTS-GALLERY.html):
+  - Browse all 26 components with descriptions
+  - Search functionality for quick discovery
+  - Filter by component category
+  - Copy CLI commands with one-click button
+  - Dark mode support built-in
+  - Responsive mobile design
+  - Print-friendly layout
+  - Live component statistics
+
+- **Enhanced CLI Features**:
+  - Dark mode and color options in interactive mode
+  - Color validation (hex format)
+  - Updated help text with new examples
+  - Better example commands showing customization
+
 - **Login Form Template**: Professional authentication form with complete validation
   - Email and password validation
   - "Remember me" checkbox functionality

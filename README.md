@@ -43,6 +43,49 @@ npm install -g create-template-html-css
 - 💾 **Simple Backups** - Clean backup naming without timestamps (v1.6.2+)
 - 🎯 **Customizable Components** - Choose navigation items and form fields during creation (v1.7.0+)
 
+## 🆕 What's New in v1.8.0
+
+### 🌙 Dark Mode Support
+Every component now supports automatic dark mode detection:
+- Add `--dark-mode` flag to enable dark mode styles
+- Uses `prefers-color-scheme: dark` media query
+- Automatic color inversion in dark theme
+- Perfect for modern user preferences
+
+**Example:**
+```bash
+create-template create -c button -n my-button --dark-mode
+```
+
+### 🎨 Color Customizer
+Create components with custom colors instantly:
+- Use `--primary-color <hex>` flag for primary gradient color
+- Use `--secondary-color <hex>` flag for secondary color
+- Automatic CSS variables generation
+- RGB values automatically calculated
+
+**Examples:**
+```bash
+create-template create -c button --primary-color "#FF5733"
+create-template create -c card --primary-color "#667eea" --secondary-color "#764ba2"
+```
+
+### 📊 Interactive Component Gallery
+New **COMPONENTS-GALLERY.html** showcase page:
+- Browse all 26 components with descriptions
+- Search and filter by category
+- Copy CLI commands with one click
+- Dark mode support
+- Print-friendly layout
+- Mobile responsive design
+
+**Open gallery:** Open `COMPONENTS-GALLERY.html` in your browser
+
+### 📚 Enhanced Documentation
+- Updated README with all new features
+- Improved CLI help text with examples
+- Detailed component showcase with features
+
 ## 🆕 What's New in v1.7.0
 
 ### 🎯 Customizable Navigation
