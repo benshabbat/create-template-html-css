@@ -43,11 +43,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Full support for template creation with `create-template create -c login -n my-login`
   - Support for template insertion with `create-template insert`
 
+- **Skeleton Loading Template**: Loading placeholders with shimmer animation
+  - Multiple skeleton variations (card, article, list, profile, grid)
+  - Smooth CSS-based shimmer animation effect
+  - Fade-in animations for smooth transitions
+  - Toggle button to switch between skeleton and actual content
+  - Professional gray gradient styling
+  - Responsive grid layout
+  - Mobile-responsive design
+  - Perfect for displaying while content loads or APIs respond
+
 - **Documentation**: Added CLI-USAGE.md with Hebrew instructions for new features
 
 ### Improved
-- Enhanced README with Login and Register template documentation
-- Updated template count to 25 templates in features section
+- Enhanced README with Login, Register, and Skeleton template documentation
+- Updated template count to 26 templates in features section
 - Improved navigation template with modal authentication example
 - Better organized authentication-related components
 

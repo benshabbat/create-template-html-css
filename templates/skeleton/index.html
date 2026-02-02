@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skeleton Loading</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="skeleton-container">
+      <!-- Card Skeleton -->
+      <div class="card-skeleton">
+        <div class="skeleton-image"></div>
+        <div class="skeleton-content">
+          <div class="skeleton-text skeleton-title"></div>
+          <div class="skeleton-text skeleton-description"></div>
+          <div class="skeleton-text skeleton-description short"></div>
+          <button class="skeleton-button"></button>
+        </div>
+      </div>
+
+      <!-- Article Skeleton -->
+      <div class="article-skeleton">
+        <div class="skeleton-avatar"></div>
+        <div class="article-content">
+          <div class="skeleton-text skeleton-author"></div>
+          <div class="skeleton-text skeleton-date"></div>
+          <div class="skeleton-text skeleton-headline"></div>
+          <div class="skeleton-text"></div>
+          <div class="skeleton-text"></div>
+          <div class="skeleton-text short"></div>
+        </div>
+      </div>
+
+      <!-- List Skeleton -->
+      <div class="list-skeleton">
+        <div class="list-item-skeleton">
+          <div class="skeleton-avatar small"></div>
+          <div class="list-item-content">
+            <div class="skeleton-text skeleton-name"></div>
+            <div class="skeleton-text skeleton-subtitle"></div>
+          </div>
+        </div>
+        <div class="list-item-skeleton">
+          <div class="skeleton-avatar small"></div>
+          <div class="list-item-content">
+            <div class="skeleton-text skeleton-name"></div>
+            <div class="skeleton-text skeleton-subtitle"></div>
+          </div>
+        </div>
+        <div class="list-item-skeleton">
+          <div class="skeleton-avatar small"></div>
+          <div class="list-item-content">
+            <div class="skeleton-text skeleton-name"></div>
+            <div class="skeleton-text skeleton-subtitle"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profile Skeleton -->
+      <div class="profile-skeleton">
+        <div class="skeleton-cover"></div>
+        <div class="profile-info">
+          <div class="skeleton-avatar large"></div>
+          <div class="skeleton-text skeleton-profile-name"></div>
+          <div class="skeleton-text skeleton-profile-bio"></div>
+          <div class="skeleton-button-group">
+            <button class="skeleton-button"></button>
+            <button class="skeleton-button"></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid Skeleton -->
+      <div class="grid-skeleton">
+        <div class="grid-item-skeleton">
+          <div class="skeleton-image grid-image"></div>
+          <div class="skeleton-text skeleton-grid-title"></div>
+        </div>
+        <div class="grid-item-skeleton">
+          <div class="skeleton-image grid-image"></div>
+          <div class="skeleton-text skeleton-grid-title"></div>
+        </div>
+        <div class="grid-item-skeleton">
+          <div class="skeleton-image grid-image"></div>
+          <div class="skeleton-text skeleton-grid-title"></div>
+        </div>
+        <div class="grid-item-skeleton">
+          <div class="skeleton-image grid-image"></div>
+          <div class="skeleton-text skeleton-grid-title"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+      <button id="toggleBtn" class="toggle-button">Hide Skeletons</button>
+    </div>
+
+    <!-- Demo Content (Hidden by default) -->
+    <div id="content" class="content hidden">
+      <div class="card-demo">
+        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=300&fit=crop" alt="Demo" />
+        <div class="card-content">
+          <h3>Amazing Product</h3>
+          <p>This is a demonstration of the loaded content after the skeleton loading animation completes.</p>
+          <p>The skeleton provides a smooth visual transition and reduces perceived wait time.</p>
+          <button>Learn More</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

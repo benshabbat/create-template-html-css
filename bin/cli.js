@@ -124,6 +124,8 @@ program
             new inquirer.Separator(chalk.gray("─ Authentication Forms")),
             { name: "Login Form", value: "login" },
             { name: "Register Form", value: "register" },
+            new inquirer.Separator(chalk.gray("─ Loading Placeholders")),
+            { name: "Skeleton (Loading Placeholders)", value: "skeleton" },
             new inquirer.Separator(chalk.gray("─ Animation Templates")),
             { name: "Spinner (Loading Animations)", value: "spinner" },
             {
@@ -439,6 +441,8 @@ program
             new inquirer.Separator(chalk.gray("─ Authentication Forms")),
             { name: "Login Form", value: "login" },
             { name: "Register Form", value: "register" },
+            new inquirer.Separator(chalk.gray("─ Loading Placeholders")),
+            { name: "Skeleton (Loading Placeholders)", value: "skeleton" },
             new inquirer.Separator(chalk.gray("─ Animation Templates")),
             { name: "Spinner", value: "spinner" },
             { name: "Animated Card", value: "animated-card" },
@@ -503,7 +507,7 @@ program
   .command("list")
   .description(chalk.green("List all available templates"))
   .action(() => {
-    console.log("\n" + chalk.blue("📦 Available Components (25 total)\n"));
+    console.log("\n" + chalk.blue("📦 Available Components (26 total)\n"));
 
     console.log(chalk.yellow("━ Basic Components (9)"));
     console.log("  button          Styled button component");
@@ -519,6 +523,9 @@ program
     console.log("\n" + chalk.green("━ Authentication Forms (2)"));
     console.log("  login           Login form with validation");
     console.log("  register        Register form with password requirements");
+
+    console.log("\n" + chalk.cyan("━ Loading Placeholders (1)"));
+    console.log("  skeleton        Skeleton loading placeholder with shimmer animation");
 
     console.log("\n" + chalk.magenta("━ Animation Templates (4)"));
     console.log("  spinner         5 loading spinner variations");
@@ -561,7 +568,7 @@ if (!process.argv.slice(2).length) {
   console.log(chalk.gray("Interactive Examples:"));
   console.log("  $ create-template create        # Create with prompts");
   console.log("  $ create-template insert        # Insert with prompts");
-  console.log("  $ create-template list          # View all 23 templates\n");
+  console.log("  $ create-template list          # View all 26 templates\n");
   console.log(chalk.gray("Flag Examples (Non-interactive):"));
   console.log("  $ create-template create -c button -n my-btn");
   console.log("  $ create-template insert -f index.html -c card -s separate");

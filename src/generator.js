@@ -67,6 +67,7 @@ const VALID_COMPONENTS = [
   "tabs",
   "login",
   "register",
+  "skeleton",
 ];
 
 // Security: Sanitize filename to prevent path traversal

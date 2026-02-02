@@ -33,7 +33,7 @@ npm install -g create-template-html-css
 - 🌈 **Stunning Gradients** - Colorful and attractive designs
 - ⚡ **Animations** - Smooth and professional effects
 - 🔧 **Customizable** - Easy to edit and modify the code
-- 📦 **25 Templates** - Button, Card, Form, Navigation, Modal, Footer, Hero, Slider, Table, Login, Register, Spinner, Animated Cards, Typing Effect, Fade Gallery, Grid Layouts, Masonry Grid, Dashboard, Flexbox Layouts, Todo List, Counter, Accordion, Tabs
+- 📦 **26 Templates** - Button, Card, Form, Navigation, Modal, Footer, Hero, Slider, Table, Login, Register, Skeleton, Spinner, Animated Cards, Typing Effect, Fade Gallery, Grid Layouts, Masonry Grid, Dashboard, Flexbox Layouts, Todo List, Counter, Accordion, Tabs
 - 🎯 **Two Modes** - Create new projects or insert into existing HTML pages
 - 🔒 **Secure** - Input validation and path protection
 - 📚 **Well Documented** - Comprehensive guides and examples
@@ -371,6 +371,35 @@ Advanced user registration form with real-time password validation:
 - Matching password validator
 - Professional styling
 - Mobile-responsive layout
+
+### 8. Skeleton (NEW in v1.8.0)
+
+Loading placeholders with smooth shimmer animation - perfect for displaying while content loads:
+
+**Features:**
+- Multiple skeleton variations (card, article, list, profile, grid)
+- Smooth shimmer animation effect
+- Fade-in animations for loaded content
+- Toggle between skeleton and actual content
+- Professional gray gradient styling
+- Responsive grid layout
+- ESC key support for controls
+
+**Includes:**
+- Card skeleton with image and content blocks
+- Article skeleton with avatar and text
+- List skeleton with multiple items
+- Profile skeleton with cover and info sections
+- Grid skeleton for gallery-like layouts
+- Toggle button to switch between skeleton and demo content
+- Demo content section with real images and text
+- Mobile-responsive design
+
+**Perfect For:**
+- Loading states in applications
+- API response delays
+- Perceived performance optimization
+- Professional user experience
 
 ### 6. Footer
 
