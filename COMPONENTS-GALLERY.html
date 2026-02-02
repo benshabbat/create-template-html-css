@@ -441,7 +441,8 @@
       <div class="color-schemes-section" style="margin-top: 40px;">
         <h2 class="color-schemes-title">⚡ One-Command Creation (Non-Interactive)</h2>
         <p style="text-align: center; color: #666; margin-bottom: 20px;">
-          Create components instantly with all flags in a single command - no prompts needed!
+          Create components instantly with all flags in a single command - no prompts needed!<br>
+          <small>Install globally with npm, or use npx to run without installation</small>
         </p>
         
         <div style="max-width: 900px; margin: 0 auto;">
@@ -476,9 +477,19 @@
             </div>
           </div>
 
+          <!-- Installation Note -->
+          <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; border-radius: 4px; margin-bottom: 20px;">
+            <strong>📦 Installation:</strong>
+            <div style="margin-top: 8px;">
+              <code style="background: #fff; padding: 6px 12px; border-radius: 4px; display: inline-block; margin-right: 10px;">npm install -g create-template-html-css</code>
+              <span style="color: #666;">or use</span>
+              <code style="background: #fff; padding: 6px 12px; border-radius: 4px; display: inline-block; margin-left: 10px;">npx create-template-html-css</code>
+            </div>
+          </div>
+
           <!-- Example Commands -->
           <div style="background: #fff; border: 2px solid #e9ecef; border-radius: 8px; padding: 20px;">
-            <h3 style="margin: 0 0 15px 0; color: #333;">💡 Example Commands:</h3>
+            <h3 style="margin: 0 0 15px 0; color: #333;">💡 Example Commands (After Installation):</h3>
             
             <div class="code-block" style="margin: 15px 0;">
               create-template create -c button -n my-button
@@ -700,14 +711,32 @@
               <span class="category-badge">${c.cat.toUpperCase()}</span>
               <p class="description">${c.desc}</p>
               <ul class="features-list">${c.feat.map((f) => `<li>${f}</li>`).join("")}</ul>
-              <div style="display: flex; gap: 10px; margin-top: 12px;">
-                <div class="code-block" style="flex: 1;">
-                  create-template create -c ${c.id}
-                  <button class="copy-btn" onclick="copy(this)">Copy</button>
+              
+              <!-- Full Command Examples -->
+              <div style="margin-top: 15px; padding: 10px; background: #f8f9fa; border-radius: 6px;">
+                <div style="font-size: 0.85rem; font-weight: 600; color: #495057; margin-bottom: 8px;">📋 One-Command Examples:</div>
+                
+                <div class="code-block" style="margin: 6px 0; font-size: 0.85rem;">
+                  create-template create -c ${c.id} -n my-${c.id}
+                  <button class="copy-btn" onclick="copy(this)" style="font-size: 0.75rem;">Copy</button>
                 </div>
-                <div class="code-block" style="flex: 1; opacity: 0.7;">
+                
+                <div class="code-block" style="margin: 6px 0; font-size: 0.85rem;">
+                  create-template create -c ${c.id} -n my-${c.id} --color-scheme ocean
+                  <button class="copy-btn" onclick="copy(this)" style="font-size: 0.75rem;">Copy</button>
+                </div>
+                
+                <div class="code-block" style="margin: 6px 0; font-size: 0.85rem;">
+                  create-template create -c ${c.id} -n my-${c.id} --dark-mode --color-scheme sunset
+                  <button class="copy-btn" onclick="copy(this)" style="font-size: 0.75rem;">Copy</button>
+                </div>
+              </div>
+              
+              <!-- Local npm command -->
+              <div style="display: flex; gap: 10px; margin-top: 12px;">
+                <div class="code-block" style="flex: 1; opacity: 0.6; font-size: 0.85rem;">
                   npm run create -- -c ${c.id}
-                  <button class="copy-btn" onclick="copy(this)">Copy</button>
+                  <button class="copy-btn" onclick="copy(this)" style="font-size: 0.75rem;">Local</button>
                 </div>
               </div>
             </div>
