@@ -22,11 +22,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - RGB value calculation for rgba() support
   - Color validation with helpful error messages
 
+- **Color Scheme Presets**: 10 beautiful pre-made color schemes
+  - Vibrant, Pastel, Ocean, Sunset, Forest, Purple, Minimal, Coral, Teal, Neon
+  - `--color-scheme <scheme>` flag for instant color selection
+  - Interactive CLI prompts for scheme selection
+  - Each scheme with complementary primary and secondary colors
+  - Perfect for creating branded components quickly
+
 - **Interactive Component Gallery** (COMPONENTS-GALLERY.html):
   - Browse all 26 components with descriptions
   - Search functionality for quick discovery
   - Filter by component category
   - Copy CLI commands with one-click button
+  - Live color scheme preview section with hex values
+  - Interactive color scheme cards with copy commands
   - Dark mode support built-in
   - Responsive mobile design
   - Print-friendly layout
