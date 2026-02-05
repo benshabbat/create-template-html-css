@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Template HTML/CSS - Component Gallery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 40px 20px;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            background: rgba(255,255,255,0.2);
+            padding: 15px 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .category {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .category-icon {
+            font-size: 2rem;
+            margin-right: 15px;
+        }
+
+        .category-title {
+            font-size: 1.8rem;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .category-count {
+            margin-left: auto;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .components-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .component-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .component-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .component-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .component-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .component-description {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .component-command {
+            background: #2d3748;
+            color: #48bb78;
+            padding: 10px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            word-break: break-all;
+            position: relative;
+        }
+
+        .copy-btn {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #48bb78;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            transition: all 0.2s;
+        }
+
+        .copy-btn:hover {
+            background: #38a169;
+        }
+
+        .copy-btn.copied {
+            background: #667eea;
+        }
+
+        .search-box {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 1.1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .search-input:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .game-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            margin-left: 8px;
+            font-weight: 600;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            padding: 40px 20px;
+            margin-top: 40px;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .components-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎨 Create Template HTML/CSS</h1>
+            <p>Interactive Component Gallery - v2.0.0</p>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">46</div>
+                    <div class="stat-label">Total Templates</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">16</div>
+                    <div class="stat-label">Interactive Games</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">30</div>
+                    <div class="stat-label">UI Components</div>
+                </div>
+            </div>
+        </header>
+
+        <div class="search-box">
+            <input type="text" class="search-input" id="searchInput" placeholder="🔍 Search components... (e.g., button, game, form)">
+        </div>
+
+        <!-- Basic Components -->
+        <div class="category" data-category="basic">
+            <div class="category-header">
+                <span class="category-icon">📦</span>
+                <h2 class="category-title">Basic Components</h2>
+                <span class="category-count">9 templates</span>
+            </div>
+            <div class="components-grid">
+                <div class="component-card" data-name="button">
+                    <h3 class="component-name">Button</h3>
+                    <p class="component-description">Styled button component with hover effects</p>
+                    <div class="component-command">
+                        create-template create -c button -n my-button
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="card">
+                    <h3 class="component-name">Card</h3>
+                    <p class="component-description">Card component with image and content</p>
+                    <div class="component-command">
+                        create-template create -c card -n my-card
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="form">
+                    <h3 class="component-name">Form</h3>
+                    <p class="component-description">Form with input fields and validation</p>
+                    <div class="component-command">
+                        create-template create -c form -n my-form
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="navigation">
+                    <h3 class="component-name">Navigation</h3>
+                    <p class="component-description">Responsive navigation bar</p>
+                    <div class="component-command">
+                        create-template create -c navigation -n my-nav
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="modal">
+                    <h3 class="component-name">Modal</h3>
+                    <p class="component-description">Modal dialog component</p>
+                    <div class="component-command">
+                        create-template create -c modal -n my-modal
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="footer">
+                    <h3 class="component-name">Footer</h3>
+                    <p class="component-description">Footer section with links and info</p>
+                    <div class="component-command">
+                        create-template create -c footer -n my-footer
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="hero">
+                    <h3 class="component-name">Hero</h3>
+                    <p class="component-description">Hero section with CTA button</p>
+                    <div class="component-command">
+                        create-template create -c hero -n my-hero
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="slider">
+                    <h3 class="component-name">Slider</h3>
+                    <p class="component-description">Image carousel with navigation</p>
+                    <div class="component-command">
+                        create-template create -c slider -n my-slider
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="table">
+                    <h3 class="component-name">Table</h3>
+                    <p class="component-description">Data table with search and filtering</p>
+                    <div class="component-command">
+                        create-template create -c table -n my-table
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Authentication Forms -->
+        <div class="category" data-category="auth">
+            <div class="category-header">
+                <span class="category-icon">🔐</span>
+                <h2 class="category-title">Authentication Forms</h2>
+                <span class="category-count">2 templates</span>
+            </div>
+            <div class="components-grid">
+                <div class="component-card" data-name="login">
+                    <h3 class="component-name">Login</h3>
+                    <p class="component-description">Login form with validation</p>
+                    <div class="component-command">
+                        create-template create -c login -n my-login
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="register">
+                    <h3 class="component-name">Register</h3>
+                    <p class="component-description">Register form with password requirements</p>
+                    <div class="component-command">
+                        create-template create -c register -n my-register
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading Placeholders -->
+        <div class="category" data-category="loading">
+            <div class="category-header">
+                <span class="category-icon">⏳</span>
+                <h2 class="category-title">Loading Placeholders</h2>
+                <span class="category-count">1 template</span>
+            </div>
+            <div class="components-grid">
+                <div class="component-card" data-name="skeleton">
+                    <h3 class="component-name">Skeleton</h3>
+                    <p class="component-description">Skeleton loading placeholder with shimmer animation</p>
+                    <div class="component-command">
+                        create-template create -c skeleton -n my-skeleton
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Animation Templates -->
+        <div class="category" data-category="animation">
+            <div class="category-header">
+                <span class="category-icon">✨</span>
+                <h2 class="category-title">Animation Templates</h2>
+                <span class="category-count">4 templates</span>
+            </div>
+            <div class="components-grid">
+                <div class="component-card" data-name="spinner">
+                    <h3 class="component-name">Spinner</h3>
+                    <p class="component-description">5 loading spinner variations</p>
+                    <div class="component-command">
+                        create-template create -c spinner -n my-spinner
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="animated-card">
+                    <h3 class="component-name">Animated Card</h3>
+                    <p class="component-description">6 interactive card animations</p>
+                    <div class="component-command">
+                        create-template create -c animated-card -n my-animated-card
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="typing-effect">
+                    <h3 class="component-name">Typing Effect</h3>
+                    <p class="component-description">Text typing animations</p>
+                    <div class="component-command">
+                        create-template create -c typing-effect -n my-typing
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="fade-gallery">
+                    <h3 class="component-name">Fade Gallery</h3>
+                    <p class="component-description">Image gallery with fade effects</p>
+                    <div class="component-command">
+                        create-template create -c fade-gallery -n my-gallery
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grid Layouts -->
+        <div class="category" data-category="grid">
+            <div class="category-header">
+                <span class="category-icon">📐</span>
+                <h2 class="category-title">Grid Layouts</h2>
+                <span class="category-count">3 templates</span>
+            </div>
+            <div class="components-grid">
+                <div class="component-card" data-name="grid-layout">
+                    <h3 class="component-name">Grid Layout</h3>
+                    <p class="component-description">CSS Grid patterns and examples</p>
+                    <div class="component-command">
+                        create-template create -c grid-layout -n my-grid
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="masonry-grid">
+                    <h3 class="component-name">Masonry Grid</h3>
+                    <p class="component-description">Pinterest-style masonry layout</p>
+                    <div class="component-command">
+                        create-template create -c masonry-grid -n my-masonry
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="dashboard-grid">
+                    <h3 class="component-name">Dashboard Grid</h3>
+                    <p class="component-description">Complete admin dashboard (Grid)</p>
+                    <div class="component-command">
+                        create-template create -c dashboard-grid -n my-dashboard
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Flexbox Layouts -->
+        <div class="category" data-category="flexbox">
+            <div class="category-header">
+                <span class="category-icon">📏</span>
+                <h2 class="category-title">Flexbox Layouts</h2>
+                <span class="category-count">3 templates</span>
+            </div>
+            <div class="components-grid">
+                <div class="component-card" data-name="flex-layout">
+                    <h3 class="component-name">Flex Layout</h3>
+                    <p class="component-description">Flexbox patterns and examples</p>
+                    <div class="component-command">
+                        create-template create -c flex-layout -n my-flex
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="flex-cards">
+                    <h3 class="component-name">Flex Cards</h3>
+                    <p class="component-description">Equal-height card layouts</p>
+                    <div class="component-command">
+                        create-template create -c flex-cards -n my-cards
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="flex-dashboard">
+                    <h3 class="component-name">Flex Dashboard</h3>
+                    <p class="component-description">Complete admin dashboard (Flexbox)</p>
+                    <div class="component-command">
+                        create-template create -c flex-dashboard -n my-dashboard
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DOM Manipulation Examples -->
+        <div class="category" data-category="dom">
+            <div class="category-header">
+                <span class="category-icon">🔄</span>
+                <h2 class="category-title">DOM Manipulation Examples</h2>
+                <span class="category-count">4 templates</span>
+            </div>
+            <div class="components-grid">
+                <div class="component-card" data-name="todo-list">
+                    <h3 class="component-name">Todo List</h3>
+                    <p class="component-description">Interactive todo list with add/remove</p>
+                    <div class="component-command">
+                        create-template create -c todo-list -n my-todo
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="counter">
+                    <h3 class="component-name">Counter</h3>
+                    <p class="component-description">Click counter with history tracking</p>
+                    <div class="component-command">
+                        create-template create -c counter -n my-counter
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="accordion">
+                    <h3 class="component-name">Accordion</h3>
+                    <p class="component-description">Collapsible accordion component</p>
+                    <div class="component-command">
+                        create-template create -c accordion -n my-accordion
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="tabs">
+                    <h3 class="component-name">Tabs</h3>
+                    <p class="component-description">Tabbed content switcher</p>
+                    <div class="component-command">
+                        create-template create -c tabs -n my-tabs
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Games -->
+        <div class="category" data-category="games">
+            <div class="category-header">
+                <span class="category-icon">🎮</span>
+                <h2 class="category-title">Interactive Games</h2>
+                <span class="category-count">16 templates</span>
+            </div>
+            <div class="components-grid">
+                <div class="component-card" data-name="tic-tac-toe game">
+                    <h3 class="component-name">Tic-Tac-Toe <span class="game-badge">GAME</span></h3>
+                    <p class="component-description">Classic X and O game with score tracking</p>
+                    <div class="component-command">
+                        create-template create -c tic-tac-toe -n my-tictactoe
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="memory-game game">
+                    <h3 class="component-name">Memory Game <span class="game-badge">GAME</span></h3>
+                    <p class="component-description">Card matching game with difficulty levels</p>
+                    <div class="component-command">
+                        create-template create -c memory-game -n my-memory
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="snake-game game">
+                    <h3 class="component-name">Snake Game <span class="game-badge">GAME</span></h3>
+                    <p class="component-description">Classic snake with keyboard controls</p>
+                    <div class="component-command">
+                        create-template create -c snake-game -n my-snake
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="guess-number game">
+                    <h3 class="component-name">Guess Number <span class="game-badge">GAME</span></h3>
+                    <p class="component-description">Number guessing game with hints</p>
+                    <div class="component-command">
+                        create-template create -c guess-number -n my-guess
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="2048 game">
+                    <h3 class="component-name">2048 <span class="game-badge">NEW</span></h3>
+                    <p class="component-description">Tile-merging puzzle with undo & best score</p>
+                    <div class="component-command">
+                        create-template create -c game-2048 -n my-2048
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="whack-a-mole game arcade">
+                    <h3 class="component-name">Whack-a-Mole <span class="game-badge">NEW</span></h3>
+                    <p class="component-description">Arcade game with combos & difficulty levels</p>
+                    <div class="component-command">
+                        create-template create -c whack-a-mole -n my-whack
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="simon-says game memory">
+                    <h3 class="component-name">Simon Says <span class="game-badge">NEW</span></h3>
+                    <p class="component-description">Memory pattern game with sound effects</p>
+                    <div class="component-command">
+                        create-template create -c simon-says -n my-simon
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="rock-paper-scissors game">
+                    <h3 class="component-name">Rock-Paper-Scissors <span class="game-badge">NEW</span></h3>
+                    <p class="component-description">Classic hand game vs AI</p>
+                    <div class="component-command">
+                        create-template create -c rock-paper-scissors -n my-rps
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="breakout game arcade brick">
+                    <h3 class="component-name">Breakout <span class="game-badge">NEW</span></h3>
+                    <p class="component-description">Brick breaker with lives & level progression</p>
+                    <div class="component-command">
+                        create-template create -c breakout -n my-breakout
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="tetris game puzzle">
+                    <h3 class="component-name">Tetris <span class="game-badge">NEW</span></h3>
+                    <p class="component-description">Full Tetris with ghost preview & next piece</p>
+                    <div class="component-command">
+                        create-template create -c tetris -n my-tetris
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="flappy-bird game arcade">
+                    <h3 class="component-name">Flappy Bird <span class="game-badge">NEW</span></h3>
+                    <p class="component-description">Obstacle avoidance with realistic physics</p>
+                    <div class="component-command">
+                        create-template create -c flappy-bird -n my-flappy
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="connect-four game strategy">
+                    <h3 class="component-name">Connect Four <span class="game-badge">NEW</span></h3>
+                    <p class="component-description">4-in-a-row with AI (3 difficulty levels)</p>
+                    <div class="component-command">
+                        create-template create -c connect-four -n my-connect4
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="blackjack game card casino">
+                    <h3 class="component-name">Blackjack <span class="game-badge">NEW</span></h3>
+                    <p class="component-description">21 card game with betting & dealer AI</p>
+                    <div class="component-command">
+                        create-template create -c blackjack -n my-blackjack
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="slot-machine game casino">
+                    <h3 class="component-name">Slot Machine <span class="game-badge">NEW</span></h3>
+                    <p class="component-description">3-reel slots with jackpot & confetti</p>
+                    <div class="component-command">
+                        create-template create -c slot-machine -n my-slots
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="dice-game game strategy">
+                    <h3 class="component-name">Dice Game <span class="game-badge">NEW</span></h3>
+                    <p class="component-description">Race to 100 with strategic AI</p>
+                    <div class="component-command">
+                        create-template create -c dice-game -n my-dice
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="pong game arcade classic">
+                    <h3 class="component-name">Pong <span class="game-badge">NEW</span></h3>
+                    <p class="component-description">Classic paddle game with AI (4 difficulties)</p>
+                    <div class="component-command">
+                        create-template create -c pong -n my-pong
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Made with ❤️ by <a href="https://github.com/benshabbat" target="_blank">DavidChen Benshabbat</a></p>
+            <p>
+                <a href="https://www.npmjs.com/package/create-template-html-css" target="_blank">📦 npm Package</a> | 
+                <a href="https://github.com/benshabbat/create-template-html-css" target="_blank">🐙 GitHub Repo</a>
+            </p>
+            <p style="margin-top: 20px; opacity: 0.8;">v2.0.0 - 46 Templates Available</p>
+        </footer>
+    </div>
+
+    <script>
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('.component-card');
+            const categories = document.querySelectorAll('.category');
+
+            cards.forEach(card => {
+                const name = card.getAttribute('data-name').toLowerCase();
+                const description = card.querySelector('.component-description').textContent.toLowerCase();
+                const matches = name.includes(searchTerm) || description.includes(searchTerm);
+                card.style.display = matches ? 'block' : 'none';
+            });
+
+            // Hide empty categories
+            categories.forEach(category => {
+                const visibleCards = category.querySelectorAll('.component-card[style="display: block;"], .component-card:not([style*="display: none"])');
+                category.style.display = visibleCards.length > 0 ? 'block' : 'none';
+            });
+        });
+
+        // Copy command functionality
+        function copyCommand(btn) {
+            const command = btn.parentElement.textContent.replace('Copy', '').trim();
+            navigator.clipboard.writeText(command).then(() => {
+                btn.textContent = '✓ Copied';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.textContent = 'Copy';
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        // Add hover animations
+        document.querySelectorAll('.component-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+                card.querySelector('.component-name').style.color = 'white';
+                card.querySelector('.component-description').style.color = 'rgba(255,255,255,0.9)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.background = 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)';
+                card.querySelector('.component-name').style.color = '#333';
+                card.querySelector('.component-description').style.color = '#666';
+            });
+        });
+    </script>
+</body>
+</html>
