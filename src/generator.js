@@ -241,6 +241,22 @@ const VALID_COMPONENTS = [
   "login",
   "register",
   "skeleton",
+  "tic-tac-toe",
+  "memory-game",
+  "snake-game",
+  "guess-number",
+  "game-2048",
+  "whack-a-mole",
+  "simon-says",
+  "rock-paper-scissors",
+  "breakout",
+  "tetris",
+  "flappy-bird",
+  "connect-four",
+  "blackjack",
+  "slot-machine",
+  "dice-game",
+  "pong",
 ];
 
 // Security: Sanitize filename to prevent path traversal
