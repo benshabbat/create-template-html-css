@@ -1,0 +1,244 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+}
+
+.game-card {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.game-card h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+}
+
+.game-info {
+    margin-bottom: 20px;
+}
+
+.current-player {
+    text-align: center;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: #555;
+}
+
+.player-x {
+    color: #3b82f6;
+    font-weight: bold;
+}
+
+.player-o {
+    color: #ef4444;
+    font-weight: bold;
+}
+
+.score-board {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+    background: #f3f4f6;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.score-item {
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.score-item span:last-child {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 20px 0;
+    padding: 10px;
+    background: #f9fafb;
+    border-radius: 12px;
+}
+
+.cell {
+    aspect-ratio: 1;
+    background: white;
+    border: 3px solid #e5e7eb;
+    border-radius: 12px;
+    font-size: 3rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cell:hover:not(.taken) {
+    background: #f3f4f6;
+    transform: scale(1.05);
+    border-color: #9ca3af;
+}
+
+.cell.taken {
+    cursor: not-allowed;
+}
+
+.cell.player-x {
+    color: #3b82f6;
+    animation: scaleIn 0.3s ease;
+}
+
+.cell.player-o {
+    color: #ef4444;
+    animation: scaleIn 0.3s ease;
+}
+
+.cell.winner {
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    animation: winnerPulse 0.6s ease;
+}
+
+@keyframes scaleIn {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes winnerPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.message {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.message.show {
+    opacity: 1;
+    animation: slideDown 0.4s ease;
+}
+
+.message.win-x {
+    color: #3b82f6;
+}
+
+.message.win-o {
+    color: #ef4444;
+}
+
+.message.draw {
+    color: #8b5cf6;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.btn {
+    flex: 1;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+    background: #6b7280;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #4b5563;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(107, 114, 128, 0.4);
+}
+
+@media (max-width: 480px) {
+    .game-card {
+        padding: 20px;
+    }
+    
+    .game-card h1 {
+        font-size: 2rem;
+    }
+    
+    .cell {
+        font-size: 2rem;
+    }
+    
+    .button-group {
+        flex-direction: column;
+    }
+}
