@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{name}} - Snake Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="game-card">
+            <h1>Snake Game</h1>
+            
+            <div class="game-info">
+                <div class="info-item">
+                    <span class="label">Score:</span>
+                    <span id="score" class="value">0</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">High Score:</span>
+                    <span id="highScore" class="value">0</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Speed:</span>
+                    <span id="speed" class="value">Normal</span>
+                </div>
+            </div>
+            
+            <canvas id="gameCanvas" width="400" height="400"></canvas>
+            
+            <div class="message" id="message">
+                Press SPACE or tap Start to begin
+            </div>
+            
+            <div class="controls">
+                <div class="arrow-buttons">
+                    <button class="arrow-btn" id="upBtn">↑</button>
+                    <div class="arrow-row">
+                        <button class="arrow-btn" id="leftBtn">←</button>
+                        <button class="arrow-btn" id="downBtn">↓</button>
+                        <button class="arrow-btn" id="rightBtn">→</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="button-group">
+                <button id="startBtn" class="btn btn-success">Start</button>
+                <button id="pauseBtn" class="btn btn-warning">Pause</button>
+                <button id="resetBtn" class="btn btn-danger">Reset</button>
+            </div>
+            
+            <div class="instructions">
+                <p>🎮 Use Arrow Keys or Buttons to control the snake</p>
+                <p>🍎 Eat apples to grow and increase score</p>
+                <p>⚠️ Don't hit walls or yourself!</p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

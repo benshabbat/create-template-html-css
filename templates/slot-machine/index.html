@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slot Machine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎰 Slot Machine</h1>
+            <p class="subtitle">Spin the reels and win the jackpot!</p>
+        </div>
+
+        <div class="game-info">
+            <div class="info-item">
+                <span class="label">Credits:</span>
+                <span id="credits" class="value">1000</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Bet:</span>
+                <span id="bet" class="value">10</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Win:</span>
+                <span id="winAmount" class="value">0</span>
+            </div>
+        </div>
+
+        <div class="slot-machine">
+            <div class="slot-display">
+                <div class="slot-reel" id="reel1">
+                    <div class="symbol">🍒</div>
+                </div>
+                <div class="slot-reel" id="reel2">
+                    <div class="symbol">🍋</div>
+                </div>
+                <div class="slot-reel" id="reel3">
+                    <div class="symbol">🍊</div>
+                </div>
+            </div>
+            
+            <div class="win-line"></div>
+        </div>
+
+        <div class="bet-controls">
+            <button id="decreaseBet" class="bet-control-btn">-</button>
+            <span class="bet-label">Bet: <span id="currentBet">10</span></span>
+            <button id="increaseBet" class="bet-control-btn">+</button>
+        </div>
+
+        <div class="controls">
+            <button id="spinBtn" class="btn btn-spin">Spin! 🎰</button>
+            <button id="maxBetBtn" class="btn btn-secondary">Max Bet</button>
+        </div>
+
+        <div id="resultMessage" class="result-message"></div>
+
+        <div class="paytable">
+            <h3>💰 Paytable:</h3>
+            <div class="paytable-grid">
+                <div class="paytable-item">
+                    <span class="symbols">🍒 🍒 🍒</span>
+                    <span class="payout">x3</span>
+                </div>
+                <div class="paytable-item">
+                    <span class="symbols">🍋 🍋 🍋</span>
+                    <span class="payout">x5</span>
+                </div>
+                <div class="paytable-item">
+                    <span class="symbols">🍊 🍊 🍊</span>
+                    <span class="payout">x7</span>
+                </div>
+                <div class="paytable-item">
+                    <span class="symbols">🍇 🍇 🍇</span>
+                    <span class="payout">x10</span>
+                </div>
+                <div class="paytable-item">
+                    <span class="symbols">🔔 🔔 🔔</span>
+                    <span class="payout">x15</span>
+                </div>
+                <div class="paytable-item">
+                    <span class="symbols">💎 💎 💎</span>
+                    <span class="payout">x25</span>
+                </div>
+                <div class="paytable-item">
+                    <span class="symbols">⭐ ⭐ ⭐</span>
+                    <span class="payout">x50</span>
+                </div>
+                <div class="paytable-item jackpot">
+                    <span class="symbols">💰 💰 💰</span>
+                    <span class="payout">JACKPOT x100!</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <h3>🎲 How to Play?</h3>
+            <ul>
+                <li>Choose your bet size (10-100)</li>
+                <li>Click "Spin" or "Max Bet" for maximum bet</li>
+                <li>3 matching symbols = win!</li>
+                <li>The rarer the symbol, the bigger the payout</li>
+                <li>💰 Three money symbols = x100 jackpot!</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -601,7 +601,7 @@ program
   .command("list")
   .description(chalk.green("List all available templates"))
   .action(() => {
-    console.log("\n" + chalk.blue("📦 Available Components (30 total)\n"));
+    console.log("\n" + chalk.blue("📦 Available Components (46 total)\n"));
 
     console.log(chalk.yellow("━ Basic Components (9)"));
     console.log("  button          Styled button component");
@@ -643,11 +643,23 @@ program
     console.log("  accordion       Collapsible accordion component");
     console.log("  tabs            Tabbed content switcher");
 
-    console.log("\n" + chalk.green("━ Interactive Games (4)"));
+    console.log("\n" + chalk.green("━ Interactive Games (16)"));
     console.log("  tic-tac-toe     Classic Tic-Tac-Toe game with score tracking");
     console.log("  memory-game     Memory card matching game with difficulty levels");
     console.log("  snake-game      Classic Snake game with keyboard controls");
     console.log("  guess-number    Number guessing game with hints and scoring");
+    console.log("  game-2048       2048 puzzle game with touch & keyboard controls");
+    console.log("  whack-a-mole    Whack-A-Mole arcade game with difficulty levels");
+    console.log("  simon-says      Simon Says memory pattern game");
+    console.log("  rock-paper-scissors  Rock Paper Scissors vs AI");
+    console.log("  breakout        Brick breaker arcade game with levels");
+    console.log("  tetris          Classic Tetris with piece preview");
+    console.log("  flappy-bird     Flappy Bird obstacle avoidance game");
+    console.log("  connect-four    Connect 4 strategy game vs AI");
+    console.log("  blackjack       Blackjack card game with betting");
+    console.log("  slot-machine    3-reel slot machine with jackpots");
+    console.log("  dice-game       Dice race to 100 strategy game");
+    console.log("  pong            Classic Pong paddle game vs AI");
 
     console.log("\n" + chalk.gray("Usage:"));
     console.log("  create-template create              Create a new component");
@@ -705,7 +717,7 @@ if (!process.argv.slice(2).length) {
   console.log("  $ create-template create        # Create with prompts");
   console.log("  $ create-template insert        # Insert with prompts");
   console.log("  $ create-template gallery       # View all components in gallery");
-  console.log("  $ create-template list          # View all 26 templates\n");
+  console.log("  $ create-template list          # View all 46 templates\n");
   console.log(chalk.gray("Flag Examples (Non-interactive):"));
   console.log("  $ create-template create -c button -n my-btn");
   console.log("  $ create-template insert -f index.html -c card -s separate");

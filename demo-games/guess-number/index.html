@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{name}} - Guess Number</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="game-card">
+            <h1>🎯 Guess the Number</h1>
+            
+            <div class="game-info">
+                <div class="info-row">
+                    <span class="label">Range:</span>
+                    <span id="rangeDisplay" class="value">1 - 100</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Attempts:</span>
+                    <span id="attempts" class="value">0</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Best Score:</span>
+                    <span id="bestScore" class="value">-</span>
+                </div>
+            </div>
+            
+            <div class="hint-section">
+                <div class="hint-box" id="hintBox">
+                    <p id="hintText">I'm thinking of a number...</p>
+                    <p id="hintDetails">Make your first guess!</p>
+                </div>
+            </div>
+            
+            <div class="input-section">
+                <input 
+                    type="number" 
+                    id="guessInput" 
+                    placeholder="Enter your guess"
+                    min="1"
+                    max="100"
+                />
+                <button id="guessBtn" class="btn btn-primary">Guess</button>
+            </div>
+            
+            <div class="history-section">
+                <h3>Previous Guesses</h3>
+                <div id="guessHistory" class="guess-history">
+                    <p class="empty-state">No guesses yet</p>
+                </div>
+            </div>
+            
+            <div class="difficulty-section">
+                <h3>Difficulty</h3>
+                <div class="difficulty-buttons">
+                    <button class="difficulty-btn active" data-range="100">Easy (1-100)</button>
+                    <button class="difficulty-btn" data-range="500">Medium (1-500)</button>
+                    <button class="difficulty-btn" data-range="1000">Hard (1-1000)</button>
+                </div>
+            </div>
+            
+            <div class="button-group">
+                <button id="newGameBtn" class="btn btn-success">New Game</button>
+                <button id="giveUpBtn" class="btn btn-secondary">Give Up</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

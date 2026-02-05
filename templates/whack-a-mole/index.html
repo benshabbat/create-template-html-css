@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{name}} - Whack-a-Mole</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="game-card">
+            <h1>🔨 Whack-a-Mole</h1>
+            
+            <div class="game-stats">
+                <div class="stat">
+                    <div class="stat-label">Score</div>
+                    <div id="score" class="stat-value">0</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">Time</div>
+                    <div id="timer" class="stat-value">30</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">High Score</div>
+                    <div id="highScore" class="stat-value">0</div>
+                </div>
+            </div>
+            
+            <div class="difficulty-selector">
+                <label>Difficulty:</label>
+                <select id="difficulty">
+                    <option value="easy">Easy</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+            </div>
+            
+            <div class="game-board" id="gameBoard">
+                <div class="hole" data-hole="0">
+                    <div class="mole">🐹</div>
+                </div>
+                <div class="hole" data-hole="1">
+                    <div class="mole">🐹</div>
+                </div>
+                <div class="hole" data-hole="2">
+                    <div class="mole">🐹</div>
+                </div>
+                <div class="hole" data-hole="3">
+                    <div class="mole">🐹</div>
+                </div>
+                <div class="hole" data-hole="4">
+                    <div class="mole">🐹</div>
+                </div>
+                <div class="hole" data-hole="5">
+                    <div class="mole">🐹</div>
+                </div>
+                <div class="hole" data-hole="6">
+                    <div class="mole">🐹</div>
+                </div>
+                <div class="hole" data-hole="7">
+                    <div class="mole">🐹</div>
+                </div>
+                <div class="hole" data-hole="8">
+                    <div class="mole">🐹</div>
+                </div>
+            </div>
+            
+            <div class="message" id="message"></div>
+            
+            <div class="button-group">
+                <button id="startBtn" class="btn btn-success">Start Game</button>
+                <button id="pauseBtn" class="btn btn-warning" disabled>Pause</button>
+            </div>
+            
+            <div class="instructions">
+                <h3>How to Play:</h3>
+                <p>🔨 Click on the moles as they pop up!</p>
+                <p>⏱️ You have 30 seconds to score as many points as possible</p>
+                <p>🎯 Each hit = +1 point</p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

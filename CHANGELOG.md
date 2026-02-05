@@ -5,6 +5,57 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0] - 2026-02-05
+
+### Added
+- **12 Additional Interactive Game Templates**: Major expansion with diverse game genres
+  
+  **Puzzle & Strategy Games**:
+  - **2048**: Addictive tile-merging puzzle with touch & keyboard controls, undo feature, best score tracking
+  - **Connect Four**: Classic 4-in-a-row with AI opponent (3 difficulty levels), drop animations, win detection
+  - **Simon Says**: Memory pattern game with increasing difficulty, sound effects, high score tracking
+  
+  **Arcade Classics**:
+  - **Breakout**: Brick breaker with lives system, level progression, paddle/ball physics, mouse & keyboard
+  - **Tetris**: Full Tetris with all 7 pieces, ghost preview, next piece display, level/speed progression
+  - **Flappy Bird**: Tap-to-flap obstacle game with animated background, realistic physics, increasing difficulty
+  - **Pong**: Classic paddle game with AI opponent (4 difficulty levels), 2-player mode, realistic ball physics
+  - **Whack-a-Mole**: Fast-paced arcade with difficulty levels, combo system, high score tracking
+  
+  **Card & Casino Games**:
+  - **Blackjack**: Full 21 card game with betting system, dealer AI, Hit/Stand/Double, 3:2 blackjack payout
+  - **Slot Machine**: 3-reel slots with 8 weighted symbols, jackpot x100, confetti celebration, paytable
+  
+  **Skill Games**:
+  - **Dice Game**: Race to 100 strategy game with AI opponent, roll/hold mechanics, animated dice
+  - **Rock-Paper-Scissors**: Classic hand game vs AI with best-of series, winning streak tracking
+
+- **Enhanced Game Features**:
+  - Multiple AI difficulty levels in strategy games
+  - Advanced physics engines (Breakout, Pong, Flappy Bird)
+  - Complex game state management (Tetris, Blackjack)
+  - Canvas-based rendering for arcade games
+  - Weighted random algorithms (Slot Machine)
+  - localStorage for all game progress/scores
+  - Touch and keyboard control support
+  - Professional animations and visual feedback
+  - Responsive designs for all screen sizes
+
+### Changed
+- Updated total template count from 30 to 46 components
+- Expanded "Interactive Games" category from 4 to 16 games
+- Updated CLI list command to display all 46 templates
+- All game UI text translated to English
+- Package version bumped to 2.0.0 (major release)
+
+### Technical Details
+- All games are fully self-contained and work offline
+- No external dependencies required
+- Compatible with all modern browsers
+- Canvas API used for rendering in applicable games
+- Complex AI implementations (minimax-style for Connect Four, strategic for Dice Game)
+- Proper game loop implementations with requestAnimationFrame
+
 ## [1.9.0] - 2026-02-05
 
 ### Added

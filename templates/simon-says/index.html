@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{name}} - Simon Says</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="game-card">
+            <h1>🎵 Simon Says</h1>
+            
+            <div class="game-stats">
+                <div class="stat">
+                    <div class="stat-label">Level</div>
+                    <div id="level" class="stat-value">1</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">Score</div>
+                    <div id="score" class="stat-value">0</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">Best</div>
+                    <div id="bestScore" class="stat-value">0</div>
+                </div>
+            </div>
+            
+            <div class="simon-board">
+                <div class="simon-button green" data-color="green"></div>
+                <div class="simon-button red" data-color="red"></div>
+                <div class="simon-button yellow" data-color="yellow"></div>
+                <div class="simon-button blue" data-color="blue"></div>
+                <div class="simon-center">
+                    <div id="startBtn" class="start-button">START</div>
+                </div>
+            </div>
+            
+            <div class="message" id="message">Press START to begin!</div>
+            
+            <div class="settings">
+                <label>Speed:</label>
+                <select id="speed">
+                    <option value="1000">Slow</option>
+                    <option value="700" selected>Normal</option>
+                    <option value="400">Fast</option>
+                </select>
+                <label class="sound-toggle">
+                    <input type="checkbox" id="soundToggle" checked>
+                    <span>Sound</span>
+                </label>
+            </div>
+            
+            <div class="instructions">
+                <h3>How to Play:</h3>
+                <p>🎯 Watch the sequence of colors</p>
+                <p>🖱️ Click the colors in the same order</p>
+                <p>📈 Each round adds one more color to the sequence</p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

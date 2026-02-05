@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackjack - 21</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🃏 Blackjack</h1>
+            <p class="subtitle">Get to 21 and beat the dealer!</p>
+        </div>
+
+        <div class="game-info">
+            <div class="info-item">
+                <span class="label">Credits:</span>
+                <span id="credits" class="value">1000</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Bet:</span>
+                <span id="bet" class="value">0</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Wins:</span>
+                <span id="wins" class="value">0</span>
+            </div>
+        </div>
+
+        <div class="game-area">
+            <!-- Dealer Section -->
+            <div class="player-section dealer-section">
+                <div class="player-header">
+                    <h3>🎩 Dealer</h3>
+                    <div class="score-display">
+                        <span id="dealerScore">0</span>
+                    </div>
+                </div>
+                <div id="dealerHand" class="hand"></div>
+            </div>
+
+            <!-- Player Section -->
+            <div class="player-section player-section-main">
+                <div class="player-header">
+                    <h3>👤 You</h3>
+                    <div class="score-display">
+                        <span id="playerScore">0</span>
+                    </div>
+                </div>
+                <div id="playerHand" class="hand"></div>
+            </div>
+        </div>
+
+        <!-- Betting Area -->
+        <div class="betting-area" id="bettingArea">
+            <h3>🎲 Place Bet:</h3>
+            <div class="bet-buttons">
+                <button class="bet-btn" data-amount="10">10</button>
+                <button class="bet-btn" data-amount="25">25</button>
+                <button class="bet-btn" data-amount="50">50</button>
+                <button class="bet-btn" data-amount="100">100</button>
+                <button class="bet-btn" data-amount="250">250</button>
+            </div>
+            <button id="dealBtn" class="btn btn-primary" disabled>Deal Cards</button>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons" id="actionButtons" style="display: none;">
+            <button id="hitBtn" class="btn btn-success">Hit</button>
+            <button id="standBtn" class="btn btn-warning">Stand</button>
+            <button id="doubleBtn" class="btn btn-info">Double</button>
+        </div>
+
+        <!-- Result Message -->
+        <div id="resultMessage" class="result-message"></div>
+
+        <!-- Next Round Button -->
+        <button id="nextRoundBtn" class="btn btn-primary" style="display: none;">Next Round</button>
+
+        <div class="instructions">
+            <h3>📖 Game Rules:</h3>
+            <ul>
+                <li>Goal: Get to 21 or as close as possible without going over</li>
+                <li>Face cards are worth 10, Ace is worth 1 or 11</li>
+                <li><strong>Hit</strong> - Take another card</li>
+                <li><strong>Stand</strong> - Stop and let dealer play</li>
+                <li><strong>Double</strong> - Double your bet and get one card</li>
+                <li><strong>Blackjack</strong> - 21 with 2 cards = 3:2 payout!</li>
+                <li>Dealer must hit until 17 or higher</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

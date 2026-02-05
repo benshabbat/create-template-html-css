@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tetris</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎮 Tetris</h1>
+            <p class="subtitle">The classic game!</p>
+        </div>
+
+        <div class="game-container">
+            <div class="side-panel">
+                <div class="info-card">
+                    <h3>📊 Score</h3>
+                    <div class="score-value" id="score">0</div>
+                </div>
+
+                <div class="info-card">
+                    <h3>🏆 High Score</h3>
+                    <div class="score-value" id="highScore">0</div>
+                </div>
+
+                <div class="info-card">
+                    <h3>📈 Level</h3>
+                    <div class="score-value" id="level">1</div>
+                </div>
+
+                <div class="info-card">
+                    <h3>📏 Lines</h3>
+                    <div class="score-value" id="lines">0</div>
+                </div>
+
+                <div class="info-card next-piece">
+                    <h3>🔜 Next</h3>
+                    <canvas id="nextCanvas"></canvas>
+                </div>
+            </div>
+
+            <div class="game-board">
+                <canvas id="gameCanvas"></canvas>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="startBtn" class="btn btn-primary">Start Game</button>
+            <button id="pauseBtn" class="btn btn-secondary" disabled>Pause</button>
+            <button id="resetBtn" class="btn btn-danger">Reset</button>
+        </div>
+
+        <div class="instructions">
+            <h3>⌨️ Controls:</h3>
+            <div class="key-instructions">
+                <div class="key-item">
+                    <span class="key">←</span>
+                    <span>Left</span>
+                </div>
+                <div class="key-item">
+                    <span class="key">→</span>
+                    <span>Right</span>
+                </div>
+                <div class="key-item">
+                    <span class="key">↓</span>
+                    <span>Fast Down</span>
+                </div>
+                <div class="key-item">
+                    <span class="key">↑</span>
+                    <span>Rotate</span>
+                </div>
+                <div class="key-item">
+                    <span class="key">Space</span>
+                    <span>Hard Drop</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

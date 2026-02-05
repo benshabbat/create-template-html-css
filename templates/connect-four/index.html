@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect Four</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 Connect Four</h1>
+            <p class="subtitle">Connect 4 to win!</p>
+        </div>
+
+        <div class="game-status">
+            <div class="player-info player1">
+                <div class="player-indicator"></div>
+                <span>Player 1</span>
+                <div id="score1" class="score">0</div>
+            </div>
+            
+            <div class="current-turn">
+                <div id="turnIndicator">Player 1's Turn</div>
+            </div>
+            
+            <div class="player-info player2">
+                <div class="player-indicator"></div>
+                <span>Player 2 / Computer</span>
+                <div id="score2" class="score">0</div>
+            </div>
+        </div>
+
+        <div class="game-board-container">
+            <div id="gameBoard" class="game-board"></div>
+        </div>
+
+        <div class="controls">
+            <div class="mode-selector">
+                <label>
+                    <input type="radio" name="gameMode" value="pvp" checked>
+                    <span>Player vs Player</span>
+                </label>
+                <label>
+                    <input type="radio" name="gameMode" value="pvc">
+                    <span>vs Computer</span>
+                </label>
+            </div>
+            
+            <div class="difficulty-selector" style="display: none;">
+                <label>Difficulty:</label>
+                <select id="difficulty">
+                    <option value="easy">Easy</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="game-controls">
+            <button id="newGameBtn" class="btn btn-primary">New Game</button>
+            <button id="resetScoreBtn" class="btn btn-secondary">Reset Score</button>
+        </div>
+
+        <div class="instructions">
+            <h3>📖 Game Instructions:</h3>
+            <ul>
+                <li>Click on a column to drop the disc</li>
+                <li>Connect 4 discs in a row (horizontal, vertical, or diagonal) to win</li>
+                <li>Choose game mode: against another player or against computer</li>
+                <li>In computer mode, select difficulty level</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{name}} - Rock Paper Scissors</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="game-card">
+            <h1>✊ Rock Paper Scissors ✋</h1>
+            
+            <div class="score-board">
+                <div class="score-item player">
+                    <div class="score-label">You</div>
+                    <div id="playerScore" class="score-value">0</div>
+                </div>
+                <div class="score-item">
+                    <div class="score-label">Draws</div>
+                    <div id="drawScore" class="score-value">0</div>
+                </div>
+                <div class="score-item computer">
+                    <div class="score-label">Computer</div>
+                    <div id="computerScore" class="score-value">0</div>
+                </div>
+            </div>
+            
+            <div class="game-area">
+                <div class="choice-display">
+                    <div class="choice-box player-choice">
+                        <div class="choice-icon" id="playerChoice">❓</div>
+                        <div class="choice-label">Your Choice</div>
+                    </div>
+                    <div class="vs">VS</div>
+                    <div class="choice-box computer-choice">
+                        <div class="choice-icon" id="computerChoice">❓</div>
+                        <div class="choice-label">Computer</div>
+                    </div>
+                </div>
+                
+                <div class="result-message" id="resultMessage">
+                    Choose your weapon!
+                </div>
+            </div>
+            
+            <div class="choices">
+                <button class="choice-btn" data-choice="rock">
+                    <span class="choice-emoji">✊</span>
+                    <span class="choice-name">Rock</span>
+                </button>
+                <button class="choice-btn" data-choice="paper">
+                    <span class="choice-emoji">✋</span>
+                    <span class="choice-name">Paper</span>
+                </button>
+                <button class="choice-btn" data-choice="scissors">
+                    <span class="choice-emoji">✌️</span>
+                    <span class="choice-name">Scissors</span>
+                </button>
+            </div>
+            
+            <div class="game-mode">
+                <label>Game Mode:</label>
+                <select id="gameMode">
+                    <option value="unlimited">Unlimited</option>
+                    <option value="best-of-3">Best of 3</option>
+                    <option value="best-of-5">Best of 5</option>
+                    <option value="best-of-10">Best of 10</option>
+                </select>
+            </div>
+            
+            <button id="resetBtn" class="btn btn-secondary">Reset Game</button>
+            
+            <div class="rules">
+                <h3>Rules:</h3>
+                <p>✊ Rock beats ✌️ Scissors</p>
+                <p>✋ Paper beats ✊ Rock</p>
+                <p>✌️ Scissors beats ✋ Paper</p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -33,7 +33,7 @@ npm install -g create-template-html-css
 - 🌈 **Stunning Gradients** - Colorful and attractive designs
 - ⚡ **Animations** - Smooth and professional effects
 - 🔧 **Customizable** - Easy to edit and modify the code
-- 📦 **30 Templates** - Button, Card, Form, Navigation, Modal, Footer, Hero, Slider, Table, Login, Register, Skeleton, Spinner, Animated Cards, Typing Effect, Fade Gallery, Grid Layouts, Masonry Grid, Dashboard, Flexbox Layouts, Todo List, Counter, Accordion, Tabs, Tic-Tac-Toe, Memory Game, Snake Game, Guess Number
+- 📦 **46 Templates** - Button, Card, Form, Navigation, Modal, Footer, Hero, Slider, Table, Login, Register, Skeleton, Spinner, Animated Cards, Typing Effect, Fade Gallery, Grid Layouts, Masonry Grid, Dashboard, Flexbox Layouts, Todo List, Counter, Accordion, Tabs, 16 Interactive Games (Tic-Tac-Toe, Memory, Snake, Guess Number, 2048, Whack-a-Mole, Simon Says, Rock-Paper-Scissors, Breakout, Tetris, Flappy Bird, Connect Four, Blackjack, Slot Machine, Dice Game, Pong)
 - 🎯 **Two Modes** - Create new projects or insert into existing HTML pages
 - 🔒 **Secure** - Input validation and path protection
 - 📚 **Well Documented** - Comprehensive guides and examples
@@ -42,6 +42,56 @@ npm install -g create-template-html-css
 - 📂 **Organized Structure** - CSS and JS files automatically organized in folders (v1.6.2+)
 - 💾 **Simple Backups** - Clean backup naming without timestamps (v1.6.2+)
 - 🎯 **Customizable Components** - Choose navigation items and form fields during creation (v1.7.0+)
+
+## 🆕 What's New in v2.0.0
+
+### 🎮 12 Additional Game Templates
+Massive expansion with 12 new fully-functional games:
+
+**Puzzle & Strategy Games:**
+- **2048** - Addictive tile-merging puzzle with touch & keyboard controls, undo feature, and best score tracking
+- **Connect Four** - Classic 4-in-a-row strategy game with AI opponent (3 difficulty levels), drop animations
+- **Simon Says** - Memory pattern game with increasing difficulty, sound effects, and high score tracking
+
+**Arcade Classics:**
+- **Breakout** - Brick breaker with lives system, level progression, paddle/ball physics, mouse & keyboard controls
+- **Tetris** - Full Tetris implementation with all 7 pieces, ghost preview, next piece display, level progression
+- **Flappy Bird** - Tap-to-flap obstacle game with animated background, realistic physics, increasing difficulty
+- **Pong** - Classic paddle game with AI opponent (4 difficulty levels), 2-player mode, realistic ball physics
+- **Whack-a-Mole** - Fast-paced arcade game with difficulty levels, combo system, and high score tracking
+
+**Card & Casino Games:**
+- **Blackjack** - Full 21 card game with betting system, dealer AI, Hit/Stand/Double actions, 3:2 payout
+- **Slot Machine** - 3-reel slots with 8 symbols, weighted payouts, jackpot x100, confetti celebration
+- **Dice Game** - Race to 100 dice strategy game with AI opponent, roll/hold mechanics, animated dice
+
+**Skill Games:**
+- **Rock-Paper-Scissors** - Classic hand game vs AI with best-of series, winning streak tracking
+
+**All Games Feature:**
+- Complete game logic and state management
+- Score/progress tracking with localStorage
+- Responsive designs for mobile and desktop
+- Smooth animations and visual feedback
+- Professional UI with modern styling
+- Touch and keyboard controls
+- AI opponents with multiple difficulty levels
+
+**Usage:**
+```bash
+create-template create -c game-2048 -n 2048-game
+create-template create -c breakout -n brick-breaker
+create-template create -c tetris -n tetris-game
+create-template create -c flappy-bird -n flappy
+create-template create -c connect-four -n connect4
+create-template create -c blackjack -n blackjack-game
+create-template create -c slot-machine -n slots
+create-template create -c dice-game -n dice
+create-template create -c pong -n pong-game
+create-template create -c whack-a-mole -n whack
+create-template create -c simon-says -n simon
+create-template create -c rock-paper-scissors -n rps
+```
 
 ## 🆕 What's New in v1.9.0
 

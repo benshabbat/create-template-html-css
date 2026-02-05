@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pong</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🕹️ Pong</h1>
+            <p class="subtitle">The classic game!</p>
+        </div>
+
+        <div class="game-mode">
+            <button class="mode-btn active" data-mode="pvc">🤖 vs Computer</button>
+            <button class="mode-btn" data-mode="pvp">👥 Two Players</button>
+        </div>
+
+        <div class="difficulty-selector">
+            <label>Difficulty:</label>
+            <select id="difficulty">
+                <option value="easy">Easy</option>
+                <option value="medium" selected>Medium</option>
+                <option value="hard">Hard</option>
+                <option value="impossible">Impossible</option>
+            </select>
+        </div>
+
+        <div class="score-board">
+            <div class="player-score">
+                <h3>👤 Player 1</h3>
+                <div id="player1Score" class="score">0</div>
+            </div>
+            <div class="divider">:</div>
+            <div class="player-score">
+                <h3 id="player2Name">🤖 Computer</h3>
+                <div id="player2Score" class="score">0</div>
+            </div>
+        </div>
+
+        <canvas id="gameCanvas"></canvas>
+
+        <div class="controls">
+            <button id="startBtn" class="btn btn-primary">Start Game</button>
+            <button id="pauseBtn" class="btn btn-secondary" disabled>Pause</button>
+            <button id="resetBtn" class="btn btn-danger">Reset</button>
+        </div>
+
+        <div id="resultMessage" class="result-message"></div>
+
+        <div class="instructions">
+            <h3>🎮 Game Instructions:</h3>
+            <div class="controls-grid">
+                <div class="control-item">
+                    <strong>Player 1:</strong>
+                    <div class="keys">
+                        <span class="key">W</span>
+                        <span>Up</span>
+                    </div>
+                    <div class="keys">
+                        <span class="key">S</span>
+                        <span>Down</span>
+                    </div>
+                </div>
+                <div class="control-item">
+                    <strong>Player 2:</strong>
+                    <div class="keys">
+                        <span class="key">↑</span>
+                        <span>Up</span>
+                    </div>
+                    <div class="keys">
+                        <span class="key">↓</span>
+                        <span>Down</span>
+                    </div>
+                </div>
+            </div>
+            <ul class="rules">
+                <li>Goal: Return the ball and score</li>
+                <li>Each goal scored = +1 point</li>
+                <li>First to 10 points wins!</li>
+                <li>Speed increases as the ball is returned</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
