@@ -601,7 +601,7 @@ program
   .command("list")
   .description(chalk.green("List all available templates"))
   .action(() => {
-    console.log("\n" + chalk.blue("📦 Available Components (26 total)\n"));
+    console.log("\n" + chalk.blue("📦 Available Components (30 total)\n"));
 
     console.log(chalk.yellow("━ Basic Components (9)"));
     console.log("  button          Styled button component");
@@ -642,6 +642,12 @@ program
     console.log("  counter         Click counter with history tracking");
     console.log("  accordion       Collapsible accordion component");
     console.log("  tabs            Tabbed content switcher");
+
+    console.log("\n" + chalk.green("━ Interactive Games (4)"));
+    console.log("  tic-tac-toe     Classic Tic-Tac-Toe game with score tracking");
+    console.log("  memory-game     Memory card matching game with difficulty levels");
+    console.log("  snake-game      Classic Snake game with keyboard controls");
+    console.log("  guess-number    Number guessing game with hints and scoring");
 
     console.log("\n" + chalk.gray("Usage:"));
     console.log("  create-template create              Create a new component");
