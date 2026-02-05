@@ -5,6 +5,35 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.9.0] - 2026-02-05
+
+### Added
+- **4 New Interactive Game Templates**: Complete, playable games with full functionality
+  - **Tic-Tac-Toe**: Classic X and O game with score tracking, win detection, auto-reset, and winning cell highlighting
+  - **Memory Game**: Card matching game with 3 difficulty levels (4×4, 4×5, 4×6), move counter, timer, and emoji cards
+  - **Snake Game**: Classic snake with keyboard/touch controls, canvas rendering, increasing speed, and high score tracking
+  - **Guess the Number**: Number guessing game with hot/cold hints, 3 difficulty levels (1-100, 1-500, 1-1000), and best score tracking
+
+- **Game Features**:
+  - Complete game logic and state management
+  - Score persistence using localStorage
+  - Responsive designs for mobile and desktop
+  - Smooth animations and visual feedback
+  - Touch and keyboard controls support
+  - Professional UI with modern gradients
+  - Win/lose detection and celebration animations
+
+### Changed
+- Updated CLI list command to show 30 total components (was 26)
+- Added new "Interactive Games" category in component list
+- Updated package version from 1.8.1 to 1.9.0
+
+### Technical Details
+- All games include HTML, CSS, and JavaScript files
+- Games are fully self-contained and work offline
+- No external dependencies required
+- Compatible with all modern browsers
+
 ## [1.8.0] - 2026-02-02
 
 ### Added

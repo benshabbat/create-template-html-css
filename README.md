@@ -33,7 +33,7 @@ npm install -g create-template-html-css
 - 🌈 **Stunning Gradients** - Colorful and attractive designs
 - ⚡ **Animations** - Smooth and professional effects
 - 🔧 **Customizable** - Easy to edit and modify the code
-- 📦 **26 Templates** - Button, Card, Form, Navigation, Modal, Footer, Hero, Slider, Table, Login, Register, Skeleton, Spinner, Animated Cards, Typing Effect, Fade Gallery, Grid Layouts, Masonry Grid, Dashboard, Flexbox Layouts, Todo List, Counter, Accordion, Tabs
+- 📦 **30 Templates** - Button, Card, Form, Navigation, Modal, Footer, Hero, Slider, Table, Login, Register, Skeleton, Spinner, Animated Cards, Typing Effect, Fade Gallery, Grid Layouts, Masonry Grid, Dashboard, Flexbox Layouts, Todo List, Counter, Accordion, Tabs, Tic-Tac-Toe, Memory Game, Snake Game, Guess Number
 - 🎯 **Two Modes** - Create new projects or insert into existing HTML pages
 - 🔒 **Secure** - Input validation and path protection
 - 📚 **Well Documented** - Comprehensive guides and examples
@@ -42,6 +42,32 @@ npm install -g create-template-html-css
 - 📂 **Organized Structure** - CSS and JS files automatically organized in folders (v1.6.2+)
 - 💾 **Simple Backups** - Clean backup naming without timestamps (v1.6.2+)
 - 🎯 **Customizable Components** - Choose navigation items and form fields during creation (v1.7.0+)
+
+## 🆕 What's New in v1.9.0
+
+### 🎮 Interactive Game Templates
+4 new fully-functional game templates with complete gameplay mechanics:
+
+- **Tic-Tac-Toe** - Classic X and O game with score tracking, win detection, and auto-reset
+- **Memory Game** - Card matching game with 3 difficulty levels (4×4, 4×5, 4×6), timer, and move counter
+- **Snake Game** - Classic snake with keyboard/touch controls, increasing speed, and high score tracking
+- **Guess the Number** - Number guessing game with hot/cold hints, multiple difficulty levels, and best score tracking
+
+**Features:**
+- Complete game logic and state management
+- Score tracking with localStorage persistence
+- Responsive designs for mobile and desktop
+- Smooth animations and visual feedback
+- Professional UI with gradients and modern styling
+- Touch and keyboard controls
+
+**Usage:**
+```bash
+create-template create -c tic-tac-toe -n my-game
+create-template create -c memory-game -n memory
+create-template create -c snake-game -n snake
+create-template create -c guess-number -n guess
+```
 
 ## 🆕 What's New in v1.8.0
 
@@ -103,7 +129,7 @@ create-template create -c modal
 
 ### 📊 Interactive Component Gallery
 New **COMPONENTS-GALLERY.html** showcase page:
-- Browse all 26 components with descriptions
+- Browse all 30 components with descriptions
 - Search and filter by category
 - View all 10 color scheme presets with color swatches
 - Copy CLI commands (both npx and local) with one click
@@ -719,6 +745,107 @@ Admin dashboard built entirely with Flexbox:
 - Mobile responsive
 - Interactive animations
 - Professional design
+
+### 20. Todo List ✅
+
+Interactive todo list with add/remove functionality:
+
+**Features:**
+- Add new tasks
+- Mark tasks as complete
+- Delete tasks
+- Task counter
+- LocalStorage persistence
+- Animated interactions
+
+### 21. Counter 🔢
+
+Click counter with history tracking:
+
+**Features:**
+- Increment/decrement buttons
+- Custom step size
+- Reset functionality
+- History log
+- Color-coded display
+- Animated transitions
+
+### 22. Accordion 📑
+
+Collapsible accordion component:
+
+**Features:**
+- Multiple sections
+- Smooth expand/collapse
+- Only one section open at a time
+- Icon rotation
+- Responsive design
+
+### 23. Tabs 📑
+
+Tabbed content switcher:
+
+**Features:**
+- Multiple tab panels
+- Smooth transitions
+- Active state highlighting
+- Responsive layout
+- Keyboard navigation
+
+### 24. Tic-Tac-Toe 🎯
+
+Classic X and O game:
+
+**Features:**
+- Two-player gameplay
+- Win detection (rows, columns, diagonals)
+- Score tracking for X, O, and draws
+- Auto-reset after game ends
+- Winning cell highlighting
+- Responsive design
+- Score persistence
+
+### 25. Memory Game 🧠
+
+Card matching memory game:
+
+**Features:**
+- 3 difficulty levels (4×4, 4×5, 4×6)
+- Move counter
+- Timer
+- Match tracking
+- Card flip animations
+- Emoji-based cards
+- Win detection
+- Responsive grid
+
+### 26. Snake Game 🐍
+
+Classic snake game:
+
+**Features:**
+- Keyboard controls (Arrow keys, WASD)
+- Touch swipe controls for mobile
+- On-screen button controls
+- Increasing speed as you score
+- High score tracking (localStorage)
+- Collision detection
+- Smooth canvas rendering
+- Pause/resume functionality
+
+### 27. Guess the Number 🎲
+
+Number guessing game with hints:
+
+**Features:**
+- 3 difficulty levels (1-100, 1-500, 1-1000)
+- Hot/cold hint system
+- Guess history
+- Attempt counter
+- Best score tracking per difficulty
+- Visual feedback animations
+- Duplicate guess detection
+- Give up option
 
 
 ## 💡 Examples
