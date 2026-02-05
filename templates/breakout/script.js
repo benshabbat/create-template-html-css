@@ -263,11 +263,11 @@ function gameOver() {
     ctx.fillStyle = '#FFFFFF';
     ctx.font = 'bold 48px Arial';
     ctx.textAlign = 'center';
-    ctx.fillText('משחק נגמר!', canvas.width / 2, canvas.height / 2 - 40);
+    ctx.fillText('Game Over!', canvas.width / 2, canvas.height / 2 - 40);
     
     ctx.font = '24px Arial';
-    ctx.fillText(`ניקוד סופי: ${gameState.score}`, canvas.width / 2, canvas.height / 2 + 20);
-    ctx.fillText('לחץ "אתחל" להתחיל מחדש', canvas.width / 2, canvas.height / 2 + 60);
+    ctx.fillText(`Final Score: ${gameState.score}`, canvas.width / 2, canvas.height / 2 + 20);
+    ctx.fillText('Click "Reset" to restart', canvas.width / 2, canvas.height / 2 + 60);
     
     document.getElementById('startBtn').disabled = false;
     document.getElementById('pauseBtn').disabled = true;
@@ -306,7 +306,7 @@ function draw() {
         ctx.fillStyle = '#FFFFFF';
         ctx.font = 'bold 36px Arial';
         ctx.textAlign = 'center';
-        ctx.fillText('משחק מושהה', canvas.width / 2, canvas.height / 2);
+        ctx.fillText('Game Paused', canvas.width / 2, canvas.height / 2);
     }
 }
 
@@ -349,7 +349,7 @@ function startGame() {
 // Pause game
 function pauseGame() {
     gameState.paused = !gameState.paused;
-    document.getElementById('pauseBtn').textContent = gameState.paused ? 'המשך' : 'השהה';
+    document.getElementById('pauseBtn').textContent = gameState.paused ? 'Resume' : 'Pause';
 }
 
 // Reset game
@@ -372,7 +372,7 @@ function resetGame() {
     
     document.getElementById('startBtn').disabled = false;
     document.getElementById('pauseBtn').disabled = true;
-    document.getElementById('pauseBtn').textContent = 'השהה';
+    document.getElementById('pauseBtn').textContent = 'Pause';
 }
 
 // Event listeners

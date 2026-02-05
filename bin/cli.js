@@ -14,7 +14,7 @@ program
   .description(
     chalk.cyan("🎨 Create HTML/CSS UI component templates in seconds"),
   )
-  .version("2.0.3");
+  .version("2.0.4");
 
 // Add intro message
 program.on("--help", () => {

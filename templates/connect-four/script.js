@@ -331,15 +331,15 @@ function endGame(winner) {
         gameState.score1++;
         localStorage.setItem('connect4Score1', gameState.score1);
         updateScore();
-        showMessage('🎉 שחקן 1 ניצח!', 'player1');
+        showMessage('🎉 Player 1 wins!', 'player1');
     } else if (winner === PLAYER2) {
         gameState.score2++;
         localStorage.setItem('connect4Score2', gameState.score2);
         updateScore();
-        const message = gameState.gameMode === 'pvc' ? '🤖 המחשב ניצח!' : '🎉 שחקן 2 ניצח!';
+        const message = gameState.gameMode === 'pvc' ? '🤖 Computer wins!' : '🎉 Player 2 wins!';
         showMessage(message, 'player2');
     } else {
-        showMessage('🤝 תיקו!', 'draw');
+        showMessage('🤝 Draw!', 'draw');
     }
 }
 
@@ -354,10 +354,10 @@ function showMessage(text, type) {
 function updateTurnIndicator() {
     const turnIndicator = document.getElementById('turnIndicator');
     if (gameState.currentPlayer === PLAYER1) {
-        turnIndicator.textContent = 'תור שחקן 1';
+        turnIndicator.textContent = 'Player 1\'s Turn';
         turnIndicator.className = 'player1-turn';
     } else {
-        const text = gameState.gameMode === 'pvc' ? 'תור המחשב' : 'תור שחקן 2';
+        const text = gameState.gameMode === 'pvc' ? 'Computer\'s Turn' : 'Player 2\'s Turn';
         turnIndicator.textContent = text;
         turnIndicator.className = 'player2-turn';
     }

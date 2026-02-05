@@ -279,15 +279,15 @@ function gameOver() {
     ctx.fillText('Game Over!', canvas.width / 2, canvas.height / 2 - 50);
     
     ctx.font = '24px Arial';
-    ctx.strokeText(`ניקוד: ${gameState.score}`, canvas.width / 2, canvas.height / 2 + 10);
-    ctx.fillText(`ניקוד: ${gameState.score}`, canvas.width / 2, canvas.height / 2 + 10);
+    ctx.strokeText(`Score: ${gameState.score}`, canvas.width / 2, canvas.height / 2 + 10);
+    ctx.fillText(`Score: ${gameState.score}`, canvas.width / 2, canvas.height / 2 + 10);
     
-    ctx.strokeText(`שיא: ${gameState.highScore}`, canvas.width / 2, canvas.height / 2 + 50);
-    ctx.fillText(`שיא: ${gameState.highScore}`, canvas.width / 2, canvas.height / 2 + 50);
+    ctx.strokeText(`High Score: ${gameState.highScore}`, canvas.width / 2, canvas.height / 2 + 50);
+    ctx.fillText(`High Score: ${gameState.highScore}`, canvas.width / 2, canvas.height / 2 + 50);
     
     ctx.font = '18px Arial';
-    ctx.strokeText('לחץ "אתחל" להתחיל מחדש', canvas.width / 2, canvas.height / 2 + 100);
-    ctx.fillText('לחץ "אתחל" להתחיל מחדש', canvas.width / 2, canvas.height / 2 + 100);
+    ctx.strokeText('Click "Reset" to restart', canvas.width / 2, canvas.height / 2 + 100);
+    ctx.fillText('Click "Reset" to restart', canvas.width / 2, canvas.height / 2 + 100);
     
     document.getElementById('startBtn').disabled = false;
 }
@@ -318,11 +318,11 @@ function drawStartScreen() {
     ctx.fillText('🐦 Flappy Bird', canvas.width / 2, canvas.height / 2 - 40);
     
     ctx.font = '20px Arial';
-    ctx.strokeText('לחץ "התחל משחק"', canvas.width / 2, canvas.height / 2 + 20);
-    ctx.fillText('לחץ "התחל משחק"', canvas.width / 2, canvas.height / 2 + 20);
+    ctx.strokeText('Click "Start Game"', canvas.width / 2, canvas.height / 2 + 20);
+    ctx.fillText('Click "Start Game"', canvas.width / 2, canvas.height / 2 + 20);
     
-    ctx.strokeText('להתחיל!', canvas.width / 2, canvas.height / 2 + 50);
-    ctx.fillText('להתחיל!', canvas.width / 2, canvas.height / 2 + 50);
+    ctx.strokeText('to begin!', canvas.width / 2, canvas.height / 2 + 50);
+    ctx.fillText('to begin!', canvas.width / 2, canvas.height / 2 + 50);
 }
 
 // Game loop

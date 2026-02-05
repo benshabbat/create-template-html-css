@@ -89,10 +89,10 @@ document.querySelectorAll('.mode-btn').forEach(btn => {
         
         // Update player 2 name
         if (gameState.gameMode === 'pvc') {
-            document.getElementById('player2Name').textContent = '🤖 מחשב';
+            document.getElementById('player2Name').textContent = '🤖 Computer';
             document.querySelector('.difficulty-selector').style.display = 'flex';
         } else {
-            document.getElementById('player2Name').textContent = '👤 שחקן 2';
+            document.getElementById('player2Name').textContent = '👤 Player 2';
             document.querySelector('.difficulty-selector').style.display = 'none';
         }
     });
@@ -251,7 +251,7 @@ function draw() {
         ctx.fillStyle = '#FFFFFF';
         ctx.font = 'bold 36px Arial';
         ctx.textAlign = 'center';
-        ctx.fillText('משחק מושהה', canvas.width / 2, canvas.height / 2);
+        ctx.fillText('Game Paused', canvas.width / 2, canvas.height / 2);
     }
 }
 
@@ -288,10 +288,10 @@ function endGame(winner) {
     gameState.running = false;
     
     const winnerName = winner === 1 ? 
-        'שחקן 1' : 
-        (gameState.gameMode === 'pvc' ? 'המחשב' : 'שחקן 2');
+        'Player 1' : 
+        (gameState.gameMode === 'pvc' ? 'Computer' : 'Player 2');
     
-    showMessage(`🎉 ${winnerName} ניצח ${gameState.winningScore} - ${winner === 1 ? gameState.score2 : gameState.score1}!`, 'success');
+    showMessage(`🎉 ${winnerName} wins ${gameState.winningScore} - ${winner === 1 ? gameState.score2 : gameState.score1}!`, 'success');
     
     document.getElementById('startBtn').disabled = false;
     document.getElementById('pauseBtn').disabled = true;
@@ -325,7 +325,7 @@ document.getElementById('pauseBtn').addEventListener('click', pauseGame);
 
 function pauseGame() {
     gameState.paused = !gameState.paused;
-    document.getElementById('pauseBtn').textContent = gameState.paused ? 'המשך' : 'השהה';
+    document.getElementById('pauseBtn').textContent = gameState.paused ? 'Resume' : 'Pause';
 }
 
 // Reset game
@@ -347,7 +347,7 @@ function resetGame() {
     
     document.getElementById('startBtn').disabled = false;
     document.getElementById('pauseBtn').disabled = true;
-    document.getElementById('pauseBtn').textContent = 'השהה';
+    document.getElementById('pauseBtn').textContent = 'Pause';
     document.getElementById('resultMessage').textContent = '';
 }
 

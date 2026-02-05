@@ -1,8 +1,8 @@
 // Game state
 let gameState = {
     players: [
-        { total: 0, current: 0, name: 'שחקן 1' },
-        { total: 0, current: 0, name: 'שחקן 2' }
+        { total: 0, current: 0, name: 'Player 1' },
+        { total: 0, current: 0, name: 'Player 2' }
     ],
     currentPlayer: 0,
     gameActive: true,
@@ -34,13 +34,13 @@ function updateDisplay() {
     if (gameState.currentPlayer === 0) {
         player1Card.classList.add('active');
         player2Card.classList.remove('active');
-        player1Card.querySelector('.current-turn').textContent = 'תורך!';
-        player2Card.querySelector('.current-turn').textContent = 'המתן...';
+        player1Card.querySelector('.current-turn').textContent = 'Your Turn!';
+        player2Card.querySelector('.current-turn').textContent = 'Wait...';
     } else {
         player1Card.classList.remove('active');
         player2Card.classList.add('active');
-        player1Card.querySelector('.current-turn').textContent = 'המתן...';
-        player2Card.querySelector('.current-turn').textContent = gameState.gameMode === 'pvc' ? 'תור המחשב...' : 'תורך!';
+        player1Card.querySelector('.current-turn').textContent = 'Wait...';
+        player2Card.querySelector('.current-turn').textContent = gameState.gameMode === 'pvc' ? 'Computer\'s Turn...' : 'Your Turn!';
     }
 }
 
@@ -96,7 +96,7 @@ document.getElementById('rollBtn').addEventListener('click', async () => {
     if (roll === 1) {
         // Lost turn
         gameState.players[gameState.currentPlayer].current = 0;
-        showMessage(`💥 הטלת 1! איבדת את כל ניקוד התור!`, 'error');
+        showMessage(`💥 Rolled 1! You lost all turn points!`, 'error');
         
         await new Promise(resolve => setTimeout(resolve, 1500));
         switchPlayer();
@@ -104,7 +104,7 @@ document.getElementById('rollBtn').addEventListener('click', async () => {
         // Add to current
         gameState.players[gameState.currentPlayer].current += roll;
         updateDisplay();
-        showMessage(`🎲 הטלת ${roll}!`, 'info');
+        showMessage(`🎲 Rolled ${roll}!`, 'info');
     }
 });
 
@@ -115,7 +115,7 @@ document.getElementById('holdBtn').addEventListener('click', () => {
     const player = gameState.players[gameState.currentPlayer];
     
     if (player.current === 0) {
-        showMessage('אין מה לשמור! הטל קובייה תחילה.', 'error');
+        showMessage('Nothing to save! Roll the dice first.', 'error');
         return;
     }
     
@@ -128,7 +128,7 @@ document.getElementById('holdBtn').addEventListener('click', () => {
     if (player.total >= 100) {
         endGame();
     } else {
-        showMessage(`✅ נשמר! ${player.total} נקודות סה"כ.`, 'success');
+        showMessage(`✅ Saved! ${player.total} points total.`, 'success');
         setTimeout(() => {
             switchPlayer();
         }, 1000);
@@ -161,7 +161,7 @@ async function computerTurn() {
         
         if (roll === 1) {
             player.current = 0;
-            showMessage(`🤖 המחשב הטיל 1! איבד את התור!`, 'error');
+            showMessage(`🤖 Computer rolled 1! Lost the turn!`, 'error');
             await new Promise(resolve => setTimeout(resolve, 1500));
             switchPlayer();
             return;
@@ -169,7 +169,7 @@ async function computerTurn() {
         
         player.current += roll;
         updateDisplay();
-        showMessage(`🤖 המחשב הטיל ${roll}!`, 'info');
+        showMessage(`🤖 Computer rolled ${roll}!`, 'info');
         
         // AI decision logic
         const shouldHold = 
@@ -189,7 +189,7 @@ async function computerTurn() {
                 return;
             }
             
-            showMessage(`🤖 המחשב שומר ${player.total} נקודות!`, 'success');
+            showMessage(`🤖 Computer saves ${player.total} points!`, 'success');
             await new Promise(resolve => setTimeout(resolve, 1500));
             switchPlayer();
             return;
@@ -203,10 +203,10 @@ function endGame() {
     
     const winner = gameState.players[gameState.currentPlayer];
     const winnerName = gameState.currentPlayer === 0 ? 
-        'שחקן 1' : 
-        (gameState.gameMode === 'pvc' ? 'המחשב' : 'שחקן 2');
+        'Player 1' : 
+        (gameState.gameMode === 'pvc' ? 'Computer' : 'Player 2');
     
-    showMessage(`🎉 ${winnerName} ניצח עם ${winner.total} נקודות!`, 'success');
+    showMessage(`🎉 ${winnerName} won with ${winner.total} points!`, 'success');
     
     // Celebrate
     celebrate();
@@ -217,8 +217,8 @@ document.getElementById('newGameBtn').addEventListener('click', newGame);
 
 function newGame() {
     gameState.players = [
-        { total: 0, current: 0, name: 'שחקן 1' },
-        { total: 0, current: 0, name: 'שחקן 2' }
+        { total: 0, current: 0, name: 'Player 1' },
+        { total: 0, current: 0, name: 'Player 2' }
     ];
     gameState.currentPlayer = 0;
     gameState.gameActive = true;
@@ -241,9 +241,9 @@ document.querySelectorAll('.mode-btn').forEach(btn => {
         
         // Update player 2 name
         if (gameState.gameMode === 'pvc') {
-            document.querySelector('#player2Card h3').textContent = '🤖 מחשב';
+            document.querySelector('#player2Card h3').textContent = '🤖 Computer';
         } else {
-            document.querySelector('#player2Card h3').textContent = '👤 שחקן 2';
+            document.querySelector('#player2Card h3').textContent = '👤 Player 2';
         }
         
         newGame();

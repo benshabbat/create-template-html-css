@@ -72,7 +72,7 @@ async function spin() {
     if (gameState.spinning) return;
     
     if (gameState.credits < gameState.bet) {
-        showMessage('אין מספיק קרדיטים!', 'error');
+        showMessage('Not enough credits!', 'error');
         return;
     }
     
@@ -105,7 +105,7 @@ async function spin() {
     // Check if out of credits
     if (gameState.credits < 10) {
         setTimeout(() => {
-            alert('נגמרו הקרדיטים! מקבל 1000 קרדיטים חדשים.');
+            alert('Out of credits! Receiving 1000 new credits.');
             gameState.credits = 1000;
             updateDisplay();
             saveGame();
@@ -171,18 +171,18 @@ function checkWin(results) {
         let type = 'success';
         
         if (first.icon === '💰') {
-            message = `🎉 ג'קפוט! זכית ${winAmount} קרדיטים! 🎉`;
+            message = `🎉 Jackpot! You won ${winAmount} credits! 🎉`;
             type = 'jackpot';
             celebrate();
         } else {
-            message = `🎊 זכייה! +${winAmount} קרדיטים!`;
+            message = `🎊 You Win! +${winAmount} credits!`;
         }
         
         showMessage(message, type);
     } else if (first.icon === second.icon || second.icon === third.icon || first.icon === third.icon) {
-        showMessage('כמעט! שני סמלים תואמים!', 'info');
+        showMessage('Almost! Two matching symbols!', 'info');
     } else {
-        showMessage('נסה שוב!', 'info');
+        showMessage('Try again!', 'info');
     }
     
     updateDisplay();

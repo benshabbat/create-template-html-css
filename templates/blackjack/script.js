@@ -156,7 +156,7 @@ document.querySelectorAll('.bet-btn').forEach(btn => {
             updateDisplay();
             document.getElementById('dealBtn').disabled = false;
         } else {
-            showMessage('אין מספיק קרדיטים!', 'error');
+            showMessage('Not enough credits!', 'error');
         }
     });
 });
@@ -166,7 +166,7 @@ document.getElementById('dealBtn').addEventListener('click', startGame);
 
 function startGame() {
     if (gameState.currentBet === 0) {
-        showMessage('בחר הימור תחילה!', 'error');
+        showMessage('Choose a bet first!', 'error');
         return;
     }
     
@@ -261,7 +261,7 @@ document.getElementById('doubleBtn').addEventListener('click', () => {
             stand();
         }
     } else {
-        showMessage('אין מספיק קרדיטים להכפלה!', 'error');
+        showMessage('Not enough credits to double down!', 'error');
     }
 });
 
@@ -301,23 +301,23 @@ function endGame(result) {
     switch (result) {
         case 'blackjack':
             winAmount = Math.floor(gameState.currentBet * 2.5); // 3:2 payout
-            message = '🎉 BLACKJACK! אתה מנצח!';
+            message = '🎉 BLACKJACK! You win!';
             gameState.wins++;
             break;
         case 'win':
             winAmount = gameState.currentBet * 2;
-            message = '🎉 ניצחת!';
+            message = '🎉 You won!';
             gameState.wins++;
             break;
         case 'lose':
-            message = '😢 הפסדת!';
+            message = '😢 You lost!';
             break;
         case 'push':
             winAmount = gameState.currentBet;
-            message = '🤝 תיקו!';
+            message = '🤝 Push!';
             break;
         case 'bust':
-            message = '💥 עברת את 21! הפסדת!';
+            message = '💥 Busted! You lost!';
             break;
     }
     
@@ -337,7 +337,7 @@ function endGame(result) {
     // Check if out of credits
     if (gameState.credits < 10) {
         setTimeout(() => {
-            alert('נגמרו הקרדיטים! מקבל 1000 קרדיטים חדשים.');
+            alert('Out of credits! Receiving 1000 new credits.');
             gameState.credits = 1000;
             updateDisplay();
             saveGame();
