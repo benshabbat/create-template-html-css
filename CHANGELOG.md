@@ -5,6 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.2] - 2026-02-05
+
+### Fixed
+- Added all 16 game templates to CLI interactive prompts (create and insert commands)
+- Users can now select game templates from the interactive menu
+- Previously only accessible via command flags
+
+### Changed
+- CLI now shows all 46 templates in interactive mode with 🎮 emoji for games
+
+## [2.0.1] - 2026-02-05
+
+### Added
+- Interactive component gallery (COMPONENTS-GALLERY.html)
+- Search functionality in gallery
+- Copy-to-clipboard buttons for all commands
+- Modern responsive design with animations
+- Author credit updated
+
+### Changed
+- Updated .npmignore to exclude demo-games and .tgz files
+
 ## [2.0.0] - 2026-02-05
 
 ### Added
