@@ -1,115 +1,35 @@
-import { promises as fs } from "fs";
+/**
+ * Component insertion utilities
+ * Inserts components into existing HTML files
+ */
+
+import fs from "fs/promises";
 import path from "path";
 import { formatHtml, formatCss, formatJs } from "./format-utils.js";
-import { fileURLToPath } from "url";
-import { dirname } from "path";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-const VALID_COMPONENTS = [
-  "button",
-  "card",
-  "form",
-  "navigation",
-  "modal",
-  "footer",
-  "hero",
-  "slider",
-  "table",
-  "spinner",
-  "animated-card",
-  "typing-effect",
-  "fade-gallery",
-  "grid-layout",
-  "masonry-grid",
-  "dashboard-grid",
-  "flex-layout",
-  "flex-cards",
-  "flex-dashboard",
-  "todo-list",
-  "counter",
-  "accordion",
-  "tabs",
-];
+import {
+  VALID_COMPONENTS,
+  isComponentAlreadyInserted,
+  validateHtmlStructure,
+} from "./inserters/validation-utils.js";
+import { getHtmlIndentation } from "./inserters/html-utils.js";
+import { createBackup } from "./inserters/backup-utils.js";
+import {
+  loadComponentHtml,
+  loadComponentCss,
+  loadComponentJs,
+  extractBodyContent,
+} from "./inserters/component-loader.js";
 
 /**
- * Extracts indentation from a line
+ * Inserts a component into an existing HTML file
+ * @param {Object} options - Insertion options
+ * @param {string} options.component - Component name to insert
+ * @param {string} options.targetFile - Target HTML file path
+ * @param {string} options.styleMode - Style insertion mode ('inline' or 'separate')
+ * @param {string} options.scriptMode - Script insertion mode ('inline' or 'separate')
+ * @param {boolean} options.createBackup - Whether to create a backup before insertion
+ * @returns {Promise<Object>} Insertion result with success status and paths
  */
-function getIndentation(line) {
-  const match = line.match(/^(\s*)/);
-  return match ? match[1] : "";
-}
-
-/**
- * Checks if a component is already inserted in the HTML
- */
-function isComponentAlreadyInserted(htmlContent, component) {
-  const commentPattern = new RegExp(
-    `<!-- ${component.toUpperCase()} Component -->`,
-    "i",
-  );
-  return commentPattern.test(htmlContent);
-}
-
-/**
- * Gets the indentation level used in an HTML file
- */
-function getHtmlIndentation(htmlContent) {
-  // Look for any indented line to determine the standard indentation
-  const match = htmlContent.match(/\n(\s+)\S/);
-  return match ? match[1] : "    "; // default to 4 spaces
-}
-
-/**
- * Validates that HTML file has proper structure
- * @param {string} htmlContent - The HTML content to validate
- * @returns {Object} Object with valid property and any errors
- */
-function validateHtmlStructure(htmlContent) {
-  const errors = [];
-
-  if (!htmlContent.includes("<!DOCTYPE")) {
-    errors.push("Missing DOCTYPE declaration");
-  }
-
-  if (!htmlContent.includes("<html")) {
-    errors.push("Missing <html> tag");
-  }
-
-  if (!htmlContent.includes("<head>") && !htmlContent.includes("<head ")) {
-    errors.push("Missing <head> tag");
-  }
-
-  if (!htmlContent.includes("</head>")) {
-    errors.push("Missing closing </head> tag");
-  }
-
-  if (!htmlContent.includes("<body>") && !htmlContent.includes("<body ")) {
-    errors.push("Missing <body> tag");
-  }
-
-  if (!htmlContent.includes("</body>")) {
-    errors.push("Missing closing </body> tag");
-  }
-
-  return {
-    valid: errors.length === 0,
-    errors,
-  };
-}
-
-/**
- * Creates a backup of the original file before insertion
- * @param {string} targetPath - Path to the original file
- * @returns {Promise<string>} Path to the backup file
- */
-async function createBackup(targetPath) {
-  const backupPath = `${targetPath}.backup`;
-  const content = await fs.readFile(targetPath, "utf-8");
-  await fs.writeFile(backupPath, content, "utf-8");
-  return backupPath;
-}
-
 async function insertComponent(options) {
   const {
     component,
@@ -168,39 +88,12 @@ async function insertComponent(options) {
     throw new Error("Target HTML file does not have a </head> tag");
   }
 
-  // Get component templates
-  const templateDir = path.join(__dirname, "..", "templates", component);
-  const componentHtml = await fs.readFile(
-    path.join(templateDir, "index.html"),
-    "utf-8",
-  );
+  // Load component templates
+  const componentHtml = await loadComponentHtml(component);
+  const componentCss = await loadComponentCss(component);
 
-  // Try to read CSS from css/ subfolder, fall back to root
-  let componentCss;
-  try {
-    componentCss = await fs.readFile(
-      path.join(templateDir, "css", "style.css"),
-      "utf-8",
-    );
-  } catch {
-    componentCss = await fs.readFile(
-      path.join(templateDir, "style.css"),
-      "utf-8",
-    );
-  }
-
-  // Extract component body content (only the inner content, not the body tags)
-  const bodyMatch = componentHtml.match(/<body[^>]*>\s*([\s\S]*?)\s*<\/body>/i);
-  if (!bodyMatch) {
-    throw new Error("Invalid component template structure");
-  }
-
-  let componentBody = bodyMatch[1].trim();
-
-  // Remove any script and style tags that might be in the body
-  componentBody = componentBody
-    .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, "")
-    .trim();
+  // Extract component body content
+  let componentBody = extractBodyContent(componentHtml);
 
   // Get indentation used in the HTML file
   const baseIndent = getHtmlIndentation(htmlContent);
@@ -257,21 +150,9 @@ async function insertComponent(options) {
   }
 
   // Handle JavaScript
-  try {
-    // Try to read JS from js/ subfolder, fall back to root
-    let componentJs;
-    try {
-      componentJs = await fs.readFile(
-        path.join(templateDir, "js", "script.js"),
-        "utf-8",
-      );
-    } catch {
-      componentJs = await fs.readFile(
-        path.join(templateDir, "script.js"),
-        "utf-8",
-      );
-    }
+  const componentJs = await loadComponentJs(component);
 
+  if (componentJs) {
     if (scriptMode === "inline") {
       // Normalize JS indentation
       const normalizedJs = componentJs
@@ -305,8 +186,6 @@ async function insertComponent(options) {
         `${baseIndent}<script src="js/${jsFileName}" id="${component}-script"></script>\n</body>`,
       );
     }
-  } catch (error) {
-    // No JavaScript file for this component, skip
   }
 
   // Write updated HTML with prettier formatting

@@ -9,6 +9,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### 🏗️ Major Refactoring
 
+#### Changed - Inserter Module Architecture
+- **Modular Inserter Structure** - Split 327-line inserter.js into organized modules
+  - Main inserter.js reduced from 327 to 206 lines (37% reduction)
+  - New `src/inserters/` directory with specialized modules:
+    - `validation-utils.js` (93 lines) - Component validation, HTML structure validation
+    - `html-utils.js` (31 lines) - HTML indentation detection and manipulation
+    - `backup-utils.js` (19 lines) - File backup creation utilities
+    - `component-loader.js` (95 lines) - Template loading for HTML, CSS, and JS files
+  - Better separation of concerns and maintainability
+  - Security validation maintained throughout refactor
+
 #### Changed - Generator Module Architecture
 - **Modular Generator Structure** - Split massive 661-line generator.js into organized modules
   - Main generator.js reduced from 661 to 166 lines (75% reduction!)
