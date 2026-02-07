@@ -5,7 +5,7 @@
 
 import fs from "fs/promises";
 import path from "path";
-import { formatHtml, formatCss, formatJs } from "./format-utils.js";
+import { ensureDir, writeCssFile, writeJsFile, writeHtmlFile } from "./utils/file-utils.js";
 import {
   VALID_COMPONENTS,
   isComponentAlreadyInserted,
@@ -124,15 +124,13 @@ async function insertComponent(options) {
   } else if (styleMode === "separate") {
     // Create css directory if needed
     const cssDir = path.join(path.dirname(targetPath), "css");
-    await fs.mkdir(cssDir, { recursive: true });
+    await ensureDir(cssDir);
 
     // Create separate CSS file in css/ folder
     const cssFileName = `${component}-component.css`;
     const cssPath = path.join(cssDir, cssFileName);
-    const formattedCss = await formatCss(
-      `/* ${component.toUpperCase()} Component Styles */\n\n${componentCss}`,
-    );
-    await fs.writeFile(cssPath, formattedCss);
+    const cssWithComment = `/* ${component.toUpperCase()} Component Styles */\n\n${componentCss}`;
+    await writeCssFile(cssPath, cssWithComment);
 
     // Add link to CSS file
     htmlContent = htmlContent.replace(
@@ -153,15 +151,13 @@ async function insertComponent(options) {
     } else if (scriptMode === "separate") {
       // Create js directory if needed
       const jsDir = path.join(path.dirname(targetPath), "js");
-      await fs.mkdir(jsDir, { recursive: true });
+      await ensureDir(jsDir);
 
       // Create separate JS file in js/ folder
       const jsFileName = `${component}-component.js`;
       const jsPath = path.join(jsDir, jsFileName);
-      const formattedJs = await formatJs(
-        `// ${component.toUpperCase()} Component Script\n\n${componentJs}`,
-      );
-      await fs.writeFile(jsPath, formattedJs);
+      const jsWithComment = `// ${component.toUpperCase()} Component Script\n\n${componentJs}`;
+      await writeJsFile(jsPath, jsWithComment);
 
       // Add script tag
       htmlContent = htmlContent.replace(
@@ -172,8 +168,7 @@ async function insertComponent(options) {
   }
 
   // Write updated HTML with prettier formatting
-  const formattedHtml = await formatHtml(htmlContent);
-  await fs.writeFile(targetPath, formattedHtml);
+  await writeHtmlFile(targetPath, htmlContent);
 
   return {
     targetFile: targetPath,

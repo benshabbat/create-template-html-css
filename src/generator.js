@@ -1,7 +1,12 @@
 import { promises as fs } from "fs";
 import path from "path";
-import { formatHtml, formatCss, formatJs } from "./format-utils.js";
 import { getDirname } from "./utils/path-utils.js";
+import {
+  createComponentDirs,
+  writeHtmlFile,
+  writeCssFile,
+  writeJsFile,
+} from "./utils/file-utils.js";
 import { COLOR_SCHEMES, getColorScheme } from "./generators/color-schemes.js";
 import {
   applyCustomColors,
@@ -141,10 +146,7 @@ async function generateTemplate(options) {
     '    <link rel="stylesheet" href="css/style.css">'
   );
 
-  // Format HTML before writing
-  htmlContent = await formatHtml(htmlContent);
-
-  await fs.writeFile(path.join(outputDir, "index.html"), htmlContent);
+  await writeHtmlFile(path.join(outputDir, "index.html"), htmlContent);
 
   // Copy CSS file to css/ folder
   let cssContent = await fs.readFile(
@@ -166,8 +168,7 @@ async function generateTemplate(options) {
     cssContent = addDarkModeStyles(cssContent);
   }
 
-  const formattedCss = await formatCss(cssContent);
-  await fs.writeFile(path.join(cssDir, "style.css"), formattedCss);
+  await writeCssFile(path.join(cssDir, "style.css"), cssContent);
 
   // Copy JS file to js/ folder if requested
   if (includeJs) {
@@ -176,12 +177,10 @@ async function generateTemplate(options) {
         path.join(templateDir, "script.js"),
         "utf-8"
       );
-      const formattedJs = await formatJs(jsContent);
-      await fs.writeFile(path.join(jsDir, "script.js"), formattedJs);
+      await writeJsFile(path.join(jsDir, "script.js"), jsContent);
     } catch (error) {
       // If no JS template exists, create a basic one
-      const basicJs = await formatJs("// Add your JavaScript here\n");
-      await fs.writeFile(path.join(jsDir, "script.js"), basicJs);
+      await writeJsFile(path.join(jsDir, "script.js"), "// Add your JavaScript here\n");
     }
   }
 

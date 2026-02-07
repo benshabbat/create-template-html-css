@@ -10,6 +10,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### 🏗️ Major Refactoring
 
 #### Changed - Code Deduplication
+- **Centralized File Operations** - Eliminated duplicate file system operations
+  - Created `src/utils/file-utils.js` with reusable file operation functions
+  - Extracted functions:
+    - `ensureDir()` - Create directory with parents
+    - `ensureDirs()` - Create multiple directories
+    - `writeHtmlFile()` - Write formatted HTML files
+    - `writeCssFile()` - Write formatted CSS files
+    - `writeJsFile()` - Write formatted JS files
+    - `createComponentDirs()` - Create component directory structure
+    - `writeComponentFiles()` - Write all component files atomically
+  - Refactored `src/generator.js` to use file utilities (reduced by 11 lines)
+  - Refactored `src/inserter.js` to use file utilities (reduced by 9 lines)
+  - Eliminated repetitive `fs.mkdir({recursive: true})` and `fs.writeFile()` patterns
+  - More consistent error handling and file formatting
+
 - **Centralized Indentation Logic** - Eliminated duplicate indentation handling
   - Created `src/inserters/indentation-utils.js` with reusable indentation functions
   - Extracted functions:
