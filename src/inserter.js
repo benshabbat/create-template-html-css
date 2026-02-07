@@ -19,6 +19,14 @@ import {
   loadComponentJs,
   extractBodyContent,
 } from "./inserters/component-loader.js";
+import {
+  normalizeIndentation,
+  createInlineStyleTag,
+  createInlineScriptTag,
+  createStyleLink,
+  createScriptTag,
+  createComponentInsertion,
+} from "./inserters/indentation-utils.js";
 
 /**
  * Inserts a component into an existing HTML file
@@ -99,35 +107,19 @@ async function insertComponent(options) {
   const baseIndent = getHtmlIndentation(htmlContent);
 
   // Normalize component body indentation
-  const lines = componentBody
-    .split("\n")
-    .map((line) => {
-      if (line.trim() === "") return "";
-      return baseIndent + line.trim();
-    })
-    .join("\n");
-  componentBody = lines;
+  componentBody = normalizeIndentation(componentBody, baseIndent);
 
   // Insert component HTML before closing </body> tag
   htmlContent = htmlContent.replace(
     "</body>",
-    `${baseIndent}<!-- ${component.toUpperCase()} Component -->\n${componentBody}\n\n</body>`,
+    createComponentInsertion(component, componentBody, baseIndent),
   );
 
   // Handle CSS
   if (styleMode === "inline") {
-    // Normalize CSS indentation
-    const normalizedCss = componentCss
-      .split("\n")
-      .map((line) => {
-        if (line.trim() === "") return "";
-        return baseIndent + "    " + line.trim();
-      })
-      .join("\n");
-
     htmlContent = htmlContent.replace(
       "</head>",
-      `${baseIndent}<style id="${component}-styles">\n${baseIndent}    /* ${component.toUpperCase()} Component Styles */\n${normalizedCss}\n${baseIndent}</style>\n</head>`,
+      createInlineStyleTag(component, componentCss, baseIndent),
     );
   } else if (styleMode === "separate") {
     // Create css directory if needed
@@ -145,7 +137,7 @@ async function insertComponent(options) {
     // Add link to CSS file
     htmlContent = htmlContent.replace(
       "</head>",
-      `${baseIndent}<link rel="stylesheet" href="css/${cssFileName}">\n</head>`,
+      createStyleLink(cssFileName, baseIndent),
     );
   }
 
@@ -154,18 +146,9 @@ async function insertComponent(options) {
 
   if (componentJs) {
     if (scriptMode === "inline") {
-      // Normalize JS indentation
-      const normalizedJs = componentJs
-        .split("\n")
-        .map((line) => {
-          if (line.trim() === "") return "";
-          return baseIndent + "    " + line.trim();
-        })
-        .join("\n");
-
       htmlContent = htmlContent.replace(
         "</body>",
-        `${baseIndent}<script id="${component}-script">\n${baseIndent}    // ${component.toUpperCase()} Component Script\n${normalizedJs}\n${baseIndent}</script>\n</body>`,
+        createInlineScriptTag(component, componentJs, baseIndent),
       );
     } else if (scriptMode === "separate") {
       // Create js directory if needed
@@ -183,7 +166,7 @@ async function insertComponent(options) {
       // Add script tag
       htmlContent = htmlContent.replace(
         "</body>",
-        `${baseIndent}<script src="js/${jsFileName}" id="${component}-script"></script>\n</body>`,
+        createScriptTag(component, jsFileName, baseIndent),
       );
     }
   }
