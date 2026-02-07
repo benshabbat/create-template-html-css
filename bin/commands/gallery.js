@@ -1,9 +1,14 @@
 /**
  * Gallery command implementation
  */
-const path = require("path");
-const { exec } = require("child_process");
-const chalk = require("chalk");
+import path from "path";
+import { exec } from "child_process";
+import chalk from "chalk";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 function galleryCommand() {
   try {
@@ -36,4 +41,4 @@ function galleryCommand() {
   }
 }
 
-module.exports = { galleryCommand };
+export { galleryCommand };

@@ -1,7 +1,7 @@
 /**
  * List command implementation
  */
-const chalk = require("chalk");
+import chalk from "chalk";
 
 function listCommand() {
   console.log("\n" + chalk.blue("📦 Available Components (46 total)\n"));
@@ -70,4 +70,4 @@ function listCommand() {
   console.log("");
 }
 
-module.exports = { listCommand };
+export { listCommand };

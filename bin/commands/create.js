@@ -1,10 +1,10 @@
 /**
  * Create command implementation
  */
-const inquirer = require("inquirer").default || require("inquirer");
-const chalk = require("chalk");
-const { generateTemplate, COLOR_SCHEMES } = require("../../src/generator");
-const { COMPONENT_CHOICES } = require("../../src/component-choices");
+import inquirer from "inquirer";
+import chalk from "chalk";
+import { generateTemplate, COLOR_SCHEMES } from "../../src/generator.js";
+import { COMPONENT_CHOICES } from "../../src/component-choices.js";
 
 async function createCommand(options) {
   try {
@@ -171,4 +171,4 @@ async function createCommand(options) {
   }
 }
 
-module.exports = { createCommand };
+export { createCommand };

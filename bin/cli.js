@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
-const { program } = require("commander");
-const chalk = require("chalk");
-const { COLOR_SCHEMES } = require("../src/generator");
-const { createCommand } = require("./commands/create");
-const { insertCommand } = require("./commands/insert");
-const { listCommand } = require("./commands/list");
-const { galleryCommand } = require("./commands/gallery");
+import { program } from "commander";
+import chalk from "chalk";
+import { COLOR_SCHEMES } from "../src/generator.js";
+import { createCommand } from "./commands/create.js";
+import { insertCommand } from "./commands/insert.js";
+import { listCommand } from "./commands/list.js";
+import { galleryCommand } from "./commands/gallery.js";
 
 program
   .name("create-template")

@@ -1,12 +1,12 @@
 /**
  * Insert command implementation
  */
-const inquirer = require("inquirer").default || require("inquirer");
-const path = require("path");
-const fs = require("fs").promises;
-const chalk = require("chalk");
-const { insertComponent } = require("../../src/inserter");
-const { COMPONENT_CHOICES } = require("../../src/component-choices");
+import inquirer from "inquirer";
+import path from "path";
+import { promises as fs } from "fs";
+import chalk from "chalk";
+import { insertComponent } from "../../src/inserter.js";
+import { COMPONENT_CHOICES } from "../../src/component-choices.js";
 
 async function insertCommand(options) {
   try {
@@ -120,4 +120,4 @@ async function insertCommand(options) {
   }
 }
 
-module.exports = { insertCommand };
+export { insertCommand };
