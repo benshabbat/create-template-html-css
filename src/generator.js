@@ -1,8 +1,7 @@
 import { promises as fs } from "fs";
 import path from "path";
 import { formatHtml, formatCss, formatJs } from "./format-utils.js";
-import { fileURLToPath } from "url";
-import { dirname } from "path";
+import { getDirname } from "./utils/path-utils.js";
 import { COLOR_SCHEMES, getColorScheme } from "./generators/color-schemes.js";
 import {
   applyCustomColors,
@@ -19,8 +18,7 @@ import {
 } from "./generators/html-generators.js";
 import { VALID_COMPONENTS, sanitizeFilename } from "./generators/validation.js";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const __dirname = getDirname(import.meta.url);
 
 /**
  * Generate a template component with all its files

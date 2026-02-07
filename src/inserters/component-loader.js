@@ -5,10 +5,9 @@
 
 import fs from "fs/promises";
 import path from "path";
-import { fileURLToPath } from "url";
+import { getDirname } from "../utils/path-utils.js";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __dirname = getDirname(import.meta.url);
 
 /**
  * Loads component HTML template
