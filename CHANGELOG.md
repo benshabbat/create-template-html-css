@@ -9,7 +9,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### 🏗️ Major Refactoring
 
-#### Changed
+#### Changed - Generator Module Architecture
+- **Modular Generator Structure** - Split massive 661-line generator.js into organized modules
+  - Main generator.js reduced from 661 to 166 lines (75% reduction!)
+  - New `src/generators/` directory with specialized modules:
+    - `color-schemes.js` (76 lines) - All color presets and scheme management
+    - `color-utils.js` (93 lines) - Color manipulation utilities and dark mode
+    - `component-filters.js` (135 lines) - Button, card, spinner variations filtering
+    - `html-generators.js` (171 lines) - Navigation and form field generation
+    - `validation.js` (61 lines) - Component validation and security utilities
+  - Better separation of concerns and maintainability
+  - Improved code organization and testability
+
+#### Changed - CLI Module Architecture
 - **ES Modules Migration** - Converted entire codebase from CommonJS to ES Modules
   - All `require()` statements replaced with `import`
   - All `module.exports` replaced with `export`
