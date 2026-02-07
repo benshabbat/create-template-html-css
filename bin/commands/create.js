@@ -18,6 +18,28 @@ async function createCommand(options) {
         console.log(chalk.gray("[INFO] Using provided options..."));
       }
 
+      // Validate name for security
+      if (
+        options.name.includes("/") ||
+        options.name.includes("\\") ||
+        options.name === ".." ||
+        options.name.startsWith("../") ||
+        options.name.startsWith("..\\") ||
+        options.name.includes("/../") ||
+        options.name.includes("\\..\\")
+      ) {
+        console.error(
+          chalk.red("✗ Error:"),
+          "Name cannot contain path separators or parent directory references"
+        );
+        process.exit(1);
+      }
+
+      if (options.name.length > 100) {
+        console.error(chalk.red("✗ Error:"), "Name is too long (max 100 characters)");
+        process.exit(1);
+      }
+
       const createOptions = {
         component: options.component,
         name: options.name,
@@ -56,9 +78,13 @@ async function createCommand(options) {
             return "Please enter a valid name";
           }
           if (
-            input.includes("..") ||
             input.includes("/") ||
-            input.includes("\\")
+            input.includes("\\") ||
+            input === ".." ||
+            input.startsWith("../") ||
+            input.startsWith("..\\") ||
+            input.includes("/../") ||
+            input.includes("\\..\\")
           ) {
             return "Name cannot contain path separators or parent directory references";
           }
