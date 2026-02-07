@@ -5,6 +5,44 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased] - v2.1.0
+
+### 🏗️ Major Refactoring
+
+#### Changed
+- **ES Modules Migration** - Converted entire codebase from CommonJS to ES Modules
+  - All `require()` statements replaced with `import`
+  - All `module.exports` replaced with `export`
+  - Added `"type": "module"` to package.json
+  - Updated dynamic imports for optional dependencies (Prettier)
+  - Proper `__dirname` support using `fileURLToPath` and `dirname`
+
+- **Modular CLI Architecture** - Refactored CLI from single 618-line file to organized structure
+  - Main CLI file reduced from 618 to 85 lines (86% reduction!)
+  - Commands split into separate modules in `bin/commands/` directory
+  - `create.js` - 174 lines (handles template creation with prompts)
+  - `insert.js` - 123 lines (handles component insertion into HTML)
+  - `list.js` - 73 lines (displays all 46 available components)
+  - `gallery.js` - 42 lines (opens interactive component gallery)
+  - Total reduction: 618 lines → 497 lines across 5 files
+
+#### Added
+- **Enhanced Security** - Comprehensive input validation for component names
+  - Blocks path traversal attacks (`../`, `..\`, `/../`, `\..\`)
+  - Prevents path separator usage in component names (`/`, `\`)
+  - Validates both interactive prompts and command-line flags
+  - Maximum name length limit (100 characters)
+  - Allows legitimate names with dots (e.g., "my-component-2.0")
+  - Protects against directory traversal to parent/system directories
+
+#### Technical Improvements
+- Better code maintainability with modular architecture
+- Improved performance with ES Modules tree-shaking
+- Cleaner separation of concerns (each command in its own file)
+- Enhanced error handling and validation
+- All file imports include `.js` extension (ES Modules requirement)
+- Cross-platform `__dirname` support in ES Modules environment
+
 ## [2.0.2] - 2026-02-05
 
 ### Fixed
