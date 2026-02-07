@@ -9,6 +9,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### 🏗️ Major Refactoring
 
+#### Changed - Code Deduplication
+- **Centralized Components Registry** - Eliminated duplicate component lists
+  - Created `src/components-registry.js` as single source of truth
+  - Contains `VALID_COMPONENTS` array (46 components, alphabetically sorted)
+  - Contains `COMPONENT_CHOICES` with categorized prompts
+  - Removed duplicates from:
+    - `src/generators/validation.js` - Now imports from registry
+    - `src/inserters/validation-utils.js` - Now imports from registry
+    - `src/component-choices.js` - Now re-exports from registry (deprecated)
+  - Reduced code duplication by ~130 lines
+  - Single maintenance point for component additions
+
 #### Changed - Inserter Module Architecture
 - **Modular Inserter Structure** - Split 327-line inserter.js into organized modules
   - Main inserter.js reduced from 327 to 206 lines (37% reduction)

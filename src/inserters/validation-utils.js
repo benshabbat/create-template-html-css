@@ -3,53 +3,7 @@
  * Validates component names and HTML structure
  */
 
-/**
- * List of all valid component names that can be inserted
- */
-const VALID_COMPONENTS = [
-  "accordion",
-  "animated-card",
-  "blackjack",
-  "breakout",
-  "button",
-  "card",
-  "connect-four",
-  "counter",
-  "dashboard-grid",
-  "dice-game",
-  "fade-gallery",
-  "flappy-bird",
-  "flex-cards",
-  "flex-dashboard",
-  "flex-layout",
-  "footer",
-  "form",
-  "game-2048",
-  "grid-layout",
-  "guess-number",
-  "hero",
-  "login",
-  "masonry-grid",
-  "memory-game",
-  "modal",
-  "navigation",
-  "pong",
-  "register",
-  "rock-paper-scissors",
-  "simon-says",
-  "skeleton",
-  "slider",
-  "slot-machine",
-  "snake-game",
-  "spinner",
-  "table",
-  "tabs",
-  "tetris",
-  "tic-tac-toe",
-  "todo-list",
-  "typing-effect",
-  "whack-a-mole",
-];
+import { VALID_COMPONENTS } from "../components-registry.js";
 
 /**
  * Checks if a component has already been inserted in the HTML content
