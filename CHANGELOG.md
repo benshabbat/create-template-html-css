@@ -10,6 +10,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### 🏗️ Major Refactoring
 
 #### Changed - Code Deduplication
+- **Enhanced Template Documentation** - Improved templates/_shared directory
+  - Updated `README.md` with comprehensive philosophy and statistics
+  - Created `PATTERNS.md` documenting 15+ recurring code patterns
+  - Created `CONTRIBUTING.md` with complete template development guide
+  - Documented intentional CSS/JS duplication strategy (42 self-contained templates)
+  - Added statistics: 42 templates with CSS reset, 37 with gradient backgrounds
+  - Clarified that templates are intentionally standalone for copy-paste usage
+  - Better onboarding for contributors understanding template architecture
+
 - **Centralized String Utilities** - Eliminated duplicate string manipulation patterns
   - Created `src/utils/string-utils.js` with reusable string functions
   - Extracted functions:
