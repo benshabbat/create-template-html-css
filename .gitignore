@@ -59,3 +59,14 @@ temp/
 *.tmp
 .tmp
 .env.development
+
+# Package archives
+*.tgz
+*.tar.gz
+
+# Test directories
+test-*/
+test_*/
+
+# Backup files
+*.backup
