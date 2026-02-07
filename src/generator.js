@@ -7,6 +7,12 @@ import {
   writeCssFile,
   writeJsFile,
 } from "./utils/file-utils.js";
+import {
+  getTemplatePath,
+  readTemplateHtml,
+  readTemplateCss,
+  readTemplateJs,
+} from "./utils/template-loader.js";
 import { COLOR_SCHEMES, getColorScheme } from "./generators/color-schemes.js";
 import {
   applyCustomColors,
@@ -83,13 +89,10 @@ async function generateTemplate(options) {
   await fs.mkdir(jsDir, { recursive: true });
 
   // Get template content
-  const templateDir = path.join(__dirname, "..", "templates", component);
+  const templateDir = getTemplatePath(component);
 
   // Copy HTML file
-  let htmlContent = await fs.readFile(
-    path.join(templateDir, "index.html"),
-    "utf-8"
-  );
+  let htmlContent = await readTemplateHtml(component);
 
   // Replace placeholder name
   htmlContent = htmlContent.replace(/{{name}}/g, safeName);
@@ -149,10 +152,7 @@ async function generateTemplate(options) {
   await writeHtmlFile(path.join(outputDir, "index.html"), htmlContent);
 
   // Copy CSS file to css/ folder
-  let cssContent = await fs.readFile(
-    path.join(templateDir, "style.css"),
-    "utf-8"
-  );
+  let cssContent = await readTemplateCss(component);
 
   // Apply custom colors if provided (either from colorScheme or direct colors)
   if (finalPrimaryColor || finalSecondaryColor) {
@@ -172,13 +172,10 @@ async function generateTemplate(options) {
 
   // Copy JS file to js/ folder if requested
   if (includeJs) {
-    try {
-      const jsContent = await fs.readFile(
-        path.join(templateDir, "script.js"),
-        "utf-8"
-      );
+    const jsContent = await readTemplateJs(component);
+    if (jsContent) {
       await writeJsFile(path.join(jsDir, "script.js"), jsContent);
-    } catch (error) {
+    } else {
       // If no JS template exists, create a basic one
       await writeJsFile(path.join(jsDir, "script.js"), "// Add your JavaScript here\n");
     }

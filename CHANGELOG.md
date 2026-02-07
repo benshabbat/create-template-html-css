@@ -10,6 +10,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### 🏗️ Major Refactoring
 
 #### Changed - Code Deduplication
+- **Centralized Template Loading** - Eliminated duplicate template file reading
+  - Created `src/utils/template-loader.js` with reusable template reading functions
+  - Extracted functions:
+    - `getTemplatePath()` - Get template directory path
+    - `readTemplateFile()` - Read any template file
+    - `readTemplateHtml()` - Read template HTML with fallback logic
+    - `readTemplateCss()` - Read template CSS with css/ subfolder support
+    - `readTemplateJs()` - Read template JS with js/ subfolder support
+    - `hasTemplateJs()` - Check if template has JavaScript
+  - Refactored `src/generator.js` to use template loader (12 lines net reduction)
+  - Refactored `src/inserters/component-loader.js` to use template loader (8 lines net reduction)
+  - Eliminated repetitive `fs.readFile()` and `path.join()` patterns
+  - More consistent template file handling across codebase
+
 - **Centralized File Operations** - Eliminated duplicate file system operations
   - Created `src/utils/file-utils.js` with reusable file operation functions
   - Extracted functions:

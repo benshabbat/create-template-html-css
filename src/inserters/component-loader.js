@@ -3,11 +3,11 @@
  * Loads HTML, CSS, and JavaScript files from template directories
  */
 
-import fs from "fs/promises";
-import path from "path";
-import { getDirname } from "../utils/path-utils.js";
-
-const __dirname = getDirname(import.meta.url);
+import {
+  readTemplateHtml,
+  readTemplateCss,
+  readTemplateJs,
+} from "../utils/template-loader.js";
 
 /**
  * Loads component HTML template
@@ -15,8 +15,7 @@ const __dirname = getDirname(import.meta.url);
  * @returns {Promise<string>} HTML content
  */
 async function loadComponentHtml(component) {
-  const templateDir = path.join(__dirname, "..", "..", "templates", component);
-  return await fs.readFile(path.join(templateDir, "index.html"), "utf-8");
+  return await readTemplateHtml(component);
 }
 
 /**
@@ -26,16 +25,7 @@ async function loadComponentHtml(component) {
  * @returns {Promise<string>} CSS content
  */
 async function loadComponentCss(component) {
-  const templateDir = path.join(__dirname, "..", "..", "templates", component);
-
-  try {
-    return await fs.readFile(
-      path.join(templateDir, "css", "style.css"),
-      "utf-8",
-    );
-  } catch {
-    return await fs.readFile(path.join(templateDir, "style.css"), "utf-8");
-  }
+  return await readTemplateCss(component);
 }
 
 /**
@@ -45,20 +35,7 @@ async function loadComponentCss(component) {
  * @returns {Promise<string|null>} JavaScript content or null if not found
  */
 async function loadComponentJs(component) {
-  const templateDir = path.join(__dirname, "..", "..", "templates", component);
-
-  try {
-    return await fs.readFile(
-      path.join(templateDir, "js", "script.js"),
-      "utf-8",
-    );
-  } catch {
-    try {
-      return await fs.readFile(path.join(templateDir, "script.js"), "utf-8");
-    } catch {
-      return null; // No JavaScript file for this component
-    }
-  }
+  return await readTemplateJs(component);
 }
 
 /**
