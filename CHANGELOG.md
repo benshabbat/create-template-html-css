@@ -10,6 +10,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### 🏗️ Major Refactoring
 
 #### Changed - Code Deduplication
+- **Centralized Path Utilities** - Eliminated __dirname duplication in ES Modules
+  - Created `src/utils/path-utils.js` with `getDirname()` and `getFilename()` utilities
+  - Replaced repetitive `fileURLToPath` + `dirname` pattern in 3 files:
+    - `src/generator.js` - Now uses `getDirname(import.meta.url)`
+    - `src/inserters/component-loader.js` - Now uses `getDirname(import.meta.url)`
+    - `bin/commands/gallery.js` - Now uses `getDirname(import.meta.url)`
+  - Cleaner, more maintainable ES Modules __dirname handling
+  - Reduced boilerplate by ~15 lines
+
 - **Centralized Components Registry** - Eliminated duplicate component lists
   - Created `src/components-registry.js` as single source of truth
   - Contains `VALID_COMPONENTS` array (46 components, alphabetically sorted)
