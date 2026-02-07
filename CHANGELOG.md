@@ -10,6 +10,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### 🏗️ Major Refactoring
 
 #### Changed - Code Deduplication
+- **Centralized Indentation Logic** - Eliminated duplicate indentation handling
+  - Created `src/inserters/indentation-utils.js` with reusable indentation functions
+  - Extracted functions:
+    - `normalizeIndentation()` - Normalize content with base indentation
+    - `createInlineStyleTag()` - Generate inline style tags
+    - `createInlineScriptTag()` - Generate inline script tags
+    - `createStyleLink()` - Generate external stylesheet links
+    - `createScriptTag()` - Generate external script tags
+    - `createComponentInsertion()` - Generate component HTML with comment
+  - Refactored `src/inserter.js` to use utilities
+  - Reduced inserter.js from 206 to 163 lines (21% reduction)
+  - Eliminated ~40 lines of duplicate indentation normalization logic
+  - More maintainable and testable code
+
 - **Centralized Path Utilities** - Eliminated __dirname duplication in ES Modules
   - Created `src/utils/path-utils.js` with `getDirname()` and `getFilename()` utilities
   - Replaced repetitive `fileURLToPath` + `dirname` pattern in 3 files:
