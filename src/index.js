@@ -1,1 +1,1 @@
-module.exports = { generateTemplate } = require("./generator");
+export { generateTemplate } from "./generator.js";

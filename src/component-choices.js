@@ -2,8 +2,8 @@
  * Component choices for CLI prompts
  * Shared between create and insert commands
  */
-const chalk = require("chalk");
-const inquirer = require("inquirer").default || require("inquirer");
+import chalk from "chalk";
+import inquirer from "inquirer";
 
 const COMPONENT_CHOICES = [
   new inquirer.Separator(chalk.gray("─ Basic Components")),
@@ -58,4 +58,4 @@ const COMPONENT_CHOICES = [
   { name: "🎮 Pong", value: "pong" },
 ];
 
-module.exports = { COMPONENT_CHOICES };
+export { COMPONENT_CHOICES };

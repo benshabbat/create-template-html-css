@@ -42,6 +42,33 @@ npm install -g create-template-html-css
 - 📂 **Organized Structure** - CSS and JS files automatically organized in folders (v1.6.2+)
 - 💾 **Simple Backups** - Clean backup naming without timestamps (v1.6.2+)
 - 🎯 **Customizable Components** - Choose navigation items and form fields during creation (v1.7.0+)
+- 🏗️ **Modern Architecture** - ES Modules for better performance and tree-shaking (v2.1.0+)
+- 🧩 **Modular CLI** - Refactored command structure for better maintainability (v2.1.0+)
+
+## 🆕 What's New in v2.1.0 (Upcoming)
+
+### 🏗️ **Major Refactoring**
+- **ES Modules Migration** - Converted entire codebase from CommonJS to modern ES Modules
+- **Modular CLI Architecture** - Split 618-line CLI file into organized command modules (86% reduction!)
+- **Enhanced Security** - Comprehensive input validation to prevent path traversal attacks
+- **Improved Code Organization** - Command files separated into `bin/commands/` directory
+
+### 🔧 **Technical Improvements**
+- All imports now use ES6 `import/export` syntax
+- Better performance with dynamic imports for optional dependencies
+- Cleaner file structure with dedicated command handlers
+- Proper `__dirname` handling in ES Modules environment
+
+### 📁 **New File Structure**
+```
+bin/
+├── cli.js (85 lines - main entry point)
+└── commands/
+    ├── create.js (174 lines)
+    ├── insert.js (123 lines)
+    ├── list.js (73 lines)
+    └── gallery.js (42 lines)
+```
 
 ## 🆕 What's New in v2.0.0
 

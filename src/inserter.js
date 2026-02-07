@@ -1,6 +1,11 @@
-const fs = require("fs").promises;
-const path = require("path");
-const { formatHtml, formatCss, formatJs } = require("./format-utils");
+import { promises as fs } from "fs";
+import path from "path";
+import { formatHtml, formatCss, formatJs } from "./format-utils.js";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 const VALID_COMPONENTS = [
   "button",
   "card",
@@ -318,4 +323,4 @@ async function insertComponent(options) {
   };
 }
 
-module.exports = { insertComponent, validateHtmlStructure, createBackup };
+export { insertComponent, validateHtmlStructure, createBackup };
