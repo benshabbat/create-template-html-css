@@ -2,6 +2,8 @@
  * HTML content generators for navigation and forms
  */
 
+import { textToId, parseCommaSeparated, parseKeyValuePairs } from "../utils/string-utils.js";
+
 /**
  * Generate custom navigation items based on user input
  * @param {string} htmlContent - Original HTML content
@@ -10,15 +12,12 @@
  */
 export function generateNavigationItems(htmlContent, navItems) {
   // Parse the comma-separated navigation items
-  const items = navItems
-    .split(",")
-    .map((item) => item.trim())
-    .filter((item) => item.length > 0);
+  const items = parseCommaSeparated(navItems);
 
   // Generate navigation HTML
   let navHtml = "";
   items.forEach((item, index) => {
-    const itemId = item.toLowerCase().replace(/\s+/g, "-");
+    const itemId = textToId(item);
     const activeClass = index === 0 ? " active" : "";
     navHtml += `                <li class="nav-item">
                     <a href="#${itemId}" class="nav-link${activeClass}">${item}</a>
@@ -35,7 +34,7 @@ ${navHtml}            </ul>`;
   // Generate sections for each navigation item
   let sectionsHtml = "";
   items.forEach((item) => {
-    const itemId = item.toLowerCase().replace(/\s+/g, "-");
+    const itemId = textToId(item);
     sectionsHtml += `        <section id="${itemId}" class="section">
             <h1>${item}</h1>
             <p>Content for ${item} section</p>
@@ -125,32 +124,27 @@ export function generateFormFields(htmlContent, formFields, customFormFields) {
 
   // Add custom fields if provided
   if (customFormFields && customFormFields.trim().length > 0) {
-    const customFields = customFormFields
-      .split(",")
-      .map((f) => f.trim())
-      .filter((f) => f.length > 0);
+    const customFields = parseKeyValuePairs(customFormFields);
 
-    customFields.forEach((field) => {
-      const [type, label] = field.split(":").map((s) => s.trim());
-      if (type && label) {
-        const fieldId = label.toLowerCase().replace(/\s+/g, "-");
+    customFields.forEach(({ key: type, value: label }) => {
+      const fieldId = textToId(label);
 
-        if (type === "textarea") {
-          fieldsHtml += `            <div class="form-group">
+      if (type === "textarea") {
+        fieldsHtml += `            <div class="form-group">
                 <label for="${fieldId}">${label}</label>
                 <textarea id="${fieldId}" name="${fieldId}" rows="5"></textarea>
             </div>
             
 `;
-        } else if (type === "checkbox") {
-          fieldsHtml += `            <div class="form-group checkbox-group">
+      } else if (type === "checkbox") {
+        fieldsHtml += `            <div class="form-group checkbox-group">
                 <input type="checkbox" id="${fieldId}" name="${fieldId}">
                 <label for="${fieldId}">${label}</label>
             </div>
             
 `;
-        } else if (type === "select") {
-          fieldsHtml += `            <div class="form-group">
+      } else if (type === "select") {
+        fieldsHtml += `            <div class="form-group">
                 <label for="${fieldId}">${label}</label>
                 <select id="${fieldId}" name="${fieldId}">
                     <option value="">Select an option</option>
@@ -160,15 +154,14 @@ export function generateFormFields(htmlContent, formFields, customFormFields) {
             </div>
             
 `;
-        } else {
-          // Default to input with specified type
-          fieldsHtml += `            <div class="form-group">
+      } else {
+        // Default to input with specified type
+        fieldsHtml += `            <div class="form-group">
                 <label for="${fieldId}">${label}</label>
                 <input type="${type}" id="${fieldId}" name="${fieldId}">
             </div>
             
 `;
-        }
       }
     });
   }

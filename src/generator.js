@@ -81,12 +81,7 @@ async function generateTemplate(options) {
 
   // Create output directory structure
   const outputDir = path.join(process.cwd(), safeName);
-  const cssDir = path.join(outputDir, "css");
-  const jsDir = path.join(outputDir, "js");
-
-  await fs.mkdir(outputDir, { recursive: true });
-  await fs.mkdir(cssDir, { recursive: true });
-  await fs.mkdir(jsDir, { recursive: true });
+  const { cssDir, jsDir } = await createComponentDirs(outputDir);
 
   // Get template content
   const templateDir = getTemplatePath(component);

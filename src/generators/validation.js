@@ -3,6 +3,7 @@
  */
 
 import { VALID_COMPONENTS } from "../components-registry.js";
+import { sanitizeForFilename } from "../utils/string-utils.js";
 
 export { VALID_COMPONENTS };
 

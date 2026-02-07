@@ -10,6 +10,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### 🏗️ Major Refactoring
 
 #### Changed - Code Deduplication
+- **Centralized String Utilities** - Eliminated duplicate string manipulation patterns
+  - Created `src/utils/string-utils.js` with reusable string functions
+  - Extracted functions:
+    - `textToId()` - Convert text to valid HTML/CSS ID (e.g., "My Item" → "my-item")
+    - `sanitizeForFilename()` - Remove invalid filename characters
+    - `parseCommaSeparated()` - Parse comma-separated lists with trimming
+    - `parseKeyValuePairs()` - Parse "key:value" comma-separated pairs
+  - Refactored `src/generators/html-generators.js` to use string utilities (23 lines net reduction)
+  - Refactored `src/generators/validation.js` to use string utilities
+  - Fixed `src/generator.js` to properly use `createComponentDirs()` (6 lines reduction)
+  - Eliminated 3 duplicate instances of `.toLowerCase().replace(/\s+/g, "-")` pattern
+  - More consistent string handling across codebase
+
 - **Centralized Template Loading** - Eliminated duplicate template file reading
   - Created `src/utils/template-loader.js` with reusable template reading functions
   - Extracted functions:
