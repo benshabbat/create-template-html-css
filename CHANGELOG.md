@@ -10,6 +10,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### 🏗️ Major Refactoring
 
 #### Changed - Code Deduplication
+
+#### Fixed - Template Consistency
+- **Standardized Template HTML Syntax** - Fixed inconsistencies across templates
+  - Fixed `skeleton` template to use HTML5 syntax instead of XHTML (removed `/` from void elements)
+  - Added missing `{{name}}` placeholder to 8 game templates:
+    - `blackjack`, `breakout`, `connect-four`, `dice-game`, `flappy-bird`, `pong`, `slot-machine`, `tetris`
+  - All 42 templates now consistently use HTML5 syntax
+  - All templates now support custom naming via `{{name}}` placeholder
+  - Improved template generation consistency
+
 - **Enhanced Template Documentation** - Improved templates/_shared directory
   - Updated `README.md` with comprehensive philosophy and statistics
   - Created `PATTERNS.md` documenting 15+ recurring code patterns
