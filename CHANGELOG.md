@@ -5,7 +5,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased] - v2.1.0
+## [Unreleased]
+
+## [2.1.0] - 2026-02-08
 
 ### ⚛️ React Support
 
@@ -78,7 +80,58 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Project name length validation (max 100 characters)
   - Alphanumeric character requirement for names
   - Dangerous character removal (<>:"|?*)
-  - Component name whitelist validation
+### 🔧 Code Quality & Architecture Improvements
+
+#### Refactored - React Generator Module Split
+- **Major Refactoring**: Split `react-generator.js` (659 lines) into focused modules
+  - Reduced main file by **73%** (176 lines)
+  - Better separation of concerns and maintainability
+  
+- **New Module Structure**:
+  - `src/react-generator.js` (176 lines) - Main export functions and validation
+    - `generateReactTemplate()` - Full React project generation
+    - `addReactComponentOnly()` - Component-only mode
+    - `validateComponent()` - Component name validation
+    - Exports `VALID_REACT_COMPONENTS` constant
+  
+  - `src/react-templates.js` (303 lines) - Template generation functions
+    - `generateAppJsx()` - App component with examples
+    - `generateIndexJs()` - React entry point
+    - `generateIndexHtml()` - HTML template
+    - `generatePackageJson()` - Package configuration
+    - `generateGitignore()` - Git ignore file
+    - `generateViteConfig()` - Vite configuration
+    - `generateReadme()` - Project README
+    - Version constants: `REACT_VERSION`, `VITE_VERSION`, `VITE_REACT_PLUGIN_VERSION`
+  
+  - `src/react-file-operations.js` (148 lines) - File I/O and utilities
+    - `readComponentFiles()` - Read and process templates
+    - `writeComponentFiles()` - Write JSX and CSS files
+    - `createReactProjectStructure()` - Create project directories
+    - `toPascalCase()` - Convert names to PascalCase
+    - `resolveColors()` - Resolve color schemes
+    - Color constants: `DEFAULT_PRIMARY_COLOR`, `DEFAULT_SECONDARY_COLOR`
+
+- **Code Organization Improvements**:
+  - Extracted common helper functions to reduce duplication
+  - Simplified App.jsx template generation with `createAppTemplate()`
+  - Added clear section headers for better code navigation
+  - Extracted magic values into named constants
+  - Organized code into logical sections (CONSTANTS, UTILITIES, VALIDATORS, etc.)
+
+#### Benefits
+- **Maintainability**: Each module has single responsibility
+- **Testability**: Easier to test focused modules independently
+- **Readability**: Clear separation between templates, file operations, and main logic
+- **Performance**: Better tree-shaking with modular exports
+- **Developer Experience**: Easier to find and modify specific functionality
+
+#### Testing
+- ✅ All functionality preserved - no breaking changes
+- ✅ Full project generation tested and working
+- ✅ Component-only mode tested and working
+- ✅ All React components generate correctly
+- ✅ No syntax or runtime errors  - Component name whitelist validation
   - Empty/null input rejection
 
 - **Secure File Operations** - Protected file system operations
