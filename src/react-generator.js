@@ -7,6 +7,10 @@ import { sanitizeFilename } from "./generators/validation.js";
 
 const __dirname = getDirname(import.meta.url);
 
+// ============================================================================
+// CONSTANTS
+// ============================================================================
+
 // Valid React components
 export const VALID_REACT_COMPONENTS = [
   "button",
@@ -16,6 +20,19 @@ export const VALID_REACT_COMPONENTS = [
   "modal",
   "todo-list",
 ];
+
+// Default colors
+const DEFAULT_PRIMARY_COLOR = "#667eea";
+const DEFAULT_SECONDARY_COLOR = "#764ba2";
+
+// Dependencies versions
+const REACT_VERSION = "^18.2.0";
+const VITE_VERSION = "^5.0.0";
+const VITE_REACT_PLUGIN_VERSION = "^4.2.0";
+
+// ============================================================================
+// UTILITY FUNCTIONS
+// ============================================================================
 
 /**
  * Get template path for React components
@@ -59,6 +76,94 @@ function toPascalCase(name) {
 }
 
 /**
+ * Resolve color scheme to actual colors
+ * @param {Object} options - Color options
+ * @returns {Object} Resolved colors
+ */
+function resolveColors(options) {
+  const { colorScheme, primaryColor, secondaryColor } = options;
+  
+  let finalPrimaryColor = primaryColor || DEFAULT_PRIMARY_COLOR;
+  let finalSecondaryColor = secondaryColor || DEFAULT_SECONDARY_COLOR;
+
+  if (colorScheme && COLOR_SCHEMES[colorScheme]) {
+    const scheme = COLOR_SCHEMES[colorScheme];
+    finalPrimaryColor = scheme.primary;
+    finalSecondaryColor = scheme.secondary;
+  }
+
+  return { finalPrimaryColor, finalSecondaryColor };
+}
+
+// ============================================================================
+// VALIDATORS
+// ============================================================================
+
+/**
+ * Validate React component name
+ * @param {string} component - Component name to validate
+ * @throws {Error} If component is invalid
+ */
+function validateComponent(component) {
+  if (!VALID_REACT_COMPONENTS.includes(component)) {
+    throw new Error(
+      `Invalid React component: ${component}. Must be one of: ${VALID_REACT_COMPONENTS.join(", ")}`
+    );
+  }
+}
+
+/**
+ * Read and process component template files
+ * @param {string} component - Component name (kebab-case)
+ * @param {string} componentName - Component name (PascalCase)
+ * @param {string} primaryColor - Primary color
+ * @param {string} secondaryColor - Secondary color
+ * @returns {Promise<Object>} Processed JSX and CSS content
+ */
+async function readComponentFiles(component, componentName, primaryColor, secondaryColor) {
+  const jsxContent = await readReactFile(component, `${componentName}.jsx`);
+  let cssContent = await readReactFile(component, `${componentName}.css`);
+
+  if (!jsxContent) {
+    throw new Error(`React template not found for component: ${component}`);
+  }
+
+  // Apply custom colors to CSS
+  if (cssContent && (primaryColor || secondaryColor)) {
+    cssContent = applyCustomColors(cssContent, primaryColor, secondaryColor);
+  }
+
+  return { jsxContent, cssContent };
+}
+
+/**
+ * Write component files to directory
+ * @param {string} componentDir - Component directory path
+ * @param {string} componentName - Component name (PascalCase)
+ * @param {string} jsxContent - JSX file content
+ * @param {string} cssContent - CSS file content
+ */
+async function writeComponentFiles(componentDir, componentName, jsxContent, cssContent) {
+  await fs.writeFile(
+    path.join(componentDir, `${componentName}.jsx`),
+    jsxContent,
+    "utf-8"
+  );
+
+  if (cssContent) {
+    await fs.writeFile(
+      path.join(componentDir, `${componentName}.css`),
+      cssContent,
+      "utf-8"
+    );
+  }
+}
+
+// ============================================================================
+// PROJECT STRUCTURE CREATION
+// ============================================================================
+
+/**
  * Create React project structure
  * @param {string} outputDir - Output directory path
  * @returns {Promise<Object>} Directory paths
@@ -75,6 +180,10 @@ async function createReactProjectStructure(outputDir) {
   return { outputDir, srcDir, componentsDir };
 }
 
+// ============================================================================
+// MAIN EXPORT FUNCTIONS
+// ============================================================================
+
 /**
  * Generate React component files
  * @param {Object} options - Generation options
@@ -88,25 +197,17 @@ async function generateReactTemplate(options) {
     primaryColor,
     secondaryColor,
     darkMode,
-    includeExample = true,
   } = options;
 
-  // Handle color scheme
-  let finalPrimaryColor = primaryColor || "#667eea";
-  let finalSecondaryColor = secondaryColor || "#764ba2";
-
-  if (colorScheme && COLOR_SCHEMES[colorScheme]) {
-    const scheme = COLOR_SCHEMES[colorScheme];
-    finalPrimaryColor = scheme.primary;
-    finalSecondaryColor = scheme.secondary;
-  }
+  // Resolve colors
+  const { finalPrimaryColor, finalSecondaryColor } = resolveColors({
+    colorScheme,
+    primaryColor,
+    secondaryColor,
+  });
 
   // Security: Validate component name
-  if (!VALID_REACT_COMPONENTS.includes(component)) {
-    throw new Error(
-      `Invalid React component: ${component}. Must be one of: ${VALID_REACT_COMPONENTS.join(", ")}`
-    );
-  }
+  validateComponent(component);
 
   // Security: Sanitize name to prevent path traversal
   const safeName = sanitizeFilename(name);
@@ -123,43 +224,19 @@ async function generateReactTemplate(options) {
   const componentDir = path.join(componentsDir, componentName);
   await fs.mkdir(componentDir, { recursive: true });
 
-  // Read template files
-  const jsxContent = await readReactFile(component, `${componentName}.jsx`);
-  let cssContent = await readReactFile(component, `${componentName}.css`);
-  const exampleContent = includeExample 
-    ? await readReactFile(component, `${componentName}.example.jsx`)
-    : null;
-
-  if (!jsxContent) {
-    throw new Error(`React template not found for component: ${component}`);
-  }
-
-  // Apply custom colors to CSS
-  if (cssContent && (finalPrimaryColor || finalSecondaryColor)) {
-    cssContent = applyCustomColors(
-      cssContent,
-      finalPrimaryColor,
-      finalSecondaryColor
-    );
-  }
-
-  // Write component files
-  await fs.writeFile(
-    path.join(componentDir, `${componentName}.jsx`),
-    jsxContent,
-    "utf-8"
+  // Read and process component files
+  const { jsxContent, cssContent } = await readComponentFiles(
+    component,
+    componentName,
+    finalPrimaryColor,
+    finalSecondaryColor
   );
 
-  if (cssContent) {
-    await fs.writeFile(
-      path.join(componentDir, `${componentName}.css`),
-      cssContent,
-      "utf-8"
-    );
-  }
+  // Write component files
+  await writeComponentFiles(componentDir, componentName, jsxContent, cssContent);
 
   // Create App.jsx
-  const appContent = generateAppJsx(componentName, component, includeExample);
+  const appContent = generateAppJsx(componentName, component);
   await fs.writeFile(path.join(srcDir, "App.jsx"), appContent, "utf-8");
 
   // Create index.jsx
@@ -207,22 +284,15 @@ async function addReactComponentOnly(options) {
     secondaryColor,
   } = options;
 
-  // Handle color scheme
-  let finalPrimaryColor = primaryColor || "#667eea";
-  let finalSecondaryColor = secondaryColor || "#764ba2";
-
-  if (colorScheme && COLOR_SCHEMES[colorScheme]) {
-    const scheme = COLOR_SCHEMES[colorScheme];
-    finalPrimaryColor = scheme.primary;
-    finalSecondaryColor = scheme.secondary;
-  }
+  // Resolve colors
+  const { finalPrimaryColor, finalSecondaryColor } = resolveColors({
+    colorScheme,
+    primaryColor,
+    secondaryColor,
+  });
 
   // Security: Validate component name
-  if (!VALID_REACT_COMPONENTS.includes(component)) {
-    throw new Error(
-      `Invalid React component: ${component}. Must be one of: ${VALID_REACT_COMPONENTS.join(", ")}`
-    );
-  }
+  validateComponent(component);
 
   // Get component name in PascalCase
   const componentName = toPascalCase(component);
@@ -240,37 +310,16 @@ async function addReactComponentOnly(options) {
 
   await fs.mkdir(componentDir, { recursive: true });
 
-  // Read template files
-  const jsxContent = await readReactFile(component, `${componentName}.jsx`);
-  let cssContent = await readReactFile(component, `${componentName}.css`);
-
-  if (!jsxContent) {
-    throw new Error(`React template not found for component: ${component}`);
-  }
-
-  // Apply custom colors to CSS
-  if (cssContent && (finalPrimaryColor || finalSecondaryColor)) {
-    cssContent = applyCustomColors(
-      cssContent,
-      finalPrimaryColor,
-      finalSecondaryColor
-    );
-  }
-
-  // Write component files
-  await fs.writeFile(
-    path.join(componentDir, `${componentName}.jsx`),
-    jsxContent,
-    "utf-8"
+  // Read and process component files
+  const { jsxContent, cssContent } = await readComponentFiles(
+    component,
+    componentName,
+    finalPrimaryColor,
+    finalSecondaryColor
   );
 
-  if (cssContent) {
-    await fs.writeFile(
-      path.join(componentDir, `${componentName}.css`),
-      cssContent,
-      "utf-8"
-    );
-  }
+  // Write component files
+  await writeComponentFiles(componentDir, componentName, jsxContent, cssContent);
 
   console.log(`✓ Created ${componentName} component in ${componentDir}`);
   console.log(`\nFiles created:`);
@@ -286,15 +335,40 @@ async function addReactComponentOnly(options) {
 /**
  * Generate App.jsx content
  */
-function generateAppJsx(componentName, componentKebab, includeExample) {
-  // Basic usage examples for each component
-  const examples = {
-    button: `import React from 'react';
+/**
+ * Create App.jsx template wrapper
+ * @param {string} componentName - Component name (PascalCase)
+ * @param {string} additionalImports - Additional imports from React (e.g., "useState, useEffect")
+ * @param {string} content - JSX content inside App div
+ * @returns {string} Complete App.jsx code
+ */
+function createAppTemplate(componentName, additionalImports = '', content) {
+  const reactImports = additionalImports 
+    ? `import React, { ${additionalImports} } from 'react';`
+    : `import React from 'react';`;
+    
+  return `${reactImports}
 import ${componentName} from './components/${componentName}/${componentName}';
 import './components/${componentName}/${componentName}.css';
 
 function App() {
-  const handleClick = () => {
+${content}
+}
+
+export default App;`;
+}
+
+// ============================================================================
+// TEMPLATE GENERATORS
+// ============================================================================
+
+/**
+ * Generate App.jsx content
+ */
+function generateAppJsx(componentName, componentKebab) {
+  // Component-specific content (inside App function)
+  const componentContent = {
+    button: `  const handleClick = () => {
     alert('Button clicked!');
   };
 
@@ -335,16 +409,9 @@ function App() {
         </div>
       </div>
     </div>
-  );
-}
-
-export default App;`,
-    card: `import React from 'react';
-import ${componentName} from './components/${componentName}/${componentName}';
-import './components/${componentName}/${componentName}.css';
-
-function App() {
-  return (
+  );`,
+    
+    card: `  return (
     <div className="App" style={{ padding: '40px', backgroundColor: '#f5f5f5', minHeight: '100vh' }}>
       <h1 style={{ marginBottom: '30px' }}>${componentName} Component</h1>
       <${componentName}
@@ -353,16 +420,9 @@ function App() {
         image="https://via.placeholder.com/400x200"
       />
     </div>
-  );
-}
-
-export default App;`,
-    counter: `import React from 'react';
-import ${componentName} from './components/${componentName}/${componentName}';
-import './components/${componentName}/${componentName}.css';
-
-function App() {
-  return (
+  );`,
+    
+    counter: `  return (
     <div className="App" style={{ padding: '40px' }}>
       <h1>Counter Component</h1>
       <${componentName} 
@@ -372,16 +432,9 @@ function App() {
         onChange={(value) => console.log('Count:', value)}
       />
     </div>
-  );
-}
-
-export default App;`,
-    form: `import React from 'react';
-import ${componentName} from './components/${componentName}/${componentName}';
-import './components/${componentName}/${componentName}.css';
-
-function App() {
-  return (
+  );`,
+    
+    form: `  return (
     <div className="App" style={{ padding: '40px' }}>
       <${componentName}
         title="Contact Form"
@@ -392,16 +445,19 @@ function App() {
         onSubmit={(data) => console.log('Form data:', data)}
       />
     </div>
-  );
-}
+  );`,
+    
+    "todo-list": `  return (
+    <div className="App" style={{ padding: '40px' }}>
+      <h1>Todo List</h1>
+      <${componentName} />
+    </div>
+  );`,
+  };
 
-export default App;`,
-    modal: `import React, { useState } from 'react';
-import ${componentName} from './components/${componentName}/${componentName}';
-import './components/${componentName}/${componentName}.css';
-
-function App() {
-  const [isOpen, setIsOpen] = useState(false);
+  // Modal needs useState import
+  if (componentKebab === 'modal') {
+    const content = `  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="App" style={{ padding: '40px' }}>
@@ -414,41 +470,23 @@ function App() {
         <p>This is the modal content</p>
       </${componentName}>
     </div>
-  );
-}
+  );`;
+    return createAppTemplate(componentName, 'useState', content);
+  }
 
-export default App;`,
-    "todo-list": `import React from 'react';
-import ${componentName} from './components/${componentName}/${componentName}';
-import './components/${componentName}/${componentName}.css';
-
-function App() {
-  return (
-    <div className="App" style={{ padding: '40px' }}>
-      <h1>Todo List</h1>
-      <${componentName} />
-    </div>
-  );
-}
-
-export default App;`,
-  };
-
-  return examples[componentKebab] || `import React from 'react';
-import ${componentName} from './components/${componentName}/${componentName}';
-import './components/${componentName}/${componentName}.css';
-
-function App() {
-  return (
+  // Use component-specific content if available
+  const content = componentContent[componentKebab] || `  return (
     <div className="App">
       <${componentName} />
     </div>
-  );
+  );`;
+
+  return createAppTemplate(componentName, '', content);
 }
 
-export default App;
-`;
-}
+// ============================================================================
+// FILE GENERATORS (Config, HTML, etc.)
+// ============================================================================
 
 /**
  * Generate index.js content
@@ -496,12 +534,12 @@ function generatePackageJson(name) {
     type: "module",
     private: true,
     dependencies: {
-      react: "^18.2.0",
-      "react-dom": "^18.2.0",
+      react: REACT_VERSION,
+      "react-dom": REACT_VERSION,
     },
     devDependencies: {
-      "@vitejs/plugin-react": "^4.2.0",
-      vite: "^5.0.0",
+      "@vitejs/plugin-react": VITE_REACT_PLUGIN_VERSION,
+      vite: VITE_VERSION,
     },
     scripts: {
       dev: "vite",
