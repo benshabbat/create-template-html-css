@@ -7,6 +7,10 @@ import { sanitizeFilename } from "./generators/validation.js";
 
 const __dirname = getDirname(import.meta.url);
 
+// ============================================================================
+// CONSTANTS
+// ============================================================================
+
 // Valid React components
 export const VALID_REACT_COMPONENTS = [
   "button",
@@ -16,6 +20,19 @@ export const VALID_REACT_COMPONENTS = [
   "modal",
   "todo-list",
 ];
+
+// Default colors
+const DEFAULT_PRIMARY_COLOR = "#667eea";
+const DEFAULT_SECONDARY_COLOR = "#764ba2";
+
+// Dependencies versions
+const REACT_VERSION = "^18.2.0";
+const VITE_VERSION = "^5.0.0";
+const VITE_REACT_PLUGIN_VERSION = "^4.2.0";
+
+// ============================================================================
+// UTILITY FUNCTIONS
+// ============================================================================
 
 /**
  * Get template path for React components
@@ -66,8 +83,8 @@ function toPascalCase(name) {
 function resolveColors(options) {
   const { colorScheme, primaryColor, secondaryColor } = options;
   
-  let finalPrimaryColor = primaryColor || "#667eea";
-  let finalSecondaryColor = secondaryColor || "#764ba2";
+  let finalPrimaryColor = primaryColor || DEFAULT_PRIMARY_COLOR;
+  let finalSecondaryColor = secondaryColor || DEFAULT_SECONDARY_COLOR;
 
   if (colorScheme && COLOR_SCHEMES[colorScheme]) {
     const scheme = COLOR_SCHEMES[colorScheme];
@@ -77,6 +94,10 @@ function resolveColors(options) {
 
   return { finalPrimaryColor, finalSecondaryColor };
 }
+
+// ============================================================================
+// VALIDATORS
+// ============================================================================
 
 /**
  * Validate React component name
@@ -138,6 +159,10 @@ async function writeComponentFiles(componentDir, componentName, jsxContent, cssC
   }
 }
 
+// ============================================================================
+// PROJECT STRUCTURE CREATION
+// ============================================================================
+
 /**
  * Create React project structure
  * @param {string} outputDir - Output directory path
@@ -154,6 +179,10 @@ async function createReactProjectStructure(outputDir) {
 
   return { outputDir, srcDir, componentsDir };
 }
+
+// ============================================================================
+// MAIN EXPORT FUNCTIONS
+// ============================================================================
 
 /**
  * Generate React component files
@@ -329,6 +358,10 @@ ${content}
 export default App;`;
 }
 
+// ============================================================================
+// TEMPLATE GENERATORS
+// ============================================================================
+
 /**
  * Generate App.jsx content
  */
@@ -451,6 +484,10 @@ function generateAppJsx(componentName, componentKebab) {
   return createAppTemplate(componentName, '', content);
 }
 
+// ============================================================================
+// FILE GENERATORS (Config, HTML, etc.)
+// ============================================================================
+
 /**
  * Generate index.js content
  */
@@ -497,12 +534,12 @@ function generatePackageJson(name) {
     type: "module",
     private: true,
     dependencies: {
-      react: "^18.2.0",
-      "react-dom": "^18.2.0",
+      react: REACT_VERSION,
+      "react-dom": REACT_VERSION,
     },
     devDependencies: {
-      "@vitejs/plugin-react": "^4.2.0",
-      vite: "^5.0.0",
+      "@vitejs/plugin-react": VITE_REACT_PLUGIN_VERSION,
+      vite: VITE_VERSION,
     },
     scripts: {
       dev: "vite",
