@@ -7,6 +7,101 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - v2.1.0
 
+### ⚛️ React Support
+
+#### Added - React Component Generation
+- **React Component Templates** - Generate React components with JSX
+  - Created `templates-react/` directory with 6 React components:
+    - Button - Customizable button with variants and sizes
+    - Card - Display content in elegant cards
+    - Counter - Interactive counter with state management
+    - Form - Flexible form with validation
+    - Modal - Dialog modal with overlay
+    - Todo List - Complete CRUD operations
+  - All components use modern React Hooks (useState, useEffect)
+  - Full CSS styling with customizable colors
+  - Dark mode support with CSS media queries
+  - Example files for each component
+
+- **React Generator** - New `src/react-generator.js` module
+  - Generates complete React project structure with Vite
+  - Creates `src/components/` directory structure
+  - Generates `App.jsx`, `index.jsx`, and `index.html`
+  - Creates `package.json` with React 18 and Vite dependencies
+  - Generates `vite.config.js` for Vite configuration
+  - Generates `.gitignore` and `README.md`
+  - Supports color customization (schemes and custom colors)
+  - **Component-Only Mode**: New `addReactComponentOnly()` function
+    - Adds single React component (JSX + CSS) without full project structure
+    - Perfect for adding components to existing projects
+    - Validates component doesn't already exist
+    - Provides usage instructions after creation
+  - **Security**: Full input validation and sanitization
+    - Component name validation against whitelist
+    - Project name sanitization using `sanitizeFilename()`
+    - Protection against path traversal attacks
+    - Alphanumeric validation for project names
+  - Export functions: `generateReactTemplate()`, `addReactComponentOnly()`, `VALID_REACT_COMPONENTS`
+
+- **React CLI Support** - Enhanced CLI with React mode
+  - Added `--react` flag to `create` command
+  - Added `--component-only` flag for adding components without full project
+  - Interactive framework selection (HTML or React)
+  - Interactive project type selection (Full project or Component only)
+  - React component choices loaded dynamically
+  - Created `src/react-component-choices.js` with component descriptions
+  - Updated CLI help messages to mention React support
+  - Updated main CLI description to include React
+
+- **React Documentation**
+  - Created `templates-react/README.md` with usage guide
+
+#### Fixed
+- **JSX File Extension**: Changed `index.js` to `index.jsx` to properly support JSX syntax
+  - Vite requires `.jsx` extension for files containing JSX
+  - Updated generator to create `index.jsx` instead of `index.js`
+  - Updated `index.html` reference to `/src/index.jsx`
+  - Prevents "Failed to parse source for import analysis" errors
+  - Created `QUICKSTART-REACT.md` - Quick start guide for React
+  - Created `HTML-VS-REACT.md` - Comprehensive comparison guide
+  - Updated main `README.md` with React sections:
+    - "React Support" in What's New
+    - "Mode 1b: Create a React Component Project" usage guide
+    - React component descriptions and examples
+  - Added React keywords to `package.json`
+  - Updated version to 2.1.0
+
+#### Security Enhancements
+- **Enhanced Input Validation** - Strengthened security across all components
+  - All user inputs are validated and sanitized
+  - Path traversal protection (blocks ../, ..\, /../, \..\ patterns)
+  - Project name length validation (max 100 characters)
+  - Alphanumeric character requirement for names
+  - Dangerous character removal (<>:"|?*)
+  - Component name whitelist validation
+  - Empty/null input rejection
+
+- **Secure File Operations** - Protected file system operations
+  - All file paths use `path.join()` to prevent traversal
+  - Directory creation with `recursive: true` safely
+  - Output directory restricted to `process.cwd()` subdirectories
+  - No arbitrary file system access allowed
+
+- **Example Usage:**
+  ```bash
+  # Interactive mode
+  create-template create --react
+  
+  # With flags
+  create-template create --react -c button -n my-button
+  create-template create --react -c counter -n my-counter --color-scheme ocean
+  
+  # Run the React project
+  cd my-counter
+  npm install
+  npm run dev
+  ```
+
 ### 🏗️ Major Refactoring
 
 #### Changed - Code Deduplication

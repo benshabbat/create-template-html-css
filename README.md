@@ -1,6 +1,6 @@
-# Create Template HTML/CSS 🎨
+# Create Template HTML/CSS 🎨⚛️
 
-A powerful CLI library to create HTML+CSS element templates. Generate styled UI components in seconds!
+A powerful CLI library to create HTML+CSS and React component templates. Generate styled UI components in seconds!
 
 [![npm version](https://img.shields.io/npm/v/create-template-html-css.svg)](https://www.npmjs.com/package/create-template-html-css)
 [![npm downloads](https://img.shields.io/npm/dm/create-template-html-css.svg)](https://www.npmjs.com/package/create-template-html-css)
@@ -28,12 +28,13 @@ npm install -g create-template-html-css
 ## ✨ Features
 
 - 🚀 **Fast Creation** - Create UI components in seconds
+- ⚛️ **React Support** - Generate React components with JSX (v2.1.0+)
 - 🎨 **Modern Design** - All templates are designed with high standards
 - 📱 **Responsive** - All components adapt to mobile devices
 - 🌈 **Stunning Gradients** - Colorful and attractive designs
 - ⚡ **Animations** - Smooth and professional effects
 - 🔧 **Customizable** - Easy to edit and modify the code
-- 📦 **46 Templates** - Button, Card, Form, Navigation, Modal, Footer, Hero, Slider, Table, Login, Register, Skeleton, Spinner, Animated Cards, Typing Effect, Fade Gallery, Grid Layouts, Masonry Grid, Dashboard, Flexbox Layouts, Todo List, Counter, Accordion, Tabs, 16 Interactive Games (Tic-Tac-Toe, Memory, Snake, Guess Number, 2048, Whack-a-Mole, Simon Says, Rock-Paper-Scissors, Breakout, Tetris, Flappy Bird, Connect Four, Blackjack, Slot Machine, Dice Game, Pong)
+- 📦 **46 HTML Templates + 6 React Components** - Button, Card, Form, Navigation, Modal, Footer, Hero, Slider, Table, Login, Register, Skeleton, Spinner, Animated Cards, Typing Effect, Fade Gallery, Grid Layouts, Masonry Grid, Dashboard, Flexbox Layouts, Todo List, Counter, Accordion, Tabs, 16 Interactive Games
 - 🎯 **Two Modes** - Create new projects or insert into existing HTML pages
 - 🔒 **Secure** - Input validation and path protection
 - 📚 **Well Documented** - Comprehensive guides and examples
@@ -44,8 +45,64 @@ npm install -g create-template-html-css
 - 🎯 **Customizable Components** - Choose navigation items and form fields during creation (v1.7.0+)
 - 🏗️ **Modern Architecture** - ES Modules for better performance and tree-shaking (v2.1.0+)
 - 🧩 **Modular CLI** - Refactored command structure for better maintainability (v2.1.0+)
+- ⚡ **Vite Integration** - React projects use Vite for fast development (v2.1.0+)
 
-## 🆕 What's New in v2.1.0 (Upcoming)
+## 🆕 What's New in v2.1.0
+
+### ⚛️ **React Support**
+- **React Components** - Generate React components with JSX
+- **6 React Components** - Button, Card, Counter, Form, Modal, Todo List
+- **Two Modes**:
+  - **Full Project** - Complete React + Vite project with all dependencies
+  - **Component Only** - Just JSX + CSS files for existing projects
+- **Vite Integration** - Fast development with Vite build tool
+- **Modern Hooks** - All components use React Hooks (useState, useEffect, etc.)
+- **TypeScript Ready** - Easy to convert to TypeScript
+- **Full Project Setup** - Includes package.json, vite.config.js, and project structure
+
+**Create Full React Project:**
+```bash
+# Interactive mode
+create-template create --react
+
+# With flags
+create-template create --react -c button -n my-button
+create-template create --react -c counter -n my-counter
+create-template create --react -c todo-list -n my-todos
+
+# With custom colors
+create-template create --react -c card -n my-card --color-scheme ocean
+```
+
+**Add Component to Existing Project (Component Only Mode):**
+```bash
+# Interactive mode (choose "Component only")
+create-template create --react
+
+# With flags - adds component to current directory
+create-template create --react --component-only -c button --color-scheme sunset
+create-template create --react --component-only -c card --color-scheme ocean
+
+# Navigate to your project's components folder first
+cd my-app/src/components
+create-template create --react --component-only -c modal --color-scheme vibrant
+```
+
+**Component Only Mode:**
+- Creates just `ComponentName/ComponentName.jsx` and `ComponentName/ComponentName.css`
+- Perfect for adding to existing React projects
+- No package.json, no Vite config, no extra files
+- Validates that component doesn't already exist
+- Works with all color schemes
+- Usage instructions displayed after creation
+
+**Available React Components:**
+- 🔘 **Button** - Customizable button with variants (primary, secondary, success, danger) and sizes
+- 🎴 **Card** - Display content in an elegant card with image support
+- 🔢 **Counter** - Interactive counter with increment/decrement and limits
+- 📝 **Form** - Flexible form with validation and multiple field types
+- 🪟 **Modal** - Dialog modal component with overlay
+- ✅ **Todo List** - Complete todo list with CRUD operations
 
 ### 🏗️ **Major Refactoring**
 - **ES Modules Migration** - Converted entire codebase from CommonJS to modern ES Modules
@@ -353,9 +410,88 @@ $ create-template create
 ```
 my-awesome-button/
 ├── index.html
-├── style.css
-└── script.js
+├── css/
+│   └── style.css
+└── js/
+    └── script.js
 ```
+
+### Mode 1b: Create a React Component Project ⚛️
+
+Generate a complete React project with Vite:
+
+```bash
+create-template create --react
+```
+
+Follow the interactive prompts:
+1. **Select Framework** - Choose React
+2. **Select Component Type** - Choose from Button, Card, Counter, Form, Modal, Todo List
+3. **Enter Component Name** - Give your project a meaningful name
+4. **Choose Color Scheme** (optional) - Select from preset schemes or enter custom colors
+
+**Example (Basic):**
+
+```bash
+$ create-template create --react
+? What framework would you like to use? React (JSX + CSS)
+? Choose a component type: Counter
+? Enter a name for your component: my-counter
+? Choose a color scheme: (Use arrow keys)
+  ❯ Ocean - Professional blue gradient
+    Sunset - Warm orange to yellow gradient
+    Forest - Natural green gradient
+✓ React component created successfully!
+  Location: ./my-counter/
+```
+
+**Example (With Flags):**
+
+```bash
+# Create React button with custom colors
+create-template create --react -c button -n my-button --primary-color "#FF5733"
+
+# Create React todo list with ocean color scheme
+create-template create --react -c todo-list -n my-todos --color-scheme ocean
+
+# Create React modal
+create-template create --react -c modal -n my-modal
+```
+
+**Result:**
+```
+my-counter/
+├── src/
+│   ├── components/
+│   │   └── Counter/
+│   │       ├── Counter.jsx
+│   │       └── Counter.css
+│   ├── App.jsx
+│   └── index.js
+├── index.html
+├── package.json
+├── vite.config.js
+├── .gitignore
+└── README.md
+```
+
+**Running the React Project:**
+
+```bash
+cd my-counter
+npm install
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+**Available React Components:**
+- 🔘 **Button** - Variants: primary, secondary, success, danger | Sizes: small, medium, large
+- 🎴 **Card** - Image, title, description, footer support with hover effects
+- 🔢 **Counter** - Increment/decrement with limits, step customization, reset button
+- 📝 **Form** - Multiple field types, built-in validation, error messages
+- 🪟 **Modal** - Customizable sizes (small, medium, large), overlay, close handlers
+- ✅ **Todo List** - Add, toggle complete, delete tasks with statistics
 
 ### Mode 2: Insert Component into Existing HTML Page
 
@@ -1047,15 +1183,56 @@ See [SECURITY.md](SECURITY.md) for more details.
 
 ## 🔒 Security
 
-This project includes security features to protect your files:
+This project includes comprehensive security features to protect your files and data:
 
-- **Component Whitelist** - Only validated components can be inserted
-- **Path Traversal Protection** - Prevents access to files outside the working directory
-- **Input Validation** - Hex color validation and component name validation
+### Input Validation & Sanitization
+- **Component Whitelist** - Only validated components can be created/inserted
+  - HTML templates: 46 components validated against `VALID_COMPONENTS`
+  - React components: 6 components validated against `VALID_REACT_COMPONENTS`
+- **Project Name Sanitization** - All user-provided names are sanitized
+  - Path traversal protection (blocks `../`, `..\`, `/../`, etc.)
+  - Length validation (max 100 characters)
+  - Alphanumeric character requirement
+  - Dangerous character removal (`<>:"|?*`)
+  - Empty/null input rejection
+- **Color Validation** - Hex color codes validated with regex pattern
 - **HTML Structure Validation** - Ensures proper HTML structure before insertion
-- **Zero Dependencies for Security** - Uses only Node.js built-in modules for security checks
 
-For security concerns, see [SECURITY.md](SECURITY.md)
+### Path Security
+- **Path Traversal Protection** - Prevents access outside working directory
+  - All file operations use `path.join()` for safe path construction
+  - Output directories restricted to `process.cwd()` subdirectories
+  - No arbitrary file system access allowed
+- **Safe File Operations** - All file system operations are protected
+  - Directory creation uses `recursive: true` safely
+  - File writes validated before execution
+  - Backup creation before file modifications
+
+### Code Security
+- **Zero External Dependencies for Security** - Uses only Node.js built-in modules for security checks
+- **ES Modules** - Modern module system prevents prototype pollution
+- **Strict Mode** - All code runs in JavaScript strict mode
+- **No eval()** - No dynamic code execution
+
+### Security Best Practices
+- **Input Validation**: All user inputs validated before processing
+- **Whitelist Approach**: Component selection validated against predefined lists
+  - HTML: 46 validated components
+  - React: 6 validated components (`VALID_REACT_COMPONENTS`)
+- **Path Sanitization**: All file paths sanitized using `sanitizeFilename()`
+  - Prevents path traversal attacks (../, ../../, etc.)
+  - Blocks dangerous characters and patterns
+  - Validates alphanumeric names only
+- **Component-Only Mode Security**:
+  - Validates component doesn't already exist
+  - Checks for directory conflicts
+  - Safe output directory handling
+- **File System Protection**: Safe file operations with error handling
+- **No Code Injection**: Template-based generation prevents code injection
+- **Clear Error Messages**: Informative errors without exposing system details
+- **Regular Security Audits**: Dependencies updated and audited regularly
+
+For security concerns or to report vulnerabilities, see [SECURITY.md](SECURITY.md)
 
 ## 🤝 Contributing
 

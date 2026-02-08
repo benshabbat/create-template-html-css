@@ -1,8 +1,8 @@
 {
   "name": "create-template-html-css",
-  "version": "2.0.4",
+  "version": "2.1.0",
   "type": "module",
-  "description": "CLI tool to generate HTML and CSS templates for common UI elements",
+  "description": "CLI tool to generate HTML/CSS and React templates for common UI elements",
   "main": "src/index.js",
   "bin": {
     "create-template": "bin/cli.js"
@@ -20,10 +20,14 @@
     "html",
     "css",
     "javascript",
+    "react",
+    "jsx",
+    "react-components",
     "generator",
     "ui-components",
     "html-template",
     "css-template",
+    "react-template",
     "component-generator",
     "ui-generator",
     "animations",
@@ -39,7 +43,9 @@
     "modern-ui",
     "flexbox",
     "flex-layout",
-    "flex-dashboard"
+    "flex-dashboard",
+    "vite",
+    "react-vite"
   ],
   "author": "Ben Shabbat <benshabbat@example.com> (https://github.com/benshabbat)",
   "license": "MIT",
