@@ -59,6 +59,86 @@ function toPascalCase(name) {
 }
 
 /**
+ * Resolve color scheme to actual colors
+ * @param {Object} options - Color options
+ * @returns {Object} Resolved colors
+ */
+function resolveColors(options) {
+  const { colorScheme, primaryColor, secondaryColor } = options;
+  
+  let finalPrimaryColor = primaryColor || "#667eea";
+  let finalSecondaryColor = secondaryColor || "#764ba2";
+
+  if (colorScheme && COLOR_SCHEMES[colorScheme]) {
+    const scheme = COLOR_SCHEMES[colorScheme];
+    finalPrimaryColor = scheme.primary;
+    finalSecondaryColor = scheme.secondary;
+  }
+
+  return { finalPrimaryColor, finalSecondaryColor };
+}
+
+/**
+ * Validate React component name
+ * @param {string} component - Component name to validate
+ * @throws {Error} If component is invalid
+ */
+function validateComponent(component) {
+  if (!VALID_REACT_COMPONENTS.includes(component)) {
+    throw new Error(
+      `Invalid React component: ${component}. Must be one of: ${VALID_REACT_COMPONENTS.join(", ")}`
+    );
+  }
+}
+
+/**
+ * Read and process component template files
+ * @param {string} component - Component name (kebab-case)
+ * @param {string} componentName - Component name (PascalCase)
+ * @param {string} primaryColor - Primary color
+ * @param {string} secondaryColor - Secondary color
+ * @returns {Promise<Object>} Processed JSX and CSS content
+ */
+async function readComponentFiles(component, componentName, primaryColor, secondaryColor) {
+  const jsxContent = await readReactFile(component, `${componentName}.jsx`);
+  let cssContent = await readReactFile(component, `${componentName}.css`);
+
+  if (!jsxContent) {
+    throw new Error(`React template not found for component: ${component}`);
+  }
+
+  // Apply custom colors to CSS
+  if (cssContent && (primaryColor || secondaryColor)) {
+    cssContent = applyCustomColors(cssContent, primaryColor, secondaryColor);
+  }
+
+  return { jsxContent, cssContent };
+}
+
+/**
+ * Write component files to directory
+ * @param {string} componentDir - Component directory path
+ * @param {string} componentName - Component name (PascalCase)
+ * @param {string} jsxContent - JSX file content
+ * @param {string} cssContent - CSS file content
+ */
+async function writeComponentFiles(componentDir, componentName, jsxContent, cssContent) {
+  await fs.writeFile(
+    path.join(componentDir, `${componentName}.jsx`),
+    jsxContent,
+    "utf-8"
+  );
+
+  if (cssContent) {
+    await fs.writeFile(
+      path.join(componentDir, `${componentName}.css`),
+      cssContent,
+      "utf-8"
+    );
+  }
+}
+
+/**
  * Create React project structure
  * @param {string} outputDir - Output directory path
  * @returns {Promise<Object>} Directory paths
@@ -91,22 +171,15 @@ async function generateReactTemplate(options) {
     includeExample = true,
   } = options;
 
-  // Handle color scheme
-  let finalPrimaryColor = primaryColor || "#667eea";
-  let finalSecondaryColor = secondaryColor || "#764ba2";
-
-  if (colorScheme && COLOR_SCHEMES[colorScheme]) {
-    const scheme = COLOR_SCHEMES[colorScheme];
-    finalPrimaryColor = scheme.primary;
-    finalSecondaryColor = scheme.secondary;
-  }
+  // Resolve colors
+  const { finalPrimaryColor, finalSecondaryColor } = resolveColors({
+    colorScheme,
+    primaryColor,
+    secondaryColor,
+  });
 
   // Security: Validate component name
-  if (!VALID_REACT_COMPONENTS.includes(component)) {
-    throw new Error(
-      `Invalid React component: ${component}. Must be one of: ${VALID_REACT_COMPONENTS.join(", ")}`
-    );
-  }
+  validateComponent(component);
 
   // Security: Sanitize name to prevent path traversal
   const safeName = sanitizeFilename(name);
@@ -123,40 +196,16 @@ async function generateReactTemplate(options) {
   const componentDir = path.join(componentsDir, componentName);
   await fs.mkdir(componentDir, { recursive: true });
 
-  // Read template files
-  const jsxContent = await readReactFile(component, `${componentName}.jsx`);
-  let cssContent = await readReactFile(component, `${componentName}.css`);
-  const exampleContent = includeExample 
-    ? await readReactFile(component, `${componentName}.example.jsx`)
-    : null;
-
-  if (!jsxContent) {
-    throw new Error(`React template not found for component: ${component}`);
-  }
-
-  // Apply custom colors to CSS
-  if (cssContent && (finalPrimaryColor || finalSecondaryColor)) {
-    cssContent = applyCustomColors(
-      cssContent,
-      finalPrimaryColor,
-      finalSecondaryColor
-    );
-  }
-
-  // Write component files
-  await fs.writeFile(
-    path.join(componentDir, `${componentName}.jsx`),
-    jsxContent,
-    "utf-8"
+  // Read and process component files
+  const { jsxContent, cssContent } = await readComponentFiles(
+    component,
+    componentName,
+    finalPrimaryColor,
+    finalSecondaryColor
   );
 
-  if (cssContent) {
-    await fs.writeFile(
-      path.join(componentDir, `${componentName}.css`),
-      cssContent,
-      "utf-8"
-    );
-  }
+  // Write component files
+  await writeComponentFiles(componentDir, componentName, jsxContent, cssContent);
 
   // Create App.jsx
   const appContent = generateAppJsx(componentName, component, includeExample);
@@ -207,22 +256,15 @@ async function addReactComponentOnly(options) {
     secondaryColor,
   } = options;
 
-  // Handle color scheme
-  let finalPrimaryColor = primaryColor || "#667eea";
-  let finalSecondaryColor = secondaryColor || "#764ba2";
-
-  if (colorScheme && COLOR_SCHEMES[colorScheme]) {
-    const scheme = COLOR_SCHEMES[colorScheme];
-    finalPrimaryColor = scheme.primary;
-    finalSecondaryColor = scheme.secondary;
-  }
+  // Resolve colors
+  const { finalPrimaryColor, finalSecondaryColor } = resolveColors({
+    colorScheme,
+    primaryColor,
+    secondaryColor,
+  });
 
   // Security: Validate component name
-  if (!VALID_REACT_COMPONENTS.includes(component)) {
-    throw new Error(
-      `Invalid React component: ${component}. Must be one of: ${VALID_REACT_COMPONENTS.join(", ")}`
-    );
-  }
+  validateComponent(component);
 
   // Get component name in PascalCase
   const componentName = toPascalCase(component);
@@ -240,37 +282,16 @@ async function addReactComponentOnly(options) {
 
   await fs.mkdir(componentDir, { recursive: true });
 
-  // Read template files
-  const jsxContent = await readReactFile(component, `${componentName}.jsx`);
-  let cssContent = await readReactFile(component, `${componentName}.css`);
-
-  if (!jsxContent) {
-    throw new Error(`React template not found for component: ${component}`);
-  }
-
-  // Apply custom colors to CSS
-  if (cssContent && (finalPrimaryColor || finalSecondaryColor)) {
-    cssContent = applyCustomColors(
-      cssContent,
-      finalPrimaryColor,
-      finalSecondaryColor
-    );
-  }
-
-  // Write component files
-  await fs.writeFile(
-    path.join(componentDir, `${componentName}.jsx`),
-    jsxContent,
-    "utf-8"
+  // Read and process component files
+  const { jsxContent, cssContent } = await readComponentFiles(
+    component,
+    componentName,
+    finalPrimaryColor,
+    finalSecondaryColor
   );
 
-  if (cssContent) {
-    await fs.writeFile(
-      path.join(componentDir, `${componentName}.css`),
-      cssContent,
-      "utf-8"
-    );
-  }
+  // Write component files
+  await writeComponentFiles(componentDir, componentName, jsxContent, cssContent);
 
   console.log(`✓ Created ${componentName} component in ${componentDir}`);
   console.log(`\nFiles created:`);
