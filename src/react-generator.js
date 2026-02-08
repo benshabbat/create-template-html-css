@@ -168,7 +168,6 @@ async function generateReactTemplate(options) {
     primaryColor,
     secondaryColor,
     darkMode,
-    includeExample = true,
   } = options;
 
   // Resolve colors
@@ -208,7 +207,7 @@ async function generateReactTemplate(options) {
   await writeComponentFiles(componentDir, componentName, jsxContent, cssContent);
 
   // Create App.jsx
-  const appContent = generateAppJsx(componentName, component, includeExample);
+  const appContent = generateAppJsx(componentName, component);
   await fs.writeFile(path.join(srcDir, "App.jsx"), appContent, "utf-8");
 
   // Create index.jsx
@@ -307,15 +306,36 @@ async function addReactComponentOnly(options) {
 /**
  * Generate App.jsx content
  */
-function generateAppJsx(componentName, componentKebab, includeExample) {
-  // Basic usage examples for each component
-  const examples = {
-    button: `import React from 'react';
+/**
+ * Create App.jsx template wrapper
+ * @param {string} componentName - Component name (PascalCase)
+ * @param {string} additionalImports - Additional imports from React (e.g., "useState, useEffect")
+ * @param {string} content - JSX content inside App div
+ * @returns {string} Complete App.jsx code
+ */
+function createAppTemplate(componentName, additionalImports = '', content) {
+  const reactImports = additionalImports 
+    ? `import React, { ${additionalImports} } from 'react';`
+    : `import React from 'react';`;
+    
+  return `${reactImports}
 import ${componentName} from './components/${componentName}/${componentName}';
 import './components/${componentName}/${componentName}.css';
 
 function App() {
-  const handleClick = () => {
+${content}
+}
+
+export default App;`;
+}
+
+/**
+ * Generate App.jsx content
+ */
+function generateAppJsx(componentName, componentKebab) {
+  // Component-specific content (inside App function)
+  const componentContent = {
+    button: `  const handleClick = () => {
     alert('Button clicked!');
   };
 
@@ -356,16 +376,9 @@ function App() {
         </div>
       </div>
     </div>
-  );
-}
-
-export default App;`,
-    card: `import React from 'react';
-import ${componentName} from './components/${componentName}/${componentName}';
-import './components/${componentName}/${componentName}.css';
-
-function App() {
-  return (
+  );`,
+    
+    card: `  return (
     <div className="App" style={{ padding: '40px', backgroundColor: '#f5f5f5', minHeight: '100vh' }}>
       <h1 style={{ marginBottom: '30px' }}>${componentName} Component</h1>
       <${componentName}
@@ -374,16 +387,9 @@ function App() {
         image="https://via.placeholder.com/400x200"
       />
     </div>
-  );
-}
-
-export default App;`,
-    counter: `import React from 'react';
-import ${componentName} from './components/${componentName}/${componentName}';
-import './components/${componentName}/${componentName}.css';
-
-function App() {
-  return (
+  );`,
+    
+    counter: `  return (
     <div className="App" style={{ padding: '40px' }}>
       <h1>Counter Component</h1>
       <${componentName} 
@@ -393,16 +399,9 @@ function App() {
         onChange={(value) => console.log('Count:', value)}
       />
     </div>
-  );
-}
-
-export default App;`,
-    form: `import React from 'react';
-import ${componentName} from './components/${componentName}/${componentName}';
-import './components/${componentName}/${componentName}.css';
-
-function App() {
-  return (
+  );`,
+    
+    form: `  return (
     <div className="App" style={{ padding: '40px' }}>
       <${componentName}
         title="Contact Form"
@@ -413,16 +412,19 @@ function App() {
         onSubmit={(data) => console.log('Form data:', data)}
       />
     </div>
-  );
-}
+  );`,
+    
+    "todo-list": `  return (
+    <div className="App" style={{ padding: '40px' }}>
+      <h1>Todo List</h1>
+      <${componentName} />
+    </div>
+  );`,
+  };
 
-export default App;`,
-    modal: `import React, { useState } from 'react';
-import ${componentName} from './components/${componentName}/${componentName}';
-import './components/${componentName}/${componentName}.css';
-
-function App() {
-  const [isOpen, setIsOpen] = useState(false);
+  // Modal needs useState import
+  if (componentKebab === 'modal') {
+    const content = `  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="App" style={{ padding: '40px' }}>
@@ -435,40 +437,18 @@ function App() {
         <p>This is the modal content</p>
       </${componentName}>
     </div>
-  );
-}
+  );`;
+    return createAppTemplate(componentName, 'useState', content);
+  }
 
-export default App;`,
-    "todo-list": `import React from 'react';
-import ${componentName} from './components/${componentName}/${componentName}';
-import './components/${componentName}/${componentName}.css';
-
-function App() {
-  return (
-    <div className="App" style={{ padding: '40px' }}>
-      <h1>Todo List</h1>
-      <${componentName} />
-    </div>
-  );
-}
-
-export default App;`,
-  };
-
-  return examples[componentKebab] || `import React from 'react';
-import ${componentName} from './components/${componentName}/${componentName}';
-import './components/${componentName}/${componentName}.css';
-
-function App() {
-  return (
+  // Use component-specific content if available
+  const content = componentContent[componentKebab] || `  return (
     <div className="App">
       <${componentName} />
     </div>
-  );
-}
+  );`;
 
-export default App;
-`;
+  return createAppTemplate(componentName, '', content);
 }
 
 /**
