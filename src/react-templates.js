@@ -44,6 +44,28 @@ export default App;`;
 function generateAppJsx(componentName, componentKebab) {
   // Component-specific content (inside App function)
   const componentContent = {
+    alert: `  return (
+    <div className="App" style={{ padding: '40px', maxWidth: '600px', margin: '0 auto' }}>
+      <h1 style={{ marginBottom: '30px' }}>Alert Component Examples</h1>
+      
+      <${componentName} type="success" title="Success!">
+        Your changes have been saved successfully.
+      </${componentName}>
+      
+      <${componentName} type="error" title="Error">
+        Something went wrong. Please try again.
+      </${componentName}>
+      
+      <${componentName} type="warning" title="Warning">
+        This action cannot be undone.
+      </${componentName}>
+      
+      <${componentName} type="info" title="Information">
+        Check out our new features!
+      </${componentName}>
+    </div>
+  );`,
+
     button: `  const handleClick = () => {
     alert('Button clicked!');
   };
@@ -122,6 +144,58 @@ function generateAppJsx(componentName, componentKebab) {
       />
     </div>
   );`,
+
+    input: `  const [value, setValue] = useState('');
+
+  return (
+    <div className="App" style={{ padding: '40px', maxWidth: '400px', margin: '0 auto' }}>
+      <h1 style={{ marginBottom: '30px' }}>Input Component Examples</h1>
+      
+      <${componentName}
+        label="Name"
+        placeholder="Enter your name"
+        required
+      />
+      
+      <${componentName}
+        type="email"
+        label="Email"
+        placeholder="your@email.com"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        required
+      />
+      
+      <${componentName}
+        label="Search"
+        placeholder="Search..."
+        icon="🔍"
+      />
+    </div>
+  );`,
+
+    navbar: `  const links = [
+    { label: 'Home', href: '#home' },
+    { label: 'Features', href: '#features' },
+    { label: 'Pricing', href: '#pricing' },
+    { label: 'Contact', href: '#contact' }
+  ];
+
+  return (
+    <div>
+      <${componentName}
+        logo="MyApp"
+        links={links}
+        onLinkClick={(link) => console.log('Clicked:', link.label)}
+      />
+      <div style={{ padding: '40px' }}>
+        <h1>Scroll down to see sticky navbar</h1>
+        <div style={{ height: '2000px' }}>
+          <p>Content goes here...</p>
+        </div>
+      </div>
+    </div>
+  );`,
     
     "todo-list": `  return (
     <div className="App" style={{ padding: '40px' }}>
@@ -131,7 +205,7 @@ function generateAppJsx(componentName, componentKebab) {
   );`,
   };
 
-  // Modal needs useState import
+  // Components that need useState import
   if (componentKebab === 'modal') {
     const content = `  const [isOpen, setIsOpen] = useState(false);
 
@@ -148,6 +222,11 @@ function generateAppJsx(componentName, componentKebab) {
     </div>
   );`;
     return createAppTemplate(componentName, 'useState', content);
+  }
+
+  // Input component already has useState in its template
+  if (componentKebab === 'input') {
+    return createAppTemplate(componentName, 'useState', componentContent[componentKebab]);
   }
 
   // Use component-specific content if available

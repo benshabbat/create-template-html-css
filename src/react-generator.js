@@ -24,11 +24,14 @@ import {
 
 // Valid React components
 export const VALID_REACT_COMPONENTS = [
+  "alert",
   "button",
   "card",
   "counter",
   "form",
+  "input",
   "modal",
+  "navbar",
   "todo-list",
 ];
 
