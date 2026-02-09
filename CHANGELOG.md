@@ -7,9 +7,50 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### ⚛️ React Component Expansion
+### ⚛️ React Component Expansion (Part 2)
 
 #### Added - 3 New React Components
+- **Dropdown** - Advanced select dropdown component
+  - Single and multi-select support
+  - Searchable options
+  - Keyboard navigation
+  - Custom option rendering
+  - Disabled state
+  - Error handling and validation
+  - Max height customization
+  - Click-outside to close
+  - Smooth animations
+  
+- **Checkbox** - Customizable checkbox component
+  - Multiple sizes (small, medium, large)
+  - Multiple colors (primary, secondary, success, error)
+  - Indeterminate state support
+  - Label and helper text
+  - Error messages
+  - Disabled state
+  - Animated check mark
+  - Dark mode support
+  
+- **Tooltip** - Contextual tooltip component
+  - Four positions (top, bottom, left, right)
+  - Multiple triggers (hover, click, focus, both)
+  - Customizable delay
+  - Optional arrow
+  - Max width control
+  - Auto-positioning within viewport
+  - Smooth animations
+  - Disabled state
+
+#### Summary
+- React components expanded from 9 to 12 components
+- All new components follow the same structure (ComponentName.jsx, ComponentName.css, ComponentName.example.jsx)
+- Full color customization support with ##PRIMARY_COLOR## and ##SECONDARY_COLOR## placeholders
+- Components work in both full project and component-only modes
+- Comprehensive examples provided for each component
+
+### ⚛️ React Component Expansion (Part 1)
+
+#### Added - 3 New React Components (v2.1.0 extended)
 - **Navbar** - Responsive navigation bar with mobile hamburger menu
   - Logo customization (text or component)
   - Configurable menu items

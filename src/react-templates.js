@@ -196,6 +196,137 @@ function generateAppJsx(componentName, componentKebab) {
       </div>
     </div>
   );`,
+
+    checkbox: `  const [isChecked, setIsChecked] = useState(false);
+
+  return (
+    <div className="App" style={{ padding: '40px', maxWidth: '600px', margin: '0 auto' }}>
+      <h1 style={{ marginBottom: '30px' }}>Checkbox Component Examples</h1>
+      
+      <div style={{ marginBottom: '30px' }}>
+        <h2>Basic Checkbox</h2>
+        <${componentName}
+          label="I agree to the terms and conditions"
+          checked={isChecked}
+          onChange={setIsChecked}
+        />
+        <p>Status: {isChecked ? 'Checked' : 'Unchecked'}</p>
+      </div>
+
+      <div style={{ marginBottom: '30px' }}>
+        <h2>Different Sizes</h2>
+        <${componentName} label="Small" size="small" />
+        <${componentName} label="Medium (default)" size="medium" />
+        <${componentName} label="Large" size="large" />
+      </div>
+
+      <div style={{ marginBottom: '30px' }}>
+        <h2>Different Colors</h2>
+        <${componentName} label="Primary" checked color="primary" />
+        <${componentName} label="Success" checked color="success" />
+        <${componentName} label="Error" checked color="error" />
+      </div>
+
+      <div style={{ marginBottom: '30px' }}>
+        <h2>Disabled State</h2>
+        <${componentName} label="Disabled unchecked" disabled />
+        <${componentName} label="Disabled checked" checked disabled />
+      </div>
+    </div>
+  );`,
+
+    dropdown: `  const [selected, setSelected] = useState('');
+
+  const options = [
+    { value: 'apple', label: 'Apple' },
+    { value: 'banana', label: 'Banana' },
+    { value: 'cherry', label: 'Cherry' },
+    { value: 'date', label: 'Date' },
+    { value: 'elderberry', label: 'Elderberry' }
+  ];
+
+  return (
+    <div className="App" style={{ padding: '40px', maxWidth: '600px', margin: '0 auto' }}>
+      <h1 style={{ marginBottom: '30px' }}>Dropdown Component Examples</h1>
+      
+      <div style={{ marginBottom: '30px' }}>
+        <${componentName}
+          label="Choose a fruit"
+          options={options}
+          value={selected}
+          onChange={setSelected}
+          placeholder="Select a fruit"
+        />
+        <p>Selected: {selected || 'None'}</p>
+      </div>
+
+      <div style={{ marginBottom: '30px' }}>
+        <${componentName}
+          label="Searchable Dropdown"
+          options={options}
+          placeholder="Search and select..."
+          searchable
+        />
+      </div>
+
+      <div style={{ marginBottom: '30px' }}>
+        <${componentName}
+          label="Disabled"
+          options={options}
+          placeholder="Cannot select"
+          disabled
+        />
+      </div>
+    </div>
+  );`,
+
+    tooltip: `  return (
+    <div className="App" style={{ padding: '80px', maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
+      <h1 style={{ marginBottom: '50px' }}>Tooltip Component Examples</h1>
+      
+      <div style={{ marginBottom: '50px', display: 'flex', gap: '40px', justifyContent: 'center', flexWrap: 'wrap' }}>
+        <${componentName} content="This is a top tooltip" position="top">
+          <button style={buttonStyle}>Top</button>
+        </${componentName}>
+        
+        <${componentName} content="This is a bottom tooltip" position="bottom">
+          <button style={buttonStyle}>Bottom</button>
+        </${componentName}>
+        
+        <${componentName} content="This is a left tooltip" position="left">
+          <button style={buttonStyle}>Left</button>
+        </${componentName}>
+        
+        <${componentName} content="This is a right tooltip" position="right">
+          <button style={buttonStyle}>Right</button>
+        </${componentName}>
+      </div>
+
+      <div style={{ marginBottom: '50px' }}>
+        <${componentName} content="Click me to toggle!" trigger="click">
+          <button style={buttonStyle}>Click Trigger</button>
+        </${componentName}>
+      </div>
+
+      <div>
+       <${componentName} 
+          content="This is a longer tooltip that demonstrates how it handles more text content."
+          maxWidth="300px"
+        >
+          <button style={buttonStyle}>Long Content</button>
+        </${componentName}>
+      </div>
+    </div>
+  );
+
+  const buttonStyle = {
+    padding: '0.5rem 1rem',
+    backgroundColor: '#3b82f6',
+    color: 'white',
+    border: 'none',
+    borderRadius: '0.375rem',
+    cursor: 'pointer'
+  };`,
     
     "todo-list": `  return (
     <div className="App" style={{ padding: '40px' }}>
@@ -226,6 +357,11 @@ function generateAppJsx(componentName, componentKebab) {
 
   // Input component already has useState in its template
   if (componentKebab === 'input') {
+    return createAppTemplate(componentName, 'useState', componentContent[componentKebab]);
+  }
+
+  // Checkbox, dropdown also need useState
+  if (componentKebab === 'checkbox' || componentKebab === 'dropdown') {
     return createAppTemplate(componentName, 'useState', componentContent[componentKebab]);
   }
 

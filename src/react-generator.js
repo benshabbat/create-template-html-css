@@ -27,12 +27,15 @@ export const VALID_REACT_COMPONENTS = [
   "alert",
   "button",
   "card",
+  "checkbox",
   "counter",
+  "dropdown",
   "form",
   "input",
   "modal",
   "navbar",
   "todo-list",
+  "tooltip",
 ];
 
 // ============================================================================

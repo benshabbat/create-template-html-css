@@ -34,7 +34,7 @@ npm install -g create-template-html-css
 - 🌈 **Stunning Gradients** - Colorful and attractive designs
 - ⚡ **Animations** - Smooth and professional effects
 - 🔧 **Customizable** - Easy to edit and modify the code
-- 📦 **46 HTML Templates + 9 React Components** - Button, Card, Form, Navigation, Modal, Footer, Hero, Slider, Table, Login, Register, Skeleton, Spinner, Animated Cards, Typing Effect, Fade Gallery, Grid Layouts, Masonry Grid, Dashboard, Flexbox Layouts, Todo List, Counter, Accordion, Tabs, 16 Interactive Games, + React: Alert, Button, Card, Counter, Form, Input, Modal, Navbar, Todo List
+- 📦 **46 HTML Templates + 12 React Components** - Button, Card, Form, Navigation, Modal, Footer, Hero, Slider, Table, Login, Register, Skeleton, Spinner, Animated Cards, Typing Effect, Fade Gallery, Grid Layouts, Masonry Grid, Dashboard, Flexbox Layouts, Todo List, Counter, Accordion, Tabs, 16 Interactive Games, + React: Alert, Button, Card, Checkbox, Counter, Dropdown, Form, Input, Modal, Navbar, Todo List, Tooltip
 - 🎯 **Two Modes** - Create new projects or insert into existing HTML pages
 - 🔒 **Secure** - Input validation and path protection
 - 📚 **Well Documented** - Comprehensive guides and examples
@@ -96,16 +96,19 @@ create-template create --react --component-only -c modal --color-scheme vibrant
 - Works with all color schemes
 - Usage instructions displayed after creation
 
-**Available React Components (9 total):**
+**Available React Components (12 total):**
 - 🔔 **Alert** - Alert/notification component with types (success, error, warning, info), dismissible
 - 🔘 **Button** - Customizable button with variants (primary, secondary, success, danger) and sizes
 - 🎴 **Card** - Display content in an elegant card with image support
+- ☑️ **Checkbox** - Checkbox with sizes, colors, indeterminate state, and validation
 - 🔢 **Counter** - Interactive counter with increment/decrement and limits
+- 📋 **Dropdown** - Select dropdown with search, multi-select, and keyboard navigation
 - 📝 **Form** - Flexible form with validation and multiple field types
 - 📄 **Input** - Text input with validation, error messages, icons, and states
 - 🪟 **Modal** - Dialog modal component with overlay
 - 🧭 **Navbar** - Responsive navigation bar with mobile hamburger menu
 - ✅ **Todo List** - Complete todo list with CRUD operations
+- 💬 **Tooltip** - Contextual tooltip with positions (top, bottom, left, right) and triggers
 
 ## 🆕 What's New in v2.0.0
 
