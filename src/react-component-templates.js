@@ -1,91 +1,42 @@
 /**
- * React Component Templates
- * Contains all template content for generating React component examples
+ * React Component Templates Module
+ * 
+ * This module contains all React component templates and metadata for generating
+ * comprehensive example applications. Each template demonstrates the component's
+ * features with various props and use cases.
+ * 
+ * @module react-component-templates
+ * @author create-template-html-css
+ * @version 1.0.0
  */
-
-// ============================================================================
-// COMMON STYLES CONSTANTS
-// ============================================================================
-
-const COMMON_STYLES = {
-  container: {
-    padding: '40px',
-    maxWidth: '800px',
-    margin: '0 auto',
-  },
-  narrowContainer: {
-    padding: '40px',
-    maxWidth: '600px',
-    margin: '0 auto',
-  },
-  wideContainer: {
-    padding: '40px',
-    maxWidth: '1000px',
-    margin: '0 auto',
-  },
-  fullContainer: {
-    padding: '40px',
-  },
-  centeredContainer: {
-    padding: '80px',
-    maxWidth: '800px',
-    margin: '0 auto',
-    textAlign: 'center',
-  },
-  appBackground: {
-    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-    backgroundColor: '#f5f5f5',
-    minHeight: '100vh',
-  },
-  heading: {
-    marginBottom: '30px',
-  },
-  section: {
-    marginBottom: '30px',
-  },
-  flexRow: {
-    display: 'flex',
-    gap: '1rem',
-    flexWrap: 'wrap',
-  },
-  flexColumn: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '1rem',
-  },
-  button: {
-    padding: '0.5rem 1rem',
-    backgroundColor: '#3b82f6',
-    color: 'white',
-    border: 'none',
-    borderRadius: '0.375rem',
-    cursor: 'pointer',
-  },
-  avatar: {
-    width: '48px',
-    height: '48px',
-    borderRadius: '50%',
-    backgroundColor: '#e5e7eb',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontSize: '1.5rem',
-  },
-  relativeContainer: {
-    position: 'relative',
-    display: 'inline-block',
-  },
-};
-
-// Helper to convert styles object to inline style string
-const styleToString = (styleObj) => {
-  return `{{ ${Object.entries(styleObj).map(([key, value]) => `${key}: '${value}'`).join(', ')} }}`;
-};
 
 // ============================================================================
 // COMPONENT TEMPLATES
 // ============================================================================
 
+/**
+ * Component template definitions
+ * 
+ * Each template is a string containing JSX code that demonstrates the component.
+ * Placeholders like {ComponentName} are replaced at runtime with actual component names.
+ * 
+ * @constant {Object.<string, string>}
+ * @property {string} alert - Alert component with different severity types
+ * @property {string} badge - Badge component with variants, pills, dots, and counts
+ * @property {string} button - Button component with variants, sizes, and states
+ * @property {string} card - Card component with image, title, and description
+ * @property {string} counter - Counter component with min/max values
+ * @property {string} form - Form component with dynamic fields
+ * @property {string} input - Input component with different types and icons
+ * @property {string} navbar - Navigation bar with links and mobile menu
+ * @property {string} checkbox - Checkbox with sizes, colors, and states
+ * @property {string} dropdown - Dropdown select with search functionality
+ * @property {string} tooltip - Tooltip with different positions and triggers
+ * @property {string} progress - Progress bar with animations and variants
+ * @property {string} switch - Toggle switch with icons and colors
+ * @property {string} todo-list - Full todo list with add/remove/complete
+ * @property {string} modal - Modal dialog with open/close functionality
+ */
 export const COMPONENT_TEMPLATES = {
   alert: `  return (
     <div className="App" style={{ padding: '40px', maxWidth: '600px', margin: '0 auto' }}>
@@ -559,9 +510,22 @@ export const COMPONENT_TEMPLATES = {
 // ============================================================================
 
 /**
- * Maps component names to required React imports
- * Key: component name in kebab-case
- * Value: comma-separated list of React imports (e.g., "useState, useEffect")
+ * React hooks import requirements for components
+ * 
+ * Maps component names (kebab-case) to the React hooks they require.
+ * Components not listed here don't need any React hooks.
+ * 
+ * @constant {Object.<string, string>}
+ * @property {string} modal - Requires useState for open/close state
+ * @property {string} input - Requires useState for controlled inputs
+ * @property {string} checkbox - Requires useState for checked state
+ * @property {string} dropdown - Requires useState for selection state
+ * @property {string} switch - Requires useState for toggle state
+ * @property {string} progress - Requires useState and useEffect for animations
+ * 
+ * @example
+ * // Get imports for a component
+ * const imports = COMPONENT_IMPORTS['modal']; // Returns 'useState'
  */
 export const COMPONENT_IMPORTS = {
   modal: 'useState',
@@ -570,18 +534,25 @@ export const COMPONENT_IMPORTS = {
   dropdown: 'useState',
   switch: 'useState',
   progress: 'useState, useEffect',
-  // Add more as needed
 };
 
 // ============================================================================
-// HELPER FUNCTION
+// HELPER FUNCTIONS
 // ============================================================================
 
 /**
  * Get template content for a component with placeholders replaced
- * @param {string} componentKebab - Component name in kebab-case
- * @param {string} componentName - Component name in PascalCase
- * @returns {string} Template content with placeholders replaced
+ * 
+ * Retrieves the JSX template for the specified component and replaces
+ * placeholder tokens with the actual component name.
+ * 
+ * @param {string} componentKebab - Component name in kebab-case (e.g., 'my-button')
+ * @param {string} componentName - Component name in PascalCase (e.g., 'MyButton')
+ * @returns {string|null} Template content with placeholders replaced, or null if not found
+ * 
+ * @example
+ * const template = getComponentTemplate('button', 'Button');
+ * // Returns JSX string with <Button> tags instead of {ComponentName}
  */
 export function getComponentTemplate(componentKebab, componentName) {
   const template = COMPONENT_TEMPLATES[componentKebab];
@@ -595,9 +566,85 @@ export function getComponentTemplate(componentKebab, componentName) {
 
 /**
  * Get required React imports for a component
+ * 
+ * Returns a comma-separated string of React hooks that the component needs.
+ * If the component doesn't require any hooks, returns an empty string.
+ * 
  * @param {string} componentKebab - Component name in kebab-case
- * @returns {string} Comma-separated imports or empty string
+ * @returns {string} Comma-separated imports (e.g., 'useState, useEffect') or empty string
+ * 
+ * @example
+ * const imports = getComponentImports('progress');
+ * // Returns 'useState, useEffect'
+ * 
+ * const imports2 = getComponentImports('button');
+ * // Returns '' (no hooks needed)
  */
 export function getComponentImports(componentKebab) {
   return COMPONENT_IMPORTS[componentKebab] || '';
+}
+
+/**
+ * Get all available component names
+ * 
+ * Returns an array of all component names (in kebab-case) that have templates available.
+ * Useful for validation, CLI autocomplete, or displaying available options.
+ * 
+ * @returns {string[]} Array of component names in kebab-case
+ * 
+ * @example
+ * const components = getAllComponentNames();
+ * // Returns ['alert', 'badge', 'button', 'card', ...]
+ */
+export function getAllComponentNames() {
+  return Object.keys(COMPONENT_TEMPLATES);
+}
+
+/**
+ * Check if a component template exists
+ * 
+ * Validates whether a template is available for the specified component name.
+ * Case-sensitive - expects kebab-case.
+ * 
+ * @param {string} componentKebab - Component name in kebab-case
+ * @returns {boolean} True if template exists, false otherwise
+ * 
+ * @example
+ * if (hasComponent('button')) {
+ *   console.log('Button template is available');
+ * }
+ */
+export function hasComponent(componentKebab) {
+  return componentKebab in COMPONENT_TEMPLATES;
+}
+
+/**
+ * Get all components that require React imports
+ * 
+ * Returns an array of component names that need React hooks.
+ * Useful for documenting which components have state management.
+ * 
+ * @returns {string[]} Array of component names that require React imports
+ * 
+ * @example
+ * const statefulComponents = getComponentsWithImports();
+ * // Returns ['modal', 'input', 'checkbox', 'dropdown', 'switch', 'progress']
+ */
+export function getComponentsWithImports() {
+  return Object.keys(COMPONENT_IMPORTS);
+}
+
+/**
+ * Get component count
+ * 
+ * Returns the total number of available component templates.
+ * 
+ * @returns {number} Total number of components
+ * 
+ * @example
+ * console.log(`${getComponentCount()} components available`);
+ * // Output: "15 components available"
+ */
+export function getComponentCount() {
+  return Object.keys(COMPONENT_TEMPLATES).length;
 }
