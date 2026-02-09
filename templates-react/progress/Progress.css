@@ -1,0 +1,247 @@
+.progress-container {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.progress-label-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.progress-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.progress {
+  width: 100%;
+  background-color: #e5e7eb;
+  border-radius: 9999px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Sizes */
+.progress-small {
+  height: 0.5rem;
+}
+
+.progress-medium {
+  height: 0.75rem;
+}
+
+.progress-large {
+  height: 1.25rem;
+}
+
+/* Progress Bar */
+.progress-bar {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width 0.6s ease;
+  border-radius: 9999px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Colors */
+.progress-bar-primary {
+  background-color: ##PRIMARY_COLOR##;
+}
+
+.progress-bar-secondary {
+  background-color: ##SECONDARY_COLOR##;
+}
+
+.progress-bar-success {
+  background-color: #10b981;
+}
+
+.progress-bar-warning {
+  background-color: #f59e0b;
+}
+
+.progress-bar-error {
+  background-color: #ef4444;
+}
+
+.progress-bar-info {
+  background-color: #3b82f6;
+}
+
+.progress-bar-default {
+  background-color: #6b7280;
+}
+
+/* Value Label */
+.progress-value {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: white;
+  white-space: nowrap;
+  padding: 0 0.5rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.progress-small .progress-value {
+  font-size: 0.625rem;
+}
+
+.progress-large .progress-value {
+  font-size: 0.875rem;
+}
+
+/* Striped Pattern */
+.progress-bar-striped {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 1rem 1rem;
+}
+
+/* Animated Stripes */
+.progress-bar-animated {
+  animation: progress-bar-stripes 1s linear infinite;
+}
+
+@keyframes progress-bar-stripes {
+  from {
+    background-position: 1rem 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+
+/* Indeterminate Progress */
+.progress-indeterminate .progress-bar {
+  width: 100% !important;
+  animation: indeterminate 1.5s ease-in-out infinite;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    currentColor 50%,
+    transparent
+  );
+}
+
+@keyframes indeterminate {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Gradient Variants */
+.progress-bar-gradient {
+  background: linear-gradient(90deg, ##PRIMARY_COLOR## 0%, ##SECONDARY_COLOR## 100%);
+}
+
+/* Pulse Animation */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0);
+  }
+}
+
+.progress-bar-pulse {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Percentage outside bar */
+.progress-percentage-outside {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.progress-percentage-outside .progress {
+  flex: 1;
+}
+
+.progress-percentage-text {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+  min-width: 3rem;
+  text-align: right;
+}
+
+/* Circular Progress (bonus) */
+.progress-circular {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: conic-gradient(
+    ##PRIMARY_COLOR## calc(var(--progress) * 1%),
+    #e5e7eb 0
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.progress-circular::before {
+  content: '';
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  background: white;
+}
+
+.progress-circular-value {
+  position: relative;
+  z-index: 1;
+  font-weight: 600;
+  color: #374151;
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .progress {
+    background-color: #374151;
+  }
+
+  .progress-label {
+    color: #e5e7eb;
+  }
+
+  .progress-bar-primary {
+    background-color: ##SECONDARY_COLOR##;
+  }
+
+  .progress-bar-secondary {
+    background-color: ##PRIMARY_COLOR##;
+  }
+
+  .progress-percentage-text {
+    color: #e5e7eb;
+  }
+
+  .progress-circular::before {
+    background: #1f2937;
+  }
+
+  .progress-circular-value {
+    color: #e5e7eb;
+  }
+}

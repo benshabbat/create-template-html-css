@@ -252,20 +252,24 @@
 <body>
     <div class="container">
         <header>
-            <h1>🎨 Create Template HTML/CSS</h1>
-            <p>Interactive Component Gallery - v2.0.0</p>
+            <h1>🎨 Create Template HTML/CSS ⚛️</h1>
+            <p>Interactive Component Gallery - v2.1.0</p>
             <div class="stats">
                 <div class="stat">
-                    <div class="stat-number">46</div>
+                    <div class="stat-number">61</div>
                     <div class="stat-label">Total Templates</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">15</div>
+                    <div class="stat-label">React Components</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">46</div>
+                    <div class="stat-label">HTML Templates</div>
                 </div>
                 <div class="stat">
                     <div class="stat-number">16</div>
                     <div class="stat-label">Interactive Games</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">30</div>
-                    <div class="stat-label">UI Components</div>
                 </div>
             </div>
         </header>
@@ -351,6 +355,137 @@
                     <p class="component-description">Data table with search and filtering</p>
                     <div class="component-command">
                         create-template create -c table -n my-table
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- React Components -->
+        <div class="category" data-category="react">
+            <div class="category-header">
+                <span class="category-icon">⚛️</span>
+                <h2 class="category-title">React Components (NEW)</h2>
+                <span class="category-count">15 components</span>
+            </div>
+            <div class="components-grid">
+                <div class="component-card" data-name="react alert notification">
+                    <h3 class="component-name">Alert <span class="game-badge">NEW</span></h3>
+                    <p class="component-description">Alert/notification with 4 types (success, error, warning, info)</p>
+                    <div class="component-command">
+                        create-template create --react -c alert -n my-alert
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="react badge status count">
+                    <h3 class="component-name">Badge <span class="game-badge">NEW</span></h3>
+                    <p class="component-description">Status badge with counts, dots, and variants</p>
+                    <div class="component-command">
+                        create-template create --react -c badge -n my-badge
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="react button">
+                    <h3 class="component-name">Button</h3>
+                    <p class="component-description">Customizable button with variants and sizes</p>
+                    <div class="component-command">
+                        create-template create --react -c button -n my-react-button
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="react card">
+                    <h3 class="component-name">Card</h3>
+                    <p class="component-description">Display content in elegant card with image support</p>
+                    <div class="component-command">
+                        create-template create --react -c card -n my-card
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="react checkbox form input">
+                    <h3 class="component-name">Checkbox <span class="game-badge">NEW</span></h3>
+                    <p class="component-description">Checkbox with sizes, colors, indeterminate state</p>
+                    <div class="component-command">
+                        create-template create --react -c checkbox -n my-checkbox
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="react counter">
+                    <h3 class="component-name">Counter</h3>
+                    <p class="component-description">Interactive counter with increment/decrement</p>
+                    <div class="component-command">
+                        create-template create --react -c counter -n my-counter
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="react dropdown select">
+                    <h3 class="component-name">Dropdown <span class="game-badge">NEW</span></h3>
+                    <p class="component-description">Select dropdown with search & multi-select</p>
+                    <div class="component-command">
+                        create-template create --react -c dropdown -n my-dropdown
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="react form validation">
+                    <h3 class="component-name">Form</h3>
+                    <p class="component-description">Flexible form with validation & multiple fields</p>
+                    <div class="component-command">
+                        create-template create --react -c form -n my-react-form
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="react input text field">
+                    <h3 class="component-name">Input <span class="game-badge">NEW</span></h3>
+                    <p class="component-description">Text input with validation, icons, and states</p>
+                    <div class="component-command">
+                        create-template create --react -c input -n my-input
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="react modal dialog">
+                    <h3 class="component-name">Modal</h3>
+                    <p class="component-description">Dialog modal with overlay and close handlers</p>
+                    <div class="component-command">
+                        create-template create --react -c modal -n my-modal
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="react navbar navigation">
+                    <h3 class="component-name">Navbar <span class="game-badge">NEW</span></h3>
+                    <p class="component-description">Responsive navbar with mobile hamburger menu</p>
+                    <div class="component-command">
+                        create-template create --react -c navbar -n my-navbar
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="react progress bar loading">
+                    <h3 class="component-name">Progress <span class="game-badge">NEW</span></h3>
+                    <p class="component-description">Progress bar with variants and animations</p>
+                    <div class="component-command">
+                        create-template create --react -c progress -n my-progress
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="react switch toggle">
+                    <h3 class="component-name">Switch <span class="game-badge">NEW</span></h3>
+                    <p class="component-description">Toggle switch for on/off states</p>
+                    <div class="component-command">
+                        create-template create --react -c switch -n my-switch
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="react todo list">
+                    <h3 class="component-name">Todo List</h3>
+                    <p class="component-description">Complete todo list with CRUD operations</p>
+                    <div class="component-command">
+                        create-template create --react -c todo-list -n my-todos
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="react tooltip hint">
+                    <h3 class="component-name">Tooltip <span class="game-badge">NEW</span></h3>
+                    <p class="component-description">Contextual tooltip with positions & triggers</p>
+                    <div class="component-command">
+                        create-template create --react -c tooltip -n my-tooltip
                         <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
                     </div>
                 </div>
@@ -704,7 +839,7 @@
                 <a href="https://www.npmjs.com/package/create-template-html-css" target="_blank">📦 npm Package</a> | 
                 <a href="https://github.com/benshabbat/create-template-html-css" target="_blank">🐙 GitHub Repo</a>
             </p>
-            <p style="margin-top: 20px; opacity: 0.8;">v2.0.0 - 46 Templates Available</p>
+            <p style="margin-top: 20px; opacity: 0.8;">v2.1.0 - 46 HTML Templates + 15 React Components</p>
         </footer>
     </div>
 

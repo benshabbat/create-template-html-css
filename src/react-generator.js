@@ -24,12 +24,21 @@ import {
 
 // Valid React components
 export const VALID_REACT_COMPONENTS = [
+  "alert",
+  "badge",
   "button",
   "card",
+  "checkbox",
   "counter",
+  "dropdown",
   "form",
+  "input",
   "modal",
+  "navbar",
+  "progress",
+  "switch",
   "todo-list",
+  "tooltip",
 ];
 
 // ============================================================================
