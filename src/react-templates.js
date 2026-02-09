@@ -1,13 +1,30 @@
+/**
+ * React Templates Generator Module
+ * 
+ * Generates complete React project files including App.jsx, index files,
+ * configuration files, and documentation for component-based projects.
+ * 
+ * @module react-templates
+ * @requires react-component-templates
+ */
+
 import { 
   getComponentTemplate, 
-  getComponentImports 
+  getComponentImports,
+  hasComponent,
+  getAllComponentNames
 } from './react-component-templates.js';
 
 // ============================================================================
 // CONSTANTS
 // ============================================================================
 
-// Dependencies versions
+/**
+ * React and Vite version constants
+ * Ensures consistent dependency versions across generated projects
+ * 
+ * @constant {string}
+ */
 const REACT_VERSION = "^18.2.0";
 const VITE_VERSION = "^5.0.0";
 const VITE_REACT_PLUGIN_VERSION = "^4.2.0";
@@ -18,10 +35,17 @@ const VITE_REACT_PLUGIN_VERSION = "^4.2.0";
 
 /**
  * Create App.jsx template wrapper
- * @param {string} componentName - Component name (PascalCase)
- * @param {string} additionalImports - Additional imports from React (e.g., "useState, useEffect")
- * @param {string} content - JSX content inside App div
- * @returns {string} Complete App.jsx code
+ * 
+ * Wraps component usage examples in a complete React App component structure,
+ * including proper imports and export statements.
+ * 
+ * @param {string} componentName - Component name in PascalCase (e.g., 'Button')
+ * @param {string} additionalImports - React hooks to import (e.g., 'useState, useEffect')
+ * @param {string} content - JSX content for the App component body
+ * @returns {string} Complete App.jsx file content
+ * 
+ * @example
+ * createAppTemplate('Button', 'useState', 'return <div>...</div>');
  */
 function createAppTemplate(componentName, additionalImports = '', content) {
   const reactImports = additionalImports 
@@ -44,12 +68,24 @@ export default App;`;
 // ============================================================================
 
 /**
- * Generate App.jsx content
- * @param {string} componentName - Component name in PascalCase
- * @param {string} componentKebab - Component name in kebab-case
+ * Generate App.jsx content with component examples
+ * 
+ * Creates a complete App.jsx file that demonstrates the component's features.
+ * Falls back to a basic example if the component template is not found.
+ * 
+ * @param {string} componentName - Component name in PascalCase (e.g., 'MyButton')
+ * @param {string} componentKebab - Component name in kebab-case (e.g., 'my-button')
  * @returns {string} Complete App.jsx file content
+ * 
+ * @example
+ * const appContent = generateAppJsx('Button', 'button');
  */
 function generateAppJsx(componentName, componentKebab) {
+  // Validate component exists (optional - could add warning)
+  if (!hasComponent(componentKebab)) {
+    console.warn(`Warning: No template found for component '${componentKebab}'. Using default template.`);
+  }
+  
   // Get template content from separate file
   const templateContent = getComponentTemplate(componentKebab, componentName);
   
@@ -72,6 +108,11 @@ function generateAppJsx(componentName, componentKebab) {
 
 /**
  * Generate index.jsx content
+ * 
+ * Creates the main entry point file that renders the React app.
+ * Uses React 18's createRoot API for better performance.
+ * 
+ * @returns {string} Complete index.jsx file content
  */
 function generateIndexJs() {
   return `import React from 'react';
@@ -89,6 +130,11 @@ root.render(
 
 /**
  * Generate index.html content
+ * 
+ * Creates the HTML entry point with proper meta tags and root div.
+ * 
+ * @param {string} title - Page title to display in browser tab
+ * @returns {string} Complete index.html file content
  */
 function generateIndexHtml(title) {
   return `<!DOCTYPE html>
@@ -112,6 +158,16 @@ function generateIndexHtml(title) {
 
 /**
  * Generate package.json content
+ * 
+ * Creates a package.json with React, Vite, and all necessary scripts.
+ * Configured as ES module with dev, build, and preview scripts.
+ * 
+ * @param {string} name - Project name (used as package name)
+ * @returns {Object} Package.json configuration object
+ * 
+ * @example
+ * const pkg = generatePackageJson('my-react-app');
+ * // Returns complete package.json object
  */
 function generatePackageJson(name) {
   return {
@@ -137,6 +193,11 @@ function generatePackageJson(name) {
 
 /**
  * Generate .gitignore content
+ * 
+ * Creates a comprehensive .gitignore file for React/Vite projects.
+ * Includes patterns for dependencies, build outputs, environment files, and editors.
+ * 
+ * @returns {string} Complete .gitignore file content
  */
 function generateGitignore() {
   return `# Dependencies
@@ -165,6 +226,10 @@ build/
 
 /**
  * Generate vite.config.js content
+ * 
+ * Creates a minimal Vite configuration file with React plugin enabled.
+ * 
+ * @returns {string} Complete vite.config.js file content
  */
 function generateViteConfig() {
   return `import { defineConfig } from 'vite';
@@ -179,6 +244,16 @@ export default defineConfig({
 
 /**
  * Generate README.md content
+ * 
+ * Creates a comprehensive README with installation instructions,
+ * available scripts, project structure, and customization guidance.
+ * 
+ * @param {string} name - Project name
+ * @param {string} componentName - Component name in PascalCase
+ * @returns {string} Complete README.md file content in Markdown format
+ * 
+ * @example
+ * const readme = generateReadme('my-app', 'Button');
  */
 function generateReadme(name, componentName) {
   return `# ${name}
@@ -245,6 +320,20 @@ MIT
 // EXPORTS
 // ============================================================================
 
+/**
+ * Public API exports for React template generation
+ * 
+ * All generator functions for creating a complete React project structure.
+ * These functions are used by the CLI to generate project files.
+ * 
+ * @exports generateAppJsx - Generate App.jsx with component examples
+ * @exports generateIndexJs - Generate index.jsx entry point
+ * @exports generateIndexHtml - Generate index.html
+ * @exports generatePackageJson - Generate package.json with dependencies
+ * @exports generateGitignore - Generate .gitignore file
+ * @exports generateViteConfig - Generate vite.config.js
+ * @exports generateReadme - Generate README.md documentation
+ */
 export {
   generateAppJsx,
   generateIndexJs,
