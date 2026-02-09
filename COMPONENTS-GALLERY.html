@@ -256,11 +256,11 @@
             <p>Interactive Component Gallery - v2.1.0</p>
             <div class="stats">
                 <div class="stat">
-                    <div class="stat-number">58</div>
+                    <div class="stat-number">61</div>
                     <div class="stat-label">Total Templates</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-number">12</div>
+                    <div class="stat-number">15</div>
                     <div class="stat-label">React Components</div>
                 </div>
                 <div class="stat">
@@ -366,7 +366,7 @@
             <div class="category-header">
                 <span class="category-icon">⚛️</span>
                 <h2 class="category-title">React Components (NEW)</h2>
-                <span class="category-count">12 components</span>
+                <span class="category-count">15 components</span>
             </div>
             <div class="components-grid">
                 <div class="component-card" data-name="react alert notification">
@@ -374,6 +374,14 @@
                     <p class="component-description">Alert/notification with 4 types (success, error, warning, info)</p>
                     <div class="component-command">
                         create-template create --react -c alert -n my-alert
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="react badge status count">
+                    <h3 class="component-name">Badge <span class="game-badge">NEW</span></h3>
+                    <p class="component-description">Status badge with counts, dots, and variants</p>
+                    <div class="component-command">
+                        create-template create --react -c badge -n my-badge
                         <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
                     </div>
                 </div>
@@ -446,6 +454,22 @@
                     <p class="component-description">Responsive navbar with mobile hamburger menu</p>
                     <div class="component-command">
                         create-template create --react -c navbar -n my-navbar
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="react progress bar loading">
+                    <h3 class="component-name">Progress <span class="game-badge">NEW</span></h3>
+                    <p class="component-description">Progress bar with variants and animations</p>
+                    <div class="component-command">
+                        create-template create --react -c progress -n my-progress
+                        <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                    </div>
+                </div>
+                <div class="component-card" data-name="react switch toggle">
+                    <h3 class="component-name">Switch <span class="game-badge">NEW</span></h3>
+                    <p class="component-description">Toggle switch for on/off states</p>
+                    <div class="component-command">
+                        create-template create --react -c switch -n my-switch
                         <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
                     </div>
                 </div>
@@ -815,7 +839,7 @@
                 <a href="https://www.npmjs.com/package/create-template-html-css" target="_blank">📦 npm Package</a> | 
                 <a href="https://github.com/benshabbat/create-template-html-css" target="_blank">🐙 GitHub Repo</a>
             </p>
-            <p style="margin-top: 20px; opacity: 0.8;">v2.1.0 - 46 HTML Templates + 12 React Components</p>
+            <p style="margin-top: 20px; opacity: 0.8;">v2.1.0 - 46 HTML Templates + 15 React Components</p>
         </footer>
     </div>
 

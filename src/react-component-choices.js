@@ -8,8 +8,11 @@ export const REACT_COMPONENT_CHOICES = [
     value: "alert",
     short: "Alert",
   },
-  {
-    name: "🔘 Button - Customizable button with variants and sizes",
+  {    name: "🏷️ Badge - Status badge with counts, dots, and variants",
+    value: "badge",
+    short: "Badge",
+  },
+  {    name: "🔘 Button - Customizable button with variants and sizes",
     value: "button",
     short: "Button",
   },
@@ -54,6 +57,16 @@ export const REACT_COMPONENT_CHOICES = [
     short: "Navbar",
   },
   {
+    name: "📊 Progress - Progress bar with variants and animations",
+    value: "progress",
+    short: "Progress",
+  },
+  {
+    name: "🔀 Switch - Toggle switch for on/off states",
+    value: "switch",
+    short: "Switch",
+  },
+  {
     name: "✅ Todo List - Complete todo list with CRUD operations",
     value: "todo-list",
     short: "Todo List",
@@ -67,6 +80,7 @@ export const REACT_COMPONENT_CHOICES = [
 
 export const REACT_COMPONENT_DESCRIPTIONS = {
   alert: "An alert component for displaying notifications with different types (success, error, warning, info). Supports dismissible and custom icons",
+  badge: "A status badge component for displaying labels, counts, and indicators. Supports sizes, colors, pill shape, dot badges, and position variants",
   button: "A customizable button component with multiple variants (primary, secondary, success, danger) and sizes (small, medium, large)",
   card: "A versatile card component for displaying content with image, title, description, and footer support",
   checkbox: "A checkbox component with different sizes, colors (primary, secondary, success, error), indeterminate state, and validation support",
@@ -76,6 +90,8 @@ export const REACT_COMPONENT_DESCRIPTIONS = {
   input: "A text input component with validation, error messages, icons, and different states (focused, error, disabled)",
   modal: "A modal dialog component with overlay, customizable sizes, and close handlers",
   navbar: "A responsive navigation bar with logo, menu items, and mobile hamburger menu. Supports sticky positioning",
+  progress: "A progress bar component with colors, sizes, labels, striped patterns, animations, and indeterminate state for loading",
+  switch: "A toggle switch component for on/off states. Supports colors, sizes, icons, disabled and loading states",
   "todo-list": "A complete todo list component with add, toggle, and delete functionality. Includes task statistics",
   tooltip: "A contextual tooltip component with multiple positions (top, bottom, left, right), triggers (hover, click, focus), and customizable delays",
 };

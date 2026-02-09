@@ -34,7 +34,7 @@ npm install -g create-template-html-css
 - 🌈 **Stunning Gradients** - Colorful and attractive designs
 - ⚡ **Animations** - Smooth and professional effects
 - 🔧 **Customizable** - Easy to edit and modify the code
-- 📦 **46 HTML Templates + 12 React Components** - Button, Card, Form, Navigation, Modal, Footer, Hero, Slider, Table, Login, Register, Skeleton, Spinner, Animated Cards, Typing Effect, Fade Gallery, Grid Layouts, Masonry Grid, Dashboard, Flexbox Layouts, Todo List, Counter, Accordion, Tabs, 16 Interactive Games, + React: Alert, Button, Card, Checkbox, Counter, Dropdown, Form, Input, Modal, Navbar, Todo List, Tooltip
+- 📦 **46 HTML Templates + 15 React Components** - Button, Card, Form, Navigation, Modal, Footer, Hero, Slider, Table, Login, Register, Skeleton, Spinner, Animated Cards, Typing Effect, Fade Gallery, Grid Layouts, Masonry Grid, Dashboard, Flexbox Layouts, Todo List, Counter, Accordion, Tabs, 16 Interactive Games, + React: Alert, Badge, Button, Card, Checkbox, Counter, Dropdown, Form, Input, Modal, Navbar, Progress, Switch, Todo List, Tooltip
 - 🎯 **Two Modes** - Create new projects or insert into existing HTML pages
 - 🔒 **Secure** - Input validation and path protection
 - 📚 **Well Documented** - Comprehensive guides and examples
@@ -51,7 +51,7 @@ npm install -g create-template-html-css
 
 ### ⚛️ **React Support**
 - **React Components** - Generate React components with JSX
-- **9 React Components** - Alert, Button, Card, Counter, Form, Input, Modal, Navbar, Todo List
+- **15 React Components** - Alert 🚨, Badge 🏷️, Button 🔘, Card 🃏, Checkbox ☑️, Counter 🔢, Dropdown 📋, Form 📝, Input ✏️, Modal 🪟, Navbar 🧭, Progress 📊, Switch 🔀, Todo List ✅, Tooltip 💬
 - **Two Modes**:
   - **Full Project** - Complete React + Vite project with all dependencies
   - **Component Only** - Just JSX + CSS files for existing projects
@@ -96,8 +96,9 @@ create-template create --react --component-only -c modal --color-scheme vibrant
 - Works with all color schemes
 - Usage instructions displayed after creation
 
-**Available React Components (12 total):**
+**Available React Components (15 total):**
 - 🔔 **Alert** - Alert/notification component with types (success, error, warning, info), dismissible
+- 🏷️ **Badge** - Status badge with counts, dots, variants, and positioning (new, hot, notification counts)
 - 🔘 **Button** - Customizable button with variants (primary, secondary, success, danger) and sizes
 - 🎴 **Card** - Display content in an elegant card with image support
 - ☑️ **Checkbox** - Checkbox with sizes, colors, indeterminate state, and validation
@@ -107,6 +108,8 @@ create-template create --react --component-only -c modal --color-scheme vibrant
 - 📄 **Input** - Text input with validation, error messages, icons, and states
 - 🪟 **Modal** - Dialog modal component with overlay
 - 🧭 **Navbar** - Responsive navigation bar with mobile hamburger menu
+- 📊 **Progress** - Progress bar with variants, animations, striped patterns, and indeterminate state
+- 🔀 **Switch** - Toggle switch for on/off states with colors, sizes, icons, disabled and loading states
 - ✅ **Todo List** - Complete todo list with CRUD operations
 - 💬 **Tooltip** - Contextual tooltip with positions (top, bottom, left, right) and triggers
 
@@ -469,12 +472,21 @@ npm run dev
 Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 **Available React Components:**
+- � **Alert** - Types: success, error, warning, info | Dismissible with close button
+- 🏷️ **Badge** - Variants, sizes, pill shape, count badges, dot badges with positioning
 - 🔘 **Button** - Variants: primary, secondary, success, danger | Sizes: small, medium, large
 - 🎴 **Card** - Image, title, description, footer support with hover effects
+- ☑️ **Checkbox** - Sizes, colors, indeterminate state, validation, disabled states
 - 🔢 **Counter** - Increment/decrement with limits, step customization, reset button
+- 📋 **Dropdown** - Search, multi-select, keyboard navigation, custom placeholder
 - 📝 **Form** - Multiple field types, built-in validation, error messages
+- 📄 **Input** - Validation, error messages, icons, disabled/readonly states
 - 🪟 **Modal** - Customizable sizes (small, medium, large), overlay, close handlers
+- 🧭 **Navbar** - Responsive with mobile hamburger menu, logo, navigation links
+- 📊 **Progress** - Colors, sizes, labels, striped patterns, animations, indeterminate state
+- 🔀 **Switch** - Colors, sizes, icons, disabled and loading states for toggles
 - ✅ **Todo List** - Add, toggle complete, delete tasks with statistics
+- 💬 **Tooltip** - Positions: top, bottom, left, right | Triggers: hover, click, focus
 
 ### Mode 2: Insert Component into Existing HTML Page
 

@@ -1,0 +1,196 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  border-radius: 0.25rem;
+  transition: all 0.2s ease;
+}
+
+/* Sizes */
+.badge-small {
+  padding: 0.125rem 0.375rem;
+  font-size: 0.75rem;
+  min-width: 1.25rem;
+  height: 1.25rem;
+}
+
+.badge-medium {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  min-width: 1.5rem;
+  height: 1.5rem;
+}
+
+.badge-large {
+  padding: 0.375rem 0.625rem;
+  font-size: 1rem;
+  min-width: 2rem;
+  height: 2rem;
+}
+
+/* Variants */
+.badge-default {
+  background-color: #6b7280;
+  color: white;
+}
+
+.badge-primary {
+  background-color: ##PRIMARY_COLOR##;
+  color: white;
+}
+
+.badge-secondary {
+  background-color: ##SECONDARY_COLOR##;
+  color: white;
+}
+
+.badge-success {
+  background-color: #10b981;
+  color: white;
+}
+
+.badge-warning {
+  background-color: #f59e0b;
+  color: white;
+}
+
+.badge-error {
+  background-color: #ef4444;
+  color: white;
+}
+
+.badge-info {
+  background-color: #3b82f6;
+  color: white;
+}
+
+/* Pill shape */
+.badge-pill {
+  border-radius: 9999px;
+}
+
+/* Dot badge */
+.badge-dot {
+  padding: 0;
+  min-width: 0.5rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+}
+
+.badge-dot.badge-small {
+  width: 0.375rem;
+  height: 0.375rem;
+}
+
+.badge-dot.badge-large {
+  width: 0.625rem;
+  height: 0.625rem;
+}
+
+/* Position for dot badges */
+.badge-top-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+}
+
+.badge-top-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+}
+
+.badge-bottom-right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: translate(50%, 50%);
+}
+
+.badge-bottom-left {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: translate(-50%, 50%);
+}
+
+/* Outline variants */
+.badge-outline {
+  background-color: transparent;
+  border: 2px solid currentColor;
+}
+
+.badge-outline.badge-default {
+  color: #6b7280;
+  border-color: #6b7280;
+}
+
+.badge-outline.badge-primary {
+  color: ##PRIMARY_COLOR##;
+  border-color: ##PRIMARY_COLOR##;
+}
+
+.badge-outline.badge-secondary {
+  color: ##SECONDARY_COLOR##;
+  border-color: ##SECONDARY_COLOR##;
+}
+
+.badge-outline.badge-success {
+  color: #10b981;
+  border-color: #10b981;
+}
+
+.badge-outline.badge-warning {
+  color: #f59e0b;
+  border-color: #f59e0b;
+}
+
+.badge-outline.badge-error {
+  color: #ef4444;
+  border-color: #ef4444;
+}
+
+.badge-outline.badge-info {
+  color: #3b82f6;
+  border-color: #3b82f6;
+}
+
+/* Animation */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.badge-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .badge-default {
+    background-color: #9ca3af;
+  }
+
+  .badge-primary {
+    background-color: ##SECONDARY_COLOR##;
+  }
+
+  .badge-secondary {
+    background-color: ##PRIMARY_COLOR##;
+  }
+
+  .badge-outline.badge-default {
+    color: #d1d5db;
+    border-color: #d1d5db;
+  }
+}

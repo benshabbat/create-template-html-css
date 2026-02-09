@@ -25,6 +25,7 @@ import {
 // Valid React components
 export const VALID_REACT_COMPONENTS = [
   "alert",
+  "badge",
   "button",
   "card",
   "checkbox",
@@ -34,6 +35,8 @@ export const VALID_REACT_COMPONENTS = [
   "input",
   "modal",
   "navbar",
+  "progress",
+  "switch",
   "todo-list",
   "tooltip",
 ];
