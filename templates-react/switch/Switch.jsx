@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+
 import './Switch.css';
+import { useState } from 'react';
 
 function Switch({ 
   checked = false,

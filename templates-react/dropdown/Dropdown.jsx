@@ -1,5 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
+
 import './Dropdown.css';
+import { useState, useRef, useEffect } from 'react';
 
 function Dropdown({ 
   options = [], 

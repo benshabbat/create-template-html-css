@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+
 import './Checkbox.css';
+import { useState } from 'react';
 
 function Checkbox({ 
   label = '',

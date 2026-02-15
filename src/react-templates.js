@@ -49,11 +49,11 @@ const VITE_REACT_PLUGIN_VERSION = "^4.2.0";
  */
 function createAppTemplate(componentName, additionalImports = '', content) {
   const reactImports = additionalImports 
-    ? `import React, { ${additionalImports} } from 'react';`
-    : `import React from 'react';`;
+    ? `import { ${additionalImports} } from 'react';`
+    : '';
     
-  return `${reactImports}
-import ${componentName} from './components/${componentName}/${componentName}';
+  const importsSection = reactImports ? `${reactImports}\n` : '';
+  return `${importsSection}import ${componentName} from './components/${componentName}/${componentName}';
 import './components/${componentName}/${componentName}.css';
 
 function App() {
@@ -115,15 +115,12 @@ function generateAppJsx(componentName, componentKebab) {
  * @returns {string} Complete index.jsx file content
  */
 function generateIndexJs() {
-  return `import React from 'react';
-import ReactDOM from 'react-dom/client';
+  return `import ReactDOM from 'react-dom/client';
 import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <App />
 );
 `;
 }
