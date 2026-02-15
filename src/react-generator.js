@@ -75,6 +75,8 @@ async function generateReactTemplate(options) {
     primaryColor,
     secondaryColor,
     darkMode,
+    lazyLoad = false,
+    optimizeBuild = false,
   } = options;
 
   // Resolve colors
@@ -113,8 +115,8 @@ async function generateReactTemplate(options) {
   // Write component files
   await writeComponentFiles(componentDir, componentName, jsxContent, cssContent);
 
-  // Create App.jsx
-  const appContent = generateAppJsx(componentName, component);
+  // Create App.jsx (with optional lazy loading)
+  const appContent = generateAppJsx(componentName, component, { lazyLoad });
   await fs.writeFile(path.join(srcDir, "App.jsx"), appContent, "utf-8");
 
   // Create index.jsx
@@ -137,8 +139,8 @@ async function generateReactTemplate(options) {
   const gitignoreContent = generateGitignore();
   await fs.writeFile(path.join(outputDir, ".gitignore"), gitignoreContent, "utf-8");
 
-  // Create vite.config.js
-  const viteConfig = generateViteConfig();
+  // Create vite.config.js (with optional optimizations)
+  const viteConfig = generateViteConfig(optimizeBuild);
   await fs.writeFile(path.join(outputDir, "vite.config.js"), viteConfig, "utf-8");
 
   // Create README.md

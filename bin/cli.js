@@ -43,6 +43,8 @@ program
   .option("--include-js", "Include JavaScript file", true)
   .option("--no-include-js", "Exclude JavaScript file")
   .option("--dark-mode", "Add dark mode support")
+  .option("--lazy-load", "Enable lazy loading with React.lazy() and Suspense (React only)")
+  .option("--optimize-build", "Enable build optimizations and code splitting (React only)")
   .option("--primary-color <color>", "Primary color (hex: #667eea)")
   .option("--secondary-color <color>", "Secondary color (hex: #764ba2)")
   .option("--color-scheme <scheme>", "Color scheme preset")

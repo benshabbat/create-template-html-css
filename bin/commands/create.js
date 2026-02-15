@@ -56,6 +56,8 @@ async function createCommand(options) {
         colorScheme: options.colorScheme,
         primaryColor: options.primaryColor,
         secondaryColor: options.secondaryColor,
+        lazyLoad: options.lazyLoad || false,
+        optimizeBuild: options.optimizeBuild || false,
       };
 
       if (isReactMode) {
@@ -162,6 +164,20 @@ async function createCommand(options) {
         name: "darkMode",
         message: "Add dark mode support (prefers-color-scheme)?",
         default: false,
+      },
+      {
+        type: "confirm",
+        name: "lazyLoad",
+        message: "Enable lazy loading with Suspense? (reduces initial bundle size)",
+        default: false,
+        when: (answers) => answers.framework === "react" && answers.projectType !== "component-only",
+      },
+      {
+        type: "confirm",
+        name: "optimizeBuild",
+        message: "Enable build optimizations and code splitting?",
+        default: false,
+        when: (answers) => answers.framework === "react" && answers.projectType !== "component-only",
       },
       {
         type: "list",

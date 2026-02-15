@@ -63,6 +63,39 @@ ${content}
 export default App;`;
 }
 
+/**
+ * Create App.jsx template with Lazy Loading
+ * 
+ * Wraps component usage in React.lazy() and Suspense for code splitting.
+ * Reduces initial bundle size by loading components on demand.
+ * 
+ * @param {string} componentName - Component name in PascalCase
+ * @param {string} additionalImports - React hooks to import
+ * @param {string} content - JSX content for the App component body
+ * @returns {string} Complete App.jsx with lazy loading
+ */
+function createAppTemplateWithLazyLoading(componentName, additionalImports = '', content) {
+  const reactImports = additionalImports 
+    ? `import { lazy, Suspense, ${additionalImports} } from 'react';`
+    : `import { lazy, Suspense } from 'react';`;
+    
+  return `${reactImports}
+import './components/${componentName}/${componentName}.css';
+
+// Lazy load component for code splitting
+const ${componentName} = lazy(() => import('./components/${componentName}/${componentName}'));
+
+function App() {
+  return (
+    <Suspense fallback={<div className="loading">Loading...</div>}>
+${content}
+    </Suspense>
+  );
+}
+
+export default App;`;
+}
+
 // ============================================================================
 // APP.JSX GENERATOR
 // ============================================================================
@@ -75,12 +108,16 @@ export default App;`;
  * 
  * @param {string} componentName - Component name in PascalCase (e.g., 'MyButton')
  * @param {string} componentKebab - Component name in kebab-case (e.g., 'my-button')
+ * @param {object} options - Generation options
+ * @param {boolean} options.lazyLoad - Enable lazy loading with Suspense
  * @returns {string} Complete App.jsx file content
  * 
  * @example
- * const appContent = generateAppJsx('Button', 'button');
+ * const appContent = generateAppJsx('Button', 'button', { lazyLoad: true });
  */
-function generateAppJsx(componentName, componentKebab) {
+function generateAppJsx(componentName, componentKebab, options = {}) {
+  const { lazyLoad = false } = options;
+  
   // Validate component exists (optional - could add warning)
   if (!hasComponent(componentKebab)) {
     console.warn(`Warning: No template found for component '${componentKebab}'. Using default template.`);
@@ -99,6 +136,11 @@ function generateAppJsx(componentName, componentKebab) {
     </div>
   );`;
 
+  // Use lazy loading template if requested
+  if (lazyLoad) {
+    return createAppTemplateWithLazyLoading(componentName, requiredImports, content);
+  }
+  
   return createAppTemplate(componentName, requiredImports, content);
 }
 
@@ -226,15 +268,44 @@ build/
  * 
  * Creates a minimal Vite configuration file with React plugin enabled.
  * 
+ * @param {boolean} withOptimization - Include code splitting optimizations
  * @returns {string} Complete vite.config.js file content
  */
-function generateViteConfig() {
+function generateViteConfig(withOptimization = false) {
+  if (!withOptimization) {
+    return `import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [react()],
+});
+`;
+  }
+  
   return `import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Split vendor code into separate chunk
+          vendor: ['react', 'react-dom'],
+        },
+      },
+    },
+    // Enable code splitting
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true, // Remove console.log in production
+      },
+    },
+  },
 });
 `;
 }
@@ -330,6 +401,7 @@ MIT
  * @exports generateGitignore - Generate .gitignore file
  * @exports generateViteConfig - Generate vite.config.js
  * @exports generateReadme - Generate README.md documentation
+ * @exports createAppTemplateWithLazyLoading - Create lazy loaded App component
  */
 export {
   generateAppJsx,
@@ -339,4 +411,5 @@ export {
   generateGitignore,
   generateViteConfig,
   generateReadme,
+  createAppTemplateWithLazyLoading,
 };
