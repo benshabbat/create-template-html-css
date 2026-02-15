@@ -157,12 +157,15 @@ function generateAppJsx(componentName, componentKebab, options = {}) {
  * @returns {string} Complete index.jsx file content
  */
 function generateIndexJs() {
-  return `import ReactDOM from 'react-dom/client';
+  return `import { StrictMode } from 'react';
+import ReactDOM from 'react-dom/client';
 import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <App />
+  <StrictMode>
+    <App />
+  </StrictMode>
 );
 `;
 }
